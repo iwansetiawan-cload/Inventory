@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "E_OneWeb.Models/1.0.0": {
+        "runtime": {
+          "E_OneWeb.Models.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "E_OneWeb.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

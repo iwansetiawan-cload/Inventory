@@ -1,0 +1,49 @@
+﻿using E_OneWeb.DataAccess.Data;
+using E_OneWeb.DataAccess.Repository.IRepository;
+using E_OneWeb.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+
+namespace E_OneWeb.DataAccess.Repository
+{
+    public class UnitOfWork : IUnitOfWork
+    {
+        private readonly ApplicationDbContext _db;
+
+        public UnitOfWork(ApplicationDbContext db)
+        {
+            _db = db;
+            Article = new ArticleRepository(_db);
+            ApplicationUser = new ApplicationUserRepository(_db);
+            Category = new CategoryRepository(_db);
+            Brand = new BrandRepository(_db);
+            Room = new RoomRepository(_db);
+            Items = new ItemsRepository(_db);
+            Supplier = new SupplierRepository(_db);
+            PurchaseOrderHeader = new PurchaseOrderHeaderRepository(_db);
+            ItemTransfer = new ItemTransferRepository(_db);
+        }
+        public IArticleRepository Article { get; private set; }
+        public IApplicationUserRepository ApplicationUser { get; private set; }
+        public ICategoryRepository Category { get; private set; }
+        public IBrandRepository Brand { get; private set; }
+        public IRoomRepository Room { get; private set; }
+        public IItemsRepository Items { get; private set; }
+        public ISupplierRepository Supplier { get; private set; }
+        public IPurchaseOrderHeaderRepository PurchaseOrderHeader { get; set; }
+        public IItemTransferRepository ItemTransfer { get; private set; }
+        public void Dispose()
+        {
+            _db.Dispose();
+        }
+
+        public void Save()
+        {
+            _db.SaveChanges();
+        }
+    }
+}

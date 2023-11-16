@@ -1,0 +1,519 @@
+﻿@model E_OneWeb.Models.ViewModels.ItemsVM
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var title = "Create Item";
+}
+
+<form method="post">
+    <br />
+    <div class="row p-3 border">
+        <input type="hidden" value="@ViewBag.Status" id="idstatus" />       
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if ((Model.Items.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Edit Success")
+        {
+            //edit
+            title = "Edit Item";
+            <input type="hidden" asp-for="Items.Id" id="itemID" />
+            <input type="hidden" asp-for="Items.RoomId" id="RoomID" />
+            <input type="hidden" asp-for="Items.Code" />
+        }
+        <div class="col-12 border-bottom">
+            <h2 class="text-primary">@title</h2>
+        </div>
+@*        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="Items.Code"></label>
+                </div>
+                <div class="col-10">
+                    <input asp-for="Items.Code" class="form-control" style="row-gap" />
+                </div>
+            </div>
+
+        </div>*@
+        <div class="col-12 pt-2">
+            <div class="form-group row">                
+                <div class="col-2">
+                    <label>Item Name</label>
+                </div>
+                <div class="col-10">
+                    <input asp-for="Items.Name" class="form-control" style="row-gap" />
+                    <span asp-validation-for="Items.Name" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="Items.Description"></label>
+                </div>
+                <div class="col-10">
+                    <textarea asp-for="Items.Description" class="form-control"></textarea>
+                </div>
+            </div>
+
+        </div>        
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Date of Acquisition</label>
+                </div>
+                <div class="col-10">
+                    <input asp-for="Items.StartDate" class="form-control" type="date" />
+                    <span asp-validation-for="Items.StartDate" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Price</label>
+                </div>
+                <div class="col-10">
+                    <input asp-for="Items.Price" class="form-control" style="row-gap" onchange="changesqty()" id="price" />
+                    <span asp-validation-for="Items.Price" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Qty</label>
+                </div>
+                <div class="col-10">
+                    <input asp-for="Items.Qty" class="form-control" style="row-gap" onchange="changesqty()" id="qty" />
+                    <span asp-validation-for="Items.Qty" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Total Amount</label>
+                </div>
+                <div class="col-10">
+                    <input type="hidden" asp-for="Items.TotalAmount" id="TotalAmount_" />
+                    <input asp-for="Items.TotalAmount" class="form-control" style="row-gap" id="totalamount" disabled/>
+                    <span asp-validation-for="Items.TotalAmount" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Percent</label>
+                </div>
+                <div class="col-4">
+                    <input asp-for="Items.Percent" class="form-control" style="row-gap" id="percent" />
+                    <span asp-validation-for="Items.Percent" class="text-danger"></span>
+                </div>
+                <div class="col-2">
+                    <label>Period /year</label>
+                </div>
+                <div class="col-4">
+                    <input asp-for="Items.Period" class="form-control" style="row-gap" />
+                    <span asp-validation-for="Items.Period" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Depreciation Expense</label>
+                </div>
+                <div class="col-10">
+                    <input asp-for="Items.DepreciationExpense" class="form-control" style="row-gap" id="depreciationexpense" disabled />
+                    <span asp-validation-for="Items.DepreciationExpense" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">                
+                <div class="col-2">
+                    Ownership
+                </div>
+                <div class="col-10">
+                    <input asp-for="Items.OriginOfGoods" class="form-control" />
+                    <span asp-validation-for="Items.OriginOfGoods" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>    
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    Location
+                </div>
+                <div class="col-10">
+                    @Html.DropDownListFor(Model => Model.Items.RoomId , Model.RoomList, "-Select a Location",
+                    new { @Class = "form-control" , @id = "location" })
+                    <span asp-validation-for="Items.RoomId" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    Category
+                </div>
+                <div class="col-10">
+                    @Html.DropDownListFor(Model => Model.Items.CategoryId , Model.CategoryList, "-Select a Category",
+                    new { @Class = "form-control" })
+                    <span asp-validation-for="Items.CategoryId" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    Item Condition
+                </div>
+                <div class="col-10">
+                    <input asp-for="Items.Status" class="form-control" />
+                    <span asp-validation-for="Items.Status" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+
+    
+        <br />  
+      @*  <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-6 offset-2">
+
+
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" id="btnSave" class="btn btn-primary form-control">@title.Replace("Items","")</button>
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        <div class="form-group margin-bottom-2 pt-4">
+            <div class="col-md-12 text-center">
+                <button class="btn btn-primary" type="submit" style="width:145px" id="btnSave">@title.Replace("Items","")</button>
+                <a asp-action="Index" class="btn btn-success form-control" style="width:145px">Back to List</a>
+            </div>
+        </div>
+
+        @if ((Model.Items.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Edit Success")
+        {
+            //edit
+            <br />
+            <div id="accordion" class="col-12 pt-2">
+
+                <div class="card">
+                    <div class="card-header d-md-flex justify-content-md-end">
+                        <a class="btn" data-bs-toggle="collapse" href="#historytranfer">
+                            History Transfer  <i class="indicator fa fa-chevron-circle-down"></i>
+                        </a>
+                    </div>
+                    <div class="collapse" id="historytranfer">
+
+                        <div class="panel-body" style="min-width:100%;overflow:scroll">
+                            <div class="p-4 border rounded">
+                                <table id="tblDataTransfer" class="table table-striped table-bordered" style="width:100%">
+                                    <thead class="thead-dark">
+                                        <tr class="table-info">
+
+                                            <th>
+                                                Transfer Date
+                                            </th>
+
+                                            <th>
+                                                Before Location
+                                            </th>
+                                            <th>
+                                                After Location
+                                            </th>
+
+                                            <th>
+                                                Description
+                                            </th>
+
+                                            <th style="min-width:100px"></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+
+
+                            <br />
+
+
+                        </div>
+                    </div>
+
+                </div>
+              
+                <div class="card">
+                    <div class="card-header d-md-flex justify-content-md-end">
+                        <a class="btn" data-bs-toggle="collapse" href="#historyservice">
+                            History Service  <i class="indicator fa fa-chevron-circle-down"></i>
+                        </a>
+                    </div>
+                    <div class="collapse" id="historyservice">
+
+                        <div class="panel-body" style="min-width:100%;overflow:scroll">
+                            <div class="p-4 border rounded">
+                                <table id="tblData" class="table table-striped table-bordered" style="width:100%">
+                                    <thead class="thead-dark">
+                                        <tr class="table-info">
+
+                                            <th>
+                                                Item Name
+                                            </th>
+                                            <th>
+                                                Description
+                                            </th>
+                                            <th>
+                                                Previous Location
+                                            </th>
+                                            <th>
+                                                Current Location
+                                            </th>
+                                            <th>
+                                                Transfer Date
+                                            </th>
+
+
+                                            <th style="min-width:100px"></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+
+
+                            <br />
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+        }
+        
+        
+    </div>
+@*    <br />
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <div class="panel panel-info">
+              
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-tab1" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">History Transfer</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-tab2" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">History Service</button>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-tab1">@Html.Partial("HistoryTransferItem")</div>
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-tab2">@Html.Partial("HistoryTransferItem")</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>*@
+   
+    @*<br/>*@
+ 
+    @*<p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#historytranfer" role="button" aria-expanded="false" aria-controls="historytranfer">
+                History Transfer  <i class="indicator fa fa-chevron-circle-down"></i>
+            </a>
+        </div>
+    </p>
+    <div class="collapse" id="historytranfer">
+     
+        <div class="panel-body" style="min-width:100%;overflow:scroll">
+            <div class="p-4 border rounded">
+                <table id="tblData" class="table table-striped table-bordered" style="width:100%">
+                    <thead class="thead-dark">
+                        <tr class="table-info">
+
+                            <th>
+                                Item Name
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Previous Location
+                            </th>
+                            <th>
+                                Current Location
+                            </th>
+                            <th>
+                                Transfer Date
+                            </th>
+
+
+                            <th style="min-width:100px"></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+
+            <br />
+
+
+        </div>
+    </div>*@
+
+    @*    <p>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <a class="btn btn-primary justify-content-end" data-bs-toggle="collapse" href="#historyservice" role="button" aria-expanded="false" aria-controls="historyservice">
+    History Service  <i class="indicator fa fa-chevron-circle-down"></i>
+    </a>
+    </div>
+    </p>
+    <div class="collapse" id="historyservice">
+
+    <div class="panel-body" style="min-width:100%;overflow:scroll">
+    <div class="p-4 border rounded">
+    <table id="tblData" class="table table-striped table-bordered" style="width:100%">
+    <thead class="thead-dark">
+    <tr class="table-info">
+
+    <th>
+    Item Name
+    </th>
+    <th>
+    Description
+    </th>
+    <th>
+    Previous Location
+    </th>
+    <th>
+    Current Location
+    </th>
+    <th>
+    Transfer Date
+    </th>
+
+
+    <th style="min-width:100px"></th>
+    </tr>
+    </thead>
+    </table>
+    </div>
+
+
+    <br />
+
+
+    </div>
+    </div>*@
+    
+
+  
+
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+   @* <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js"></script>*@
+
+	<script src="~/js/transferitembyid.js"></script>
+    <script type="text/javascript">
+
+        function changesqty() {           
+            var a = $('#qty').val();
+            var b = $('#price').val();
+            var c = a * b; 
+            $('#totalamount').val(c);
+            $('#TotalAmount_').val(c);
+        }
+       
+        //function changespercent() {
+        //    var a = $('#totalamount').val();
+        //    var b = $('#percent').val();
+        //    var c = a * b / 100;
+        //    $('#depreciationexpense').val(c);
+
+        //}
+
+        if ($("#itemID").val() != null)
+        {
+            $("#location").attr("disabled", "disabled");
+            //loadDataTransfer();
+        }
+
+        $(document).ready(function () {
+            var status = $("#idstatus").val();
+
+            if (status != "") {
+                toastr.options.timeOut = 1500;
+                toastr.success(status);
+                $("#btnSave").attr("disabled", "disabled");
+
+            }
+        
+        });
+
+        //$("#Items.Qty").change(function () {
+
+        //    $('#TotalAmount').val(123) ;
+        //    $("#btnSave").attr("disabled", "disabled");
+        //});
+        function loadDataTransfer() {
+            var ItemID = $('#itemID').val();
+            dataTable = $('#tblDataTransfer2').DataTable({
+                "ajax": {
+                    "url": "/Admin/Items/GetTransferItem",
+                    "data": {
+                        "id": ItemID
+                    }
+                },
+                "columns": [
+                    { "data": "stranferdate", "width": "20%" },
+
+                    { "data": "previouslocation", "width": "20%" },
+                    { "data": "currentlocation", "width": "20%" },
+                    { "data": "desc", "width": "30%" },
+                    {
+                        "data": "id",
+                        "render": function (data) {
+                            return `
+                                    <div class="text-center">
+                                        <a onclick=Delete("/Admin/ItemTransfer/Delete/${data}") class="btn btn-danger text-white" style="cursor:pointer">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                   `;
+                        }, "width": "40%"
+                    }
+                ]
+            });
+        }
+    </script>
+}

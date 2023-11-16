@@ -1,0 +1,69 @@
+﻿@model E_OneWeb.Models.Room
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var title = "Create Room";
+}
+
+<form method="post">
+    <br />
+    <div class="row p-3 border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (Model.Id != 0)
+        {
+            //edit
+            title = "Edit Location";
+        }
+        <div class="col-12 border-bottom">
+            <h2 class="text-primary">@title</h2>
+        </div>
+
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="Name"></label>
+                </div>
+                <div class="col-10">
+                    <input asp-for="Name" class="form-control" style="row-gap" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="Description"></label>
+                </div>
+                <div class="col-10">
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                </div>
+            </div>
+
+        </div>
+
+
+        <br />
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-6 offset-2">
+                    @if (Model.Id != 0)
+                    {
+                        <partial name="_EditAndBackToListButton" model="Model.Id" />
+                    }
+                    else
+                    {
+                        <partial name="_CreateAndBackToListButton" />
+                    }
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

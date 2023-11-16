@@ -1,0 +1,84 @@
+﻿@model E_OneWeb.Models.Article
+
+<form method="post">
+	<div class="container backgroundWhite">
+		<div class="card">
+			<div class="card-header bg-light text-center">			
+				<h1 class="text-primary">@Model.Title</h1>	
+                <input type="hidden" id="IdArticle" asp-for="@Model.Id"/>
+			</div>
+			<div class="card-body">
+				<div class="container rounded p-2">
+					<div class="row">
+						<div class="col-12 col-lg-12">
+							<div class="row pl-2">
+								<h5 class="text-white-50">@Model.Content.Replace("<p>","").Replace("</p>","").Replace("<br>","").Replace("<br />","").Replace("&nbsp;"," ")</h5>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="card-footer">
+				<div class="row">
+					<div class="col-12 col-md-12 pb-2">
+                        <a asp-action="GetPoint" class="btn btn-success form-control" asp-route-id="@Model.Id">Back to List</a>
+					</div>		
+                 
+				</div>
+
+			</div>
+		</div>
+	</div>
+</form>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js"></script>
+
+    <script type="text/javascript">
+        //tinymce.init({
+        //    selector: 'textarea',
+        //    plugins: 'lists',
+        //    menubar: 'file edit format'
+        //});
+
+        //$(document).ready(function () {
+        //    var status = $("#idstatus").val();
+
+        //    if (status != "") {
+        //        toastr.options.timeOut = 1500;
+        //        toastr.success(status);
+        //        $("#btnSave").attr("disabled", "disabled");
+
+        //    }
+
+        //});
+
+		//function Cekstopwatch()
+		//{
+  //          console.log("Cekstopwatch");
+  //          var id = $("#IdArticle").val();
+  //          var urls = "@Url.Action("Cekstopwatch", "Home")" + 'id=' + id;
+  //          $.ajax({
+  //              url: urls,
+  //              dataType: 'json',
+  //              type: 'POST',
+  //              contentType: 'application/json;',
+  //              success: function (data) {
+                  
+  //                  if (data.result) {
+  //                      //DownloadDataDapem();
+  //                  }
+  //              },
+  //              error: function (request, status, error) {
+  //                  //console.log("error" + error);
+  //              }
+  //          });
+		//}
+
+
+
+
+    </script>
+}

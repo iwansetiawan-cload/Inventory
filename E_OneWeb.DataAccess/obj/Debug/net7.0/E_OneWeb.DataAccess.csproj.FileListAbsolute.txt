@@ -1,0 +1,85 @@
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.DataAccess.deps.json
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.DataAccess.dll
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.DataAccess.pdb
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Models.dll
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Models.pdb
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.csproj.AssemblyReference.cache
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.AssemblyInfoInputs.cache
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.AssemblyInfo.cs
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.csproj.CoreCompileInputs.cache
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.csproj.CopyComplete
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.dll
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\refint\E_OneWeb.DataAccess.dll
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.pdb
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\ref\E_OneWeb.DataAccess.dll
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.DataAccess.deps.json
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.DataAccess.dll
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.DataAccess.pdb
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Models.dll
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Models.pdb
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.csproj.AssemblyReference.cache
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.AssemblyInfoInputs.cache
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.AssemblyInfo.cs
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.csproj.CoreCompileInputs.cache
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.csproj.CopyComplete
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.dll
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\refint\E_OneWeb.DataAccess.dll
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.pdb
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.DataAccess\obj\Debug\net7.0\ref\E_OneWeb.DataAccess.dll
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.DataAccess.deps.json
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.DataAccess.dll
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.DataAccess.pdb
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Models.dll
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Models.pdb
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.csproj.AssemblyReference.cache
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.AssemblyInfoInputs.cache
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.AssemblyInfo.cs
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.csproj.CoreCompileInputs.cache
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.csproj.CopyComplete
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.dll
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\refint\E_OneWeb.DataAccess.dll
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.pdb
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\ref\E_OneWeb.DataAccess.dll
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.DataAccess.deps.json
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.DataAccess.dll
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.DataAccess.pdb
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Models.dll
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Models.pdb
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.csproj.AssemblyReference.cache
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.AssemblyInfoInputs.cache
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.AssemblyInfo.cs
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.csproj.CoreCompileInputs.cache
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.csproj.CopyComplete
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.dll
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\refint\E_OneWeb.DataAccess.dll
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.pdb
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\ref\E_OneWeb.DataAccess.dll
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.DataAccess.deps.json
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.DataAccess.dll
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.DataAccess.pdb
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Models.dll
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Utility.dll
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Models.pdb
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\bin\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.csproj.AssemblyReference.cache
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.AssemblyInfoInputs.cache
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.AssemblyInfo.cs
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.csproj.CoreCompileInputs.cache
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.csproj.CopyComplete
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.dll
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\refint\E_OneWeb.DataAccess.dll
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\E_OneWeb.DataAccess.pdb
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.DataAccess\obj\Debug\net7.0\ref\E_OneWeb.DataAccess.dll

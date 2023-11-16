@@ -1,0 +1,60 @@
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.deps.json
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.csproj.AssemblyReference.cache
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.GeneratedMSBuildEditorConfig.editorconfig
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.AssemblyInfoInputs.cache
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.AssemblyInfo.cs
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.csproj.CoreCompileInputs.cache
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.Utility\obj\Debug\net7.0\refint\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\Net Core\Project VS 2022\E_One\E_OneWeb.Utility\obj\Debug\net7.0\ref\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.deps.json
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.csproj.AssemblyReference.cache
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.GeneratedMSBuildEditorConfig.editorconfig
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.AssemblyInfoInputs.cache
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.AssemblyInfo.cs
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.csproj.CoreCompileInputs.cache
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.Utility\obj\Debug\net7.0\refint\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\Net Core\Project VS 2022\Project Yudi\E_One\E_OneWeb.Utility\obj\Debug\net7.0\ref\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.deps.json
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.csproj.AssemblyReference.cache
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.GeneratedMSBuildEditorConfig.editorconfig
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.AssemblyInfoInputs.cache
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.AssemblyInfo.cs
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.csproj.CoreCompileInputs.cache
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.Utility\obj\Debug\net7.0\refint\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\Net Core\Project VS 2022\Repository\ERP\E_OneWeb.Utility\obj\Debug\net7.0\ref\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.deps.json
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.csproj.AssemblyReference.cache
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.GeneratedMSBuildEditorConfig.editorconfig
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.AssemblyInfoInputs.cache
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.AssemblyInfo.cs
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.csproj.CoreCompileInputs.cache
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.Utility\obj\Debug\net7.0\refint\E_OneWeb.Utility.dll
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\Net Core\Project VS 2022\Project Yudi\ERP\E_OneWeb.Utility\obj\Debug\net7.0\ref\E_OneWeb.Utility.dll
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.deps.json
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.dll
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.csproj.AssemblyReference.cache
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.GeneratedMSBuildEditorConfig.editorconfig
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.AssemblyInfoInputs.cache
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.AssemblyInfo.cs
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.csproj.CoreCompileInputs.cache
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.dll
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.Utility\obj\Debug\net7.0\refint\E_OneWeb.Utility.dll
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\My File\Inventory\Project 2022\ERP\E_OneWeb.Utility\obj\Debug\net7.0\ref\E_OneWeb.Utility.dll

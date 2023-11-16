@@ -1,0 +1,29 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+
+<div id="logreg-forms" class="align-content-md-center">    
+
+    <form id="account" method="post">
+     @*   <label for="input.Name">User Name</label>*@
+        <div class="py-2 input-group">   
+            <input asp-for="Input.Name" type="text" placeholder="User Name..." class="form-control" />
+@*            <span asp-validation-for="Input.Name" class="text-danger"></span>*@
+        </div>
+      @*  <label for="input.Password">Password</label>*@
+        <input asp-for="Input.Password" placeholder="Password..." type="password" class="form-control" />
+        <button type="submit" class="btn btn-success form-control"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+      
+    </form>
+        
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
