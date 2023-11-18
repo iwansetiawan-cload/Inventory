@@ -21,6 +21,7 @@ namespace E_OneWeb.DataAccess.Data
         public DbSet<PurchaseOrderHeader> PurchaseOrderHeader { get; set; }
         public DbSet<PurchaseOrderDetail> PurchaseOrderDetail { get; set; }
         public DbSet<ItemTransfer> ItemTransfer { get; set; }
+        public DbSet<GENMASTER> GENMASTER { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

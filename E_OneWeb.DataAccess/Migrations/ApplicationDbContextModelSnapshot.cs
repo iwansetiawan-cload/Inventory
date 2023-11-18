@@ -106,6 +106,39 @@ namespace E_OneWeb.DataAccess.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("E_OneWeb.Models.GENMASTER", b =>
+                {
+                    b.Property<int>("IDGEN")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IDGEN"));
+
+                    b.Property<string>("ENTRYBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ENTRYDATE")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("GENCODE")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("GENFLAG")
+                        .HasColumnType("int");
+
+                    b.Property<string>("GENNAME")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<double?>("GENVALUE")
+                        .HasColumnType("float");
+
+                    b.HasKey("IDGEN");
+
+                    b.ToTable("GENMASTER");
+                });
+
             modelBuilder.Entity("E_OneWeb.Models.ItemTransfer", b =>
                 {
                     b.Property<int>("Id")
@@ -166,6 +199,9 @@ namespace E_OneWeb.DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int?>("Condition")
+                        .HasColumnType("int");
+
                     b.Property<double?>("DepreciationExpense")
                         .HasColumnType("float");
 
@@ -206,9 +242,8 @@ namespace E_OneWeb.DataAccess.Migrations
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Status")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
 
                     b.Property<double?>("TotalAmount")
                         .HasColumnType("float");

@@ -39,6 +39,7 @@ namespace E_OneWeb.DataAccess.Repository
                 objFromDb.Status = items.Status;
                 objFromDb.EntryBy = items.EntryBy;
                 objFromDb.EntryDate = items.EntryDate;
+                objFromDb.Condition = items.Condition;
 
                 _db.SaveChanges();
             }

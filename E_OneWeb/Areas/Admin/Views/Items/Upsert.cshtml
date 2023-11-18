@@ -10,13 +10,13 @@
     <div class="row p-3 border">
         <input type="hidden" value="@ViewBag.Status" id="idstatus" />       
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+       
         @if ((Model.Items.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Edit Success")
         {
             //edit
             title = "Edit Item";
             <input type="hidden" asp-for="Items.Id" id="itemID" />
-            <input type="hidden" asp-for="Items.RoomId" id="RoomID" />
-           @* <input type="hidden" asp-for="Items.Code" />*@
+            <input type="hidden" asp-for="Items.RoomId" id="RoomID" />      
         }
         <div class="col-12 border-bottom">
             <h2 class="text-primary">@title</h2>
@@ -175,10 +175,24 @@
         <div class="col-12 pt-2">
             <div class="form-group row">
                 <div class="col-2">
-                    Item Condition
+                    Condition
+                </div>       
+
+                <div class="col-10">             
+                    @Html.DropDownListFor(Model => Model.Items.Condition, ViewBag.ConditionList as SelectList, "-Select a Condition", new { @class = "form-control" })
+                    <span asp-validation-for="Items.Condition" class="text-danger"></span>
                 </div>
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    Status
+                </div>
+
                 <div class="col-10">
-                    <input asp-for="Items.Status" class="form-control" />
+                    @Html.DropDownListFor(model => model.Items.Status, ViewBag.StatusList as SelectList, "-Select a Status", new { @class = "form-control" })
                     <span asp-validation-for="Items.Status" class="text-danger"></span>
                 </div>
             </div>

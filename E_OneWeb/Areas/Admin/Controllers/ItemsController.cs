@@ -21,8 +21,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
-        {
-            
+        {            
             return View();
         }
         //public static int? ItemID { get; set; }
@@ -49,6 +48,11 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
         public async Task<IActionResult> Upsert(int? id)
         {
+            var ConditionList = _unitOfWork.Genmaster.GetAll().Where(z=>z.GENFLAG == 1).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
+            ViewBag.ConditionList = new SelectList(ConditionList, "Value", "Text");
+
+            var StatusList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 2).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
+            ViewBag.StatusList = new SelectList(StatusList, "Value", "Text");
             //ItemID = id;
             IEnumerable<Category> CatList = await _unitOfWork.Category.GetAllAsync();
             ItemsVM itemsVM = new ItemsVM()
@@ -130,7 +134,13 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 _unitOfWork.Items.Update(vm.Items);
                 ViewBag.Status = "Edit Success";
             }			
-			_unitOfWork.Save();    
+			_unitOfWork.Save();
+
+            var ConditionList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 1).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
+            ViewBag.ConditionList = new SelectList(ConditionList, "Value", "Text", vm.Items.Condition);
+
+            var StatusList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 2).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
+            ViewBag.StatusList = new SelectList(StatusList, "Value", "Text", vm.Items.Status);
 
             return View(vm);
         }

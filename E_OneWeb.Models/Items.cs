@@ -27,9 +27,8 @@ namespace E_OneWeb.Models
         public double? TotalAmount { get; set; }
         public int? Percent { get; set; }
         public int? Period { get; set; }
-        public double? DepreciationExpense { get; set; }
-        [MaxLength(100)]
-        public string? Status { get; set; }
+        public double? DepreciationExpense { get; set; }    
+        public int? Status { get; set; }
         [MaxLength(255)]
         public string? OriginOfGoods { get; set; }
         [Required]
@@ -43,7 +42,8 @@ namespace E_OneWeb.Models
         [MaxLength(255)]
         public string? EntryBy { get; set; }
         public DateTime? EntryDate { get; set; }
-        
-        
+        public int? Condition { get; set; }
+
+
     }
 }
