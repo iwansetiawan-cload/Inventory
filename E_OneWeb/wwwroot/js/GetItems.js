@@ -11,8 +11,8 @@ function loadDataTable() {
             "url": "/Admin/ItemTransfer/GetProduct"
         },
         "columns": [
-            { "data": "name", "width": "20%" },    
-            { "data": "description", "width": "30%" },
+            { "data": "name", "width": "30%" },    
+            { "data": "description", "width": "40%" },
             { "data": "category", "width": "20%" },
             { "data": "room", "width": "20%" },
            
@@ -22,12 +22,12 @@ function loadDataTable() {
                     return `
                             <div class="text-center">
                                  <a href="/Admin/ItemTransfer/GetItem/${data}" class="btn btn-success text-white" style="cursor:pointer">
-                                    <i class="fas fa-solid fa-check"></i> 
+                                    <i class="fas fa-check"></i> 
                                 </a>    
                               
                             </div>
                            `;
-                }, "width": "40%"
+                }, "width": "10%"
             }
         ],
         //let getStudies = (url, id) => {

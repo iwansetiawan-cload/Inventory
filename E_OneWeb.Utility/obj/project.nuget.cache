@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZNODxYT4JZUFzw73yX+az2vy21DuvtaWZ3eirTe0VLSauwO+SawKhaMdBLcsB1Swvd8Z+kkVtT6a8IZsJgDwHQ==",
+  "dgSpecHash": "SQWMff6G7aOzYnAJaRlYPB5vcNLmXLztQAHROu5wpH62RYspdD/FogWHLhSrFrNox6rr9EmbWBj2KcKBwQ0WVA==",
   "success": true,
-  "projectFilePath": "D:\\My File\\Inventory\\Project 2022\\ERP\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj",
+  "projectFilePath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\iwan-setti\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.2\\microsoft.windowsdesktop.app.ref.7.0.2.nupkg.sha512",
     "C:\\Users\\iwan-setti\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.2\\microsoft.netcore.app.ref.7.0.2.nupkg.sha512",

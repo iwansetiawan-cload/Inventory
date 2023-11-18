@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eE1JcWVlW3pX2/Dy3dHDBM1DFBIF7i/MQpPY0yeyVAZm33FiyA/3Fpf09oN7BK02kTvw3TKGQk2s9h/gRTFE4w==",
+  "dgSpecHash": "+CQ+75heALF+9iNb4RxLO55DcQaVcrU9d6MFUjhaOiISersZjZ2KTGNDku8IIrBIPNoAcgoISJBehE8nXI03NQ==",
   "success": true,
-  "projectFilePath": "D:\\My File\\Inventory\\Project 2022\\ERP\\E_OneWeb\\E_OneWeb.csproj",
+  "projectFilePath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\E_OneWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\iwan-setti\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\iwan-setti\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

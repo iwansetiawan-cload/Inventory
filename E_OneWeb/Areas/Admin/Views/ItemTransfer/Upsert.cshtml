@@ -42,10 +42,11 @@
                         <input type="hidden" asp-for="ItemTransfer.Items.Id" />
                         <input asp-for="ItemTransfer.Items.Name" id="ItemsName" class="form-control" disabled />
                     @*    <input type="text" value="@ViewBag.ItemsName" id="ItemsName" disabled />*@
-                        <span class="input-group-btn" style="vertical-align:top">
-                            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width:145px"> &nbsp; Search</button>
+                        @*<span class="input-group-btn" style="vertical-align:top">
+                            
                            
-                        </span>
+                        </span>*@
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width:145px"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </div>
                    @* <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-plus"></i> &nbsp; Add Product</a>
@@ -196,7 +197,7 @@
                                     Location
                                 </th>                             
 
-                                <th style="min-width:100px"></th>
+                                <th></th>
                             </tr>
                         </thead>
                     </table>

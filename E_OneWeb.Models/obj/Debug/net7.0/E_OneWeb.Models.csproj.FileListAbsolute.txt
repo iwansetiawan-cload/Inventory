@@ -58,3 +58,15 @@ D:\My File\Inventory\Project 2022\ERP\E_OneWeb.Models\obj\Debug\net7.0\E_OneWeb.
 D:\My File\Inventory\Project 2022\ERP\E_OneWeb.Models\obj\Debug\net7.0\refint\E_OneWeb.Models.dll
 D:\My File\Inventory\Project 2022\ERP\E_OneWeb.Models\obj\Debug\net7.0\E_OneWeb.Models.pdb
 D:\My File\Inventory\Project 2022\ERP\E_OneWeb.Models\obj\Debug\net7.0\ref\E_OneWeb.Models.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\bin\Debug\net7.0\E_OneWeb.Models.deps.json
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\bin\Debug\net7.0\E_OneWeb.Models.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\bin\Debug\net7.0\E_OneWeb.Models.pdb
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Debug\net7.0\E_OneWeb.Models.csproj.AssemblyReference.cache
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Debug\net7.0\E_OneWeb.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Debug\net7.0\E_OneWeb.Models.AssemblyInfoInputs.cache
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Debug\net7.0\E_OneWeb.Models.AssemblyInfo.cs
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Debug\net7.0\E_OneWeb.Models.csproj.CoreCompileInputs.cache
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Debug\net7.0\E_OneWeb.Models.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Debug\net7.0\refint\E_OneWeb.Models.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Debug\net7.0\E_OneWeb.Models.pdb
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Debug\net7.0\ref\E_OneWeb.Models.dll
