@@ -122,7 +122,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 await _unitOfWork.Items.AddAsync(vm.Items);
                 ViewBag.Status = "Save Success";
 				_unitOfWork.Save();
-				vm.Items.Code = "ITM-" + vm.Items.Id.ToString();
+				//vm.Items.Code = "ITM-" + vm.Items.Id.ToString();
 				_unitOfWork.Items.Update(vm.Items);
 			}
             else
