@@ -8,15 +8,17 @@
 <form method="post">
     <br />
     <div class="row p-3 border">
-        <input type="hidden" value="@ViewBag.Status" id="idstatus" />       
+        <input type="hidden" value="@ViewBag.Status" id="idstatus" />
+        <input type="hidden" asp-for="Items.Period" id="Period_" />
+        <input type="hidden" asp-for="Items.Percent" id="Percent_" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-       
+        
         @if ((Model.Items.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Edit Success")
         {
             //edit
             title = "Edit Item";
-            <input type="hidden" asp-for="Items.Id" id="itemID" />
-            <input type="hidden" asp-for="Items.RoomId" id="RoomID" />      
+            <input type="hidden" asp-for="Items.Id" id="itemID" />      
+
         }
         <div class="col-12 border-bottom">
             <h2 class="text-primary">@title</h2>
@@ -27,7 +29,7 @@
                     <label asp-for="Items.Code"></label>
                 </div>
                 <div class="col-10">
-                    <input asp-for="Items.Code" class="form-control" style="row-gap" />
+                    <input asp-for="Items.Code" class="form-control" style="row-gap" id="codes" />
                 </div>
             </div>
 
@@ -62,6 +64,37 @@
                 <div class="col-10">
                     <input asp-for="Items.StartDate" class="form-control" type="date" />
                     <span asp-validation-for="Items.StartDate" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    Category
+                </div>
+                <div class="col-10">
+                    @Html.DropDownListFor(Model => Model.Items.CategoryId , Model.CategoryList, "- Select a Category -",
+                    new { @Class = "form-control", @id="SearchCategory"})
+                    <span asp-validation-for="Items.CategoryId" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Percent</label>
+                </div>
+                <div class="col-4">
+                    <input asp-for="Items.Percent" class="form-control" style="row-gap" id="percent" disabled />
+                    <span asp-validation-for="Items.Percent" class="text-danger"></span>
+                </div>
+                <div class="col-2">
+                    <label>Period /year</label>
+                </div>
+                <div class="col-4">
+                    <input asp-for="Items.Period" class="form-control" style="row-gap" id="period" disabled />
+                    <span asp-validation-for="Items.Period" class="text-danger"></span>
                 </div>
             </div>
 
@@ -103,25 +136,7 @@
             </div>
 
         </div>
-        <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-2">
-                    <label>Percent</label>
-                </div>
-                <div class="col-4">
-                    <input asp-for="Items.Percent" class="form-control" style="row-gap" id="percent" />
-                    <span asp-validation-for="Items.Percent" class="text-danger"></span>
-                </div>
-                <div class="col-2">
-                    <label>Period /year</label>
-                </div>
-                <div class="col-4">
-                    <input asp-for="Items.Period" class="form-control" style="row-gap" />
-                    <span asp-validation-for="Items.Period" class="text-danger"></span>
-                </div>
-            </div>
-
-        </div>
+       
         <div class="col-12 pt-2">
             <div class="form-group row">
                 <div class="col-2">
@@ -138,9 +153,10 @@
             <div class="form-group row">                
                 <div class="col-2">
                     Ownership
-                </div>
+                </div>          
+
                 <div class="col-10">
-                    <input asp-for="Items.OriginOfGoods" class="form-control" />
+                    @Html.DropDownListFor(Model => Model.Items.OriginOfGoods, ViewBag.OwnershipList as SelectList, "- Select a Ownership -", new { @class = "form-control" })
                     <span asp-validation-for="Items.OriginOfGoods" class="text-danger"></span>
                 </div>
             </div>
@@ -152,26 +168,18 @@
                     Location
                 </div>
                 <div class="col-10">
-                    @Html.DropDownListFor(Model => Model.Items.RoomId , Model.RoomList, "-Select a Location",
-                    new { @Class = "form-control" , @id = "location" })
-                    <span asp-validation-for="Items.RoomId" class="text-danger"></span>
+             
+
+                    <div class="input-group">
+                        <input type="hidden" asp-for="Items.RoomId" id="RoomId" />
+                        <input asp-for="Items.Room.Name" id="RoomName" class="form-control" disabled />
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#Modal1" style="width:145px"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </div>
+                   
                 </div>
             </div>
 
-        </div>
-        <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-2">
-                    Category
-                </div>
-                <div class="col-10">
-                    @Html.DropDownListFor(Model => Model.Items.CategoryId , Model.CategoryList, "-Select a Category",
-                    new { @Class = "form-control" })
-                    <span asp-validation-for="Items.CategoryId" class="text-danger"></span>
-                </div>
-            </div>
-
-        </div>
+        </div>        
         <div class="col-12 pt-2">
             <div class="form-group row">
                 <div class="col-2">
@@ -179,7 +187,7 @@
                 </div>       
 
                 <div class="col-10">             
-                    @Html.DropDownListFor(Model => Model.Items.Condition, ViewBag.ConditionList as SelectList, "-Select a Condition", new { @class = "form-control" })
+                    @Html.DropDownListFor(Model => Model.Items.Condition, ViewBag.ConditionList as SelectList, "- Select a Condition -", new { @class = "form-control" })
                     <span asp-validation-for="Items.Condition" class="text-danger"></span>
                 </div>
             </div>
@@ -192,32 +200,15 @@
                 </div>
 
                 <div class="col-10">
-                    @Html.DropDownListFor(model => model.Items.Status, ViewBag.StatusList as SelectList, "-Select a Status", new { @class = "form-control" })
+                    @Html.DropDownListFor(model => model.Items.Status, ViewBag.StatusList as SelectList, "- Select a Status -", new { @class = "form-control" })
                     <span asp-validation-for="Items.Status" class="text-danger"></span>
                 </div>
             </div>
 
         </div>
-
     
         <br />  
-      @*  <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-6 offset-2">
-
-
-                    <div class="row">
-                        <div class="col">
-                            <button type="submit" id="btnSave" class="btn btn-primary form-control">@title.Replace("Items","")</button>
-                        </div>
-                        <div class="col">
-                            <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>*@
+ 
         <div class="form-group margin-bottom-2 pt-4">
             <div class="col-md-12 text-center">
                 <button class="btn btn-primary" type="submit" style="width:145px" id="btnSave">@title.Replace("Items","")</button>
@@ -231,7 +222,7 @@
             <br />
             <div id="accordion" class="col-12 pt-2">
 
-                <div class="card">
+            @*    <div class="card">
                     <div class="card-header d-md-flex justify-content-md-end">
                         <a class="btn" data-bs-toggle="collapse" href="#historytranfer">
                             History Transfer  <i class="indicator fa fa-chevron-circle-down"></i>
@@ -248,7 +239,6 @@
                                             <th>
                                                 Transfer Date
                                             </th>
-
                                             <th>
                                                 Before Location
                                             </th>
@@ -273,9 +263,9 @@
                         </div>
                     </div>
 
-                </div>
+                </div>*@
               
-                <div class="card">
+           @*     <div class="card">
                     <div class="card-header d-md-flex justify-content-md-end">
                         <a class="btn" data-bs-toggle="collapse" href="#historyservice">
                             History Service  <i class="indicator fa fa-chevron-circle-down"></i>
@@ -285,24 +275,22 @@
 
                         <div class="panel-body" style="min-width:100%;overflow:scroll">
                             <div class="p-4 border rounded">
-                                <table id="tblData" class="table table-striped table-bordered" style="width:100%">
+                                <table id="tblDataTransfer" class="table table-striped table-bordered" style="width:100%">
                                     <thead class="thead-dark">
                                         <tr class="table-info">
 
                                             <th>
-                                                Item Name
+                                                Transfer Date
                                             </th>
+                                            <th>
+                                                Before Location
+                                            </th>
+                                            <th>
+                                                After Location
+                                            </th>
+
                                             <th>
                                                 Description
-                                            </th>
-                                            <th>
-                                                Previous Location
-                                            </th>
-                                            <th>
-                                                Current Location
-                                            </th>
-                                            <th>
-                                                Transfer Date
                                             </th>
 
 
@@ -319,7 +307,7 @@
                         </div>
                     </div>
 
-                </div>
+                </div>*@
 
 
 
@@ -330,133 +318,53 @@
         
         
     </div>
-@*    <br />
-    <div class="form-horizontal">
 
-        <div class="form-group">
-            <div class="col-md-12">
-                <div class="panel panel-info">
-              
-                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pills-tab1" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">History Transfer</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-tab2" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">History Service</button>
-                        </li>
-
-                    </ul>
-                    <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-tab1">@Html.Partial("HistoryTransferItem")</div>
-                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-tab2">@Html.Partial("HistoryTransferItem")</div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>*@
-   
-    @*<br/>*@
- 
-    @*<p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a class="btn btn-primary" data-bs-toggle="collapse" href="#historytranfer" role="button" aria-expanded="false" aria-controls="historytranfer">
-                History Transfer  <i class="indicator fa fa-chevron-circle-down"></i>
-            </a>
-        </div>
-    </p>
-    <div class="collapse" id="historytranfer">
-     
-        <div class="panel-body" style="min-width:100%;overflow:scroll">
-            <div class="p-4 border rounded">
-                <table id="tblData" class="table table-striped table-bordered" style="width:100%">
-                    <thead class="thead-dark">
-                        <tr class="table-info">
-
-                            <th>
-                                Item Name
-                            </th>
-                            <th>
-                                Description
-                            </th>
-                            <th>
-                                Previous Location
-                            </th>
-                            <th>
-                                Current Location
-                            </th>
-                            <th>
-                                Transfer Date
-                            </th>
-
-
-                            <th style="min-width:100px"></th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-
-
-            <br />
-
-
-        </div>
-    </div>*@
-
-    @*    <p>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <a class="btn btn-primary justify-content-end" data-bs-toggle="collapse" href="#historyservice" role="button" aria-expanded="false" aria-controls="historyservice">
-    History Service  <i class="indicator fa fa-chevron-circle-down"></i>
-    </a>
-    </div>
-    </p>
-    <div class="collapse" id="historyservice">
-
-    <div class="panel-body" style="min-width:100%;overflow:scroll">
-    <div class="p-4 border rounded">
-    <table id="tblData" class="table table-striped table-bordered" style="width:100%">
-    <thead class="thead-dark">
-    <tr class="table-info">
-
-    <th>
-    Item Name
-    </th>
-    <th>
-    Description
-    </th>
-    <th>
-    Previous Location
-    </th>
-    <th>
-    Current Location
-    </th>
-    <th>
-    Transfer Date
-    </th>
-
-
-    <th style="min-width:100px"></th>
-    </tr>
-    </thead>
-    </table>
-    </div>
-
-
-    <br />
-
-
-    </div>
-    </div>*@
-    
-
-  
 
 </form>
 
+<!-- Modal -->
+<div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Choose Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <br />
+                <div class="p-4 border rounded">
+                    <table id="tblData" class="table table-striped table-bordered table-hover table-striped dataTable" style="width:100%">
+                        <thead class="thead-dark">
+                            <tr class="table-info">
+                                <th>
+                                    Name Of Room
+                                </th>
+                                <th>
+                                    Description
+                                </th>                            
+                                <th>
+                                    Location
+                                </th>
+
+                                <th style="display:none"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            </div>
+             <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>          
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />
-   @* <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js"></script>*@
-
+	<script src="~/js/getroombylocation.js"></script>
 	<script src="~/js/transferitembyid.js"></script>
     <script type="text/javascript">
 
@@ -467,7 +375,11 @@
             $('#totalamount').val(c);
             $('#TotalAmount_').val(c);
         }
-       
+        function changecategory() {
+            $("#btnSave").attr("disabled", "disabled");
+            $('#totalamount').val(1000);
+        }
+        
         //function changespercent() {
         //    var a = $('#totalamount').val();
         //    var b = $('#percent').val();
@@ -475,14 +387,37 @@
         //    $('#depreciationexpense').val(c);
 
         //}
+        $("#SearchCategory").change(function () {           
+            GetDateCategory();
 
-        if ($("#itemID").val() != null)
-        {
-            $("#location").attr("disabled", "disabled");
-            //loadDataTransfer();
+        });
+
+        function GetDateCategory() {
+            var id = $("#SearchCategory").val();
+            var urls = "/Admin/Items/GetDateCategory/" + id;
+
+            $.ajax({
+                url: urls,
+                dataType: 'json',
+                type: 'POST',
+                contentType: 'application/json;',
+                success: function (data) {                 
+                    $("#percent").val(data.persent_);
+                    $("#period").val(data.period_);
+
+                    $("#Percent_").val(data.persent_);
+                    $("#Period_").val(data.period_);
+                },
+                error: function (request, status, error) {
+                    //console.log("error" + error);
+                }
+            });
         }
+            
 
         $(document).ready(function () {
+            loadDataRoom();
+            //loadDataTransfer();
             var status = $("#idstatus").val();
 
             if (status != "") {
@@ -493,15 +428,36 @@
             }
         
         });
+        function loadDataRoom() {           
+            dataTable = $('#tblData').DataTable({
+                "ajax": {
+                    "url": "/Admin/Items/GetAllRoomAndLocation"
+                },
+                "columns": [
+                    { "data": "name_of_room", "width": "30%" },
+                    { "data": "description", "width": "30%" },
+                    { "data": "name_of_location", "width": "30%" },
+                    { "data": "id", "width": "10%" }
+                ],
+                "createdRow": function (row, data, index) {
+                    $(row).attr('onclick', 'select_row(this)');
+                    $(row).attr('data-bs-dismiss', 'modal');
+                    $('td', row).eq(3).attr('style', 'display:none;');
+                },
+            });
+        }
 
-        //$("#Items.Qty").change(function () {
+        function select_row(obj) {
+            var name_of_room = $('td', obj).eq(0).html().trim();
+            var id_of_room = $('td', obj).eq(3).html().trim();
 
-        //    $('#TotalAmount').val(123) ;
-        //    $("#btnSave").attr("disabled", "disabled");
-        //});
+            $('#RoomName').val(name_of_room);
+            $('#RoomId').val(id_of_room);
+        }
+
         function loadDataTransfer() {
             var ItemID = $('#itemID').val();
-            dataTable = $('#tblDataTransfer2').DataTable({
+            dataTable = $('#tblDataTransfer').DataTable({
                 "ajax": {
                     "url": "/Admin/Items/GetTransferItem",
                     "data": {

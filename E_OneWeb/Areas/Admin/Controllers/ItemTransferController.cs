@@ -63,21 +63,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             return Json(new { data = datalist });
         }
-        [HttpGet]
-        //public async Task<IActionResult> GetStudies(int? id)
-        //{
-        
-
-        //    var results2 = (from z in await _unitOfWork.Items.GetAllAsync(includeProperties: "Category,Room")
-        //                    select new
-        //                    {
-        //                        id = z.Id,
-        //                        name = z.Name
-        //                    }).Where(z => z.id == id.GetValueOrDefault()).FirstOrDefault();
-        //    ViewBag.ItemsName = results2.name;
-
-        //    return Ok(results2);
-        //}
+        [HttpGet] 
         public async Task<IActionResult> GetItem(int? id)
         {
             ItemTransferVM itemsVM = new ItemTransferVM();

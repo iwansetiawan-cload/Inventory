@@ -6,9 +6,9 @@ $(document).ready(function () {
 
 
 function loadDataTable() {
-    dataTable = $('#tblData').DataTable({
+    dataTable = $('#tblDataRoom').DataTable({
         "ajax": {
-            "url": "/Admin/Room/GetAll"
+            "url": "/Admin/Room/GetAllRoom"
         },
         "columns": [
             { "data": "name", "width": "45%" },
@@ -18,12 +18,9 @@ function loadDataTable() {
                 "render": function (data) {
                     return `
                             <div class="text-center">
-                                <a href="/Admin/Room/Upsert/${data}" class="btn btn-success text-white" style="cursor:pointer">
+                                <a href="/Admin/Room/UpsertRoom/${data}" class="btn btn-success text-white" style="cursor:pointer">
                                     <i class="fas fa-edit"></i> 
-                                </a>    
-                                <a onclick=Delete("/Admin/Room/Delete/${data}") class="btn btn-danger text-white" style="cursor:pointer">
-                                    <i class="fas fa-trash-alt"></i> 
-                                </a>
+                                </a>  
                             </div>
                            `;
                 }, "width": "40%"

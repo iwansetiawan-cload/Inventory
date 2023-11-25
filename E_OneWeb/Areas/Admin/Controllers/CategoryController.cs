@@ -19,12 +19,12 @@ namespace E_OneWeb.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            CategoryVM categoryVM = new CategoryVM()
-            {
-                Categories = await _unitOfWork.Category.GetAllAsync()
-            };
-            var count = categoryVM.Categories.Count();
-            return View(categoryVM);
+            //CategoryVM categoryVM = new CategoryVM()
+            //{
+            //    Categories = await _unitOfWork.Category.GetAllAsync()
+            //};
+            //var count = categoryVM.Categories.Count();
+            return View();
         }
         public async Task<IActionResult> Upsert(int? id)
         {
@@ -70,8 +70,17 @@ namespace E_OneWeb.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var allObj = await _unitOfWork.Category.GetAllAsync();
-            return Json(new { data = allObj });
+            var datalist = (from z in await _unitOfWork.Category.GetAllAsync()
+                            select new
+                            {
+                                id = z.Id,
+                                name = z.Name,
+                                persent_ = z.Percent != null ? z.Percent : 0,
+                                period = z.Period != null ? z.Period : 0,
+                                description = z.Description
+                            }).ToList().OrderByDescending(o => o.id);
+
+            return Json(new { data = datalist });
         }
 
         [HttpDelete]

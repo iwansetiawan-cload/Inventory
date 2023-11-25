@@ -27,6 +27,7 @@ namespace E_OneWeb.DataAccess.Repository
             PurchaseOrderHeader = new PurchaseOrderHeaderRepository(_db);
             ItemTransfer = new ItemTransferRepository(_db);
             Genmaster = new GenmasterRepository(_db);
+            Location = new LocationRepository(_db);
         }
         public IArticleRepository Article { get; private set; }
         public IApplicationUserRepository ApplicationUser { get; private set; }
@@ -38,6 +39,7 @@ namespace E_OneWeb.DataAccess.Repository
         public IPurchaseOrderHeaderRepository PurchaseOrderHeader { get; set; }
         public IItemTransferRepository ItemTransfer { get; private set; }
         public IGenmasterRepository Genmaster { get; private set; }
+        public ILocationRepository Location { get; private set; }
         public void Dispose()
         {
             _db.Dispose();

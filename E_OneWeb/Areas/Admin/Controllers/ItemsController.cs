@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Data;
+using System.Diagnostics;
+using System.IO;
 using System.Security.Claims;
 
 namespace E_OneWeb.Areas.Admin.Controllers
@@ -53,7 +55,10 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             var StatusList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 2).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
             ViewBag.StatusList = new SelectList(StatusList, "Value", "Text");
-            //ItemID = id;
+            
+            var OwnershipList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 3).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
+            ViewBag.OwnershipList = new SelectList(OwnershipList, "Value", "Text");
+
             IEnumerable<Category> CatList = await _unitOfWork.Category.GetAllAsync();
             ItemsVM itemsVM = new ItemsVM()
             {
@@ -132,7 +137,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             else
             {
                 _unitOfWork.Items.Update(vm.Items);
-                ViewBag.Status = "Edit Success";
+                ViewBag.Status = "Update Success";
             }			
 			_unitOfWork.Save();
 
@@ -141,6 +146,9 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             var StatusList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 2).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
             ViewBag.StatusList = new SelectList(StatusList, "Value", "Text", vm.Items.Status);
+
+            var OwnershipList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 3).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
+            ViewBag.OwnershipList = new SelectList(OwnershipList, "Value", "Text", vm.Items.OriginOfGoods);
 
             return View(vm);
         }
@@ -163,6 +171,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> GetTransferItem(int? id)
         {
+            id = 1;
             var datalist = (from z in await _unitOfWork.ItemTransfer.GetAllAsync()
                             select new
                             {
@@ -177,5 +186,42 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             return Json(new { data = datalist });
         }
+        //[HttpGet]
+        //public async Task<IActionResult> GetDateCategory(int? id)
+        //{
+         
+          
+        //    IEnumerable<Category> CatList = await _unitOfWork.Category.GetAllAsync();
+        //    var datalist = CatList.Select(i => new SelectListItem
+        //    {
+        //        Text = i.Name,
+        //        Value = i.Percent.ToString()
+        //    }).FirstOrDefault();
+
+        //    return Json(new { data = datalist.Value });
+        //}
+        [HttpPost]
+        public async Task<JsonResult> GetDateCategory(int? id)
+        {
+
+            IEnumerable<Category> CatList = await _unitOfWork.Category.GetAllAsync();
+            var res = CatList.Where(z => z.Id == id).Select(i => new { period_ = i.Period , persent_ = i.Percent }).FirstOrDefault();    
+            return Json(res);
+        }
+
+        [HttpGet]
+        public IActionResult GetAllRoomAndLocation()
+        {
+            var datalist = (from z in _unitOfWork.Room.GetAll(includeProperties: "Location")
+                            select new
+                            {
+                                id = z.Id,
+                                name_of_room = z.Name,
+                                description = z.Description,
+                                name_of_location = z.Location.Name
+                            }).ToList().OrderByDescending(o => o.id);
+            return Json(new { data = datalist });
+        }         
+
     }
 }

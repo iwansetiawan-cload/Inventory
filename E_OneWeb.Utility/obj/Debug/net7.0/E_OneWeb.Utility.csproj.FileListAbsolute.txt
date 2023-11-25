@@ -70,3 +70,15 @@ D:\My File\Core 2022\Github\Inventory\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb
 D:\My File\Core 2022\Github\Inventory\E_OneWeb.Utility\obj\Debug\net7.0\refint\E_OneWeb.Utility.dll
 D:\My File\Core 2022\Github\Inventory\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.pdb
 D:\My File\Core 2022\Github\Inventory\E_OneWeb.Utility\obj\Debug\net7.0\ref\E_OneWeb.Utility.dll
+D:\My File\Core 2022\Github\Clone\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.deps.json
+D:\My File\Core 2022\Github\Clone\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.dll
+D:\My File\Core 2022\Github\Clone\E_OneWeb.Utility\bin\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\My File\Core 2022\Github\Clone\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.csproj.AssemblyReference.cache
+D:\My File\Core 2022\Github\Clone\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.GeneratedMSBuildEditorConfig.editorconfig
+D:\My File\Core 2022\Github\Clone\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.AssemblyInfoInputs.cache
+D:\My File\Core 2022\Github\Clone\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.AssemblyInfo.cs
+D:\My File\Core 2022\Github\Clone\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.csproj.CoreCompileInputs.cache
+D:\My File\Core 2022\Github\Clone\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.dll
+D:\My File\Core 2022\Github\Clone\E_OneWeb.Utility\obj\Debug\net7.0\refint\E_OneWeb.Utility.dll
+D:\My File\Core 2022\Github\Clone\E_OneWeb.Utility\obj\Debug\net7.0\E_OneWeb.Utility.pdb
+D:\My File\Core 2022\Github\Clone\E_OneWeb.Utility\obj\Debug\net7.0\ref\E_OneWeb.Utility.dll

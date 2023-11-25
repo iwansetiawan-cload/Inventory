@@ -18,6 +18,7 @@ namespace E_OneWeb.DataAccess.Repository.IRepository
         IPurchaseOrderHeaderRepository PurchaseOrderHeader { get; }
         IItemTransferRepository ItemTransfer { get; }
         IGenmasterRepository Genmaster { get; }
+        ILocationRepository Location { get; }
         void Save();
     }
 }

@@ -23,6 +23,8 @@ namespace E_OneWeb.DataAccess.Repository
             {
                 objFromDb.Name = category.Name;
                 objFromDb.Description = category.Description;
+                objFromDb.Percent = category.Percent;
+                objFromDb.Period = category.Period;
                 _db.SaveChanges();
             }
         }

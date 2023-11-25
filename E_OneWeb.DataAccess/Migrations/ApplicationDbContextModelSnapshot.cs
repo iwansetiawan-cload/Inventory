@@ -101,6 +101,12 @@ namespace E_OneWeb.DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int?>("Percent")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Period")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
@@ -255,6 +261,27 @@ namespace E_OneWeb.DataAccess.Migrations
                     b.HasIndex("RoomId");
 
                     b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("E_OneWeb.Models.Location", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(225)
+                        .HasColumnType("nvarchar(225)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("E_OneWeb.Models.PurchaseOrderDetail", b =>
@@ -421,12 +448,17 @@ namespace E_OneWeb.DataAccess.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("IDLocation")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(225)
                         .HasColumnType("nvarchar(225)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IDLocation");
 
                     b.ToTable("Rooms");
                 });
@@ -747,6 +779,17 @@ namespace E_OneWeb.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Supplier");
+                });
+
+            modelBuilder.Entity("E_OneWeb.Models.Room", b =>
+                {
+                    b.HasOne("E_OneWeb.Models.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("IDLocation")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
