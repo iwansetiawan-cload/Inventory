@@ -16,12 +16,13 @@
     <br />
     <div class="row p-3 border">
         <input type="hidden" value="@ViewBag.Status" id="idstatus" />
+        <input type="hidden" asp-for="ItemTransfer.Id" id="transferid" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         @if ((Model.ItemTransfer.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Update Success")
         {
             //edit
             title = "Update Transfer Item";
-            <input type="hidden" asp-for="ItemTransfer.Id" id="transferid" />
+          @*  <input type="hidden" asp-for="ItemTransfer.Id" id="transferid" />*@
             <input type="hidden" asp-for="ItemTransfer.PreviousLocationId" />
         }
         <div class="col-12 border-bottom">
@@ -34,63 +35,19 @@
                     Item
                 </div>
                 <div class="col-10">
-                   @* @Html.DropDownListFor(Model => Model.ItemTransfer.ItemId , Model.ItemList, "-Select a Item",
-                    new { @Class = "form-control", @id = "itemid" })
-                    <span asp-validation-for="ItemTransfer.ItemId" class="text-danger"></span>*@
+    
                    
                     <div class="input-group">
                         <input type="hidden" asp-for="ItemTransfer.Items.Id" />
-                        <input asp-for="ItemTransfer.Items.Name" id="ItemsName" class="form-control" disabled />
-                    @*    <input type="text" value="@ViewBag.ItemsName" id="ItemsName" disabled />*@
-                        @*<span class="input-group-btn" style="vertical-align:top">
-                            
-                           
-                        </span>*@
-                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width:145px"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </div>
-                   @* <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-plus"></i> &nbsp; Add Product</a>
-                    </div>*@
+                        <input asp-for="ItemTransfer.Items.Name" id="ItemsName" class="form-control" disabled />           
+                        
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width:145px" id="btn-lookupitems"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </div>                 
                 </div>
             </div>
 
-        </div>
-   @*     <div class="row py-2">
-            <div class="col-md-12">
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-plus"></i> &nbsp; Add Product</a>
-                </div>
+        </div> 
 
-            </div>
-        </div>*@
-
-   @*     <div class="form-group">
-            <div class="col-2">
-                Item
-            </div>
-            <div class="col-md-8">
-                <div class="input-group">
-
-                    @Html.TextBoxFor(model => model.ItemTransfer.Items.Name, new { @class = "form-control", @readonly = "readonly"  })
-                    <span class="input-group-btn" style="vertical-align:top">
-                        @Html.ActionLink(" ", "LookupItems", "ItemTransfer", null, new { id = "btn-partner", @class = "btn btn-primary glyphicon glyphicon-search", @onclick = "show_modal(this, 1);return false;" })
-                    </span>
-                </div>
-            </div>
-        </div>*@
-
-     @*   <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-2">
-                    Items
-                </div>
-                <div class="col-10">
-                       <input asp-for="ItemTransfer.Items.Name" id="ItemsName"  class="form-control" />
-                    <input type="text" value="@ViewBag.ItemsName" id="ItemsName" />
-                </div>
-            </div>
-
-        </div>*@
     
         <div class="col-12 pt-2">
             <div class="form-group row">
@@ -146,21 +103,28 @@
         </div>
 
         <br />
-        <div class="col-12 pt-2">
+@*        <div class="col-12 pt-2">
             <div class="form-group row">
                 <div class="col-6 offset-2">
 
 
                     <div class="row">
                         <div class="col">
-                            <button type="submit" id="btnSave" class="btn btn-primary form-control">@title.Replace("Transfer Item","")</button>
+                            <button type="submit" id="btnSave" class="btn btn-primary form-control" style="width:145px">@title.Replace("Transfer Item","")</button>
                         </div>
                         <div class="col">
-                            <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                            <a asp-action="Index" class="btn btn-success form-control" style="width:145px">Back to List</a>
                         </div>
 
                     </div>
                 </div>
+            </div>
+        </div>*@
+
+        <div class="form-group margin-bottom-2 pt-2">
+            <div class="col-md-12 text-center">
+                <button type="submit" id="btnSave" class="btn btn-primary form-control" style="width:145px">@title.Replace("Transfer Item","")</button>
+                <a asp-action="Index" class="btn btn-success form-control" style="width:145px">Back to List</a>
             </div>
         </div>
 
@@ -213,14 +177,29 @@
 </div>
 
 
-
-
 @section Scripts {
 
     <partial name="_ValidationScriptsPartial" />
 	<script src="~/js/GetItems.js"></script>
     <script type="text/javascript">
+        $(document).ready(function () {
+            LoadIndex();
+            var status = $("#idstatus").val();
 
+            if (status != "") {
+                toastr.options.timeOut = 1500;
+                toastr.success(status);
+                $("#btnSave").attr("disabled", "disabled");
+
+            }
+            var transferidId = $('#transferid').val();
+            if (transferidId == 0) {
+                $("#btn-lookupitems").removeAttr("disabled");
+            }
+            else {
+                $("#btn-lookupitems").attr("disabled", "disabled");
+            }
+        });
 
         function LoadIndex() {
             dataTable = $('#indextable').DataTable({
@@ -239,46 +218,7 @@
                     $('#ItemsNameVal').val('tdsssss');
                 }
             });
-        }
-
-        //function LoadPolicy() {
-        //    try {
-        //        var urlx = "/Admin/ItemTransfer/GetProduct";
-
-        //        $("#tblData2").DataTable({
-        //            "processing": true, // for show progress bar
-        //            "serverSide": true, // for process server side
-        //            "filter": true, // this is for disable filter (search box)
-        //            "ajax": {
-        //                url: urlx,
-        //                type: "POST",
-        //                datatype: "json",
-        //                data: {
-        //                            idpartner: $("#SearchIdPartner").val()
-        //                }
-
-                       
-        //            },
-        //            "columns": [
-        //                { "data": "name", "width": "30%" },
-        //                { "data": "category", "width": "20%" },
-        //                { "data": "room", "width": "20%" }
-        //            ],
-        //            "createdRow": function (row, data, index) {
-        //                $(row).attr('onclick', 'select_row(this)');
-        //                $(row).attr('data-dismiss', 'modal');
-        //                $('td', row).eq(0).attr('style', 'display:none;');
-        //                $('td', row).eq(2).attr('style', 'display:none;');
-
-
-        //            },
-
-        //        });
-        //    } catch (e) {
-        //        alert(e);
-        //        console.log(e);
-        //    }
-        //}
+        }       
  
 
         if ($("#transferid").val() > 0) {
@@ -286,19 +226,7 @@
             $("#PreviousLocation").attr("disabled", "disabled");
         }
 
-        $(document).ready(function () {
-            LoadIndex();
-            var status = $("#idstatus").val();
-
-            if (status != "") {
-                toastr.options.timeOut = 1500;
-                toastr.success(status);
-                $("#btnSave").attr("disabled", "disabled");
-
-            }
-
-
-        });
+    
     </script>
 }
 

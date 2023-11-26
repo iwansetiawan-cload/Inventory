@@ -97,59 +97,62 @@ namespace E_OneWeb.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Upsert(ItemsVM vm)
         {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
 
-            vm.Items.EntryBy = user.Name;
-            vm.Items.EntryDate = DateTime.Now;
-
-            int periodExpence = vm.Items.Period != null ? vm.Items.Period.Value : 0;
-
-            DateTime dtStartDate = vm.Items.StartDate.Value.AddYears(periodExpence);
-
-            if (DateTime.Now > dtStartDate)
-            {
-                vm.Items.DepreciationExpense = vm.Items.TotalAmount * vm.Items.Percent / 100;
-            }
-
+            var ConditionList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 1).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
+            var StatusList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 2).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
+            var OwnershipList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 3).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
             IEnumerable<Category> CatList = await _unitOfWork.Category.GetAllAsync();
-            vm.RoomList = _unitOfWork.Room.GetAll().Select(i => new SelectListItem
-            {
-                Text = i.Name,
-                Value = i.Id.ToString()
-            });
             vm.CategoryList = CatList.Select(i => new SelectListItem
             {
                 Text = i.Name,
                 Value = i.Id.ToString()
             });
-           
-            if (vm.Items.Id == 0)
-            {
-			
-                await _unitOfWork.Items.AddAsync(vm.Items);
-                ViewBag.Status = "Save Success";
-				_unitOfWork.Save();
-				//vm.Items.Code = "ITM-" + vm.Items.Id.ToString();
-				_unitOfWork.Items.Update(vm.Items);
-			}
-            else
-            {
-                _unitOfWork.Items.Update(vm.Items);
-                ViewBag.Status = "Update Success";
-            }			
-			_unitOfWork.Save();
 
-            var ConditionList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 1).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
+            vm.RoomList = _unitOfWork.Room.GetAll().Select(i => new SelectListItem
+            {
+                Text = i.Name,
+                Value = i.Id.ToString()
+            });
+
+
+            if (vm.Items.CategoryId > 0 && vm.Items.RoomId > 0)
+            {
+                var claimsIdentity = (ClaimsIdentity)User.Identity;
+                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+
+                vm.Items.EntryBy = user.Name;
+                vm.Items.EntryDate = DateTime.Now;
+
+                int periodExpence = vm.Items.Period != null ? vm.Items.Period.Value : 0;
+
+                DateTime dtStartDate = vm.Items.StartDate.Value.AddYears(periodExpence);
+
+                if (DateTime.Now > dtStartDate)
+                {
+                    vm.Items.DepreciationExpense = vm.Items.TotalAmount * vm.Items.Percent / 100;
+                }
+                vm.Items.Room = _unitOfWork.Room.Get(vm.Items.RoomId);
+                if (vm.Items.Id == 0)
+                {
+
+                    await _unitOfWork.Items.AddAsync(vm.Items);
+                    ViewBag.Status = "Save Success";
+                    _unitOfWork.Save();
+                    //vm.Items.Code = "ITM-" + vm.Items.Id.ToString();
+                    _unitOfWork.Items.Update(vm.Items);
+                }
+                else
+                {                    
+                    _unitOfWork.Items.Update(vm.Items);
+                    ViewBag.Status = "Update Success";
+                }
+                _unitOfWork.Save();
+              
+            }
             ViewBag.ConditionList = new SelectList(ConditionList, "Value", "Text", vm.Items.Condition);
-
-            var StatusList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 2).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
             ViewBag.StatusList = new SelectList(StatusList, "Value", "Text", vm.Items.Status);
-
-            var OwnershipList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 3).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
             ViewBag.OwnershipList = new SelectList(OwnershipList, "Value", "Text", vm.Items.OriginOfGoods);
-
             return View(vm);
         }
 
@@ -177,8 +180,10 @@ namespace E_OneWeb.Areas.Admin.Controllers
                             {
                                 id = z.Id,
                                 itemid = z.ItemId,
-                                previouslocation = z.PreviousLocation,
-                                currentlocation = z.CurrentLocation,
+                                previouslocation = _unitOfWork.Location.Get(_unitOfWork.Room.Get(z.PreviousLocationId).IDLocation).Name,
+                                previousroom = z.PreviousLocation,
+                                currentlocation = _unitOfWork.Location.Get(_unitOfWork.Room.Get(z.CurrentLocationId).IDLocation).Name,
+                                currentroom = z.CurrentLocation,
                                 desc = z.Description,
                                 stranferdate = Convert.ToDateTime(z.TransferDate).ToString("dd-MM-yyyy"),
                                 entrydate = z.EntryDate

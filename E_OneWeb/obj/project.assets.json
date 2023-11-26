@@ -13569,11 +13569,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\My File\\Core 2022\\Github\\Clone\\E_OneWeb\\E_OneWeb.csproj",
+      "projectUniqueName": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\E_OneWeb.csproj",
       "projectName": "E_OneWeb",
-      "projectPath": "D:\\My File\\Core 2022\\Github\\Clone\\E_OneWeb\\E_OneWeb.csproj",
+      "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\E_OneWeb.csproj",
       "packagesPath": "C:\\Users\\iwan-setti\\.nuget\\packages\\",
-      "outputPath": "D:\\My File\\Core 2022\\Github\\Clone\\E_OneWeb\\obj\\",
+      "outputPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\iwan-setti\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -13590,14 +13590,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\My File\\Core 2022\\Github\\Clone\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj": {
-              "projectPath": "D:\\My File\\Core 2022\\Github\\Clone\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj"
+            "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj": {
+              "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj"
             },
-            "D:\\My File\\Core 2022\\Github\\Clone\\E_OneWeb.Models\\E_OneWeb.Models.csproj": {
-              "projectPath": "D:\\My File\\Core 2022\\Github\\Clone\\E_OneWeb.Models\\E_OneWeb.Models.csproj"
+            "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj": {
+              "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj"
             },
-            "D:\\My File\\Core 2022\\Github\\Clone\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj": {
-              "projectPath": "D:\\My File\\Core 2022\\Github\\Clone\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj"
+            "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj": {
+              "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj"
             }
           }
         }

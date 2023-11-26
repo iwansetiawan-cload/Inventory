@@ -11,14 +11,13 @@
         <input type="hidden" value="@ViewBag.Status" id="idstatus" />
         <input type="hidden" asp-for="Items.Period" id="Period_" />
         <input type="hidden" asp-for="Items.Percent" id="Percent_" />
+        <input type="hidden" asp-for="Items.Id" id="itemID" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         
-        @if ((Model.Items.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Edit Success")
+        @if ((Model.Items.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Update Success")
         {
             //edit
-            title = "Edit Item";
-            <input type="hidden" asp-for="Items.Id" id="itemID" />      
-
+            title = "Update Item";
         }
         <div class="col-12 border-bottom">
             <h2 class="text-primary">@title</h2>
@@ -168,12 +167,11 @@
                     Location
                 </div>
                 <div class="col-10">
-             
-
                     <div class="input-group">
                         <input type="hidden" asp-for="Items.RoomId" id="RoomId" />
                         <input asp-for="Items.Room.Name" id="RoomName" class="form-control" disabled />
-                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#Modal1" style="width:145px"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#Modal1" style="width:145px" id="btn-lookuproom"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <span asp-validation-for="Items.RoomId" class="text-danger"></span>
                     </div>
                    
                 </div>
@@ -216,13 +214,13 @@
             </div>
         </div>
 
-        @if ((Model.Items.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Edit Success")
+        @if ((Model.Items.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Update Success")
         {
             //edit
             <br />
             <div id="accordion" class="col-12 pt-2">
 
-            @*    <div class="card">
+                <div class="card">
                     <div class="card-header d-md-flex justify-content-md-end">
                         <a class="btn" data-bs-toggle="collapse" href="#historytranfer">
                             History Transfer  <i class="indicator fa fa-chevron-circle-down"></i>
@@ -243,14 +241,18 @@
                                                 Before Location
                                             </th>
                                             <th>
+                                                Before Room
+                                            </th>
+                                            <th>
                                                 After Location
                                             </th>
-
+                                            <th>
+                                                After Room
+                                            </th>
                                             <th>
                                                 Description
                                             </th>
 
-                                            <th style="min-width:100px"></th>
                                         </tr>
                                     </thead>
                                 </table>
@@ -263,9 +265,9 @@
                         </div>
                     </div>
 
-                </div>*@
+                </div>
               
-           @*     <div class="card">
+                <div class="card">
                     <div class="card-header d-md-flex justify-content-md-end">
                         <a class="btn" data-bs-toggle="collapse" href="#historyservice">
                             History Service  <i class="indicator fa fa-chevron-circle-down"></i>
@@ -293,13 +295,10 @@
                                                 Description
                                             </th>
 
-
-                                            <th style="min-width:100px"></th>
                                         </tr>
                                     </thead>
                                 </table>
                             </div>
-
 
                             <br />
 
@@ -307,10 +306,7 @@
                         </div>
                     </div>
 
-                </div>*@
-
-
-
+                </div>
 
 
             </div>
@@ -327,7 +323,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Choose Product</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Choose Location</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -365,7 +361,7 @@
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />
 	<script src="~/js/getroombylocation.js"></script>
-	<script src="~/js/transferitembyid.js"></script>
+	@*<script src="~/js/transferitembyid.js"></script>*@
     <script type="text/javascript">
 
         function changesqty() {           
@@ -417,15 +413,25 @@
 
         $(document).ready(function () {
             loadDataRoom();
-            //loadDataTransfer();
+            loadDataTransfer();
+      
+            var ItemID = $('#itemID').val();
+            if (ItemID == 0) {
+                $("#btn-lookuproom").removeAttr("disabled");
+            }
+            else {
+                $("#btn-lookuproom").attr("disabled", "disabled");
+               
+            }
+           
             var status = $("#idstatus").val();
-
             if (status != "") {
                 toastr.options.timeOut = 1500;
-                toastr.success(status);
+                toastr.success(status); 
                 $("#btnSave").attr("disabled", "disabled");
-
+                
             }
+          
         
         });
         function loadDataRoom() {           
@@ -466,22 +472,11 @@
                 },
                 "columns": [
                     { "data": "stranferdate", "width": "20%" },
-
                     { "data": "previouslocation", "width": "20%" },
+                    { "data": "previousroom", "width": "20%" },
                     { "data": "currentlocation", "width": "20%" },
-                    { "data": "desc", "width": "30%" },
-                    {
-                        "data": "id",
-                        "render": function (data) {
-                            return `
-                                    <div class="text-center">
-                                        <a onclick=Delete("/Admin/ItemTransfer/Delete/${data}") class="btn btn-danger text-white" style="cursor:pointer">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                    </div>
-                                   `;
-                        }, "width": "40%"
-                    }
+                    { "data": "currentroom", "width": "20%" },
+                    { "data": "desc", "width": "30%" }
                 ]
             });
         }
