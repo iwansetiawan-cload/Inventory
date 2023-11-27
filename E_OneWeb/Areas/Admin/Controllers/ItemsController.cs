@@ -173,8 +173,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetTransferItem(int? id)
-        {
-            id = 1;
+        {         
             var datalist = (from z in await _unitOfWork.ItemTransfer.GetAllAsync()
                             select new
                             {
