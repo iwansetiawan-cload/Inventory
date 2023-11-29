@@ -72,6 +72,11 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 {
                     Text = i.Name,
                     Value = i.Id.ToString()
+                }),
+                LocationList = _unitOfWork.Location.GetAll().Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
                 })
             };			
 
@@ -87,7 +92,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
+            //itemsVM.TotalAmountString = itemsVM.Items.TotalAmount;
             ViewBag.Status = "";
             return View(itemsVM);
 

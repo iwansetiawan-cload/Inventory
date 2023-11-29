@@ -104,8 +104,9 @@
                     <label>Price</label>
                 </div>
                 <div class="col-10">
-                    <input asp-for="Items.Price" class="form-control" style="row-gap" onchange="changesqty()" id="price" />
-                    <span asp-validation-for="Items.Price" class="text-danger"></span>
+                    <input type="hidden" asp-for="Items.Price" id="price" />
+                    <input asp-for="PriceString" class="form-control" style="row-gap" onchange="changesqty()" id="PriceString" />
+                @*    <span asp-validation-for="Items.Price" class="text-danger"></span>*@
                 </div>
             </div>
 
@@ -128,8 +129,9 @@
                     <label>Total Amount</label>
                 </div>
                 <div class="col-10">
-                    <input type="hidden" asp-for="Items.TotalAmount" id="TotalAmount_" />
-                    <input asp-for="Items.TotalAmount" class="form-control" style="row-gap" id="totalamount" disabled/>
+                    <input type="hidden" asp-for="Items.TotalAmount" id="totalamount" />
+                    @* <input asp-for="TotalAmountString" asp-format="{0:#,###}" asp-format="{0:N}" class="form-control" />*@
+                    <input asp-for="TotalAmountString" class="form-control" style="row-gap" id="TotalAmountString"  disabled />                
                     <span asp-validation-for="Items.TotalAmount" class="text-danger"></span>
                 </div>
             </div>
@@ -142,7 +144,8 @@
                     <label>Depreciation Expense</label>
                 </div>
                 <div class="col-10">
-                    <input asp-for="Items.DepreciationExpense" class="form-control" style="row-gap" id="depreciationexpense" disabled />
+                    <input type="hidden" asp-for="Items.DepreciationExpense" id="depreciationexpense" />
+                    <input asp-for="DepreciationExpenseString" class="form-control" style="row-gap" id="DepreciationExpenseString" disabled />
                     <span asp-validation-for="Items.DepreciationExpense" class="text-danger"></span>
                 </div>
             </div>
@@ -169,7 +172,7 @@
                 <div class="col-10">
                     <div class="input-group">
                         <input type="hidden" asp-for="Items.RoomId" id="RoomId" />
-                        <input asp-for="Items.Room.Name" id="RoomName" class="form-control" disabled />
+                        <input asp-for="Items.Room.Location.Name" id="LocationName" class="form-control" disabled />
                         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#Modal1" style="width:145px" id="btn-lookuproom"><i class="fa fa-search" aria-hidden="true"></i></button>
                         <span asp-validation-for="Items.RoomId" class="text-danger"></span>
                     </div>
@@ -177,7 +180,21 @@
                 </div>
             </div>
 
-        </div>        
+        </div>     
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    Room 
+                </div>
+                <div class="col-10">
+                    <div class="input-group">                  
+                        <input asp-for="Items.Room.Name" id="RoomName" class="form-control" disabled />                   
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
         <div class="col-12 pt-2">
             <div class="form-group row">
                 <div class="col-2">
@@ -364,17 +381,25 @@
 	@*<script src="~/js/transferitembyid.js"></script>*@
     <script type="text/javascript">
 
-        function changesqty() {           
+        function changesqty() {
+            $("#price").val($("#PriceString").val().replace(/[,a-zA-Z]/g, ''));
             var a = $('#qty').val();
             var b = $('#price').val();
-            var c = a * b; 
-            $('#totalamount').val(c);
-            $('#TotalAmount_').val(c);
+            var c = a * b;
+            $('#totalamount').val(c);   
+            $('#TotalAmountString').val(numberWithCommas(c));
+            $('#PriceString').val(numberWithCommas(b));
         }
-        function changecategory() {
-            $("#btnSave").attr("disabled", "disabled");
-            $('#totalamount').val(1000);
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
         }
+
+        function onclick()
+        {
+            var y = $("#PriceString").val().replace(/,/g, "");
+            $('#PriceString').val(y);
+        }
+        //var y = $("#basicsalary").val().replace(/,/g, "");
         
         //function changespercent() {
         //    var a = $('#totalamount').val();
@@ -409,12 +434,21 @@
                 }
             });
         }
-            
 
+  
         $(document).ready(function () {
             loadDataRoom();
             loadDataTransfer();
-      
+            var price = $("#price").val();
+            $("#PriceString").val(numberWithCommas(price));
+
+            var totalamount = $("#totalamount").val();
+            $("#TotalAmountString").val(numberWithCommas(totalamount));
+
+            var expance = $("#depreciationexpense").val();
+            $("#DepreciationExpenseString").val(numberWithCommas(expance));
+            
+
             var ItemID = $('#itemID').val();
             if (ItemID == 0) {
                 $("#btn-lookuproom").removeAttr("disabled");
@@ -455,9 +489,11 @@
 
         function select_row(obj) {
             var name_of_room = $('td', obj).eq(0).html().trim();
+            var name_of_location = $('td', obj).eq(2).html().trim();
             var id_of_room = $('td', obj).eq(3).html().trim();
 
             $('#RoomName').val(name_of_room);
+            $('#LocationName').val(name_of_location);
             $('#RoomId').val(id_of_room);
         }
 

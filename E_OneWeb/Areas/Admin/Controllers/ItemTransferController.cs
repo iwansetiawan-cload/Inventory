@@ -101,7 +101,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             //itemId = id;
             var ListLocation = _unitOfWork.Room.GetAll().Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name }).ToList();
             ViewBag.PreviousLocationList = new SelectList(ListLocation, "Value", "Text");
-            ViewBag.CurrentLocationList = new SelectList(ListLocation, "Value", "Text");
+            //ViewBag.CurrentLocationList = new SelectList(ListLocation, "Value", "Text");
             IEnumerable<Items> ItemsList = await _unitOfWork.Items.GetAllAsync();
             ItemTransferVM itemsVM = new ItemTransferVM()
             {
@@ -125,12 +125,14 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             itemsVM.ItemTransfer = await _unitOfWork.ItemTransfer.GetAsync(id.GetValueOrDefault());
             ViewBag.PreviousLocationList = new SelectList(ListLocation, "Value", "Text", itemsVM.ItemTransfer.PreviousLocationId);
-            ViewBag.CurrentLocationList = new SelectList(ListLocation, "Value", "Text", itemsVM.ItemTransfer.CurrentLocationId);
+            Room LocationName = _unitOfWork.Room.GetAll(includeProperties: "Location").Where(z=>z.Id == itemsVM.ItemTransfer.CurrentLocationId).FirstOrDefault();
+            itemsVM.name_of_room_and_location = itemsVM.ItemTransfer.CurrentLocation + " (" + LocationName.Location.Name + ")";
+            //ViewBag.CurrentLocationList = new SelectList(ListLocation, "Value", "Text", itemsVM.ItemTransfer.CurrentLocationId);
             //if (itemId != null)
             //{
             //    ViewBag.ItemsName = itemsVM.ItemList.FirstOrDefault().Text;
             //}
-                //itemsVM.ItemTransfer.Items.Name = itemsVM.ItemList.FirstOrDefault().Text;
+            //itemsVM.ItemTransfer.Items.Name = itemsVM.ItemList.FirstOrDefault().Text;
             if (itemsVM.ItemTransfer == null)
             {
                 return NotFound();
@@ -149,7 +151,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
         {
             var ListLocation = _unitOfWork.Room.GetAll().Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name }).ToList();  
             ViewBag.PreviousLocationList = new SelectList(ListLocation, "Value", "Text", vm.ItemTransfer.PreviousLocationId);
-            ViewBag.CurrentLocationList = new SelectList(ListLocation, "Value", "Text", vm.ItemTransfer.CurrentLocationId);
+            //ViewBag.CurrentLocationList = new SelectList(ListLocation, "Value", "Text", vm.ItemTransfer.CurrentLocationId);
            
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
@@ -209,6 +211,21 @@ namespace E_OneWeb.Areas.Admin.Controllers
             _unitOfWork.Save();
             return Json(new { success = true, message = "Delete Successful" });
 
+        }
+
+        [HttpGet]
+        public IActionResult GetAllRoomAndLocation()
+        {
+            var datalist = (from z in _unitOfWork.Room.GetAll(includeProperties: "Location")
+                            select new
+                            {
+                                id = z.Id,
+                                name_of_room = z.Name,
+                                description = z.Description,
+                                name_of_location = z.Location.Name,
+                                name_of_room_and_location = z.Name + " (" + z.Location.Name + ")"
+                            }).ToList().OrderByDescending(o => o.id);
+            return Json(new { data = datalist });
         }
     }
 
