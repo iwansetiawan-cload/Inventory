@@ -21,8 +21,10 @@ namespace E_OneWeb.Models
         [Display(Name = "Transfer Date")]
         public DateTime? TransferDate { get; set; }
         public int PreviousLocationId { get; set; }
+        public string PreviousRoom { get; set; }
         public string PreviousLocation { get; set; }
         public int CurrentLocationId { get; set; }
+        public string CurrentRoom { get; set; }
         public string CurrentLocation { get; set; }
         [MaxLength(255)]
         public string? EntryBy { get; set; }

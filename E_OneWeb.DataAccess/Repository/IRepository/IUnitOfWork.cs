@@ -19,6 +19,7 @@ namespace E_OneWeb.DataAccess.Repository.IRepository
         IItemTransferRepository ItemTransfer { get; }
         IGenmasterRepository Genmaster { get; }
         ILocationRepository Location { get; }
+        IItemServiceRepositoryAsync ItemService { get; }
         void Save();
     }
 }

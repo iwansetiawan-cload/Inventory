@@ -32,6 +32,8 @@ namespace E_OneWeb.DataAccess.Repository
                 objFromDb.CurrentLocation = items.CurrentLocation;
                 objFromDb.PreviousLocationId = items.PreviousLocationId;
                 objFromDb.CurrentLocationId = items.CurrentLocationId;
+                objFromDb.PreviousRoom = items.PreviousRoom;
+                objFromDb.CurrentRoom = items.CurrentRoom;
 
                 _db.SaveChanges();
             }

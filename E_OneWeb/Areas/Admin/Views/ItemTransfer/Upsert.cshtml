@@ -16,7 +16,14 @@
     <br />
     <div class="row p-3 border">
         <input type="hidden" value="@ViewBag.Status" id="idstatus" />
-        <input type="hidden" asp-for="ItemTransfer.Id" id="transferid" />
+        <input type="hidden" asp-for="ItemTransfer.Id" id="transferid" />       
+        <input type="hidden" asp-for="ItemTransfer.PreviousLocation" id="PreviousLocations" />
+        <input type="hidden" asp-for="ItemTransfer.PreviousRoom" id="PreviousRooms" />
+        <input type="hidden" asp-for="LocationPrevious" id="LocationPreviouss_" />
+
+        <input type="hidden" asp-for="ItemTransfer.CurrentLocation" id="CurrentLocations" />
+        <input type="hidden" asp-for="ItemTransfer.CurrentRoom" id="CurrentRooms" />
+        <input type="hidden" asp-for="LocationCurrent" id="LocationCurrents_" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         @if ((Model.ItemTransfer.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Update Success")
         {
@@ -38,10 +45,10 @@
     
                    
                     <div class="input-group">
-                        <input type="hidden" asp-for="ItemTransfer.Items.Id" />
+                        <input type="hidden" asp-for="ItemTransfer.Items.Id" id="ItemId" />
                         <input asp-for="ItemTransfer.Items.Name" id="ItemsName" class="form-control" disabled />           
                         
-                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width:145px" id="btn-lookupitems"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#lookupItems" style="width:145px" id="btn-lookupitems"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </div>                 
                 </div>
             </div>
@@ -79,11 +86,9 @@
                     Previous Location
                 </div>
                 <div class="col-10">
-                    <input type="hidden" asp-for="ItemTransfer.PreviousLocationId" />
-                    <input asp-for="ItemTransfer.PreviousLocation" class="form-control" style="row-gap" id="roomName" disabled />
-                @*    @Html.DropDownListFor(Model => Model.ItemTransfer.PreviousLocationId , ViewBag.PreviousLocationList as SelectList, "-Select a Location",
-                    new { @Class = "form-control", @id = "PreviousLocation", @disabled = "disabled"  })
-                    <span asp-validation-for="ItemTransfer.PreviousLocation" class="text-danger"></span>*@
+                    <input type="hidden" asp-for="ItemTransfer.PreviousLocationId" id="roomId" />    
+                    <input asp-for="LocationPrevious" class="form-control" style="row-gap" id="LocationPreviouss" disabled />
+
                 </div>
             </div>
 
@@ -92,17 +97,11 @@
             <div class="form-group row">
                 <div class="col-2">
                     Current Location
-                </div>
-              @*  <div class="col-10">
-                    @Html.DropDownListFor(Model => Model.ItemTransfer.CurrentLocationId , ViewBag.CurrentLocationList as SelectList, "-Select a Location",
-                    new { @Class = "form-control" })
-                    <span asp-validation-for="ItemTransfer.CurrentLocationId" class="text-danger"></span>
-                </div>*@
+                </div>         
                 <div class="col-10">
                     <div class="input-group">
                         <input type="hidden" asp-for="ItemTransfer.CurrentLocationId" id="CurrentLocationId" />
-                        <input type="hidden" asp-for="ItemTransfer.CurrentLocation" id="CurrentLocationId" />
-                        <input asp-for="name_of_room_and_location" id="name_of_room_and_location" class="form-control" disabled />
+                        <input asp-for="LocationCurrent" id="LocationCurrents" class="form-control" disabled />
                         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#Modal1" style="width:145px" id="btn-lookuproom"><i class="fa fa-search" aria-hidden="true"></i></button>
                         <span asp-validation-for="ItemTransfer.CurrentLocationId" class="text-danger"></span>
                     </div>
@@ -113,23 +112,7 @@
         </div>
 
         <br />
-@*        <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-6 offset-2">
 
-
-                    <div class="row">
-                        <div class="col">
-                            <button type="submit" id="btnSave" class="btn btn-primary form-control" style="width:145px">@title.Replace("Transfer Item","")</button>
-                        </div>
-                        <div class="col">
-                            <a asp-action="Index" class="btn btn-success form-control" style="width:145px">Back to List</a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>*@
 
         <div class="form-group margin-bottom-2 pt-2">
             <div class="col-md-12 text-center">
@@ -143,11 +126,11 @@
 </form>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="lookupItems" tabindex="-1" aria-labelledby="lookupItemsLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Choose Product</h5>
+                <h5 class="modal-title" id="lookupItemsLabel">Choose Items</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -155,33 +138,34 @@
 
                 <br />
                 <div class="p-4 border rounded">
-                    <table id="tblData" class="table table-striped table-bordered table-hover table-striped dataTable" style="width:100%">
+                    <table id="tblDataItems" class="table table-striped table-bordered table-hover table-striped dataTable" style="width:100%">
                         <thead class="thead-dark">
-                            <tr class="table-info">
+                            <tr class="table-info">                               
                                 <th>
                                     Item Name
-                                </th>
-                                <th>
-                                    Description
                                 </th>
                                 <th>
                                     Category
                                 </th>
                                 <th>
+                                    Room
+                                </th>
+                                <th>
                                     Location
-                                </th>                             
+                                </th>
 
-                                <th></th>
+                                <th style="display:none"></th>
+                                <th style="display:none"></th>
+                                <th style="display:none"></th>
                             </tr>
                         </thead>
                     </table>
                 </div>
 
             </div>
-           @* <div class="modal-footer">
+            <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add</button>
-            </div>*@
+            </div>
         </div>
     </div>
 </div>
@@ -211,7 +195,7 @@
                                 </th>
 
                                 <th style="display:none"></th>
-                                <th style="display:none"></th>
+                                <th ></th>
                             </tr>
                         </thead>
                     </table>
@@ -230,10 +214,11 @@
 @section Scripts {
 
     <partial name="_ValidationScriptsPartial" />
-	<script src="~/js/GetItems.js"></script>
+@*	<script src="~/js/getitem.js"></script>*@
+
     <script type="text/javascript">
         $(document).ready(function () {
-            LoadIndex();
+            loadDataItems();
             loadDataRoom();
             var status = $("#idstatus").val();
 
@@ -250,32 +235,7 @@
             else {
                 $("#btn-lookupitems").attr("disabled", "disabled");
             }
-        });
-
-        function LoadIndex() {
-            dataTable = $('#indextable').DataTable({
-                "ajax": {
-                    "url": "/Admin/ItemTransfer/GetProduct"
-                },
-                "columns": [
-                    { "data": "name", "width": "30%" },
-                    { "data": "category", "width": "20%" },
-                    { "data": "room", "width": "20%" }
-
-                ],
-                "createdRow": function (row, data, index) {
-                    $(row).attr('onclick', 'select_row(this)');
-                    $(row).attr('data-dismiss', 'modal');
-                    $('#ItemsNameVal').val('tdsssss');
-                }
-            });
-        }       
- 
-
-        if ($("#transferid").val() > 0) {
-            $("#itemid").attr("disabled", "disabled");
-            $("#PreviousLocation").attr("disabled", "disabled");
-        }
+        });      
 
         function loadDataRoom() {
             dataTable = $('#tblDataRoom').DataTable({
@@ -294,19 +254,66 @@
                     $(row).attr('onclick', 'select_row(this)');
                     $(row).attr('data-bs-dismiss', 'modal');
                     $('td', row).eq(3).attr('style', 'display:none;');
-                    $('td', row).eq(4).attr('style', 'display:none;');
+                    //$('td', row).eq(4).attr('style', 'display:none;'); 
                 },
             });
         }
 
         function select_row(obj) {
-            var name_of_room = $('td', obj).eq(0).html().trim();          
+            var name_of_room = $('td', obj).eq(0).html().trim();
+            var name_of_location = $('td', obj).eq(2).html().trim();
             var id_of_room = $('td', obj).eq(3).html().trim();
             var name_of_room_and_location_ = $('td', obj).eq(4).html().trim();
 
-            $('#name_of_room_and_location').val(name_of_room_and_location_);
-            $('#CurrentLocation').val(name_of_room);
+            $('#LocationCurrents').val(name_of_room_and_location_);
+            $('#LocationCurrents_').val(name_of_room_and_location_);
+            $('#CurrentLocations').val(name_of_location);
+            $('#CurrentRooms').val(name_of_room);
             $('#CurrentLocationId').val(id_of_room);
+        }
+
+        function loadDataItems() {
+            dataTable = $('#tblDataItems').DataTable({
+                "ajax": {
+                    "url": "/Admin/ItemTransfer/GetAllItems"
+                },
+                "columns": [
+                    { "data": "name", "width": "30%" },
+                    { "data": "category", "width": "30%" },
+                    { "data": "room", "width": "10%" },
+                    { "data": "location", "width": "30%" },
+                    { "data": "id", "width": "10%" },
+                    { "data": "roomid", "width": "10%" },
+                    { "data": "name_of_room_and_location_", "width": "20%" }
+
+                ],
+                "createdRow": function (row, data, index) {
+                    $(row).attr('onclick', 'select_row2(this)');
+                    $(row).attr('data-bs-dismiss', 'modal');
+                    $('td', row).eq(4).attr('style', 'display:none;');
+                    $('td', row).eq(5).attr('style', 'display:none;');
+                    $('td', row).eq(6).attr('style', 'display:none;');
+                },
+            });
+        }
+
+        function select_row2(obj) {
+            var itemid = $('td', obj).eq(4).html().trim();
+            var itemname = $('td', obj).eq(0).html().trim();
+            var roodname = $('td', obj).eq(2).html().trim();
+            var locationname = $('td', obj).eq(3).html().trim();
+            var roodid = $('td', obj).eq(5).html().trim();
+            var room_and_location = $('td', obj).eq(6).html().trim();
+           
+
+            $('#ItemId').val(itemid);
+            $('#ItemsName').val(itemname);
+            $('#PreviousRooms').val(roodname);
+            $('#PreviousLocations').val(locationname);
+
+            $('#roomId').val(roodid);
+            $('#LocationPreviouss').val(room_and_location);
+            $('#LocationPreviouss_').val(room_and_location);
         }
 
     

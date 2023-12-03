@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\E_OneWeb.csproj": {}
+    "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\E_OneWeb.csproj": {}
   },
   "projects": {
-    "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj": {
+    "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj",
+        "projectUniqueName": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj",
         "projectName": "E_OneWeb.DataAccess",
-        "projectPath": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj",
+        "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj",
         "packagesPath": "C:\\Users\\iwan-setti\\.nuget\\packages\\",
-        "outputPath": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.DataAccess\\obj\\",
+        "outputPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\iwan-setti\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.Models\\E_OneWeb.Models.csproj": {
-                "projectPath": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.Models\\E_OneWeb.Models.csproj"
+              "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj": {
+                "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj"
               },
-              "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj": {
-                "projectPath": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj"
+              "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj": {
+                "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj"
               }
             }
           }
@@ -75,12 +75,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.2, 7.0.2]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.2, 7.0.2]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.2, 7.0.2]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.3.23178.7\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -89,14 +103,14 @@
         }
       }
     },
-    "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.Models\\E_OneWeb.Models.csproj": {
+    "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.Models\\E_OneWeb.Models.csproj",
+        "projectUniqueName": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj",
         "projectName": "E_OneWeb.Models",
-        "projectPath": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.Models\\E_OneWeb.Models.csproj",
+        "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj",
         "packagesPath": "C:\\Users\\iwan-setti\\.nuget\\packages\\",
-        "outputPath": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.Models\\obj\\",
+        "outputPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\iwan-setti\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -145,12 +159,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.2, 7.0.2]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.2, 7.0.2]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.2, 7.0.2]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.3.23178.7\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -159,14 +187,14 @@
         }
       }
     },
-    "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj": {
+    "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj",
+        "projectUniqueName": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj",
         "projectName": "E_OneWeb.Utility",
-        "projectPath": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj",
+        "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj",
         "packagesPath": "C:\\Users\\iwan-setti\\.nuget\\packages\\",
-        "outputPath": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.Utility\\obj\\",
+        "outputPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\iwan-setti\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -205,12 +233,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.2, 7.0.2]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.2, 7.0.2]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.2, 7.0.2]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.3.23178.7\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -219,14 +261,14 @@
         }
       }
     },
-    "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\E_OneWeb.csproj": {
+    "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\E_OneWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\E_OneWeb.csproj",
+        "projectUniqueName": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\E_OneWeb.csproj",
         "projectName": "E_OneWeb",
-        "projectPath": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\E_OneWeb.csproj",
+        "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\E_OneWeb.csproj",
         "packagesPath": "C:\\Users\\iwan-setti\\.nuget\\packages\\",
-        "outputPath": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\obj\\publish\\win-x64\\",
+        "outputPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\obj\\publish\\win-x64\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\iwan-setti\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -243,14 +285,14 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj": {
-                "projectPath": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj"
+              "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj": {
+                "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj"
               },
-              "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.Models\\E_OneWeb.Models.csproj": {
-                "projectPath": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.Models\\E_OneWeb.Models.csproj"
+              "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj": {
+                "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj"
               },
-              "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj": {
-                "projectPath": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj"
+              "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj": {
+                "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj"
               }
             }
           }
@@ -265,6 +307,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "EPPlus": {
+              "target": "Package",
+              "version": "[6.2.10, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"
@@ -309,20 +355,36 @@
           "warn": true,
           "downloadDependencies": [
             {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.2, 7.0.2]"
+            },
+            {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.2, 7.0.2]"
             },
             {
               "name": "Microsoft.NETCore.App.Crossgen2.win-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.2, 7.0.2]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[7.0.2, 7.0.2]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.2, 7.0.2]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.2, 7.0.2]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.2, 7.0.2]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.2, 7.0.2]"
             }
           ],
           "frameworkReferences": {
@@ -333,7 +395,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.3.23178.7\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

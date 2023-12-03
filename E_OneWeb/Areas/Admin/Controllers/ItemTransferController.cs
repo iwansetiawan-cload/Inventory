@@ -31,14 +31,13 @@ namespace E_OneWeb.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            IEnumerable<Room> RoomList = _unitOfWork.Room.GetAll();
             var datalist = (from z in await _unitOfWork.ItemTransfer.GetAllAsync(includeProperties: "Items")
                             select new
                             {
                                 id = z.Id,
                                 itemname = z.Items.Name,
-                                previouslocation = z.PreviousLocation,
-								currentlocation = z.CurrentLocation,
+                                previouslocation = z.PreviousRoom + " (" + z.PreviousLocation + ")",
+								currentlocation = z.CurrentRoom + " (" + z.CurrentLocation + ")",
 								desc = z.Description,
                                 stranferdate = Convert.ToDateTime( z.TransferDate).ToString("dd-MM-yyyy"),
                                 entrydate = z.EntryDate
@@ -48,47 +47,49 @@ namespace E_OneWeb.Areas.Admin.Controllers
         }
         public static int? transferId { get; set; }    
         [HttpGet]
-        public async Task<IActionResult> GetProduct()
-        {
+        public async Task<IActionResult> GetAllItems()
+        {           
+
             var datalist = (from z in await _unitOfWork.Items.GetAllAsync(includeProperties: "Category,Room")
                             select new
                             {
                                 id = z.Id,
                                 name = z.Name,
-                                room = z.Room.Name,
                                 category = z.Category.Name,
-                                description = z.Description,
-                                idtranfer = transferId
+                                location = _unitOfWork.Location.Get(z.Room.IDLocation).Name,
+                                room = z.Room.Name,
+                                roomid = z.Room.Id,
+                                name_of_room_and_location_ = z.Room.Name + " (" + _unitOfWork.Location.Get(z.Room.IDLocation).Name + ")"
                             }).ToList();
 
             return Json(new { data = datalist });
         }
-        [HttpGet] 
-        public async Task<IActionResult> GetItem(int? id)
-        {
-            ItemTransferVM itemsVM = new ItemTransferVM();
+  //      [HttpGet] 
+  //      public async Task<IActionResult> GetItem(int? id)
+  //      {
+  //          ItemTransferVM itemsVM = new ItemTransferVM();
 
-            //var Items = await _unitOfWork.Items.GetAsync(id.GetValueOrDefault());
-            //ViewBag.ItemsName = Items.Name;
+  //          //var Items = await _unitOfWork.Items.GetAsync(id.GetValueOrDefault());
+  //          //ViewBag.ItemsName = Items.Name;
 
-            var datalist = (from z in await _unitOfWork.Items.GetAllAsync(includeProperties: "Category,Room")
-                            select new
-                            {
-                                id = z.Id,
-                                code = z.Code,
-                                name = z.Name,
-                                description = z.Description,
-                                price = z.Price != null ? z.Price : 0,
-                                qty = z.Qty != null ? z.Qty : 0,
-                                totalamount = z.TotalAmount != null ? z.TotalAmount : 0,
-                                room = z.Room.Name,
-                                category = z.Category.Name
-                            }).Where(z => z.id == id.GetValueOrDefault()).FirstOrDefault();
-            ViewBag.ItemsName = datalist.name;
-            //return Json(new { data = datalist });
-			return RedirectToAction("Upsert", new { id = transferId, itemId = id });
+  //          var datalist = (from z in await _unitOfWork.Items.GetAllAsync(includeProperties: "Category,Room")
+  //                          select new
+  //                          {
+  //                              id = z.Id,
+  //                              code = z.Code,
+  //                              name = z.Name,
+  //                              description = z.Description,
+  //                              price = z.Price != null ? z.Price : 0,
+  //                              qty = z.Qty != null ? z.Qty : 0,
+  //                              totalamount = z.TotalAmount != null ? z.TotalAmount : 0,
+  //                              room = z.Room.Name,
+  //                              category = z.Category.Name
+  //                          }).Where(z => z.id == id.GetValueOrDefault()).FirstOrDefault();
+  //          ViewBag.ItemsName = datalist.name;
+  //          //return Json(new { data = datalist });
+		//	return RedirectToAction("Upsert", new { id = transferId, itemId = id });
 
-		}
+		//}
 
         public ActionResult LookupItems()
         {
@@ -96,12 +97,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
             return PartialView();
         }        
 
-        public async Task<IActionResult> Upsert(int? id, int? itemId)
-        {
-            //itemId = id;
-            var ListLocation = _unitOfWork.Room.GetAll().Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name }).ToList();
-            ViewBag.PreviousLocationList = new SelectList(ListLocation, "Value", "Text");
-            //ViewBag.CurrentLocationList = new SelectList(ListLocation, "Value", "Text");
+        public async Task<IActionResult> Upsert(int? id)
+        {            
             IEnumerable<Items> ItemsList = await _unitOfWork.Items.GetAllAsync();
             ItemTransferVM itemsVM = new ItemTransferVM()
             {
@@ -112,35 +109,25 @@ namespace E_OneWeb.Areas.Admin.Controllers
             {
                 //this is for create
                 itemsVM.ItemTransfer.TransferDate = DateTime.Now;
-                if (itemId != null)
-                {
-                    itemsVM.ItemTransfer.Items = ItemsList.Where(z => z.Id == itemId).FirstOrDefault();
-                    itemsVM.ItemTransfer.PreviousLocationId = itemsVM.ItemTransfer.Items.Room.Id;
-                    itemsVM.ItemTransfer.PreviousLocation = itemsVM.ItemTransfer.Items.Room.Name;
-                }
-                  
+                //if (itemId != null)
+                //{
+                //    itemsVM.ItemTransfer.Items = ItemsList.Where(z => z.Id == itemId).FirstOrDefault();
+                //    itemsVM.ItemTransfer.PreviousLocationId = itemsVM.ItemTransfer.Items.Room.Id;
+                //    itemsVM.ItemTransfer.PreviousLocation = itemsVM.ItemTransfer.Items.Room.Name;
+                //}                  
               
                 return View(itemsVM);
             }
 
             itemsVM.ItemTransfer = await _unitOfWork.ItemTransfer.GetAsync(id.GetValueOrDefault());
-            ViewBag.PreviousLocationList = new SelectList(ListLocation, "Value", "Text", itemsVM.ItemTransfer.PreviousLocationId);
-            Room LocationName = _unitOfWork.Room.GetAll(includeProperties: "Location").Where(z=>z.Id == itemsVM.ItemTransfer.CurrentLocationId).FirstOrDefault();
-            itemsVM.name_of_room_and_location = itemsVM.ItemTransfer.CurrentLocation + " (" + LocationName.Location.Name + ")";
-            //ViewBag.CurrentLocationList = new SelectList(ListLocation, "Value", "Text", itemsVM.ItemTransfer.CurrentLocationId);
-            //if (itemId != null)
-            //{
-            //    ViewBag.ItemsName = itemsVM.ItemList.FirstOrDefault().Text;
-            //}
-            //itemsVM.ItemTransfer.Items.Name = itemsVM.ItemList.FirstOrDefault().Text;
+            itemsVM.LocationPrevious = itemsVM.ItemTransfer.PreviousRoom + " (" + itemsVM.ItemTransfer.PreviousLocation + ")";
+            itemsVM.LocationCurrent = itemsVM.ItemTransfer.CurrentRoom + " (" + itemsVM.ItemTransfer.CurrentLocation + ")";
             if (itemsVM.ItemTransfer == null)
             {
                 return NotFound();
             }
           
-            ViewBag.Status = "";
-            //var ListLocation = db.GENMASTERs.Where(x => x.GENFLAG == 102).Select(x => new SelectListItem { Value = x.GENNAME, Text = x.GENNAME }).ToList();
-           
+            ViewBag.Status = "";            
             return View(itemsVM);
 
         }
@@ -149,8 +136,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Upsert(ItemTransferVM vm)
         {
-            var ListLocation = _unitOfWork.Room.GetAll().Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name }).ToList();  
-            ViewBag.PreviousLocationList = new SelectList(ListLocation, "Value", "Text", vm.ItemTransfer.PreviousLocationId);
+            //var ListLocation = _unitOfWork.Room.GetAll().Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name }).ToList();  
+            //ViewBag.PreviousLocationList = new SelectList(ListLocation, "Value", "Text", vm.ItemTransfer.PreviousLocationId);
             //ViewBag.CurrentLocationList = new SelectList(ListLocation, "Value", "Text", vm.ItemTransfer.CurrentLocationId);
            
             var claimsIdentity = (ClaimsIdentity)User.Identity;
@@ -159,8 +146,9 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             vm.ItemTransfer.EntryBy = user.Name;
             vm.ItemTransfer.EntryDate = DateTime.Now;
-            vm.ItemTransfer.PreviousLocation = ListLocation.Where(z => z.Value == vm.ItemTransfer.PreviousLocationId.ToString()).Select(x => x.Text).FirstOrDefault();
-            vm.ItemTransfer.CurrentLocation = ListLocation.Where(z => z.Value == vm.ItemTransfer.CurrentLocationId.ToString()).Select(x => x.Text).FirstOrDefault();
+            //vm.ItemTransfer.PreviousLocation = vm.LocationPrevious; //ListLocation.Where(z => z.Value == vm.ItemTransfer.PreviousLocationId.ToString()).Select(x => x.Text).FirstOrDefault();       
+            //vm.ItemTransfer.CurrentLocation = vm.LocationCurrent;//ListLocation.Where(z => z.Value == vm.ItemTransfer.CurrentLocationId.ToString()).Select(x => x.Text).FirstOrDefault();
+    
             vm.ItemTransfer.ItemId = vm.ItemTransfer.Items.Id;
 
             IEnumerable <Items> itemList = await _unitOfWork.Items.GetAllAsync();

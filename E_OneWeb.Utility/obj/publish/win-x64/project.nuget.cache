@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "4451ZH3u6de1ATdlgyV5iZMoXZK5enbvI7cnG42gnZWqed/A9PoAiKPbOEaPw26CyPeeiMWQ5UiFZlNI2yZlEQ==",
+  "success": true,
+  "projectFilePath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\iwan-setti\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.2\\microsoft.netcore.app.ref.7.0.2.nupkg.sha512",
+    "C:\\Users\\iwan-setti\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\7.0.2\\microsoft.netcore.app.runtime.win-x64.7.0.2.nupkg.sha512",
+    "C:\\Users\\iwan-setti\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.2\\microsoft.windowsdesktop.app.ref.7.0.2.nupkg.sha512",
+    "C:\\Users\\iwan-setti\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.2\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.2.nupkg.sha512",
+    "C:\\Users\\iwan-setti\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.2\\microsoft.aspnetcore.app.ref.7.0.2.nupkg.sha512",
+    "C:\\Users\\iwan-setti\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.2\\microsoft.aspnetcore.app.runtime.win-x64.7.0.2.nupkg.sha512",
+    "C:\\Users\\iwan-setti\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\7.0.2\\microsoft.netcore.app.crossgen2.win-x64.7.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

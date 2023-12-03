@@ -85,10 +85,6 @@
       "PackagePath": "staticwebassets\\images\\products\\fad5c1f6-2132-43aa-a7de-adf9efa8a846.jpg"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\GetItems.js",
-      "PackagePath": "staticwebassets\\js\\GetItems.js"
-    },
-    {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\ItemTransfer.js",
       "PackagePath": "staticwebassets\\js\\ItemTransfer.js"
     },
@@ -113,8 +109,16 @@
       "PackagePath": "staticwebassets\\js\\e19c476714.js"
     },
     {
+      "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\getitems.js",
+      "PackagePath": "staticwebassets\\js\\getitems.js"
+    },
+    {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\getroombylocation.js",
       "PackagePath": "staticwebassets\\js\\getroombylocation.js"
+    },
+    {
+      "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\index_itemservice.js",
+      "PackagePath": "staticwebassets\\js\\index_itemservice.js"
     },
     {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\location.js",

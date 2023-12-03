@@ -145,6 +145,66 @@ namespace E_OneWeb.DataAccess.Migrations
                     b.ToTable("GENMASTER");
                 });
 
+            modelBuilder.Entity("E_OneWeb.Models.ItemService", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double?>("CostOfRepair")
+                        .HasColumnType("float");
+
+                    b.Property<string>("EntryBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime?>("EntryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("LocationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("RepairDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RequestBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int?>("RoomId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ServiceDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ServiceEndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Technician")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
+
+                    b.ToTable("ItemService");
+                });
+
             modelBuilder.Entity("E_OneWeb.Models.ItemTransfer", b =>
                 {
                     b.Property<int>("Id")
@@ -159,6 +219,10 @@ namespace E_OneWeb.DataAccess.Migrations
 
                     b.Property<int>("CurrentLocationId")
                         .HasColumnType("int");
+
+                    b.Property<string>("CurrentRoom")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -179,6 +243,10 @@ namespace E_OneWeb.DataAccess.Migrations
 
                     b.Property<int>("PreviousLocationId")
                         .HasColumnType("int");
+
+                    b.Property<string>("PreviousRoom")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("TransferDate")
                         .HasColumnType("datetime2");
@@ -719,6 +787,17 @@ namespace E_OneWeb.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
+                });
+
+            modelBuilder.Entity("E_OneWeb.Models.ItemService", b =>
+                {
+                    b.HasOne("E_OneWeb.Models.Items", "Items")
+                        .WithMany()
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("E_OneWeb.Models.ItemTransfer", b =>

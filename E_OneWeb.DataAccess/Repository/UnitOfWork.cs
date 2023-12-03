@@ -28,6 +28,7 @@ namespace E_OneWeb.DataAccess.Repository
             ItemTransfer = new ItemTransferRepository(_db);
             Genmaster = new GenmasterRepository(_db);
             Location = new LocationRepository(_db);
+            ItemService = new ItemServiceRepositoryAsync(_db);
         }
         public IArticleRepository Article { get; private set; }
         public IApplicationUserRepository ApplicationUser { get; private set; }
@@ -40,6 +41,7 @@ namespace E_OneWeb.DataAccess.Repository
         public IItemTransferRepository ItemTransfer { get; private set; }
         public IGenmasterRepository Genmaster { get; private set; }
         public ILocationRepository Location { get; private set; }
+        public IItemServiceRepositoryAsync ItemService { get; private set; }
         public void Dispose()
         {
             _db.Dispose();

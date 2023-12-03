@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IiA7b60BBVlxrdpp2nBL6rDbcGFAiYxspC1pIGWHnPw=",
+  "Hash": "mfTgR4k+11a4Kk5eoVSTZdCNaKJpKmJ+Fs8HvUxsZBc=",
   "Source": "E_OneWeb",
   "BasePath": "_content/E_OneWeb",
   "Mode": "Default",
@@ -1479,12 +1479,12 @@
       "OriginalItemSpec": "wwwroot\\js\\e19c476714.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\GetItems.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\getitems.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
-      "RelativePath": "js/GetItems.js",
+      "RelativePath": "js/getitems.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1493,7 +1493,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\GetItems.js"
+      "OriginalItemSpec": "wwwroot\\js\\getitems.js"
     },
     {
       "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\getroombylocation.js",
@@ -1511,6 +1511,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\getroombylocation.js"
+    },
+    {
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\index_itemservice.js",
+      "SourceId": "E_OneWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
+      "BasePath": "_content/E_OneWeb",
+      "RelativePath": "js/index_itemservice.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\index_itemservice.js"
     },
     {
       "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\Items.js",

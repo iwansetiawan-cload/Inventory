@@ -23,6 +23,7 @@ namespace E_OneWeb.DataAccess.Data
         public DbSet<ItemTransfer> ItemTransfer { get; set; }
         public DbSet<GENMASTER> GENMASTER { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<ItemService> ItemService { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "iGwpZfFjXZooqWZ29vcqSGbPOes/eJRWGL2DnD6DQ0w=",
+  "Hash": "jGntBH2g4WTlrwv7y7ccmpdVZNEKckt84qKJAySGp5A=",
   "Source": "E_OneWeb",
   "BasePath": "_content/E_OneWeb",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "E_OneWeb\\wwwroot",
       "Source": "E_OneWeb",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "Pattern": "**"
     }
@@ -1037,10 +1037,10 @@
       "OriginalItemSpec": "C:\\Users\\iwan-setti\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\7.0.5\\staticwebassets\\V5\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\obj\\Release\\net7.0\\scopedcss\\bundle\\E_OneWeb.styles.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\obj\\Release\\net7.0\\scopedcss\\bundle\\E_OneWeb.styles.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\obj\\Release\\net7.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\obj\\Release\\net7.0\\scopedcss\\bundle\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "E_OneWeb.styles.css",
       "AssetKind": "All",
@@ -1051,13 +1051,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\obj\\Release\\net7.0\\scopedcss\\bundle\\E_OneWeb.styles.css"
+      "OriginalItemSpec": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\obj\\Release\\net7.0\\scopedcss\\bundle\\E_OneWeb.styles.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\obj\\Release\\net7.0\\scopedcss\\projectbundle\\E_OneWeb.bundle.scp.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\obj\\Release\\net7.0\\scopedcss\\projectbundle\\E_OneWeb.bundle.scp.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\obj\\Release\\net7.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\obj\\Release\\net7.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "E_OneWeb.bundle.scp.css",
       "AssetKind": "All",
@@ -1068,13 +1068,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\obj\\Release\\net7.0\\scopedcss\\projectbundle\\E_OneWeb.bundle.scp.css"
+      "OriginalItemSpec": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\obj\\Release\\net7.0\\scopedcss\\projectbundle\\E_OneWeb.bundle.scp.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\bundle\\e19c476714.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\bundle\\e19c476714.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "bundle/e19c476714.js",
       "AssetKind": "All",
@@ -1088,10 +1088,10 @@
       "OriginalItemSpec": "wwwroot\\bundle\\e19c476714.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\bundle\\jquery.dataTables.min.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\bundle\\jquery.dataTables.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "bundle/jquery.dataTables.min.js",
       "AssetKind": "All",
@@ -1105,10 +1105,10 @@
       "OriginalItemSpec": "wwwroot\\bundle\\jquery.dataTables.min.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\bundle\\jquery-ui.min.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\bundle\\jquery-ui.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "bundle/jquery-ui.min.js",
       "AssetKind": "All",
@@ -1122,10 +1122,10 @@
       "OriginalItemSpec": "wwwroot\\bundle\\jquery-ui.min.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\bundle\\sweetalert.min.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\bundle\\sweetalert.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "bundle/sweetalert.min.js",
       "AssetKind": "All",
@@ -1139,10 +1139,10 @@
       "OriginalItemSpec": "wwwroot\\bundle\\sweetalert.min.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\bundle\\toastr.min.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\bundle\\toastr.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "bundle/toastr.min.js",
       "AssetKind": "All",
@@ -1156,10 +1156,10 @@
       "OriginalItemSpec": "wwwroot\\bundle\\toastr.min.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\css\\BootswatchThemes.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\css\\BootswatchThemes.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "css/BootswatchThemes.css",
       "AssetKind": "All",
@@ -1173,10 +1173,10 @@
       "OriginalItemSpec": "wwwroot\\css\\BootswatchThemes.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\css\\jquery.dataTables.min.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\css\\jquery.dataTables.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "css/jquery.dataTables.min.css",
       "AssetKind": "All",
@@ -1190,10 +1190,10 @@
       "OriginalItemSpec": "wwwroot\\css\\jquery.dataTables.min.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\css\\jquery-ui.min.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\css\\jquery-ui.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "css/jquery-ui.min.css",
       "AssetKind": "All",
@@ -1207,10 +1207,10 @@
       "OriginalItemSpec": "wwwroot\\css\\jquery-ui.min.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\css\\site.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\css\\site.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -1224,10 +1224,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\css\\toastr.min.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\css\\toastr.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "css/toastr.min.css",
       "AssetKind": "All",
@@ -1241,10 +1241,10 @@
       "OriginalItemSpec": "wwwroot\\css\\toastr.min.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\favicon.ico",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\favicon.ico",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -1258,10 +1258,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\images\\products\\117ed2fe-c886-472d-a129-348758948399.jpg",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\117ed2fe-c886-472d-a129-348758948399.jpg",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "images/products/117ed2fe-c886-472d-a129-348758948399.jpg",
       "AssetKind": "All",
@@ -1275,10 +1275,10 @@
       "OriginalItemSpec": "wwwroot\\images\\products\\117ed2fe-c886-472d-a129-348758948399.jpg"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\images\\products\\2de8be96-0c61-40f5-941e-c9e01bba8dfa.jpg",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\2de8be96-0c61-40f5-941e-c9e01bba8dfa.jpg",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "images/products/2de8be96-0c61-40f5-941e-c9e01bba8dfa.jpg",
       "AssetKind": "All",
@@ -1292,10 +1292,10 @@
       "OriginalItemSpec": "wwwroot\\images\\products\\2de8be96-0c61-40f5-941e-c9e01bba8dfa.jpg"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\images\\products\\698d330f-c0b7-48d7-9222-f2bf2e9302c0.jpg",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\698d330f-c0b7-48d7-9222-f2bf2e9302c0.jpg",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "images/products/698d330f-c0b7-48d7-9222-f2bf2e9302c0.jpg",
       "AssetKind": "All",
@@ -1309,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\images\\products\\698d330f-c0b7-48d7-9222-f2bf2e9302c0.jpg"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\images\\products\\7ce85b28-1f30-4cb0-b104-ea4f4eb07586.jpg",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\7ce85b28-1f30-4cb0-b104-ea4f4eb07586.jpg",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "images/products/7ce85b28-1f30-4cb0-b104-ea4f4eb07586.jpg",
       "AssetKind": "All",
@@ -1326,10 +1326,10 @@
       "OriginalItemSpec": "wwwroot\\images\\products\\7ce85b28-1f30-4cb0-b104-ea4f4eb07586.jpg"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\images\\products\\82eb5815-7696-4d33-b6aa-3a34ac29328c.jpg",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\82eb5815-7696-4d33-b6aa-3a34ac29328c.jpg",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "images/products/82eb5815-7696-4d33-b6aa-3a34ac29328c.jpg",
       "AssetKind": "All",
@@ -1343,10 +1343,10 @@
       "OriginalItemSpec": "wwwroot\\images\\products\\82eb5815-7696-4d33-b6aa-3a34ac29328c.jpg"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\images\\products\\aff9521f-1f79-4a0f-865c-e0d8a7b0fd2d.jpg",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\aff9521f-1f79-4a0f-865c-e0d8a7b0fd2d.jpg",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "images/products/aff9521f-1f79-4a0f-865c-e0d8a7b0fd2d.jpg",
       "AssetKind": "All",
@@ -1360,10 +1360,10 @@
       "OriginalItemSpec": "wwwroot\\images\\products\\aff9521f-1f79-4a0f-865c-e0d8a7b0fd2d.jpg"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\images\\products\\d816ba11-a42b-49ff-904d-22e6c22a4fe0.jpg",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\d816ba11-a42b-49ff-904d-22e6c22a4fe0.jpg",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "images/products/d816ba11-a42b-49ff-904d-22e6c22a4fe0.jpg",
       "AssetKind": "All",
@@ -1377,10 +1377,10 @@
       "OriginalItemSpec": "wwwroot\\images\\products\\d816ba11-a42b-49ff-904d-22e6c22a4fe0.jpg"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\images\\products\\f74cd8a5-3868-47b0-8013-37cb3987ab41.jpg",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\f74cd8a5-3868-47b0-8013-37cb3987ab41.jpg",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "images/products/f74cd8a5-3868-47b0-8013-37cb3987ab41.jpg",
       "AssetKind": "All",
@@ -1394,10 +1394,10 @@
       "OriginalItemSpec": "wwwroot\\images\\products\\f74cd8a5-3868-47b0-8013-37cb3987ab41.jpg"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\images\\products\\fad5c1f6-2132-43aa-a7de-adf9efa8a846.jpg",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\fad5c1f6-2132-43aa-a7de-adf9efa8a846.jpg",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "images/products/fad5c1f6-2132-43aa-a7de-adf9efa8a846.jpg",
       "AssetKind": "All",
@@ -1411,10 +1411,10 @@
       "OriginalItemSpec": "wwwroot\\images\\products\\fad5c1f6-2132-43aa-a7de-adf9efa8a846.jpg"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\js\\article.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\article.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/article.js",
       "AssetKind": "All",
@@ -1428,10 +1428,10 @@
       "OriginalItemSpec": "wwwroot\\js\\article.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\js\\brand.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\brand.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/brand.js",
       "AssetKind": "All",
@@ -1445,12 +1445,12 @@
       "OriginalItemSpec": "wwwroot\\js\\brand.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\js\\category.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\categori_index.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
-      "RelativePath": "js/category.js",
+      "RelativePath": "js/categori_index.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1459,13 +1459,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\category.js"
+      "OriginalItemSpec": "wwwroot\\js\\categori_index.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\js\\e19c476714.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\e19c476714.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/e19c476714.js",
       "AssetKind": "All",
@@ -1479,12 +1479,12 @@
       "OriginalItemSpec": "wwwroot\\js\\e19c476714.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\js\\product.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\GetItems.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
-      "RelativePath": "js/product.js",
+      "RelativePath": "js/GetItems.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1493,13 +1493,115 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\product.js"
+      "OriginalItemSpec": "wwwroot\\js\\GetItems.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\js\\purchaseorder.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\getroombylocation.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
+      "BasePath": "_content/E_OneWeb",
+      "RelativePath": "js/getroombylocation.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\getroombylocation.js"
+    },
+    {
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\Items.js",
+      "SourceId": "E_OneWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
+      "BasePath": "_content/E_OneWeb",
+      "RelativePath": "js/Items.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Items.js"
+    },
+    {
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\ItemTransfer.js",
+      "SourceId": "E_OneWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
+      "BasePath": "_content/E_OneWeb",
+      "RelativePath": "js/ItemTransfer.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ItemTransfer.js"
+    },
+    {
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\location.js",
+      "SourceId": "E_OneWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
+      "BasePath": "_content/E_OneWeb",
+      "RelativePath": "js/location.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\location.js"
+    },
+    {
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\modal.js",
+      "SourceId": "E_OneWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
+      "BasePath": "_content/E_OneWeb",
+      "RelativePath": "js/modal.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\modal.js"
+    },
+    {
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\modalform.js",
+      "SourceId": "E_OneWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
+      "BasePath": "_content/E_OneWeb",
+      "RelativePath": "js/modalform.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\modalform.js"
+    },
+    {
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\purchaseorder.js",
+      "SourceId": "E_OneWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/purchaseorder.js",
       "AssetKind": "All",
@@ -1513,10 +1615,10 @@
       "OriginalItemSpec": "wwwroot\\js\\purchaseorder.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\js\\purchasing.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\purchasing.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/purchasing.js",
       "AssetKind": "All",
@@ -1530,10 +1632,27 @@
       "OriginalItemSpec": "wwwroot\\js\\purchasing.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\js\\site.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\room.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
+      "BasePath": "_content/E_OneWeb",
+      "RelativePath": "js/room.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\room.js"
+    },
+    {
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\site.js",
+      "SourceId": "E_OneWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -1547,10 +1666,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\js\\supplier.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\supplier.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/supplier.js",
       "AssetKind": "All",
@@ -1564,10 +1683,10 @@
       "OriginalItemSpec": "wwwroot\\js\\supplier.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\js\\sweetalert.min.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\sweetalert.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/sweetalert.min.js",
       "AssetKind": "All",
@@ -1581,10 +1700,27 @@
       "OriginalItemSpec": "wwwroot\\js\\sweetalert.min.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\transferitembyid.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
+      "BasePath": "_content/E_OneWeb",
+      "RelativePath": "js/transferitembyid.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\transferitembyid.js"
+    },
+    {
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "SourceId": "E_OneWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -1598,10 +1734,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -1615,10 +1751,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -1632,10 +1768,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -1649,10 +1785,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -1666,10 +1802,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -1683,10 +1819,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -1700,10 +1836,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -1717,10 +1853,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -1734,10 +1870,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -1751,10 +1887,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -1768,10 +1904,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -1785,10 +1921,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -1802,10 +1938,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -1819,10 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -1836,10 +1972,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -1853,10 +1989,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -1870,10 +2006,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -1887,10 +2023,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -1904,10 +2040,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -1921,10 +2057,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -1938,10 +2074,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -1955,10 +2091,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -1972,10 +2108,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -1989,10 +2125,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -2006,10 +2142,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -2023,10 +2159,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -2040,10 +2176,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -2057,10 +2193,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -2074,10 +2210,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -2091,10 +2227,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -2108,10 +2244,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -2125,10 +2261,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -2142,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -2159,10 +2295,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -2176,10 +2312,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -2193,10 +2329,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -2210,10 +2346,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -2227,10 +2363,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -2244,10 +2380,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -2261,10 +2397,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -2278,10 +2414,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -2295,10 +2431,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -2312,10 +2448,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -2329,10 +2465,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -2346,10 +2482,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -2363,10 +2499,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -2380,10 +2516,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -2397,10 +2533,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -2414,10 +2550,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -2431,10 +2567,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -2448,10 +2584,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -2465,10 +2601,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -2482,10 +2618,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -2499,10 +2635,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -2516,10 +2652,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -2533,10 +2669,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Net Core\\Project VS 2022\\Project Yudi\\ERP\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",

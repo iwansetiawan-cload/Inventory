@@ -1,0 +1,12 @@
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\bin\Release\net7.0\win-x64\E_OneWeb.Models.deps.json
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\bin\Release\net7.0\win-x64\E_OneWeb.Models.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\bin\Release\net7.0\win-x64\E_OneWeb.Models.pdb
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Release\net7.0\win-x64\E_OneWeb.Models.csproj.AssemblyReference.cache
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Release\net7.0\win-x64\E_OneWeb.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Release\net7.0\win-x64\E_OneWeb.Models.AssemblyInfoInputs.cache
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Release\net7.0\win-x64\E_OneWeb.Models.AssemblyInfo.cs
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Release\net7.0\win-x64\E_OneWeb.Models.csproj.CoreCompileInputs.cache
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Release\net7.0\win-x64\E_OneWeb.Models.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Release\net7.0\win-x64\refint\E_OneWeb.Models.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Release\net7.0\win-x64\E_OneWeb.Models.pdb
+D:\My File\Core 2022\Github\Inventory\E_OneWeb.Models\obj\Release\net7.0\win-x64\ref\E_OneWeb.Models.dll

@@ -184,10 +184,10 @@ namespace E_OneWeb.Areas.Admin.Controllers
                             {
                                 id = z.Id,
                                 itemid = z.ItemId,
-                                previouslocation = _unitOfWork.Location.Get(_unitOfWork.Room.Get(z.PreviousLocationId).IDLocation).Name,
-                                previousroom = z.PreviousLocation,
-                                currentlocation = _unitOfWork.Location.Get(_unitOfWork.Room.Get(z.CurrentLocationId).IDLocation).Name,
-                                currentroom = z.CurrentLocation,
+                                previouslocation = z.PreviousLocation, //_unitOfWork.Location.Get(_unitOfWork.Room.Get(z.PreviousLocationId).IDLocation).Name,
+                                previousroom = z.PreviousRoom,
+                                currentlocation = z.CurrentLocation,//_unitOfWork.Location.Get(_unitOfWork.Room.Get(z.CurrentLocationId).IDLocation).Name,
+                                currentroom = z.CurrentRoom,
                                 desc = z.Description,
                                 stranferdate = Convert.ToDateTime(z.TransferDate).ToString("dd-MM-yyyy"),
                                 entrydate = z.EntryDate
@@ -195,20 +195,27 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             return Json(new { data = datalist });
         }
-        //[HttpGet]
-        //public async Task<IActionResult> GetDateCategory(int? id)
-        //{
-         
-          
-        //    IEnumerable<Category> CatList = await _unitOfWork.Category.GetAllAsync();
-        //    var datalist = CatList.Select(i => new SelectListItem
-        //    {
-        //        Text = i.Name,
-        //        Value = i.Percent.ToString()
-        //    }).FirstOrDefault();
+        [HttpGet]
+        public async Task<IActionResult> GetServiceItem(int? id)
+        {
+            
+            var datalist = (from z in await _unitOfWork.ItemService.GetAllAsync(includeProperties: "Items")
+                            select new
+                            {
+                                id = z.Id,
+                                itemid = z.ItemId,
+                                servicedate = Convert.ToDateTime(z.ServiceDate).ToString("dd-MM-yyyy"),
+                                serviceenddate = Convert.ToDateTime(z.ServiceEndDate).ToString("dd-MM-yyyy"),
+                                desc = z.RepairDescription,
+                                tecnician = z.Technician,
+                                phone = z.PhoneNumber,
+                                requestby = z.RequestBy,
+                                costofrepair = z.CostOfRepair.HasValue ? z.CostOfRepair.Value.ToString("#,##0") : ""
 
-        //    return Json(new { data = datalist.Value });
-        //}
+                            }).Where(o => o.itemid == id).OrderByDescending(i => i.id).ToList();
+
+            return Json(new { data = datalist });
+        }
         [HttpPost]
         public async Task<JsonResult> GetDateCategory(int? id)
         {

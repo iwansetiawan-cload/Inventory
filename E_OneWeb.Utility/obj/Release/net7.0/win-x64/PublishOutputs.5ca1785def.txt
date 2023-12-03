@@ -1,0 +1,3 @@
+D:\My File\Core 2022\Publish Prod\Utility\E_OneWeb.Utility.deps.json
+D:\My File\Core 2022\Publish Prod\Utility\E_OneWeb.Utility.pdb
+D:\My File\Core 2022\Publish Prod\Utility\E_OneWeb.Utility.dll
