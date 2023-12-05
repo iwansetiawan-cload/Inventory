@@ -4,19 +4,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project>
   <PropertyGroup>
-    <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\My File\Core 2022\Publish Prod\E_Oneweb</_PublishTargetUrl>
-    <History>True|2023-11-30T00:13:18.6176870Z;</History>
+    <_PublishTargetUrl>D:\My File\Core 2022\Publish Prod</_PublishTargetUrl>
+    <History>True|2023-12-04T15:53:32.4192344Z;</History>
     <LastFailureDetails />
   </PropertyGroup>
-  <ItemGroup>
-    <DestinationConnectionStrings Include="ApplicationDbContextConnection">
-      <Value>Server=BATTYBLUEJAY%3bDatabase=EONE_PROD%3bTrusted_Connection=True%3bTrustServerCertificate=True%3bMultipleActiveResultSets=true%3bpersist security info=True%3buser id=sa%3bpassword=P%40ssw0rd123</Value>
-    </DestinationConnectionStrings>
-  </ItemGroup>
-  <ItemGroup>
-    <EFMigrations Include="E_OneWeb.DataAccess.Data.ApplicationDbContext">
-      <Value>Server=BATTYBLUEJAY%3bDatabase=EONE_PROD%3bTrusted_Connection=True%3bTrustServerCertificate=True%3bMultipleActiveResultSets=true%3bpersist security info=True%3buser id=sa%3bpassword=P%40ssw0rd123</Value>
-    </EFMigrations>
-  </ItemGroup>
 </Project>

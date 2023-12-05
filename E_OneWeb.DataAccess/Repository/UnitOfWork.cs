@@ -29,6 +29,8 @@ namespace E_OneWeb.DataAccess.Repository
             Genmaster = new GenmasterRepository(_db);
             Location = new LocationRepository(_db);
             ItemService = new ItemServiceRepositoryAsync(_db);
+            RequestItemHeader = new RequestItemHeaderRepositoryAsync(_db);
+            RequestItemDetail = new RequestItemDetailRepositoryAsync(_db);
         }
         public IArticleRepository Article { get; private set; }
         public IApplicationUserRepository ApplicationUser { get; private set; }
@@ -42,6 +44,8 @@ namespace E_OneWeb.DataAccess.Repository
         public IGenmasterRepository Genmaster { get; private set; }
         public ILocationRepository Location { get; private set; }
         public IItemServiceRepositoryAsync ItemService { get; private set; }
+        public IRequestItemHeaderRepositoryAsync RequestItemHeader { get; private set; }
+        public IRequestItemDetailRepositoryAsync RequestItemDetail { get; private set; }
         public void Dispose()
         {
             _db.Dispose();

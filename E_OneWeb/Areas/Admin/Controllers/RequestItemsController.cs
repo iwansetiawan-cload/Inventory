@@ -6,6 +6,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Data;
+using System.Drawing;
+using Microsoft.Extensions.Hosting;
+using System.Net;
+using System.Runtime.CompilerServices;
+using System.IO;
+using System.Security.Policy;
+
 
 namespace E_OneWeb.Areas.Admin.Controllers
 {
@@ -13,73 +20,319 @@ namespace E_OneWeb.Areas.Admin.Controllers
     [Authorize(Roles = SD.Role_Admin)]
     public class RequestItemsController : Controller
     {
+        public static List<RequestItemDetail> additemlist = new List<RequestItemDetail>();
         private readonly IUnitOfWork _unitOfWork;
-        public RequestItemsController(IUnitOfWork unitOfWork)
+        private readonly IWebHostEnvironment _hostEnvironment;
+        public RequestItemsController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
         {
             _unitOfWork = unitOfWork;
+            _hostEnvironment = hostEnvironment;
         }
         public IActionResult Index()
         {
             return View();
         }
-        public async Task<IActionResult> Upsert(int? id)
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
         {
-            IEnumerable<Supplier> SupplierList = await _unitOfWork.Supplier.GetAllAsync();
 
-            PurchaseOrderHeaderVM purchaseOrderHeaderVM = new PurchaseOrderHeaderVM()
+            var datalist = (from z in await _unitOfWork.RequestItemHeader.GetAllAsync()
+                            select new
+                            {
+                                id = z.Id,
+                                refnumber = z.Name,                               
+                                requestdate = Convert.ToDateTime(z.RequestDate).ToString("dd-MM-yyyy"),
+                                requestby = z.Requester,
+                                desc = z.Description,
+                                totalamount = z.TotalAmount.HasValue ? z.TotalAmount.Value.ToString("#,##0") : ""
+
+                            }).OrderByDescending(i => i.id).ToList();
+
+            return Json(new { data = datalist });
+        }
+        public async Task<IActionResult> Upsert(int? id)
+        {           
+
+            additemlist = new List<RequestItemDetail>();
+            ViewBag.Status = "";
+            IEnumerable<Category> CatList = await _unitOfWork.Category.GetAllAsync();
+            var listcategory = CatList.Select(x => new SelectListItem { Value = x.Name, Text = x.Name });
+            ViewBag.CategoryList = new SelectList(listcategory, "Value", "Text");
+
+            RequestItemHeaderVM requestitemvm = new RequestItemHeaderVM()
             {
-                PurchaseOrderHeader = new PurchaseOrderHeader(),
-                SupplierList = SupplierList.Select(i => new SelectListItem
-                {
-                    Text = i.Name,
-                    Value = i.Id.ToString()
-                })
+                RequestItemHeader = new RequestItemHeader()
 
             };
-            purchaseOrderHeaderVM.PurchaseOrderHeader.TransactionDate = DateTime.Today;
             if (id == null)
             {
                 //this is for create
-                return View(purchaseOrderHeaderVM);
+                requestitemvm.RequestItemHeader.RequestDate = DateTime.Now;
+                requestitemvm.ListCategory = listcategory;
+
+                return View(requestitemvm);
             }
 
-            purchaseOrderHeaderVM.PurchaseOrderHeader = await _unitOfWork.PurchaseOrderHeader.GetAsync(id.GetValueOrDefault());
-            if (purchaseOrderHeaderVM.PurchaseOrderHeader == null)
+            requestitemvm.RequestItemHeader = await _unitOfWork.RequestItemHeader.GetAsync(id.GetValueOrDefault());
+            var DetailList = await _unitOfWork.RequestItemDetail.GetAllAsync();
+            var datalist_ = (from z in DetailList.Where(z => z.IdHeader == id)
+                             select new
+                             {
+                                 itemname = z.Name,
+                                 category = z.Category,
+                                 reason = z.Reason,
+                                 price = z.Price.HasValue ? z.Price.Value.ToString("#,##0") : "",
+                                 qty = z.Qty,
+                                 total = z.Total.HasValue ? z.Total.Value.ToString("#,##0") : "",
+                             }).ToList();
+
+            foreach (var item in datalist_)
+            {
+                RequestItemDetail Items = new RequestItemDetail();
+                Items.IdHeader = 0;
+                Items.Name = item.itemname;
+                Items.Category = item.category;
+                Items.Reason = item.reason;
+                Items.Price = Convert.ToDouble(item.price);
+                Items.Qty = Convert.ToInt32(item.qty);
+                Items.Total = Convert.ToDouble(item.total);
+                additemlist.Add(Items);
+            }
+
+            if (requestitemvm.RequestItemHeader == null)
             {
                 return NotFound();
             }
-
-            ViewBag.Status = "";
-
-            return View(purchaseOrderHeaderVM);
+            return View(requestitemvm);
 
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Upsert(PurchaseOrderHeaderVM vm)
-        {
-            IEnumerable<Supplier> SupplierList = await _unitOfWork.Supplier.GetAllAsync();
-            vm.SupplierList = SupplierList.Select(i => new SelectListItem
-            {
-                Text = i.Name,
-                Value = i.Id.ToString()
-            });
+        public async Task<IActionResult> Upsert(RequestItemHeaderVM vm)
+        {           
 
-            if (vm.PurchaseOrderHeader.Id == 0)
+            IEnumerable<Category> CatList = await _unitOfWork.Category.GetAllAsync();
+            vm.ListCategory = CatList.Select(x => new SelectListItem { Value = x.Name, Text = x.Name });
+            ViewBag.CategoryList = new SelectList(vm.ListCategory, "Value", "Text");
+
+            if (vm.RequestItemHeader.Id == 0)
             {
-                await _unitOfWork.PurchaseOrderHeader.AddAsync(vm.PurchaseOrderHeader);
+                string webRootPath = _hostEnvironment.WebRootPath;
+                var files = HttpContext.Request.Form.Files;
+                if (files.Count > 0)
+                {
+                    string fileName = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(webRootPath, @"images\products");
+                    var extenstion = Path.GetExtension(files[0].FileName);
+
+                    if (vm.RequestItemHeader.RefFile != null)
+                    {
+                        //this is an edit and we need to remove old image
+                        var imagePath = Path.Combine(webRootPath, vm.RequestItemHeader.RefFile.TrimStart('\\'));
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            System.IO.File.Delete(imagePath);
+                        }
+                    }
+                    using (var filesStreams = new FileStream(Path.Combine(uploads, fileName + extenstion), FileMode.Create))
+                    {
+                        files[0].CopyTo(filesStreams);
+                    }
+                    vm.RequestItemHeader.RefFile = @"\images\products\" + fileName + extenstion;
+                }
+                await _unitOfWork.RequestItemHeader.AddAsync(vm.RequestItemHeader);
                 ViewBag.Status = "Save Success";
+                _unitOfWork.Save();
+                var AddItemsList = (from z in additemlist
+                                   select new RequestItemDetail
+                                   {
+                                       IdHeader = vm.RequestItemHeader.Id,
+                                       Name = z.Name,
+                                       Category = z.Category,
+                                       Reason = z.Reason,
+                                       Price = z.Price,
+                                       Qty = z.Qty,
+                                       Total = z.Total
+                                   }).ToList();
+                vm.AddItemsList = AddItemsList;
+                foreach (var item in AddItemsList)
+                {
 
+                    RequestItemDetail itemDetail = new RequestItemDetail()
+                    {
+                        IdHeader = item.IdHeader,
+                        Name = item.Name,
+                        Category = item.Category,
+                        Reason = item.Reason,
+                        Price = item.Price,
+                        Qty = item.Qty,
+                        Total = item.Total
+                    
+                    };
+                    vm.RequestItemDetail = itemDetail;
+                    await _unitOfWork.RequestItemDetail.AddAsync(vm.RequestItemDetail);
+                    _unitOfWork.Save();
+
+                }
+               
             }
             else
-            {
-                _unitOfWork.PurchaseOrderHeader.Update(vm.PurchaseOrderHeader);
-                ViewBag.Status = "Edit Success";
-            }
-            _unitOfWork.Save();
+            {              
+                _unitOfWork.RequestItemHeader.Update(vm.RequestItemHeader);
 
-            return View(vm);
+                var objFromDetail = await _unitOfWork.RequestItemDetail.GetAllAsync();
+                objFromDetail = objFromDetail.Where(z => z.IdHeader == vm.RequestItemHeader.Id).ToList();
+                await _unitOfWork.RequestItemDetail.RemoveRangeAsync(objFromDetail);
+                _unitOfWork.Save();
+
+                var AddItemsList = (from z in additemlist
+                                    select new RequestItemDetail
+                                    {
+                                        IdHeader = vm.RequestItemHeader.Id,
+                                        Name = z.Name,
+                                        Category = z.Category,
+                                        Reason = z.Reason,
+                                        Price = z.Price,
+                                        Qty = z.Qty,
+                                        Total = z.Total
+                                    }).ToList();
+                vm.AddItemsList = AddItemsList;
+                foreach (var item in AddItemsList)
+                {
+
+                    RequestItemDetail itemDetail = new RequestItemDetail()
+                    {
+                        IdHeader = item.IdHeader,
+                        Name = item.Name,
+                        Category = item.Category,
+                        Reason = item.Reason,
+                        Price = item.Price,
+                        Qty = item.Qty,
+                        Total = item.Total
+
+                    };
+                    vm.RequestItemDetail = itemDetail;
+                    await _unitOfWork.RequestItemDetail.AddAsync(vm.RequestItemDetail);
+                    _unitOfWork.Save();
+
+                }
+                ViewBag.Status = "Edit Success";
+               
+            }
+            return RedirectToAction(nameof(Index));
+        }     
+       
+        [HttpPost]
+        public JsonResult AddItem(string name,string category, string reason, string price, string qty, string total)
+        {
+
+            RequestItemDetail Items = new RequestItemDetail();
+            Items.IdHeader = 0;
+            Items.Name = name;
+            Items.Category = category;
+            Items.Reason = reason;
+            Items.Price = Convert.ToDouble(price);
+            Items.Qty = Convert.ToInt32(qty);
+            Items.Total = Convert.ToDouble(total);
+
+            additemlist.Add(Items);
+            double? totalamount = additemlist.Sum(z=>z.Total);
+            var res = new
+            {
+                result = "true",
+                messageerrors = "",
+                grandtotal = totalamount
+            };
+            return Json(res);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllItems(int? id)
+        {          
+
+            var datalist = (from z in additemlist
+                            select new
+                            {
+                                itemname = z.Name,
+                                category = z.Category,
+                                reason = z.Reason,
+                                price = z.Price.HasValue ? z.Price.Value.ToString("#,##0") : "",
+                                qty = z.Qty,
+                                total = z.Total.HasValue ? z.Total.Value.ToString("#,##0") : "",
+                            }).ToList();
+            return Json(new { data = datalist });
+
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var objFromDb = await _unitOfWork.RequestItemHeader.GetAsync(id);
+            var objFromDetail = await _unitOfWork.RequestItemDetail.GetAllAsync();
+            objFromDetail = objFromDetail.Where(z => z.IdHeader == objFromDb.Id).ToList();
+            if (objFromDb == null)
+            {
+                return Json(new { success = false, message = "Error while deleting" });
+            }
+            await _unitOfWork.RequestItemDetail.RemoveRangeAsync(objFromDetail);
+            await _unitOfWork.RequestItemHeader.RemoveAsync(objFromDb);
+            _unitOfWork.Save();
+            return Json(new { success = true, message = "Delete Successful" });
+
+        }
+
+		//public async void downloadFile(int id)
+		//{
+		//	var objFromDb = await _unitOfWork.RequestItemHeader.GetAsync(id);
+		//	string file = System.IO.Path.GetFileName(objFromDb.RefFile);
+		//	WebClient cln = new WebClient();
+		//	//cln.DownloadFile(objFromDb.RefFile, file);
+		//	var net = new System.Net.WebClient();
+		//	var data = net.DownloadData(objFromDb.RefFile);
+		//	var content = new System.IO.MemoryStream(data);
+		//	var contentType = "APPLICATION/octet-stream";
+		//	var fileName = "something.bin";
+		//	return File(content, contentType, fileName);
+
+		//	if (System.IO.File.Exists(file))
+		//	{
+		//		File(System.IO.File.OpenRead(file), "application/octet-stream", Path.GetFileName(file));
+		//	}
+		//}
+
+		//[HttpGet("downloadFile")]
+		public async Task<IActionResult> downloadFile(int id)
+		{
+			var objFromDb = await _unitOfWork.RequestItemHeader.GetAsync(id);
+			//var net = new System.Net.WebClient();
+
+           objFromDb.RefFile = "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\31caadd9-12e4-48ac-8c95-6f7897fcc7c8.docx";
+            //var data = net.DownloadData(objFromDb.RefFile);
+            //var content = new System.IO.MemoryStream(data);
+            //var contentType = "APPLICATION/octet-stream";
+            //var fileName = "something.bin";
+            //return File(content, contentType, fileName);
+            //using (var client = new HttpClient())
+            //using (var result = await client.GetAsync(objFromDb.RefFile))
+            //{
+            //    return result.IsSuccessStatusCode ? await result.Content.ReadAsByteArrayAsync() : null;
+            //}
+            string filePath = "tess";
+            var filePathWithName = objFromDb.RefFile.Replace("\\", "/");
+            var result = await GetUrlContent(filePathWithName);
+            if (objFromDb != null)
+            {
+                return File(result, "APPLICATION/octet-stream", Path.GetFileName(filePath));
+            }
+            return Ok("file is not exist");
+
+        }
+        public async Task<byte[]?> GetUrlContent(string url)
+        {
+            using (var client = new HttpClient())
+            using (var result = await client.GetAsync(url))
+                return result.IsSuccessStatusCode ? await result.Content.ReadAsByteArrayAsync() : null;
         }
     }
 }

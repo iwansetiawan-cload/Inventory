@@ -102,6 +102,54 @@
           "lib/net7.0/EPPlus.System.Drawing.dll": {}
         }
       },
+      "Grpc.AspNetCore.Server/2.59.0": {
+        "type": "package",
+        "dependencies": {
+          "Grpc.Net.Common": "2.59.0"
+        },
+        "compile": {
+          "lib/net7.0/Grpc.AspNetCore.Server.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Grpc.AspNetCore.Server.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Grpc.Core.Api/2.59.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Grpc.Core.Api.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Grpc.Core.Api.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Grpc.Net.Common/2.59.0": {
+        "type": "package",
+        "dependencies": {
+          "Grpc.Core.Api": "2.59.0"
+        },
+        "compile": {
+          "lib/net7.0/Grpc.Net.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Grpc.Net.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Humanizer/2.14.1": {
         "type": "package",
         "dependencies": {
@@ -5101,6 +5149,77 @@
         "lib/netstandard2.1/EPPlus.System.Drawing.dll",
         "license.md",
         "readme.md"
+      ]
+    },
+    "Grpc.AspNetCore.Server/2.59.0": {
+      "sha512": "Q4P1ZzygF67uJYdU4rbgxs2ISL+xCRT74WosFpCPpgj6OeMSLRwjLU1aOhIMmr9kHrFCMV9vNg6qx4RsXD+92g==",
+      "type": "package",
+      "path": "grpc.aspnetcore.server/2.59.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "grpc.aspnetcore.server.2.59.0.nupkg.sha512",
+        "grpc.aspnetcore.server.nuspec",
+        "lib/net6.0/Grpc.AspNetCore.Server.dll",
+        "lib/net6.0/Grpc.AspNetCore.Server.pdb",
+        "lib/net6.0/Grpc.AspNetCore.Server.xml",
+        "lib/net7.0/Grpc.AspNetCore.Server.dll",
+        "lib/net7.0/Grpc.AspNetCore.Server.pdb",
+        "lib/net7.0/Grpc.AspNetCore.Server.xml",
+        "lib/net8.0/Grpc.AspNetCore.Server.dll",
+        "lib/net8.0/Grpc.AspNetCore.Server.pdb",
+        "lib/net8.0/Grpc.AspNetCore.Server.xml",
+        "packageIcon.png"
+      ]
+    },
+    "Grpc.Core.Api/2.59.0": {
+      "sha512": "n0QpwXqri/Uu7pXWbE6PWVANEhKggC6QRX7qsSR4vyzZRDN2jBPoUNvrJP7RBw7g8Dgg8e2bWYuGKq4ph6VXeA==",
+      "type": "package",
+      "path": "grpc.core.api/2.59.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "grpc.core.api.2.59.0.nupkg.sha512",
+        "grpc.core.api.nuspec",
+        "lib/net462/Grpc.Core.Api.dll",
+        "lib/net462/Grpc.Core.Api.pdb",
+        "lib/net462/Grpc.Core.Api.xml",
+        "lib/netstandard2.0/Grpc.Core.Api.dll",
+        "lib/netstandard2.0/Grpc.Core.Api.pdb",
+        "lib/netstandard2.0/Grpc.Core.Api.xml",
+        "lib/netstandard2.1/Grpc.Core.Api.dll",
+        "lib/netstandard2.1/Grpc.Core.Api.pdb",
+        "lib/netstandard2.1/Grpc.Core.Api.xml",
+        "packageIcon.png"
+      ]
+    },
+    "Grpc.Net.Common/2.59.0": {
+      "sha512": "9j1wKAeCzjnx/j8CC8chXRoLCuzJ9VhhlhwMkbW37mS1Ox4vv0i2pcefpDY5INIeE1BmPNIuPtqFLOUktkiKrQ==",
+      "type": "package",
+      "path": "grpc.net.common/2.59.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "grpc.net.common.2.59.0.nupkg.sha512",
+        "grpc.net.common.nuspec",
+        "lib/net6.0/Grpc.Net.Common.dll",
+        "lib/net6.0/Grpc.Net.Common.pdb",
+        "lib/net6.0/Grpc.Net.Common.xml",
+        "lib/net7.0/Grpc.Net.Common.dll",
+        "lib/net7.0/Grpc.Net.Common.pdb",
+        "lib/net7.0/Grpc.Net.Common.xml",
+        "lib/net8.0/Grpc.Net.Common.dll",
+        "lib/net8.0/Grpc.Net.Common.pdb",
+        "lib/net8.0/Grpc.Net.Common.xml",
+        "lib/netstandard2.0/Grpc.Net.Common.dll",
+        "lib/netstandard2.0/Grpc.Net.Common.pdb",
+        "lib/netstandard2.0/Grpc.Net.Common.xml",
+        "lib/netstandard2.1/Grpc.Net.Common.dll",
+        "lib/netstandard2.1/Grpc.Net.Common.pdb",
+        "lib/netstandard2.1/Grpc.Net.Common.xml",
+        "packageIcon.png"
       ]
     },
     "Humanizer/2.14.1": {
@@ -13554,6 +13673,7 @@
       "E_OneWeb.DataAccess >= 1.0.0",
       "E_OneWeb.Models >= 1.0.0",
       "E_OneWeb.Utility >= 1.0.0",
+      "Grpc.AspNetCore.Server >= 2.59.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 7.0.5",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 7.0.5",
       "Microsoft.AspNetCore.Identity.UI >= 7.0.5",
@@ -13615,6 +13735,10 @@
           "EPPlus": {
             "target": "Package",
             "version": "[6.2.10, )"
+          },
+          "Grpc.AspNetCore.Server": {
+            "target": "Package",
+            "version": "[2.59.0, )"
           },
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",

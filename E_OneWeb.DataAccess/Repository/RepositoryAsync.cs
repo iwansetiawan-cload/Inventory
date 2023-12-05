@@ -23,6 +23,23 @@ namespace E_OneWeb.DataAccess.Repository
         {
             await dbSet.AddAsync(entity);
         }
+        public async Task AddRangeAsync(ICollection<T> destination, IEnumerable<T> entity)
+        {
+            //dbSet.AddRange(entity);
+            List<T> list = destination as List<T>;
+
+            if (list != null)
+            {
+                list.AddRange(entity);
+            }
+            else
+            {
+                foreach (T item in entity)
+                {
+                    destination.Add(item);
+                }
+            }
+        }
 
         public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
         {

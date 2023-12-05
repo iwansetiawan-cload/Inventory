@@ -505,6 +505,85 @@ namespace E_OneWeb.DataAccess.Migrations
                     b.ToTable("PurchaseOrderHeader");
                 });
 
+            modelBuilder.Entity("E_OneWeb.Models.RequestItemDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Category")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdHeader")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(225)
+                        .HasColumnType("nvarchar(225)");
+
+                    b.Property<double?>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("Qty")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Reason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double?>("Total")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RequestItemDetail");
+                });
+
+            modelBuilder.Entity("E_OneWeb.Models.RequestItemHeader", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EntryBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime?>("EntryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("RefFile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RefNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RequestDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Requester")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double?>("TotalAmount")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RequestItemHeader");
+                });
+
             modelBuilder.Entity("E_OneWeb.Models.Room", b =>
                 {
                     b.Property<int>("Id")

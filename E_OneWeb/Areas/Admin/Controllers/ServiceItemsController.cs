@@ -124,5 +124,19 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             return Json(new { data = datalist });
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var objFromDb = await _unitOfWork.ItemService.GetAsync(id);
+            if (objFromDb == null)
+            {
+                return Json(new { success = false, message = "Error while deleting" });
+            }
+            await _unitOfWork.ItemService.RemoveAsync(objFromDb);
+            _unitOfWork.Save();
+            return Json(new { success = true, message = "Delete Successful" });
+
+        }
     }
 }

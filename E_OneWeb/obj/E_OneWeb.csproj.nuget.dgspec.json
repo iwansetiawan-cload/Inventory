@@ -296,6 +296,10 @@
               "target": "Package",
               "version": "[6.2.10, )"
             },
+            "Grpc.AspNetCore.Server": {
+              "target": "Package",
+              "version": "[2.59.0, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"

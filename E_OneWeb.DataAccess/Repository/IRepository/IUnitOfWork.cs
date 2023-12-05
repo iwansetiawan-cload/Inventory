@@ -20,6 +20,8 @@ namespace E_OneWeb.DataAccess.Repository.IRepository
         IGenmasterRepository Genmaster { get; }
         ILocationRepository Location { get; }
         IItemServiceRepositoryAsync ItemService { get; }
+        IRequestItemHeaderRepositoryAsync RequestItemHeader { get; }
+        IRequestItemDetailRepositoryAsync RequestItemDetail { get; }
         void Save();
     }
 }

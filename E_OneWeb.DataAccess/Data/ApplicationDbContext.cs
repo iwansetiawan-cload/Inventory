@@ -24,6 +24,8 @@ namespace E_OneWeb.DataAccess.Data
         public DbSet<GENMASTER> GENMASTER { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<ItemService> ItemService { get; set; }
+        public DbSet<RequestItemHeader> RequestItemHeader { get; set; }
+        public DbSet<RequestItemDetail> RequestItemDetail { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

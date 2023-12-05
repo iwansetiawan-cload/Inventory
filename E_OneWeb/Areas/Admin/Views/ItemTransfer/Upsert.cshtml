@@ -195,7 +195,7 @@
                                 </th>
 
                                 <th style="display:none"></th>
-                                <th ></th>
+                                <th style="display:none"></th>
                             </tr>
                         </thead>
                     </table>
@@ -254,7 +254,7 @@
                     $(row).attr('onclick', 'select_row(this)');
                     $(row).attr('data-bs-dismiss', 'modal');
                     $('td', row).eq(3).attr('style', 'display:none;');
-                    //$('td', row).eq(4).attr('style', 'display:none;'); 
+                    $('td', row).eq(4).attr('style', 'display:none;'); 
                 },
             });
         }

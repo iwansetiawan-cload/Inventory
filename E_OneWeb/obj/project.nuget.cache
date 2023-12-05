@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+CQ+75heALF+9iNb4RxLO55DcQaVcrU9d6MFUjhaOiISersZjZ2KTGNDku8IIrBIPNoAcgoISJBehE8nXI03NQ==",
+  "dgSpecHash": "Vb0TzXW2dn93vPrxcPI5FMT7fSoInvoN56x1xmQjWQFQIKGm1QdL8F8vKJvHx8jB64VjXhB1rBruS+/CvGibrg==",
   "success": true,
   "projectFilePath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\E_OneWeb.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,9 @@
     "C:\\Users\\iwan-setti\\.nuget\\packages\\epplus\\6.2.10\\epplus.6.2.10.nupkg.sha512",
     "C:\\Users\\iwan-setti\\.nuget\\packages\\epplus.interfaces\\6.1.1\\epplus.interfaces.6.1.1.nupkg.sha512",
     "C:\\Users\\iwan-setti\\.nuget\\packages\\epplus.system.drawing\\6.1.1\\epplus.system.drawing.6.1.1.nupkg.sha512",
+    "C:\\Users\\iwan-setti\\.nuget\\packages\\grpc.aspnetcore.server\\2.59.0\\grpc.aspnetcore.server.2.59.0.nupkg.sha512",
+    "C:\\Users\\iwan-setti\\.nuget\\packages\\grpc.core.api\\2.59.0\\grpc.core.api.2.59.0.nupkg.sha512",
+    "C:\\Users\\iwan-setti\\.nuget\\packages\\grpc.net.common\\2.59.0\\grpc.net.common.2.59.0.nupkg.sha512",
     "C:\\Users\\iwan-setti\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\iwan-setti\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\iwan-setti\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",

@@ -16,7 +16,7 @@ namespace E_OneWeb.Models
         [MaxLength(50)]
         public string? Code { get; set; }
 
-        [Display(Name = "Product Name")]
+        [Display(Name = "Item Name")]
         [Required]
         [MaxLength(100)]
         public string Name { get; set; }

@@ -1,99 +1,81 @@
 ﻿
 var dataTable;
 $(document).ready(function () {
-    loadDataTable();
+    loadDataItems();
 });
 
 
-function loadDataTable() {
+//function loadDataTable() {
+//    dataTable = $('#tblData').DataTable({
+//        "ajax": {
+//            "url": "/Admin/ItemTransfer/GetProduct"
+//        },
+//        "columns": [
+//            { "data": "name", "width": "30%" },    
+//            { "data": "description", "width": "40%" },
+//            { "data": "category", "width": "20%" },
+//            { "data": "room", "width": "20%" },
+           
+//            {
+//                "data": "id",
+//                "render": function (data) {
+//                    return `
+//                            <div class="text-center">
+//                                 <a href="/Admin/ItemTransfer/GetItem/${data}" class="btn btn-success text-white" style="cursor:pointer">
+//                                    <i class="fas fa-check"></i> 
+//                                </a>    
+                              
+//                            </div>
+//                           `;
+//                }, "width": "10%"
+//            }
+//        ], 
+//        "createdRow": function (row, data, index) {
+//            $(row).attr('onclick', 'select_row(this)');
+//            $(row).attr('data-dismiss', 'modal');
+//            $('#ItemsNameVal').val('tdsssss');
+//            //$('td', row).eq(0).attr('style', 'display:none;');
+//            //$('td', row).eq(2).attr('style', 'display:none;');
+//        }
+//    });
+//}
+
+function loadDataItems() {
     dataTable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/Admin/ItemTransfer/GetProduct"
+            "url": "/Admin/ItemTransfer/GetAllItems"
         },
         "columns": [
-            { "data": "name", "width": "30%" },    
-            { "data": "description", "width": "40%" },
-            { "data": "category", "width": "20%" },
-            { "data": "room", "width": "20%" },
-           
-            {
-                "data": "id",
-                "render": function (data) {
-                    return `
-                            <div class="text-center">
-                                 <a href="/Admin/ItemTransfer/GetItem/${data}" class="btn btn-success text-white" style="cursor:pointer">
-                                    <i class="fas fa-check"></i> 
-                                </a>    
-                              
-                            </div>
-                           `;
-                }, "width": "10%"
-            }
+            { "data": "name", "width": "30%" },
+            { "data": "category", "width": "30%" },
+            { "data": "room", "width": "10%" },
+            { "data": "location", "width": "30%" },
+            { "data": "id", "width": "10%" },
+            { "data": "roomid", "width": "10%" },
+            { "data": "name_of_room_and_location_", "width": "20%" }
+
         ],
-        //let getStudies = (url, id) => {
-        //    $("#formModal").find("tbody").html('');
-        //    $.each(data, (index, val) => {
-        //        let tr = `<tr class="table-light"><td class="text-start">${val.name}</td></tr>`;
-        //        $("#formModal").find("tbody").append(tr);
-        //    });
-        //    $("#formModal").modal('show');
         "createdRow": function (row, data, index) {
             $(row).attr('onclick', 'select_row(this)');
-            $(row).attr('data-dismiss', 'modal');
-            $('#ItemsNameVal').val('tdsssss');
-            //$('td', row).eq(0).attr('style', 'display:none;');
-            //$('td', row).eq(2).attr('style', 'display:none;');
-        }
+            $(row).attr('data-bs-dismiss', 'modal');
+            $('td', row).eq(4).attr('style', 'display:none;');
+            $('td', row).eq(5).attr('style', 'display:none;');
+            $('td', row).eq(6).attr('style', 'display:none;');
+        },
     });
 }
 
-//function LoadPolicy() {
-//    try {
-//        var urlx = "/Admin/ItemTransfer/GetProduct";
-
-//        $("#tblData").DataTable({
-//            "processing": true, // for show progress bar
-//            "serverSide": true, // for process server side
-//            "filter": true, // this is for disable filter (search box)
-//            "ajax": {
-//                url: urlx,
-//                type: "POST",
-//                datatype: "json",
-//                data: {
-//            /*        idpartner: $("#SearchIdPartner").val()*/
-//                }
-
-//                //,
-//                //success: function (result) {
-//                //    console.log('asdf');
-//                //    console.log(result);
-//                //}
-//            },
-//            "columns": [
-//                { "data": "name", "width": "30%" },           
-//                { "data": "category", "width": "20%" },
-//                { "data": "room", "width": "20%" }
-//            ],
-//            "createdRow": function (row, data, index) {
-//                $(row).attr('onclick', 'select_row(this)');
-//                $(row).attr('data-dismiss', 'modal');
-//                //$('td', row).eq(0).attr('style', 'display:none;');
-//                //$('td', row).eq(2).attr('style', 'display:none;');
-              
-
-//            },
-
-//        });
-//    } catch (e) {
-//        alert(e);
-//        console.log(e);
-//    }
-//}
 function select_row(obj) {
-/*    var idpolicy = $('td', obj).eq(0).html().trim();*/
-  /*  var policyNo = $('td', obj).eq(1).html().trim();*/
-/*    $('#SearchIdPolicyRev').val(idpolicy);*/
-    $('#ItemsNameVal').val(obj);
+    var itemid = $('td', obj).eq(4).html().trim();
+    var itemname = $('td', obj).eq(0).html().trim();   
+    var roodname = $('td', obj).eq(2).html().trim();
+    var roodid = $('td', obj).eq(5).html().trim();
+    var locationname = $('td', obj).eq(6).html().trim();
+
+    $('#ItemsName').val(itemname);
+    $('#LocationPrevious').val(locationname);
+    $('#roomId').val(roodid);
+    $('#roomName').val(roodname);
 }
 
 function Delete(url) {

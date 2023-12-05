@@ -1138,3 +1138,6 @@ D:\My File\Core 2022\Github\Inventory\E_OneWeb\obj\Release\net7.0\refint\E_OneWe
 D:\My File\Core 2022\Github\Inventory\E_OneWeb\obj\Release\net7.0\E_OneWeb.pdb
 D:\My File\Core 2022\Github\Inventory\E_OneWeb\obj\Release\net7.0\E_OneWeb.genruntimeconfig.cache
 D:\My File\Core 2022\Github\Inventory\E_OneWeb\obj\Release\net7.0\ref\E_OneWeb.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Release\net7.0\Grpc.AspNetCore.Server.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Release\net7.0\Grpc.Core.Api.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Release\net7.0\Grpc.Net.Common.dll
