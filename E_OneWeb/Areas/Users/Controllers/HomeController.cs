@@ -26,8 +26,30 @@ namespace E_OneWeb.Areas.Users.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Article> articleList = _unitOfWork.Article.GetAll();
-            return View(articleList);
+            //IEnumerable<Article> articleList = _unitOfWork.Article.GetAll();
+            //return View(articleList);
+            return View();
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+
+            var datalist = (from z in await _unitOfWork.RoomReservationUser.GetAllAsync(includeProperties: "RoomReservationAdmin")
+                            select new
+                            {
+                                id = z.Id,
+                                roomname = z.RoomReservationAdmin.RoomName + " (" + z.RoomReservationAdmin.LocationName + ")",
+                                startdate = Convert.ToDateTime(z.StartDate).ToString("dd/MM/yyyy"),
+                                enddate = Convert.ToDateTime(z.EndDate).ToString("dd/MM/yyyy"),
+                                status = z.Status,
+                                description = z.Description,
+                                entryby = z.EntryBy,
+                            }).Where(i => i.entryby == user.ToString()).ToList().OrderByDescending(o => o.id);
+
+            return Json(new { data = datalist });
         }
 
         public IActionResult Details(int id)

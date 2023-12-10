@@ -11,13 +11,11 @@ namespace E_OneWeb.Models
     {
         [Key]
         public int Id { get; set; }
-        [Display(Name = "Item Name")]
+        [Display(Name = "Ref Number")]
         [Required]
         [MaxLength(100)]
-        public string Name { get; set; }
-        public string? Description { get; set; }
-        [Display(Name = "Ref Number")]
-        public string? RefNumber { get; set; }
+        public string ReqNumber { get; set; }
+        public string? Description { get; set; }        
         public string? Requester { get; set; }
         [Display(Name = "Request Date")]
         public DateTime? RequestDate { get; set; }
@@ -26,5 +24,7 @@ namespace E_OneWeb.Models
         [MaxLength(255)]
         public string? EntryBy { get; set; }
         public DateTime? EntryDate { get; set; }
+		public string? Status { get; set; }
+        public int? StatusId { get; set; }
     }
 }

@@ -10,6 +10,7 @@
     <div class="row p-1 border">
 
         <input type="hidden" value="@ViewBag.Status" id="idstatus" />
+      @*  <input type="hidden" value="@ViewBag.Flagdel" id="flafdel" />*@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="RequestItemHeader.Id" id="IdHeader" />
         @if ((Model.RequestItemHeader.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Edit Success")
@@ -31,8 +32,8 @@
                             Ref Number
                         </div>
                         <div class="col-9">
-                            <input asp-for="RequestItemHeader.Name" class="form-control" style="row-gap" />
-                            <span asp-validation-for="RequestItemHeader.Name" class="text-danger"></span>
+                            <input asp-for="RequestItemHeader.ReqNumber" class="form-control" style="row-gap" />
+                            <span asp-validation-for="RequestItemHeader.ReqNumber" class="text-danger"></span>
                         </div>
                     </div>
 
@@ -79,9 +80,16 @@
 
 
             </div>
+            <button class="btn btn-primary" type="button" onclick="Export()">Export</button>
+         @*   @if (Model.RequestItemHeader.Id != 0)
+            {
+                <div class="col-3 offset-1 pt-4">
+                    <img src="@Model.RequestItemHeader.RefFile" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
+                </div>
+               
+            }*@
 
-
-            <div class="form-group row pt-2">
+   @*         <div class="form-group row pt-2">
 
                 <div class="col-6">
                     <div class="form-group row">
@@ -102,7 +110,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div>*@
 
 
 
@@ -150,7 +158,7 @@
                             Category Name
                         </th>
                         <th>
-                            Reason
+                            Spesification
                         </th>
                         <th>
                             Price
@@ -161,8 +169,7 @@
                         <th>
                             Total
                         </th>
-
-                       @* <th style="min-width:100px"></th>*@
+                        <th style="min-width:100px"></th>
                     </tr>
                 </thead>
             </table>
@@ -248,6 +255,21 @@
                     </div>
 
                 </div>
+
+                <div class="col-12 pt-2">
+                    <div class="form-group row">
+                        <div class="col-2">
+                            Specification
+                        </div>
+                        <div class="col-10">
+                            <div class="input-group">
+                                <textarea asp-for="RequestItemDetail.Specification" id="spesifik" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            
                 <div class="col-12 pt-2">
                     <div class="form-group row">
                         <div class="col-2">
@@ -294,15 +316,15 @@
 
             </div>
     
-             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+             <div class="modal-footer">              
                 <button type="button" class="btn btn-primary" onclick="AddItem()" data-bs-dismiss="modal">Add</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
 @section Scripts{
-
+    <partial name="_ValidationScriptsPartial" />
    @* <script src="~/js/Items.js"></script>*@
     <script type="text/javascript">
         $(document).ready(function () {
@@ -332,7 +354,7 @@
             return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
         }
         function loadDataItems() {
-            //var id = $('#IdHeader').val();
+            var id = $('#IdHeader').val();
             var table = $('#tblDataAddItems').DataTable();
             //clear datatable
             table.clear().draw();
@@ -340,72 +362,129 @@
             table.destroy();
             dataTable = $('#tblDataAddItems').DataTable({
                 "ajax": {
-                    "url": "/Admin/RequestItems/GetAllItems"
+                    "url": "/Admin/RequestItems/GetAllItems",
+                    "data": {
+                        "id": id
+                    }
                 },
                 "paging": false,
                 "searching": false,
                 "columns": [
-                    { "data": "itemname", "width": "20%" },
-                    { "data": "category", "width": "20%" },
-                    { "data": "reason", "width": "30%" },
-                    { "data": "price", "width": "20%" },
-                    { "data": "qty", "width": "10%" },
-                    { "data": "total", "width": "30%" }
+                    { "data": "itemname", "autoWidth": true },
+                    { "data": "category", "autoWidth": true },
+                    { "data": "spesifik", "autoWidth": true },
+                    { "data": "price", "autoWidth": true },
+                    { "data": "qty", "autoWidth": true },
+                    { "data": "total", "autoWidth": true },
+                    {
+                        "data": "id",
+                        "render": function (data) {
+                            return `
+                                    <div class="text-center">
+
+                                        <a onclick=Delete("/Admin/RequestItems/DeleteItem/${data}") class="btn btn-danger text-white" style="cursor:pointer">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                   `;
+                        }, "autoWidth": true
+                    }
                 ],              
             });
-        }       
+        }
+        function Delete(url) {
+            swal({
+                title: "Are you sure you want to Delete?",
+                text: "You will not be able to restore the data!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            }).then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        type: "DELETE",
+                        url: url,
+                        success: function (data) {
+                            if (data.success) {
+                                $("#grandtotal").val(data.grandtotal);
+                                var a = $("#grandtotal").val();
+                                $("#GrandTotalString").val(numberWithCommas(a));
+                                toastr.success(data.message);
+                                dataTable.ajax.reload();
+                            }
+                            else {
+                                toastr.error(data.message);
+                            }
+                        }
+                    });
+                }
+            });
+        }
       
         function AddItem() {
     
-
-            //IntervalID = setTimer();
-            //$('#myModal2').modal({ backdrop: 'static', keyboard: false });
             var name = $("#itemname").val();
             var category = $("#category").val();
             var reason = $("#reason").val();
             var price = $("#price").val();
             var qty = $("#qty").val();
             var total = $("#totalamount").val();
-            var urls = "/Admin/RequestItems/AddItem?name=" + name + "&category=" + category + "&reason=" + reason + "&price=" + price + "&qty=" + qty + "&total=" + total;
+            var spesifikasi = $("#spesifik").val();
 
-            try {
-                $.ajax({
-                    url: urls,
-                    dataType: 'json',
-                    type: 'POST',
-                    contentType: 'application/json;',
-                    //data: JSON.stringify(dataparameter),
-                    success: function (data) {
-                        if (data.result == "true") {
-                           
+            if (name != "" && category != "" && price != "" && qty != "")
+            {
+                var urls = "/Admin/RequestItems/AddItem?name=" + name + "&category=" + category + "&reason=" + reason + "&price=" + price + "&qty=" + qty + "&total=" + total + "&spesifik=" + spesifikasi;
+
+                try {
+                    $.ajax({
+                        url: urls,
+                        dataType: 'json',
+                        type: 'POST',
+                        contentType: 'application/json;',
+                        //data: JSON.stringify(dataparameter),
+                        success: function (data) {
+                            if (data.result == "true") {
+
+                            }
+                            //else { grandtotal
+
+                            //}
+                            loadDataItems();
+                            $("#itemname").val('');
+                            $("#category").val('');
+                            $("#reason").val('');
+                            $("#spesifik").val('');
+                            $("#price").val('');
+                            $("#PriceString").val('');
+                            $("#qty").val('');
+                            $("#totalamount").val('');
+                            $("#TotalAmountString").val('');
+                            $("#grandtotal").val(data.grandtotal);
+                            $('#GrandTotalString').val(numberWithCommas(data.grandtotal));
+                        },
+                        error: function (request, status, error) {
+                            console.log(status);
+                            console.log(urls, status, error.toString());
+                            console.log("error" + error);
+
                         }
-                        //else { grandtotal
-                         
-                        //}
-                        loadDataItems();
-                        $("#itemname").val('');
-                        $("#category").val('');
-                        $("#reason").val('');
+                    });
 
-                        $("#price").val('');
-                        $("#PriceString").val('');
-                        $("#qty").val('');
-                        $("#totalamount").val('');
-                        $("#TotalAmountString").val('');
-                        $("#grandtotal").val(data.grandtotal);
-                        $('#GrandTotalString').val(numberWithCommas(data.grandtotal));
-                    },
-                    error: function (request, status, error) {
-                        console.log(status);
-                        console.log(urls, status, error.toString());
-                        console.log("error" + error);
-                      
-                    }
-                });
+                } catch (e) {
 
-            } catch (e) {
+                }
+            }            
 
-            }
+        }
+
+        function Export() {
+
+            //var FilterAnnuityProduct = $('#SearchAnnuityProduct').val();
+            //var FilterPaymentBank = $('#SearchPaymentBank').val();
+            //var FilterStatus = $('#StatusType').val();
+            //var urlx = "@Url.Action("Export", "ApprovaldapemList")" + '?AnnuityProduct=' + FilterAnnuityProduct + '&PaymentBank=' + FilterPaymentBank + '&Status=' + FilterStatus;
+            var urlx = "/Admin/RequestItems/Export";
+            window.location = urlx;
 
         }
     </script>

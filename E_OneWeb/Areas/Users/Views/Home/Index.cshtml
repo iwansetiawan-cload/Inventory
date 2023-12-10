@@ -1,8 +1,14 @@
-﻿
-@model IEnumerable<E_OneWeb.Models.Article>
+﻿@*@model IEnumerable<E_OneWeb.Models.Article>*@
 
+@*@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var title = "Pinjam Ruangan";
+}
 
-<div class="row pb-3 backgroundWhite">
+<div class="col-12 border-bottom">
+    <h2 class="text-primary">@title</h2>
+</div>*@
+@*<div class="row pb-3 backgroundWhite">
     @foreach (var item in Model)
     {
         <div class="col-lg-3 col-md-6">
@@ -25,10 +31,7 @@
                             <p>By: @item.EntryBy</p>
                             <p>Entry Date: <b class="">@item.EntryDate.Value.ToString("dd-MM-yyyy")</b></p>
                         </div>
-                       @* <div style="padding-left:5px;">
-                            
-                        </div>*@
-
+                    
                         <div>
                             <a asp-action="Details" class="btn btn-primary form-control" asp-route-id="@item.Id">Details</a>
                         </div>
@@ -40,3 +43,4 @@
 
 
 </div>
+*@

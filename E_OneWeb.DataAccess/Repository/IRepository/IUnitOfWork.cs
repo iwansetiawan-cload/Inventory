@@ -22,6 +22,8 @@ namespace E_OneWeb.DataAccess.Repository.IRepository
         IItemServiceRepositoryAsync ItemService { get; }
         IRequestItemHeaderRepositoryAsync RequestItemHeader { get; }
         IRequestItemDetailRepositoryAsync RequestItemDetail { get; }
+        IRoomReservationRepositoryUserAsync RoomReservationUser { get; }
+        IRoomReservationRepositoryAdminAsync RoomReservationAdmin { get; }
         void Save();
     }
 }

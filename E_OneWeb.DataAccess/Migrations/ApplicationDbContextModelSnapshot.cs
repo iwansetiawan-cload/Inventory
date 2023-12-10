@@ -533,6 +533,9 @@ namespace E_OneWeb.DataAccess.Migrations
                     b.Property<string>("Reason")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Specification")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double?>("Total")
                         .HasColumnType("float");
 
@@ -559,22 +562,25 @@ namespace E_OneWeb.DataAccess.Migrations
                     b.Property<DateTime?>("EntryDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<string>("RefFile")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RefNumber")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("ReqNumber")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime?>("RequestDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Requester")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("StatusId")
+                        .HasColumnType("int");
 
                     b.Property<double?>("TotalAmount")
                         .HasColumnType("float");
@@ -608,6 +614,91 @@ namespace E_OneWeb.DataAccess.Migrations
                     b.HasIndex("IDLocation");
 
                     b.ToTable("Rooms");
+                });
+
+            modelBuilder.Entity("E_OneWeb.Models.RoomReservationAdmin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("EntryBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime?>("EntryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Flag")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LocationName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RoomName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("StatusId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("RoomReservationAdmin");
+                });
+
+            modelBuilder.Entity("E_OneWeb.Models.RoomReservationUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApproveBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EntryBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime?>("EntryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("RoomAdminId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("StatusId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoomAdminId");
+
+                    b.ToTable("RoomReservationUser");
                 });
 
             modelBuilder.Entity("E_OneWeb.Models.Supplier", b =>
@@ -948,6 +1039,28 @@ namespace E_OneWeb.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Location");
+                });
+
+            modelBuilder.Entity("E_OneWeb.Models.RoomReservationAdmin", b =>
+                {
+                    b.HasOne("E_OneWeb.Models.Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Room");
+                });
+
+            modelBuilder.Entity("E_OneWeb.Models.RoomReservationUser", b =>
+                {
+                    b.HasOne("E_OneWeb.Models.RoomReservationAdmin", "RoomReservationAdmin")
+                        .WithMany()
+                        .HasForeignKey("RoomAdminId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("RoomReservationAdmin");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

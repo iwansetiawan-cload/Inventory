@@ -22,12 +22,14 @@ namespace E_OneWeb.DataAccess.Repository
             var objFromDb = _db.RequestItemHeader.FirstOrDefault(s => s.Id == requestheader.Id);
             if (objFromDb != null)
             {
-                objFromDb.Name = requestheader.Name;                
+                objFromDb.ReqNumber = requestheader.ReqNumber;                
                 objFromDb.Description = requestheader.Description;
-                objFromDb.RefNumber = requestheader.RefNumber;
+                objFromDb.Status = requestheader.Status;
+                objFromDb.StatusId = requestheader.StatusId;
                 objFromDb.Requester = requestheader.Requester;
                 objFromDb.RequestDate = requestheader.RequestDate;               
                 objFromDb.TotalAmount = requestheader.TotalAmount;
+                objFromDb.RefFile = requestheader.RefFile;
 
                 _db.SaveChanges();
             }

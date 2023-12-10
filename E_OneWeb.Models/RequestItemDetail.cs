@@ -17,6 +17,7 @@ namespace E_OneWeb.Models
         [MaxLength(225)]
         public string Name { get; set; }
         public string? Category { get; set; }
+        public string? Specification { get; set; }
         public string? Reason { get; set; }
         public double? Price { get; set; }
         public int? Qty { get; set; }

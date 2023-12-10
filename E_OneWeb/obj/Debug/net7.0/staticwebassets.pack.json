@@ -73,6 +73,10 @@
       "PackagePath": "staticwebassets\\images\\products\\34f49d4a-8cb1-4c36-a865-2c72fddbf2fc.docx"
     },
     {
+      "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\426d92e9-a64b-4330-b28b-a24e8a806cee.docx",
+      "PackagePath": "staticwebassets\\images\\products\\426d92e9-a64b-4330-b28b-a24e8a806cee.docx"
+    },
+    {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\698d330f-c0b7-48d7-9222-f2bf2e9302c0.jpg",
       "PackagePath": "staticwebassets\\images\\products\\698d330f-c0b7-48d7-9222-f2bf2e9302c0.jpg"
     },
@@ -99,10 +103,6 @@
     {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\fad5c1f6-2132-43aa-a7de-adf9efa8a846.jpg",
       "PackagePath": "staticwebassets\\images\\products\\fad5c1f6-2132-43aa-a7de-adf9efa8a846.jpg"
-    },
-    {
-      "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\~$caadd9-12e4-48ac-8c95-6f7897fcc7c8.docx",
-      "PackagePath": "staticwebassets\\images\\products\\~$caadd9-12e4-48ac-8c95-6f7897fcc7c8.docx"
     },
     {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\ItemTransfer.js",
@@ -143,6 +143,10 @@
     {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\index_itemservice.js",
       "PackagePath": "staticwebassets\\js\\index_itemservice.js"
+    },
+    {
+      "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\index_pinjamruangan_user.js",
+      "PackagePath": "staticwebassets\\js\\index_pinjamruangan_user.js"
     },
     {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\location.js",
