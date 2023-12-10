@@ -92,6 +92,23 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Buffering/0.2.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "1.1.2",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Buffering.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Buffering.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/7.0.5": {
         "type": "package",
         "compile": {
@@ -2336,6 +2353,21 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.Policy.xml",
         "microsoft.aspnetcore.authorization.policy.2.2.0.nupkg.sha512",
         "microsoft.aspnetcore.authorization.policy.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Buffering/0.2.2": {
+      "sha512": "FWKLMEqRrrwXhJ/ln2SsgaUFB1YEvcEuZSj9bOqEipwxhkec0UytzvvAEXdeN7td/Z6+AQEEdBpVi6dxJnKJPA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.buffering/0.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net451/Microsoft.AspNetCore.Buffering.dll",
+        "lib/net451/Microsoft.AspNetCore.Buffering.xml",
+        "lib/netstandard1.3/Microsoft.AspNetCore.Buffering.dll",
+        "lib/netstandard1.3/Microsoft.AspNetCore.Buffering.xml",
+        "microsoft.aspnetcore.buffering.0.2.2.nupkg.sha512",
+        "microsoft.aspnetcore.buffering.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/7.0.5": {
@@ -6892,6 +6924,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "Microsoft.AspNetCore.Buffering >= 0.2.2",
       "Microsoft.AspNetCore.Mvc.ViewFeatures >= 2.2.0",
       "Microsoft.Extensions.Identity.Stores >= 7.0.5"
     ]
@@ -6935,6 +6968,10 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Buffering": {
+            "target": "Package",
+            "version": "[0.2.2, )"
+          },
           "Microsoft.AspNetCore.Mvc.ViewFeatures": {
             "target": "Package",
             "version": "[2.2.0, )"

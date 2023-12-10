@@ -4004,3 +4004,4 @@ D:\My File\Core 2022\Github\Clone\E_OneWeb\obj\Debug\net7.0\ref\E_OneWeb.dll
 D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\Grpc.AspNetCore.Server.dll
 D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\Grpc.Core.Api.dll
 D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\Grpc.Net.Common.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\Microsoft.AspNetCore.Buffering.dll

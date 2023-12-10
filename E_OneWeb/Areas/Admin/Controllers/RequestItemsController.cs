@@ -13,6 +13,9 @@ using System.Runtime.CompilerServices;
 using System.IO;
 using System.Security.Policy;
 using OfficeOpenXml;
+using static System.Net.Mime.MediaTypeNames;
+using System.IO.Pipes;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace E_OneWeb.Areas.Admin.Controllers
 {
@@ -75,6 +78,16 @@ namespace E_OneWeb.Areas.Admin.Controllers
             }
 
             requestitemvm.RequestItemHeader = await _unitOfWork.RequestItemHeader.GetAsync(id.GetValueOrDefault());
+            if (requestitemvm.RequestItemHeader.RefFile != null)
+            {
+                ViewBag.fileDownload = "true";
+            }
+            else
+            {
+                ViewBag.fileDownload = "";
+            }
+
+            
             var DetailList = await _unitOfWork.RequestItemDetail.GetAllAsync();
             var datalist_ = (from z in DetailList.Where(z => z.IdHeader == id)
                              select new
@@ -135,7 +148,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                     //this is an edit and we need to remove old image
                     var imagePath = Path.Combine(webRootPath, vm.RequestItemHeader.RefFile.TrimStart('\\'));
                     if (System.IO.File.Exists(imagePath))
-                    {
+                     {
                         System.IO.File.Delete(imagePath);
                     }
                 }
@@ -315,94 +328,43 @@ namespace E_OneWeb.Areas.Admin.Controllers
             double? totalamount = additemlist.Sum(z => z.Total);
             return Json(new { success = true, message = "Delete Successful", grandtotal = totalamount });
 
-        }
-
-        //public async void downloadFile(int id)
-        //{
-        //	var objFromDb = await _unitOfWork.RequestItemHeader.GetAsync(id);
-        //	string file = System.IO.Path.GetFileName(objFromDb.RefFile);
-        //	WebClient cln = new WebClient();
-        //	//cln.DownloadFile(objFromDb.RefFile, file);
-        //	var net = new System.Net.WebClient();
-        //	var data = net.DownloadData(objFromDb.RefFile);
-        //	var content = new System.IO.MemoryStream(data);
-        //	var contentType = "APPLICATION/octet-stream";
-        //	var fileName = "something.bin";
-        //	return File(content, contentType, fileName);
-
-        //	if (System.IO.File.Exists(file))
-        //	{
-        //		File(System.IO.File.OpenRead(file), "application/octet-stream", Path.GetFileName(file));
-        //	}
-        //}
-
-        //[HttpGet("downloadFile")]
-        public async Task<IActionResult> downloadFile(int id)
-		{
-			var objFromDb = await _unitOfWork.RequestItemHeader.GetAsync(id);
-			//var net = new System.Net.WebClient();
-
-           objFromDb.RefFile = "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\31caadd9-12e4-48ac-8c95-6f7897fcc7c8.docx";
-            //var data = net.DownloadData(objFromDb.RefFile);
-            //var content = new System.IO.MemoryStream(data);
-            //var contentType = "APPLICATION/octet-stream";
-            //var fileName = "something.bin";
-            //return File(content, contentType, fileName);
-            //using (var client = new HttpClient())
-            //using (var result = await client.GetAsync(objFromDb.RefFile))
-            //{
-            //    return result.IsSuccessStatusCode ? await result.Content.ReadAsByteArrayAsync() : null;
-            //}
-            string filePath = "tess";
-            var filePathWithName = objFromDb.RefFile.Replace("\\", "/");
-            var result = await GetUrlContent(filePathWithName);
-            if (objFromDb != null)
-            {
-                return File(result, "APPLICATION/octet-stream", Path.GetFileName(filePath));
-            }
-            return Ok("file is not exist");
-
-        }
+        }        
+               
         public async Task<byte[]?> GetUrlContent(string url)
         {
             using (var client = new HttpClient())
             using (var result = await client.GetAsync(url))
                 return result.IsSuccessStatusCode ? await result.Content.ReadAsByteArrayAsync() : null;
         }
-        //public ActionResult Export()
-        //{
+      
+        private MemoryStream DownloadSinghFile(string filename, string uploadPath)
+        { 
+            var path = Path.Combine(Directory.GetCurrentDirectory(),uploadPath, filename);
+            var memory = new MemoryStream();
+            if (System.IO.File.Exists(path))
+            { 
+                var net = new System.Net.WebClient();
+                var data = net.DownloadData(path);
+                var content = new System.IO.MemoryStream(data);
+                memory = content;
+            }
+            memory.Position = 0;
+            return memory;
+        }
+        //[HttpGet("Export")]
+        public async Task<IActionResult> Export(string id)
+        {
 
-        //    ExcelPackage Exc = new ExcelPackage();
-        //    ExcelWorksheet worksheet = Exc.Workbook.Worksheets.Add("Sheet 1");
-        //    worksheet.Cells[1, 1, 1, 13].Style.Font.Bold = true;
-        //    worksheet.Cells[1, 1].Value = "NO";
-        //    worksheet.Cells[1, 2].Value = "MEMBER INSTANCE ID";
-        //    worksheet.Cells[1, 3].Value = "MEMBER NAMA";
-        //    worksheet.Cells[1, 4].Value = "TGL LAHIR";
-        //    worksheet.Cells[1, 5].Value = "TMT PESERTA";
-        //    worksheet.Cells[1, 6].Value = "TMT PENSIUN";
-        //    worksheet.Cells[1, 7].Value = "AMOUNT";
-        //    worksheet.Cells[1, 8].Value = "BANK ACCOUNT NO";
-        //    worksheet.Cells[1, 9].Value = "BANK ACCOUNT NAME";
-        //    worksheet.Cells[1, 10].Value = "BANK NAME";
-        //    worksheet.Cells[1, 11].Value = "BANK BRANCH";
-        //    worksheet.Cells[1, 12].Value = "INSTANSI";
-        //    worksheet.Cells[1, 13].Value = "DAPEM CODE";
+            int idheader = id != null ? Convert.ToInt32(id) : 0;
+            var objFromDb = await _unitOfWork.RequestItemHeader.GetAsync(idheader);
 
-        //    worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+            string filename = objFromDb.RefFile;
+            string filePath = "wwwroot\\images\\products";
+            var memory = DownloadSinghFile(filename, filePath);
+            var contentType = "APPLICATION/octet-stream";
+            return File(memory.ToArray(), contentType, filename);
+            //return File(memory.ToArray(), contentType, Path.GetFileName(filePath));
 
-        //    byte[] bin = Exc.GetAsByteArray();
-        //    Response.Buffer = true;
-        //    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-        //    Response.AddHeader("content-length", bin.Length.ToString());
-        //    Response.AddHeader("content-disposition", "attachment; filename=\"ExportApprovalDapemlist_" + DateTime.Now.ToString("yyyyMMdd:hh.mm") + ".xlsx\"");
-        //    Response.OutputStream.Write(bin, 0, bin.Length);
-        //    Response.Flush();
-        //    Response.SuppressContent = true;
-
-
-        //    return View();
-
-        //}
+        }
     }
 }

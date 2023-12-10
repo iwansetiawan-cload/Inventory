@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "h9ID26d7YUI+BXjCraixIeafowNl2rBcfemXfzCkZXM=",
+  "Hash": "tllmR69R0Fl+An02Eo2KxxpQ2K+S5e9cItBki0s9zPo=",
   "Source": "E_OneWeb",
   "BasePath": "_content/E_OneWeb",
   "Mode": "Default",
@@ -1394,6 +1394,23 @@
       "OriginalItemSpec": "wwwroot\\images\\products\\698d330f-c0b7-48d7-9222-f2bf2e9302c0.jpg"
     },
     {
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\7870e8b9-a339-40d7-ab18-16361cdd6e36.xlsx",
+      "SourceId": "E_OneWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
+      "BasePath": "_content/E_OneWeb",
+      "RelativePath": "images/products/7870e8b9-a339-40d7-ab18-16361cdd6e36.xlsx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\7870e8b9-a339-40d7-ab18-16361cdd6e36.xlsx"
+    },
+    {
       "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\7ce85b28-1f30-4cb0-b104-ea4f4eb07586.jpg",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
@@ -1443,6 +1460,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\products\\aff9521f-1f79-4a0f-865c-e0d8a7b0fd2d.jpg"
+    },
+    {
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\Catatan Fitur Aplikasi SARPRAS.pdf",
+      "SourceId": "E_OneWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
+      "BasePath": "_content/E_OneWeb",
+      "RelativePath": "images/products/Catatan Fitur Aplikasi SARPRAS.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\Catatan Fitur Aplikasi SARPRAS.pdf"
     },
     {
       "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\d816ba11-a42b-49ff-904d-22e6c22a4fe0.jpg",

@@ -10,7 +10,7 @@
     <div class="row p-1 border">
 
         <input type="hidden" value="@ViewBag.Status" id="idstatus" />
-      @*  <input type="hidden" value="@ViewBag.Flagdel" id="flafdel" />*@
+        <input type="hidden" value="@ViewBag.fileDownload" id="filedownload" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="RequestItemHeader.Id" id="IdHeader" />
         @if ((Model.RequestItemHeader.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Edit Success")
@@ -72,7 +72,7 @@
                             File
                         </div>
                         <div class="col-9">
-                            <input type="file" name="files" id="uploadBox" multiple class="form-control" />
+                            <input type="file" name="files" id="uploadBox" multiple class="form-control" />                           
                         </div>
                     </div>
 
@@ -80,7 +80,7 @@
 
 
             </div>
-            <button class="btn btn-primary" type="button" onclick="Export()">Export</button>
+            
          @*   @if (Model.RequestItemHeader.Id != 0)
             {
                 <div class="col-3 offset-1 pt-4">
@@ -140,7 +140,8 @@
         <div class="row py-2">
             <div class="col-md-12">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#lookupItems" style="width:145px" id="btn-lookupitems"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp; Add Item</button>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" title="Add item" data-bs-target="#lookupItems" style="width:145px" id="btn-lookupitems"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp; Add Item</button>
+                    <button class="btn btn-primary" type="button" title="Download file" onclick="Export()" id="exportfile"><i class="fas fa-file-export"></i></button>
                 </div>
 
             </div>
@@ -331,6 +332,13 @@
             loadDataItems();
             var a = $("#grandtotal").val();
             $("#GrandTotalString").val(numberWithCommas(a));
+
+            if ($("#filedownload").val() == "true") {
+                $("#exportfile").removeAttr("disabled");
+            }else
+            {
+                $("#exportfile").attr("disabled", "disabled");                
+            }
         });
         $("#SearchCategory").change(function () {
             var cat = $("#SearchCategory").val();
@@ -477,13 +485,9 @@
 
         }
 
-        function Export() {
-
-            //var FilterAnnuityProduct = $('#SearchAnnuityProduct').val();
-            //var FilterPaymentBank = $('#SearchPaymentBank').val();
-            //var FilterStatus = $('#StatusType').val();
-            //var urlx = "@Url.Action("Export", "ApprovaldapemList")" + '?AnnuityProduct=' + FilterAnnuityProduct + '&PaymentBank=' + FilterPaymentBank + '&Status=' + FilterStatus;
-            var urlx = "/Admin/RequestItems/Export";
+        function Export() {   
+            var id = $('#IdHeader').val();
+            var urlx = "/Admin/RequestItems/Export/" + id;
             window.location = urlx;
 
         }
