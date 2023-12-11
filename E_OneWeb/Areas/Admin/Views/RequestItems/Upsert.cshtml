@@ -13,7 +13,7 @@
         <input type="hidden" value="@ViewBag.fileDownload" id="filedownload" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="RequestItemHeader.Id" id="IdHeader" />
-        @if ((Model.RequestItemHeader.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Edit Success")
+        @if ((Model.RequestItemHeader.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Update Success")
         {
             //edit
             title = "Update Request item";

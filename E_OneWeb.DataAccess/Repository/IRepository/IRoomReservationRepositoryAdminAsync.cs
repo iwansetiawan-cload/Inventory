@@ -9,5 +9,6 @@ namespace E_OneWeb.DataAccess.Repository.IRepository
 {
     public interface IRoomReservationRepositoryAdminAsync : IRepositoryAsync<RoomReservationAdmin>
     {
-    }
+		void Update(RoomReservationAdmin room);
+	}
 }

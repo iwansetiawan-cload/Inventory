@@ -14,20 +14,7 @@ function loadDataTable() {
             { "data": "roomname", "autoWidth": true },
             { "data": "startdate", "autoWidth": true },
             { "data": "enddate", "autoWidth": true },
-            { "data": "status", "autoWidth": true },
-            {
-                "data": "id",
-                "render": function (data) {
-                    return `
-                            <div class="text-center">
-                                <a href="/Users/RoomReservation/Delete/${data}" class="btn btn-success text-white" style="cursor:pointer">
-                                    <i class="fas fa-edit"></i> 
-                                </a>    
-                                
-                            </div>
-                           `;
-                }, "autoWidth": true
-            }
+            { "data": "status", "autoWidth": true }
         ]
     });
 }

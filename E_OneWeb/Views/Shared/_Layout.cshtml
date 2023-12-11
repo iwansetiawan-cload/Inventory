@@ -113,14 +113,23 @@
                                 </div>
                             </li>*@
                             <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Room Reservation</a>
+
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="RoomList" asp-action="Index">Room List</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="RoomReservationAdmin" asp-action="Index">Reservation</a>
+                                </div>                               
+                                
+                            </li>
+                            <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Reporting</a>
 
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="ReportItems" asp-action="Index">Report Item</a>
 
-                                 
+
                                 </div>
-                                
+
                             </li>
 
                         }

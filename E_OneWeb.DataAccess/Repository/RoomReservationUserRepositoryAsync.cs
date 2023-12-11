@@ -17,5 +17,15 @@ namespace E_OneWeb.DataAccess.Repository
         {
             _db = db;
         }
+        public void Update(RoomReservationUser room)
+        {
+            var objFromDb = _db.RoomReservationUser.FirstOrDefault(s => s.Id == room.Id);
+            if (objFromDb != null)
+            {
+                objFromDb.StatusId = room.StatusId;
+                objFromDb.Status = room.Status;
+                _db.SaveChanges();
+            }
+        }
     }
 }

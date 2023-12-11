@@ -156,7 +156,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 {
                     files[0].CopyTo(filesStreams);
                 }
-                vm.RequestItemHeader.RefFile = @"\images\products\" + fileName + extenstion;
+                vm.RequestItemHeader.RefFile = fileName  + extenstion;
             }
           
             if (vm.RequestItemHeader.Id == 0)
@@ -198,7 +198,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                     _unitOfWork.Save();
 
                 }
-               
+                //TempData["Success"] = "Save Request items successfully";
             }
             else
             {               
@@ -243,7 +243,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                     _unitOfWork.Save();
 
                 }
-                ViewBag.Status = "Edit Success";
+                //TempData["Success"] = "Update Request items successfully";
+                ViewBag.Status = "Update Success";
                
             }
             return RedirectToAction(nameof(Index));         

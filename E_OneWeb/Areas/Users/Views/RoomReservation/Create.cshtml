@@ -9,6 +9,10 @@
 <form method="post">
     <br />
     <div class="row p-3 border">
+        <input type="hidden" asp-for="RoomReservationUser.UserId"/>
+        <input type="hidden" asp-for="RoomReservationUser.EntryBy"/>
+        <input type="hidden" asp-for="RoomReservationUser.EntryDate"/>
+        @*<input type="hidden" asp-for="RoomReservationUser.RoomReservationAdmin.Id" id="cekidroom" />*@
         <div class="col-12 border-bottom">
             <h2 class="text-primary">@title</h2>
         </div>
@@ -157,13 +161,15 @@
             //    $("#btnSave").attr("disabled", "disabled");
 
             //}
-            //var transferidId = $('#transferid').val();
-            //if (transferidId == 0) {
-            //    $("#btn-lookupitems").removeAttr("disabled");
+            //var idroom = $('#cekidroom').val();
+            //if (idroom == 0) {
+               
             //}
             //else {
-            //    $("#btn-lookupitems").attr("disabled", "disabled");
+            //    $("#btnSave").removeAttr("disabled");
+            
             //}
+            $("#btnSave").attr("disabled", "disabled");
         });
         function loadDataRoom() {
             dataTable = $('#tblDataRoom').DataTable({
@@ -192,6 +198,7 @@
             $('#RoomName').val(name_of_room);
             $('#LocationName').val(name_of_location);
             $('#RoomId').val(id_of_room);
+            $("#btnSave").removeAttr("disabled");
         }
     </script>
 }

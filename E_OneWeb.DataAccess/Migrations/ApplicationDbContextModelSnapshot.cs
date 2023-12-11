@@ -624,12 +624,15 @@ namespace E_OneWeb.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("EntryBy")
+                    b.Property<string>("BookingBy")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<DateTime?>("EntryDate")
+                    b.Property<DateTime?>("BookingDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("BookingId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("Flag")
                         .HasColumnType("int");
@@ -693,6 +696,11 @@ namespace E_OneWeb.DataAccess.Migrations
 
                     b.Property<int?>("StatusId")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 

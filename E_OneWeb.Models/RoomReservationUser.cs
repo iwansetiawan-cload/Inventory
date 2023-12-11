@@ -22,6 +22,9 @@ namespace E_OneWeb.Models
         public string? ApproveBy { get; set; }
         public int? StatusId { get; set; }
         public string? Status { get; set; }
+        [Required]
+        [MaxLength(450)]
+        public string UserId { get; set; }
         [MaxLength(255)]
         public string? EntryBy { get; set; }
         public DateTime? EntryDate { get; set; }

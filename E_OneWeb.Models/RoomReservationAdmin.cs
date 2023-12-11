@@ -21,8 +21,9 @@ namespace E_OneWeb.Models
         public int? StatusId { get; set; }
         public string? Status { get; set; }
         public int? Flag { get; set; }
+        public int? BookingId { get; set;}
         [MaxLength(255)]
-        public string? EntryBy { get; set; }
-        public DateTime? EntryDate { get; set; }
+        public string? BookingBy { get; set; }
+        public DateTime? BookingDate { get; set; }
     }
 }

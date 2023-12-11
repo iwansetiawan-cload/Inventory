@@ -29,12 +29,18 @@ namespace E_OneWeb.Areas.Users.Controllers
         }
         public async Task<IActionResult> Create(int? id)
         {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
             RoomReservationUserVM vm = new RoomReservationUserVM()
             {
                 RoomReservationUser = new RoomReservationUser()
 
             };
-
+          
+            vm.RoomReservationUser.UserId = user.Id;
+            vm.RoomReservationUser.EntryBy = user.Name;
+            vm.RoomReservationUser.EntryDate = DateTime.Now;
             vm.RoomReservationUser.StartDate = DateTime.Now;
             vm.RoomReservationUser.EndDate = DateTime.Now;
             return View(vm);
@@ -44,44 +50,52 @@ namespace E_OneWeb.Areas.Users.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(RoomReservationUserVM vm)
         {
-            
-
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
-            vm.RoomReservationUser.EntryBy = user.Name;
-            vm.RoomReservationUser.EntryDate = DateTime.Now;
-
-            //if (vm.RoomReservationUser.Id == 0)
-            //{
-            //    await _unitOfWork.RoomReservationUser.AddAsync(vm.RoomReservationUser);
-            //    _unitOfWork.Save();
-            //    ViewBag.Status = "Save Success";
-
-            //}
-            var errorval = ModelState.Values.SelectMany(i=>i.Errors);
-            if (ModelState.IsValid)
+            var Gen_4 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 4 && z.GENVALUE == 1).FirstOrDefault();
+            var Gen_5 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 5 && z.GENVALUE == 1).FirstOrDefault();
+            if (vm.RoomReservationUser.Id == 0)
             {
-                if (vm.RoomReservationUser.Id == 0)
-                {
-                    RoomReservationAdmin roomReservationAdmin = await _unitOfWork.RoomReservationAdmin.GetAsync(vm.RoomReservationUser.RoomReservationAdmin.Id);
-                    vm.RoomReservationUser.RoomReservationAdmin = roomReservationAdmin;
-
-                    await _unitOfWork.RoomReservationUser.AddAsync(vm.RoomReservationUser);
-                    _unitOfWork.Save();
-                    ViewBag.Status = "Save Success";
-
-                }
-               
+                RoomReservationAdmin roomReservationAdmin = await _unitOfWork.RoomReservationAdmin.GetAsync(vm.RoomReservationUser.RoomReservationAdmin.Id);
+                vm.RoomReservationUser.RoomReservationAdmin = roomReservationAdmin;
+                vm.RoomReservationUser.StatusId = Gen_5.IDGEN;
+                vm.RoomReservationUser.Status = Gen_5.GENNAME;
+                await _unitOfWork.RoomReservationUser.AddAsync(vm.RoomReservationUser);
                 _unitOfWork.Save();
-                //return RedirectToAction(nameof(Index));
+
+                roomReservationAdmin.BookingId = vm.RoomReservationUser.Id;
+                roomReservationAdmin.BookingBy = vm.RoomReservationUser.EntryBy;
+                roomReservationAdmin.BookingDate = DateTime.Now;
+                roomReservationAdmin.StatusId = Gen_4.IDGEN;
+                roomReservationAdmin.Status = Gen_4.GENNAME;
+				roomReservationAdmin.Flag = Gen_4.GENCODE != null ? Convert.ToInt32(Gen_4.GENCODE) : 0;
+				_unitOfWork.RoomReservationAdmin.Update(roomReservationAdmin);
+				_unitOfWork.Save();
+				ViewBag.Status = "Save Success";
+
             }
-          
+            //var errorval = ModelState.Values.SelectMany(i=>i.Errors);
+            //if (ModelState.IsValid)
+            //{
+            //    if (vm.RoomReservationUser.Id == 0)
+            //    {                 
 
 
-            return View(vm);
+            //        await _unitOfWork.RoomReservationUser.AddAsync(vm.RoomReservationUser);
+            //        _unitOfWork.Save();
+            //        roomReservationAdmin.BookingId = vm.RoomReservationUser.Id;
+            //        roomReservationAdmin.BookingBy = vm.RoomReservationUser.EntryBy;
+            //        roomReservationAdmin.BookingDate = DateTime.Now;
+            //        ViewBag.Status = "Save Success";
 
-        }
+            //    }
+
+            //    _unitOfWork.Save();
+            //    //return RedirectToAction(nameof(Index));
+            //}
+            TempData["Success"] = "Save successfully";
+
+            return RedirectToAction(nameof(Index));
+
+		}
 
         [HttpGet]
         public async Task<IActionResult> GetAllRoomAndLocation()
@@ -90,9 +104,10 @@ namespace E_OneWeb.Areas.Users.Controllers
                             select new
                             {
                                 id = z.Id,
+                                flag = z.Flag,
                                 name_of_room = z.RoomName,
                                 name_of_location = z.LocationName
-                            }).ToList();
+                            }).Where(i => i.flag == 0).ToList();
             return Json(new { data = datalist });
         }
 
