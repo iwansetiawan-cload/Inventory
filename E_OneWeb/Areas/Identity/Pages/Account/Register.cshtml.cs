@@ -125,10 +125,10 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
             if (!_roleManager.RoleExistsAsync(SD.Role_User).GetAwaiter().GetResult())
             {
                 _roleManager.CreateAsync(new IdentityRole(SD.Role_User)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin)).GetAwaiter().GetResult(); 
-            }
-                
-          
+                _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(SD.Role_Employee)).GetAwaiter().GetResult();
+            }            
+
             //Input = new InputModel()
             //{
             //    CompanyList = _unitOfWork.Company.GetAll().Select(i => new SelectListItem
@@ -188,7 +188,7 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
                     //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                     //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                    if (user.NormalizedEmail == "IWAN.SETTI@YAHOO.COM" && user.PostalCode == "10640")
+                    if (user.NormalizedEmail == "IWAN.SETTI@YAHOO.COM" && user.PhoneNumber == "081289277785")
                     {
                         await _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin));
                         if (user.Role == null)

@@ -10,8 +10,7 @@ using System.Data;
 namespace E_OneWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = SD.Role_Admin)]
-
+    [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
     public class RoomController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

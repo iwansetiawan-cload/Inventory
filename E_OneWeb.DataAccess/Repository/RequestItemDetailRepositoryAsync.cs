@@ -23,7 +23,9 @@ namespace E_OneWeb.DataAccess.Repository
             if (objFromDb != null)
             {
                 objFromDb.Name = requestdetail.Name;
-               
+                objFromDb.Status = requestdetail.Status;
+                objFromDb.Notes = requestdetail.Notes;
+                objFromDb.StatusId = requestdetail.StatusId;
                 _db.SaveChanges();
             }
         }

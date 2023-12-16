@@ -26,19 +26,19 @@
                         </h3>
                         <hr />
                         <div class="py-2">
-                            <input asp-for="Input.Name" placeholder="Name" class="form-control" />
+                            <input asp-for="Input.Name" placeholder="Nama" class="form-control" />
                             <span asp-validation-for="Input.Name" class="text-danger"></span>
                         </div>
                         <div class="py-2">                            
                             @Html.DropDownListFor(m => m.Input.Gender, new List<SelectListItem>() {
                             new SelectListItem(){ Text = "Laki Laki" , Value="Laki Laki" },
                             new SelectListItem(){ Text = "Perempuan" , Value="Perempuan" }
-                            }, "-- Select a Gender --",new { @class = "form-control", @id = "Gender" })
+                            }, "-- Select a Jenis Kelamin --",new { @class = "form-control", @id = "Gender" })
                             <span asp-validation-for="Input.Gender" class="text-danger"></span>
                         </div>
 
                         <div class="py-2">
-                            <input asp-for="Input.CardNumber" placeholder="Card Number" class="form-control" />
+                            <input asp-for="Input.CardNumber" placeholder="NIM" class="form-control" />
                             <span asp-validation-for="Input.CardNumber" class="text-danger"></span>
                         </div>
                         <div class="py-2">
@@ -54,21 +54,21 @@
                         </div>
                         <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
                         <div class="py-2">
-                            <input asp-for="Input.City" placeholder="City" class="form-control" />
+                            <input asp-for="Input.City" placeholder="Prodi" class="form-control" />
                             <span asp-validation-for="Input.City" class="text-danger"></span>                          
 
                         </div>
-                        <div class="py-2">
+                    @*    <div class="py-2">
                             <input asp-for="Input.PostalCode" placeholder="Referral Code" class="form-control" />
                             <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
 
-                        </div>
+                        </div>*@
                         <div class="form-row py-2">
                             <div class="col">
                                 <input asp-for="Input.Password" type="password" placeholder="Password" class="form-control" />
                                 <span asp-validation-for="Input.Password" class="text-danger"></span>
                             </div>
-                            <div class="col">
+                            <div class="col py-2">
                                 <input asp-for="Input.ConfirmPassword" type="password" placeholder="Confirm Password" class="form-control" />
                                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                             </div>

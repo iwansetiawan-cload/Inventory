@@ -20,7 +20,7 @@ using Microsoft.AspNetCore.StaticFiles;
 namespace E_OneWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = SD.Role_Admin)]
+    [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
     public class RequestItemsController : Controller
     {
         public static List<RequestItemDetail> additemlist = new List<RequestItemDetail>();
@@ -32,6 +32,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             _unitOfWork = unitOfWork;
             _hostEnvironment = hostEnvironment;
         }
+        [Authorize(Roles = SD.Role_Employee)]
         public IActionResult Index()
         {
             return View();
@@ -47,8 +48,27 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 refnumber = z.ReqNumber,
                                 requestdate = Convert.ToDateTime(z.RequestDate).ToString("dd-MM-yyyy"),
                                 requestby = z.Requester,
-                                desc = z.Description,
+                                desc = z.Notes,
                                 totalamount = z.TotalAmount.HasValue ? z.TotalAmount.Value.ToString("#,##0") : ""
+
+                            }).OrderByDescending(i => i.id).ToList();
+
+            return Json(new { data = datalist });
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAllApprove()
+        {
+
+            var datalist = (from z in await _unitOfWork.RequestItemHeader.GetAllAsync()
+                            select new
+                            {
+                                id = z.Id,
+                                refnumber = z.ReqNumber,
+                                requestdate = Convert.ToDateTime(z.RequestDate).ToString("dd-MM-yyyy"),
+                                requestby = z.Requester,
+                                desc = z.Notes,
+                                totalamount = z.TotalAmount.HasValue ? z.TotalAmount.Value.ToString("#,##0") : "",
+                                status = z.Status
 
                             }).OrderByDescending(i => i.id).ToList();
 
@@ -289,7 +309,31 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 price = z.Price.HasValue ? z.Price.Value.ToString("#,##0") : "",
                                 qty = z.Qty,
                                 total = z.Total.HasValue ? z.Total.Value.ToString("#,##0") : "",
+                                status = z.Status,
                             }).ToList();
+            return Json(new { data = datalist });
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllViewItems(int id)
+        {
+            var DetailList = await _unitOfWork.RequestItemDetail.GetAllAsync();
+            var datalist = (from z in DetailList.Where(z => z.IdHeader == id)
+                             select new
+                             {
+                                 id = z.Id,
+                                 idheader = z.IdHeader,
+                                 itemname = z.Name,
+                                 category = z.Category,
+                                 reason = z.Reason,
+                                 spesifik = z.Specification,
+                                 price = z.Price.HasValue ? z.Price.Value.ToString("#,##0") : "",
+                                 qty = z.Qty,
+                                 total = z.Total.HasValue ? z.Total.Value.ToString("#,##0") : "",
+                                 status = z.Status,
+                             }).ToList();
+        
             return Json(new { data = datalist });
 
         }
@@ -367,5 +411,180 @@ namespace E_OneWeb.Areas.Admin.Controllers
             //return File(memory.ToArray(), contentType, Path.GetFileName(filePath));
 
         }
+        [Authorize(Roles = SD.Role_Admin)]
+
+		#region Approve by Admin
+		public IActionResult Approve()
+		{
+			return View();
+		}
+		public async Task<IActionResult> ViewApprove(int? id)
+		{
+
+			additemlist = new List<RequestItemDetail>();
+			ViewBag.Status = "";
+			IEnumerable<Category> CatList = await _unitOfWork.Category.GetAllAsync();
+			var listcategory = CatList.Select(x => new SelectListItem { Value = x.Name, Text = x.Name });
+			ViewBag.CategoryList = new SelectList(listcategory, "Value", "Text");
+
+			RequestItemHeaderVM requestitemvm = new RequestItemHeaderVM()
+			{
+				RequestItemHeader = new RequestItemHeader()
+
+			};
+			if (id == null)
+			{
+				//this is for create
+				requestitemvm.RequestItemHeader.RequestDate = DateTime.Now;
+				requestitemvm.ListCategory = listcategory;
+
+				return View(requestitemvm);
+			}
+
+			requestitemvm.RequestItemHeader = await _unitOfWork.RequestItemHeader.GetAsync(id.GetValueOrDefault());
+			if (requestitemvm.RequestItemHeader.RefFile != null)
+			{
+				ViewBag.fileDownload = "true";
+			}
+			else
+			{
+				ViewBag.fileDownload = "";
+			}
+
+
+			var DetailList = await _unitOfWork.RequestItemDetail.GetAllAsync();
+			var datalist_ = (from z in DetailList.Where(z => z.IdHeader == id)
+							 select new
+							 {
+								 id = z.Id,
+								 idheader = z.IdHeader,
+								 itemname = z.Name,
+								 category = z.Category,
+								 reason = z.Reason,
+								 spesifik = z.Specification,
+								 price = z.Price.HasValue ? z.Price.Value.ToString("#,##0") : "",
+								 qty = z.Qty,
+								 total = z.Total.HasValue ? z.Total.Value.ToString("#,##0") : "",
+							 }).ToList();
+
+			foreach (var item in datalist_)
+			{
+				RequestItemDetail Items = new RequestItemDetail();
+				Items.Id = item.id;
+				Items.IdHeader = item.idheader;
+				Items.Name = item.itemname;
+				Items.Category = item.category;
+				Items.Reason = item.reason;
+				Items.Specification = item.spesifik;
+				Items.Price = Convert.ToDouble(item.price);
+				Items.Qty = Convert.ToInt32(item.qty);
+				Items.Total = Convert.ToDouble(item.total);
+				additemlist.Add(Items);
+			}
+
+			if (requestitemvm.RequestItemHeader == null)
+			{
+				return NotFound();
+			}
+			return View(requestitemvm);
+
+		}
+
+        [HttpPost]
+        public async Task<IActionResult> ApproveHeader(int id)
+        {
+            try
+            {
+                var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6 && z.GENVALUE == 1).FirstOrDefault();
+
+                RequestItemHeader requestItemHeader = await _unitOfWork.RequestItemHeader.GetAsync(id);
+                requestItemHeader.StatusId = Gen_6.IDGEN;
+                requestItemHeader.Status = Gen_6.GENNAME;
+                _unitOfWork.RequestItemHeader.Update(requestItemHeader);
+
+                TempData["Success"] = "Successfully approved";
+                return Json(new { success = true, message = "Approved Successful" });
+            }
+            catch (Exception)
+            {
+                TempData["Failed"] = "Error approved";
+                return Json(new { success = false, message = "Approved Error" });
+            }
+           
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> RejectHeader(string note, int idheader)
+        {
+            try
+            {
+                var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6 && z.GENVALUE == 2).FirstOrDefault();
+
+                RequestItemHeader requestItemHeader = await _unitOfWork.RequestItemHeader.GetAsync(idheader);
+                requestItemHeader.StatusId = Gen_6.IDGEN;
+                requestItemHeader.Status = Gen_6.GENNAME;
+                requestItemHeader.Notes = note;
+                _unitOfWork.RequestItemHeader.Update(requestItemHeader);
+
+                TempData["Success"] = "Successfully reject";
+                return Json(new { success = true, message = "Reject Successful" });
+            }
+            catch (Exception)
+            {
+                TempData["Failed"] = "Error reject";
+                return Json(new { success = false, message = "Reject Error" });
+            }
+
+
+        }        
+
+        [HttpPost]
+        public async Task<IActionResult> ApproveDetail(int id)
+        {
+            try
+            {
+                var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6 && z.GENVALUE == 1).FirstOrDefault();
+
+                RequestItemDetail requestItemDetail = await _unitOfWork.RequestItemDetail.GetAsync(id);
+                requestItemDetail.StatusId = Gen_6.IDGEN;
+                requestItemDetail.Status = Gen_6.GENNAME;
+                _unitOfWork.RequestItemDetail.Update(requestItemDetail);
+             
+                TempData["Success"] = "Successfully approved";
+                return Json(new { success = true, message = "Approved Successful" });
+            }
+            catch (Exception)
+            {
+                TempData["Failed"] = "Error approved";
+                return Json(new { success = false, message = "Approved Error" });
+            }
+
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> RejecteDetail(string note, int iddetail)
+        {
+            try
+            {
+                var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6 && z.GENVALUE == 2).FirstOrDefault();
+
+                RequestItemDetail requestItemDetail = await _unitOfWork.RequestItemDetail.GetAsync(iddetail);
+                requestItemDetail.StatusId = Gen_6.IDGEN;
+                requestItemDetail.Status = Gen_6.GENNAME;
+                _unitOfWork.RequestItemDetail.Update(requestItemDetail);
+
+                TempData["Success"] = "Successfully reject";
+                return Json(new { success = true, message = "Reject Successful" });
+            }
+            catch (Exception)
+            {
+                TempData["Failed"] = "Error reject";
+                return Json(new { success = false, message = "Reject Error" });
+            }
+
+
+        }
+        #endregion
+
     }
 }

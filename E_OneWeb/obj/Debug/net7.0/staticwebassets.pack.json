@@ -85,6 +85,10 @@
       "PackagePath": "staticwebassets\\js\\Items.js"
     },
     {
+      "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\Report_Items.js",
+      "PackagePath": "staticwebassets\\js\\Report_Items.js"
+    },
+    {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\article.js",
       "PackagePath": "staticwebassets\\js\\article.js"
     },
@@ -107,6 +111,10 @@
     {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\getroombylocation.js",
       "PackagePath": "staticwebassets\\js\\getroombylocation.js"
+    },
+    {
+      "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\index_approverequestitem.js",
+      "PackagePath": "staticwebassets\\js\\index_approverequestitem.js"
     },
     {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\index_itemrequest.js",

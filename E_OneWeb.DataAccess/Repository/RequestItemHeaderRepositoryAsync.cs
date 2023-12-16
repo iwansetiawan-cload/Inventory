@@ -23,7 +23,7 @@ namespace E_OneWeb.DataAccess.Repository
             if (objFromDb != null)
             {
                 objFromDb.ReqNumber = requestheader.ReqNumber;                
-                objFromDb.Description = requestheader.Description;
+                objFromDb.Notes = requestheader.Notes;
                 objFromDb.Status = requestheader.Status;
                 objFromDb.StatusId = requestheader.StatusId;
                 objFromDb.Requester = requestheader.Requester;

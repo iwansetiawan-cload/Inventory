@@ -15,7 +15,7 @@ namespace E_OneWeb.Models
         [Required]
         [MaxLength(100)]
         public string ReqNumber { get; set; }
-        public string? Description { get; set; }        
+        public string? Notes { get; set; }        
         public string? Requester { get; set; }
         [Display(Name = "Request Date")]
         public DateTime? RequestDate { get; set; }

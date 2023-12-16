@@ -11,8 +11,8 @@ using System.Data;
 namespace E_OneWeb.Areas.Admin.Controllers
 {
 	[Area("Admin")]
-	[Authorize(Roles = SD.Role_Admin)]
-	public class RoomListController : Controller
+    [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
+    public class RoomListController : Controller
     {
 		private readonly ILogger<RoomListController> _logger;
 		private readonly IUnitOfWork _unitOfWork;

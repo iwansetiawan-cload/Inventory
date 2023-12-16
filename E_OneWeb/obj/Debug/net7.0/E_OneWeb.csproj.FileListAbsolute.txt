@@ -4005,3 +4005,13 @@ D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\Grpc.AspNetCore.
 D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\Grpc.Core.Api.dll
 D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\Grpc.Net.Common.dll
 D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\Microsoft.AspNetCore.Buffering.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\Enums.NET.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\MathNet.Numerics.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\NPOI.Core.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\NPOI.OOXML.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\NPOI.OpenXml4Net.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\NPOI.OpenXmlFormats.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\ICSharpCode.SharpZipLib.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\SixLabors.Fonts.dll
+D:\My File\Core 2022\Github\Inventory\E_OneWeb\bin\Debug\net7.0\SixLabors.ImageSharp.dll

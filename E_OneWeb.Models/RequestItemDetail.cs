@@ -21,6 +21,9 @@ namespace E_OneWeb.Models
         public string? Reason { get; set; }
         public double? Price { get; set; }
         public int? Qty { get; set; }
-        public double? Total { get; set; }
+        public double? Total { get; set; }       
+        public int? StatusId { get; set; }
+        public string? Status { get; set; }
+        public string? Notes { get; set; }
     }
 }
