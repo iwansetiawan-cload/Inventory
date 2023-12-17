@@ -32,7 +32,9 @@ namespace E_OneWeb.Models
         public string? RequestBy { get; set; }
 		[Display(Name = "Cost Of Repair")]
 		public double? CostOfRepair { get; set; }
-        public int? Status { get; set; }
+        public int? StatusId { get; set; }
+        public string? Status { get; set; }
+        public string? Notes { get; set; }
         [MaxLength(255)]
         public string? EntryBy { get; set; }
         public DateTime? EntryDate { get; set; }	

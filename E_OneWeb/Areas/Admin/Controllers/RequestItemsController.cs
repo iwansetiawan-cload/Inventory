@@ -414,10 +414,11 @@ namespace E_OneWeb.Areas.Admin.Controllers
             //return File(memory.ToArray(), contentType, Path.GetFileName(filePath));
 
         }
-        [Authorize(Roles = SD.Role_Admin)]
 
-		#region Approve by Admin
-		public IActionResult Approve()
+
+        #region Approve by Admin
+        [Authorize(Roles = SD.Role_Admin)]
+        public IActionResult Approve()
 		{
 			return View();
 		}

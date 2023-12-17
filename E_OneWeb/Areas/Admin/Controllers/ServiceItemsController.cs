@@ -20,10 +20,12 @@ namespace E_OneWeb.Areas.Admin.Controllers
         {
             _unitOfWork = unitOfWork;
         }
+        [Authorize(Roles = SD.Role_Employee)]
         public IActionResult Index()
         {
             return View();
         }
+        [Authorize(Roles = SD.Role_Employee)]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -38,12 +40,15 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 serviceenddate = Convert.ToDateTime(z.ServiceEndDate).ToString("dd-MM-yyyy"),
                                 desc = z.RepairDescription,
                                 requestby = z.RequestBy,
-                                costofrepair = z.CostOfRepair.HasValue ? z.CostOfRepair.Value.ToString("#,##0") : ""
+                                costofrepair = z.CostOfRepair.HasValue ? z.CostOfRepair.Value.ToString("#,##0") : "",
+                                status = z.Status,
+                                notes = z.Notes
 
 							}).OrderByDescending(i => i.id).ToList();
 
             return Json(new { data = datalist });
         }
+        [Authorize(Roles = SD.Role_Employee)]
         public async Task<IActionResult> Upsert(int? id)
         {
             ViewBag.Status = "";
@@ -81,7 +86,9 @@ namespace E_OneWeb.Areas.Admin.Controllers
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
-            vm.ItemService.Status = 0;
+            var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6 && z.GENVALUE == 0).FirstOrDefault();
+            vm.ItemService.StatusId = Gen_6.IDGEN;
+            vm.ItemService.Status = Gen_6.GENNAME;
             vm.ItemService.EntryBy = user.Name;
             vm.ItemService.EntryDate = DateTime.Now;
 
@@ -107,7 +114,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             _unitOfWork.Save();       
             return View(vm);
         }
-
+        [Authorize(Roles = SD.Role_Employee)]
         [HttpGet]
         public async Task<IActionResult> GetAllItems()
         {
@@ -124,7 +131,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             return Json(new { data = datalist });
         }
-
+        [Authorize(Roles = SD.Role_Employee)]
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
@@ -138,5 +145,118 @@ namespace E_OneWeb.Areas.Admin.Controllers
             return Json(new { success = true, message = "Delete Successful" });
 
         }
+
+        #region Approve by Admin
+        [Authorize(Roles = SD.Role_Admin)]
+        public IActionResult Approve()
+        {
+            return View();
+        }
+        [Authorize(Roles = SD.Role_Admin)]
+        [HttpGet]
+        public async Task<IActionResult> GetAllApprove()
+        {
+
+            var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6).ToList();
+
+            var datalist = (from z in await _unitOfWork.ItemService.GetAllAsync(includeProperties: "Items")
+                            select new
+                            {
+                                id = z.Id,
+                                itemname = z.Items.Name,
+                                location = _unitOfWork.Room.Get((int)z.RoomId).Name + " (" + _unitOfWork.Location.Get((int)z.LocationId).Name + ")",
+                                servicedate = Convert.ToDateTime(z.ServiceDate).ToString("dd-MM-yyyy"),
+                                serviceenddate = Convert.ToDateTime(z.ServiceEndDate).ToString("dd-MM-yyyy"),
+                                desc = z.RepairDescription,
+                                requestby = z.RequestBy,
+                                costofrepair = z.CostOfRepair.HasValue ? z.CostOfRepair.Value.ToString("#,##0") : "",
+                                status = Gen_6.Where(i => i.IDGEN == z.StatusId).Select(i => i.GENNAME).FirstOrDefault(),
+                                notes = z.Notes
+
+                            }).OrderByDescending(i => i.id).ToList();
+
+            return Json(new { data = datalist });
+        }
+        [Authorize(Roles = SD.Role_Admin)]
+        public async Task<IActionResult> ViewApprove(int? id)
+        {
+
+            ViewBag.Status = "";
+            IEnumerable<Items> ItemsList = await _unitOfWork.Items.GetAllAsync();
+            ItemServiceVM itemservicevm = new ItemServiceVM()
+            {
+                ItemService = new ItemService()
+
+            };
+            if (id == null)
+            {
+                //this is for create
+                itemservicevm.ItemService.ServiceDate = DateTime.Now;
+                itemservicevm.ItemService.ServiceEndDate = DateTime.Now;
+
+                return View(itemservicevm);
+            }
+
+            itemservicevm.ItemService = await _unitOfWork.ItemService.GetAsync(id.GetValueOrDefault());
+            itemservicevm.name_of_room_and_location = _unitOfWork.Room.Get((int)itemservicevm.ItemService.RoomId).Name + " (" + _unitOfWork.Location.Get((int)itemservicevm.ItemService.LocationId).Name + ")";
+
+            if (itemservicevm.ItemService == null)
+            {
+                return NotFound();
+            }
+            return View(itemservicevm);
+
+        }
+        [Authorize(Roles = SD.Role_Admin)]
+        [HttpPost]
+        public async Task<IActionResult> Approved(int id)
+        {
+            try
+            {
+                var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6 && z.GENVALUE == 1).FirstOrDefault();
+
+                ItemService itemService = await _unitOfWork.ItemService.GetAsync(id);
+                itemService.StatusId = Gen_6.IDGEN;
+                itemService.Status = Gen_6.GENNAME;
+                itemService.Notes = "";
+                _unitOfWork.ItemService.Update(itemService);
+
+                TempData["Success"] = "Successfully approved";
+                return Json(new { success = true, message = "Approved Successful" });
+            }
+            catch (Exception)
+            {
+                TempData["Failed"] = "Error approved";
+                return Json(new { success = false, message = "Approved Error" });
+            }
+
+
+        }
+        [Authorize(Roles = SD.Role_Admin)]
+        [HttpPost]
+        public async Task<IActionResult> Rejected(string note, int id)
+        {
+            try
+            {
+                var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6 && z.GENVALUE == 2).FirstOrDefault();
+
+                ItemService itemService = await _unitOfWork.ItemService.GetAsync(id);
+                itemService.StatusId = Gen_6.IDGEN;
+                itemService.Status = Gen_6.GENNAME;
+                itemService.Notes = note;
+                _unitOfWork.ItemService.Update(itemService);
+
+                TempData["Success"] = "Successfully reject";
+                return Json(new { success = true, message = "Reject Successful" });
+            }
+            catch (Exception)
+            {
+                TempData["Failed"] = "Error reject";
+                return Json(new { success = false, message = "Reject Error" });
+            }
+
+
+        }
+        #endregion
     }
 }

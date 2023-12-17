@@ -32,7 +32,9 @@ namespace E_OneWeb.DataAccess.Repository
                 objFromDb.Address = itemservice.Address;
                 objFromDb.RequestBy = itemservice.RequestBy;
                 objFromDb.CostOfRepair = itemservice.CostOfRepair;
+                objFromDb.StatusId = itemservice.StatusId;
                 objFromDb.Status = itemservice.Status;
+                objFromDb.Notes = itemservice.Notes;
                 _db.SaveChanges();
             }
         }

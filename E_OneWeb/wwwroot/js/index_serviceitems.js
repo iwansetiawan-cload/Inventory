@@ -11,13 +11,14 @@ function loadDataTable() {
             "url": "/Admin/ServiceItems/GetAll"
         },
         "columns": [
-            { "data": "itemname", "width": "20%" },
-            { "data": "location", "width": "30%" },
-            { "data": "servicedate", "width": "15%" },
-            { "data": "serviceenddate", "width": "15%" },
-            { "data": "desc", "width": "20%" },
-            { "data": "requestby", "width": "20%" },
-            { "data": "costofrepair", "width": "20%" },
+            { "data": "itemname", "autoWidth": true },
+            { "data": "location", "autoWidth": true },
+            { "data": "servicedate", "autoWidth": true },
+            { "data": "serviceenddate", "autoWidth": true },
+            { "data": "requestby", "autoWidth": true },
+            { "data": "costofrepair", "autoWidth": true },
+            { "data": "status", "autoWidth": true },
+            { "data": "notes", "autoWidth": true },
             {
                 "data": "id",
                 "render": function (data) {
@@ -31,7 +32,7 @@ function loadDataTable() {
                                 </a>
                             </div>
                            `;
-                }, "width": "30%"
+                }, "autoWidth": true
             }
         ]
     });
