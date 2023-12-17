@@ -16,6 +16,7 @@ function loadDataTable() {
             { "data": "requestby", "autoWidth": true },
            /* { "data": "desc", "width": "20%" },*/
             { "data": "totalamount", "autoWidth": true },
+            { "data": "status", "autoWidth": true },
             {
                 "data": "id",
                 "render": function (data) {

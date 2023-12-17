@@ -49,7 +49,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 requestdate = Convert.ToDateTime(z.RequestDate).ToString("dd-MM-yyyy"),
                                 requestby = z.Requester,
                                 desc = z.Notes,
-                                totalamount = z.TotalAmount.HasValue ? z.TotalAmount.Value.ToString("#,##0") : ""
+                                totalamount = z.TotalAmount.HasValue ? z.TotalAmount.Value.ToString("#,##0") : "",
+                                status = z.Status
 
                             }).OrderByDescending(i => i.id).ToList();
 
@@ -121,6 +122,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                  price = z.Price.HasValue ? z.Price.Value.ToString("#,##0") : "",
                                  qty = z.Qty,
                                  total = z.Total.HasValue ? z.Total.Value.ToString("#,##0") : "",
+                                 status = z.Status
                              }).ToList();
 
             foreach (var item in datalist_)
@@ -135,6 +137,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 Items.Price = Convert.ToDouble(item.price);
                 Items.Qty = Convert.ToInt32(item.qty);
                 Items.Total = Convert.ToDouble(item.total);
+                Items.Status = item.status;
                 additemlist.Add(Items);
             }
 
