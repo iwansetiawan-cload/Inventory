@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using E_OneWeb.DataAccess.Repository.IRepository;
 using E_OneWeb.Models;
 using E_OneWeb.Utility;
 using Microsoft.AspNetCore.Authentication;
@@ -34,6 +35,7 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         //private readonly IEmailSender _emailSender;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IUnitOfWork _unitOfWork;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -41,7 +43,8 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
             //IEmailSender emailSender,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -50,6 +53,7 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
             _logger = logger;
             //_emailSender = emailSender;
             _roleManager = roleManager;
+            _unitOfWork = unitOfWork;
         }
 
         /// <summary>
@@ -81,10 +85,10 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Email")]
-            public string Email { get; set; }
+            //[Required]
+            //[EmailAddress]
+            //[Display(Name = "Email")]
+            //public string Email { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -156,7 +160,7 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
                 var user = new ApplicationUser
                 {
                     UserName = Input.Name,
-                    Email = Input.Email,
+                    //Email = Input.Email,
                     City = Input.City,                
                     Name = Input.Name,
                     PhoneNumber = Input.PhoneNumber,                   
@@ -169,7 +173,7 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
                 //var user = CreateUser();
 
                 await _userStore.SetUserNameAsync(user, Input.Name, CancellationToken.None);
-                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                //await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
@@ -204,10 +208,23 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
 							await _userManager.AddToRoleAsync(user, SD.Role_User);
 						}
 					}
-				
+
+                    Personal personal = new Personal();
+                    personal.UserName = user.UserName;
+                    personal.FullName = user.UserName;
+                    personal.Gender = user.Gender;
+                    personal.PhoneNumber = user.PhoneNumber;
+                    personal.NIM = user.CardNumber;
+                    personal.Prodi = user.PostalCode;
+                    personal.Fakultas = user.City;
+                    personal.EntryDate = DateTime.Now;
+                    personal.UserId = userId;
+                    _unitOfWork.Personal.Add(personal);
+                    _unitOfWork.Save();
+
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                        return RedirectToPage("RegisterConfirmation", new { returnUrl = returnUrl });
                     }
                     else
                     {

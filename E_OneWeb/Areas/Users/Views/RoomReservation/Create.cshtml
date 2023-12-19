@@ -52,7 +52,7 @@
                     <label>Tanggal Peminjaman</label>
                 </div>
                 <div class="col-10">
-                    <input asp-for="RoomReservationUser.StartDate" class="form-control" type="date" />
+                    <input asp-for="RoomReservationUser.StartDate" class="form-control" type="datetime-local" />
                     <span asp-validation-for="RoomReservationUser.StartDate" class="text-danger"></span>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                     <label>Tanggal Selesai</label>
                 </div>
                 <div class="col-10">
-                    <input asp-for="RoomReservationUser.EndDate" class="form-control" type="date" />
+                    <input asp-for="RoomReservationUser.EndDate" class="form-control" type="datetime-local" />
                     <span asp-validation-for="RoomReservationUser.EndDate" class="text-danger"></span>
                 </div>
             </div>

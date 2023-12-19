@@ -28,6 +28,7 @@ namespace E_OneWeb.DataAccess.Data
         public DbSet<RequestItemDetail> RequestItemDetail { get; set; }
         public DbSet<RoomReservationAdmin> RoomReservationAdmin { get; set; }
         public DbSet<RoomReservationUser> RoomReservationUser { get; set; }
+        public DbSet<Personal> Personal { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

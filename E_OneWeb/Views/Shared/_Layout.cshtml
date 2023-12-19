@@ -52,6 +52,13 @@
                                     <span class="visually-hidden">(current)</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                               @* <a class="nav-link" asp-area="Identity" asp-controller="/Account/Manage" asp-action="Index">
+                                    Profil
+                                    <span class="visually-hidden">(current)</span>
+                                </a>*@
+                                <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profil</a>
+                            </li>
 
                         }
 
@@ -127,8 +134,10 @@
 
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="ReportItems" asp-action="Index">Report Item</a>
-
-
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="ReportItems" asp-action="Index">Report Service</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="ReportItems" asp-action="Index">Report Transfer Item</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="ReportItems" asp-action="Index">Report Request Item</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="ReportItems" asp-action="Index">Report Reservation</a>
                                 </div>
 
                             </li>

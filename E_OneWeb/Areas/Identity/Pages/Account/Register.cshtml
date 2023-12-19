@@ -42,27 +42,27 @@
                             <span asp-validation-for="Input.CardNumber" class="text-danger"></span>
                         </div>
                         <div class="py-2">
+                            <input asp-for="Input.PostalCode" placeholder="Prodi" class="form-control" />
+                            <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+
+                        </div>
+                        <div class="py-2">
+                            <input asp-for="Input.City" placeholder="Fakultas" class="form-control" />
+                            <span asp-validation-for="Input.City" class="text-danger"></span>
+
+                        </div>
+                        @*<div class="py-2">
                             <input asp-for="Input.Email" type="email" placeholder="Email" class="form-control" />
                             <span asp-validation-for="Input.Email" class="text-danger"></span>
-                        </div>
+                        </div>*@
                         <div class="py-2">
                           @*  <div class="input-group-prepend">
                                 <span class="input-group-text"> +62</span>
                             </div>*@
-                            <input asp-for="Input.PhoneNumber" type="text" placeholder="Phone Number" class="form-control" />
-                            
-                        </div>
-                        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-                        <div class="py-2">
-                            <input asp-for="Input.City" placeholder="Prodi" class="form-control" />
-                            <span asp-validation-for="Input.City" class="text-danger"></span>                          
-
-                        </div>
-                    @*    <div class="py-2">
-                            <input asp-for="Input.PostalCode" placeholder="Referral Code" class="form-control" />
-                            <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
-
-                        </div>*@
+                            <input asp-for="Input.PhoneNumber" type="text" placeholder="Number WA" class="form-control" />
+                            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                        </div>        
+                        
                         <div class="form-row py-2">
                             <div class="col">
                                 <input asp-for="Input.Password" type="password" placeholder="Password" class="form-control" />

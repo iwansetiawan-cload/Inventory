@@ -56,25 +56,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             return Json(new { data = datalist });
         }
-        [HttpGet]
-        public async Task<IActionResult> GetAllApprove()
-        {
-
-            var datalist = (from z in await _unitOfWork.RequestItemHeader.GetAllAsync()
-                            select new
-                            {
-                                id = z.Id,
-                                refnumber = z.ReqNumber,
-                                requestdate = Convert.ToDateTime(z.RequestDate).ToString("dd-MM-yyyy"),
-                                requestby = z.Requester,
-                                desc = z.Notes,
-                                totalamount = z.TotalAmount.HasValue ? z.TotalAmount.Value.ToString("#,##0") : "",
-                                status = z.Status
-
-                            }).OrderByDescending(i => i.id).ToList();
-
-            return Json(new { data = datalist });
-        }
+        
         public async Task<IActionResult> Upsert(int? id)
         {           
 
@@ -422,7 +404,26 @@ namespace E_OneWeb.Areas.Admin.Controllers
 		{
 			return View();
 		}
-		public async Task<IActionResult> ViewApprove(int? id)
+        [HttpGet]
+        public async Task<IActionResult> GetAllApprove()
+        {
+
+            var datalist = (from z in await _unitOfWork.RequestItemHeader.GetAllAsync()
+                            select new
+                            {
+                                id = z.Id,
+                                refnumber = z.ReqNumber,
+                                requestdate = Convert.ToDateTime(z.RequestDate).ToString("dd-MM-yyyy"),
+                                requestby = z.Requester,
+                                desc = z.Notes,
+                                totalamount = z.TotalAmount.HasValue ? z.TotalAmount.Value.ToString("#,##0") : "",
+                                status = z.Status
+
+                            }).OrderByDescending(i => i.id).ToList();
+
+            return Json(new { data = datalist });
+        }
+        public async Task<IActionResult> ViewApprove(int? id)
 		{
 
 			additemlist = new List<RequestItemDetail>();

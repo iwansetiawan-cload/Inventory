@@ -6,9 +6,14 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using E_OneWeb.DataAccess.Repository;
+using E_OneWeb.DataAccess.Repository.IRepository;
+using E_OneWeb.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Hosting;
+using NPOI.SS.Formula.Functions;
 
 namespace E_OneWeb.Areas.Identity.Pages.Account.Manage
 {
@@ -16,13 +21,19 @@ namespace E_OneWeb.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
         public IndexModel(
             UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            SignInManager<IdentityUser> signInManager,
+            IUnitOfWork unitOfWork,
+            IWebHostEnvironment hostEnvironment)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _unitOfWork = unitOfWork;
+            _hostEnvironment = hostEnvironment;
         }
 
         /// <summary>
@@ -58,19 +69,54 @@ namespace E_OneWeb.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+            public string CardNumber { get; set; }
+            public string City { get; set; }
+            public string PostalCode { get; set; }
+            public string? FullName { get; set; }        
+            [Display(Name = "Photo Profile")]
+            public string? Photo { get; set; }
         }
 
         private async Task LoadAsync(IdentityUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var userid = await _userManager.GetUserIdAsync(user);
 
             Username = userName;
+            Personal personal = _unitOfWork.Personal.GetAll().Where(z => z.UserId == userid).FirstOrDefault();
 
-            Input = new InputModel
+            if (personal != null)
             {
-                PhoneNumber = phoneNumber
-            };
+                Input = new InputModel
+                {
+                    PhoneNumber = phoneNumber,
+                    CardNumber = personal.NIM,
+                    PostalCode = personal.Prodi,
+                    City = personal.Fakultas,
+                    FullName = personal.FullName,
+                    Photo = personal.Photo,
+
+                };
+            }
+            else
+            {
+                Input = new InputModel
+                {
+                    PhoneNumber = phoneNumber
+
+                };
+            }
+
+          
+            //var userInput = new ApplicationUser
+            //{
+              
+            //    City = Input.City,
+            //    PhoneNumber = user.PhoneNumber,
+            //    CardNumber = user.C,
+            //    PostalCode = user.PostalCode
+            //};
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -88,6 +134,7 @@ namespace E_OneWeb.Areas.Identity.Pages.Account.Manage
         public async Task<IActionResult> OnPostAsync()
         {
             var user = await _userManager.GetUserAsync(User);
+            var userid = await _userManager.GetUserIdAsync(user);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
@@ -99,6 +146,38 @@ namespace E_OneWeb.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
+            Personal personal = _unitOfWork.Personal.GetAll().Where(z => z.UserId == userid).FirstOrDefault();
+            personal.FullName = Input.FullName;
+            personal.NIM = Input.CardNumber;
+            personal.Prodi = Input.PostalCode;
+            personal.Fakultas = Input.City;
+            personal.PhoneNumber = Input.PhoneNumber;           
+
+            string webRootPath = _hostEnvironment.WebRootPath;
+            var files = HttpContext.Request.Form.Files;
+            if (files.Count > 0)
+            {
+                string fileName = Guid.NewGuid().ToString();
+                var uploads = Path.Combine(webRootPath, @"images\products");
+                var extenstion = Path.GetExtension(files[0].FileName);
+
+                if (personal.Photo != null)
+                {
+                    //this is an edit and we need to remove old image
+                    var imagePath = Path.Combine(webRootPath, personal.Photo.TrimStart('\\'));
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        System.IO.File.Delete(imagePath);
+                    }
+                }
+                using (var filesStreams = new FileStream(Path.Combine(uploads, fileName + extenstion), FileMode.Create))
+                {
+                    files[0].CopyTo(filesStreams);
+                }
+                personal.Photo = @"\images\products\" + fileName + extenstion;
+            }
+            _unitOfWork.Personal.Update(personal);
+
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
             if (Input.PhoneNumber != phoneNumber)
             {
@@ -108,7 +187,7 @@ namespace E_OneWeb.Areas.Identity.Pages.Account.Manage
                     StatusMessage = "Unexpected error when trying to set phone number.";
                     return RedirectToPage();
                 }
-            }
+            }          
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
