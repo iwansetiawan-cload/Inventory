@@ -11,7 +11,9 @@ namespace E_OneWeb.Models.ViewModels
     {
         public RoomReservationUser RoomReservationUser { get; set; }
         public string StatusMessage { get; set; }
-        public string StartDate { get; set; }
-        public string EndDate { get; set; }
+        public TimeSpan ClockStart { get; set; }
+        public TimeSpan ClockEnd { get; set; }
+        public string? StartDate { get; set; }
+        public string? EndDate { get; set; }
     }
 }

@@ -100,6 +100,15 @@ namespace E_OneWeb.Areas.Users.Controllers
                 vm.RoomReservationUser.RoomReservationAdmin = roomReservationAdmin;
                 vm.RoomReservationUser.StatusId = Gen_5.IDGEN;
                 vm.RoomReservationUser.Status = Gen_5.GENNAME;
+                DateTime orderDate = Convert.ToDateTime(vm.RoomReservationUser.StartDate);
+                TimeSpan orderTime = vm.ClockStart;
+                DateTime orderDateTime = orderDate + orderTime;
+                vm.RoomReservationUser.StartDate = orderDateTime;
+
+                DateTime orderDateEnd = Convert.ToDateTime(vm.RoomReservationUser.EndDate);
+                TimeSpan orderTimeEnd = vm.ClockEnd;
+                DateTime orderDateTimeEnd = orderDateEnd + orderTimeEnd;                
+                vm.RoomReservationUser.EndDate = orderDateTimeEnd;
                 await _unitOfWork.RoomReservationUser.AddAsync(vm.RoomReservationUser);
                 _unitOfWork.Save();
 
