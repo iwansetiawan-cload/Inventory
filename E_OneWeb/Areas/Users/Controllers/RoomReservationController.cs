@@ -43,6 +43,7 @@ namespace E_OneWeb.Areas.Users.Controllers
             vm.RoomReservationUser.EntryDate = DateTime.Now;
             vm.RoomReservationUser.StartDate = DateTime.Now;
             vm.RoomReservationUser.EndDate = DateTime.Now;
+            //ViewBag.TimeNow = DateTime.Now.ToString("HH:mm");
             return View(vm);
 
         }

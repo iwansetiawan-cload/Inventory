@@ -51,25 +51,53 @@
                 <div class="col-2">
                     <label>Tanggal Peminjaman</label>
                 </div>
-                <div class="col-10">
-                    <input asp-for="RoomReservationUser.StartDate" class="form-control" type="datetime-local" />
+                <div class="col-5">
+                 @*   <input asp-for="RoomReservationUser.StartDate" class="form-control" type="datetime" />*@
+             
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label class="control-label" for="datepicker-start">Dari</label>
+                        <input asp-for="RoomReservationUser.StartDate" type="text" class="form-control" id="datepicker-start">                    
+                    </div>                  
                     <span asp-validation-for="RoomReservationUser.StartDate" class="text-danger"></span>
                 </div>
-            </div>
-
-        </div>
-        <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-2">
-                    <label>Tanggal Selesai</label>
-                </div>
-                <div class="col-10">
-                    <input asp-for="RoomReservationUser.EndDate" class="form-control" type="datetime-local" />
+                <div class="col-5">
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label class="control-label" for="datepicker-end">Sampai</label>
+                        <input asp-for="RoomReservationUser.EndDate" type="text" class="form-control" id="datepicker-end">
+                    </div>
                     <span asp-validation-for="RoomReservationUser.EndDate" class="text-danger"></span>
                 </div>
             </div>
 
         </div>
+
+   @*     <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Tanggal Selesai</label>
+                </div>
+                <div class="col-10">
+                    <input asp-for="RoomReservationUser.EndDate" class="form-control" type="datetime" />              
+                </div>
+            </div>
+
+        </div>*@
+   @*     <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                    <label class="control-label" for="datepicker-start">Start Date</label>
+                    <input type="text" class="form-control" id="datepicker-start">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                    <label class="control-label" for="datepicker-end">End Date</label>
+                    <input type="text" class="form-control" id="datepicker-end">
+                </div>
+            </div>
+        </div>*@
+   @*      <input id="timepicker" width="276" />*@
+
         <div class="col-12 pt-2">
             <div class="form-group row">
                 <div class="col-2">
@@ -149,8 +177,27 @@
 </div>
 
 @section Scripts {
+@*
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+    <script src="http://fonts.googleapis.com/icon?family=Material+Icons"></script>*@
+
+   @* <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        *@
+    <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
     <partial name="_ValidationScriptsPartial" />
     <script type="text/javascript">
+        $(function () {
+            $('#datepicker-start').datetimepicker({ footer: true, modal: true });
+            $('#datepicker-end').datetimepicker({ footer: true, modal: true });
+        });
+        //$('#timepicker').datetimepicker({ footer: true, modal: true });
+        //$('#timepicker').timepicker({
+        //    uiLibrary: 'bootstrap4'
+        //});
+
         $(document).ready(function () {          
             loadDataRoom();
             //var status = $("#idstatus").val();
