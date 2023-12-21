@@ -84,6 +84,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmVwb3J0SXRlbXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/My File/Core 2022/Github/Inventory/E_OneWeb/Areas/Admin/Views/ReportRequestItem/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmVwb3J0UmVxdWVzdEl0ZW1cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/My File/Core 2022/Github/Inventory/E_OneWeb/Areas/Admin/Views/ReportRoomReservation/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmVwb3J0Um9vbVJlc2VydmF0aW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/My File/Core 2022/Github/Inventory/E_OneWeb/Areas/Admin/Views/ReportServiceItem/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmVwb3J0U2VydmljZUl0ZW1cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/My File/Core 2022/Github/Inventory/E_OneWeb/Areas/Admin/Views/ReportTransferItem/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmVwb3J0VHJhbnNmZXJJdGVtXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/My File/Core 2022/Github/Inventory/E_OneWeb/Areas/Admin/Views/RequestItems/Approve.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmVxdWVzdEl0ZW1zXEFwcHJvdmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -120,12 +136,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9vbVxVcHNlcnRSb29tLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/My File/Core 2022/Github/Inventory/E_OneWeb/Areas/Admin/Views/ServiceItems/Approve.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2VydmljZUl0ZW1zXEFwcHJvdmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/My File/Core 2022/Github/Inventory/E_OneWeb/Areas/Admin/Views/ServiceItems/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2VydmljZUl0ZW1zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/My File/Core 2022/Github/Inventory/E_OneWeb/Areas/Admin/Views/ServiceItems/Upsert.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2VydmljZUl0ZW1zXFVwc2VydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/My File/Core 2022/Github/Inventory/E_OneWeb/Areas/Admin/Views/ServiceItems/ViewApprove.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2VydmljZUl0ZW1zXFZpZXdBcHByb3ZlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/My File/Core 2022/Github/Inventory/E_OneWeb/Areas/Admin/Views/Supplier/Index.cshtml]
@@ -322,6 +346,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/My File/Core 2022/Github/Inventory/E_OneWeb/Areas/Users/Views/RoomReservation/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlcnNcVmlld3NcUm9vbVJlc2VydmF0aW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/My File/Core 2022/Github/Inventory/E_OneWeb/Areas/Users/Views/RoomReservation/StatusMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlcnNcVmlld3NcUm9vbVJlc2VydmF0aW9uXFN0YXR1c01lc3NhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/My File/Core 2022/Github/Inventory/E_OneWeb/Areas/Users/Views/_ViewImports.cshtml]

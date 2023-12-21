@@ -3,10 +3,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var title = "Pinjam Ruangan";
 }
+<partial name="StatusMessage" for="StatusMessage" />
 
-
-
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <br />
     <div class="row p-3 border">
         <input type="hidden" asp-for="RoomReservationUser.UserId"/>
@@ -46,42 +45,73 @@
             </div>
 
         </div>
+         <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    Mata Kuliah
+                </div>
+                <div class="col-10">
+                    <input asp-for="RoomReservationUser.Study" class="form-control" style="row-gap" />
+                </div>
+            </div>
+
+        </div>
         <div class="col-12 pt-2">
             <div class="form-group row">
                 <div class="col-2">
-                    <label>Tanggal Peminjaman</label>
+                    Dosen
                 </div>
-                <div class="col-5">
-                 @*   <input asp-for="RoomReservationUser.StartDate" class="form-control" type="datetime" />*@
-             
-                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                        <label class="control-label" for="datepicker-start">Dari</label>
-                        <input asp-for="RoomReservationUser.StartDate" type="text" class="form-control" id="datepicker-start">                    
-                    </div>                  
-                    <span asp-validation-for="RoomReservationUser.StartDate" class="text-danger"></span>
-                </div>
-                <div class="col-5">
-                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                        <label class="control-label" for="datepicker-end">Sampai</label>
-                        <input asp-for="RoomReservationUser.EndDate" type="text" class="form-control" id="datepicker-end">
-                    </div>
-                    <span asp-validation-for="RoomReservationUser.EndDate" class="text-danger"></span>
+                <div class="col-10">
+                    <input asp-for="RoomReservationUser.Dosen" class="form-control" style="row-gap" />
                 </div>
             </div>
 
         </div>
 
-   @*     <div class="col-12 pt-2">
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Tanggal Peminjaman</label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="RoomReservationUser.StartDate" class="form-control" type="date" />
+                  @*  <input type="hidden" asp-for="RoomReservationUser.StartDate" />*@
+                   @* <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label class="control-label" for="RoomReservationUser.StartDate">Dari</label>
+                        <input asp-for="RoomReservationUser.StartDate" class="form-control" type="date" />
+                    </div>   *@               
+                    <span asp-validation-for="RoomReservationUser.StartDate" class="text-danger"></span>
+                </div>
+                <div class="col-4">
+                    <input id="timepickerStart" width="276" />
+                </div>
+              @*  <div class="col-5">
+                    <input type="hidden" asp-for="RoomReservationUser.EndDate" />
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label class="control-label" for="RoomReservationUser.EndDate">Sampai</label>
+                        <input asp-for="RoomReservationUser.EndDate" class="form-control" type="date" />
+                    </div>
+                    <span asp-validation-for="RoomReservationUser.EndDate" class="text-danger"></span>
+                </div>*@
+            </div>
+
+        </div>
+
+        <div class="col-12 pt-2">
             <div class="form-group row">
                 <div class="col-2">
                     <label>Tanggal Selesai</label>
                 </div>
-                <div class="col-10">
-                    <input asp-for="RoomReservationUser.EndDate" class="form-control" type="datetime" />              
+                <div class="col-6">
+                    <input asp-for="RoomReservationUser.EndDate" class="form-control" type="date" />
+                    <span asp-validation-for="RoomReservationUser.EndDate" class="text-danger"></span>
+                </div>
+                <div class="col-4">
+                    <input id="timepickerEnd" width="276" />
                 </div>
             </div>
 
-        </div>*@
+        </div>
    @*     <div class="row">
             <div class="col-sm-6">
                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
@@ -96,7 +126,7 @@
                 </div>
             </div>
         </div>*@
-   @*      <input id="timepicker" width="276" />*@
+       
 
         <div class="col-12 pt-2">
             <div class="form-group row">
@@ -118,6 +148,17 @@
                 </div>
                 <div class="col-10">
                     <input asp-for="RoomReservationUser.ApproveBy" class="form-control" style="row-gap" />
+                </div>
+            </div>
+
+        </div>
+        <div class="col-6">
+            <div class="form-group row">
+                <div class="col-3">
+                    Upload File
+                </div>
+                <div class="col-9">
+                    <input type="file" name="files" id="uploadBox" multiple class="form-control" />
                 </div>
             </div>
 
@@ -189,14 +230,14 @@
 
     <partial name="_ValidationScriptsPartial" />
     <script type="text/javascript">
-        $(function () {
-            $('#datepicker-start').datetimepicker({ footer: true, modal: true });
-            $('#datepicker-end').datetimepicker({ footer: true, modal: true });
-        });
-        //$('#timepicker').datetimepicker({ footer: true, modal: true });
-        //$('#timepicker').timepicker({
-        //    uiLibrary: 'bootstrap4'
+        //$(function () {
+           
         //});
+        //$('#datepicker-start').datetimepicker();
+        //$('#datepicker-end').datetimepicker();
+        //$('#timepicker').datetimepicker({ footer: true, modal: true });
+        $('#timepickerStart').timepicker();
+        $('#timepickerEnd').timepicker();
 
         $(document).ready(function () {          
             loadDataRoom();

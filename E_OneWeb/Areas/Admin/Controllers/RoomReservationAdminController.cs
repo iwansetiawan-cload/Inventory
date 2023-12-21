@@ -39,7 +39,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 status = z.Status,
                                 statusid = z.StatusId,
                                 bookingby = z.BookingBy,
-                                bookingdate = z.BookingDate != null ? Convert.ToDateTime(z.BookingDate).ToString("dd-MM-yyyy") : "",
+                                bookingdate = z.BookingStartDate != null ? Convert.ToDateTime(z.BookingStartDate).ToString("dd-MM-yyyy HH:mm") : "",
+                                bookingenddate = z.BookingEndDate != null ? Convert.ToDateTime(z.BookingEndDate).ToString("dd-MM-yyyy HH:mm") : ""
                             }).ToList().OrderByDescending(o => o.id);
 
             return Json(new { data = datalist });

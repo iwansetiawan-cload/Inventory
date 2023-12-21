@@ -20,6 +20,8 @@ namespace E_OneWeb.Models
         public DateTime? EndDate { get; set; }
         public string? Description { get; set; }
         public string? ApproveBy { get; set; }
+        public string? Study { get; set; }
+        public string? Dosen { get; set; }
         public int? StatusId { get; set; }
         public string? Status { get; set; }
         [Required]
@@ -28,5 +30,6 @@ namespace E_OneWeb.Models
         [MaxLength(255)]
         public string? EntryBy { get; set; }
         public DateTime? EntryDate { get; set; }
+        public string? RefFile { get; set; }
     }
 }

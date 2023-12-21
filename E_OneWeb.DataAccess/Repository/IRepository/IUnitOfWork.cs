@@ -25,6 +25,7 @@ namespace E_OneWeb.DataAccess.Repository.IRepository
         IRoomReservationRepositoryUserAsync RoomReservationUser { get; }
         IRoomReservationRepositoryAdminAsync RoomReservationAdmin { get; }
         IPersonalRepositoryAsync Personal { get; }
+        IGetRommReservationAdminRepository GetRommReservationAdmin { get; }
         void Save();
     }
 }

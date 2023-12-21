@@ -49,6 +49,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\05d932cb-ccf7-4a8a-bf2b-a5016ed500eb.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\05d932cb-ccf7-4a8a-bf2b-a5016ed500eb.jpg"
+    },
+    {
+      "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\10a03ae6-5dcc-4c4e-a68e-1edcecf80ce6.docx",
+      "PackagePath": "staticwebassets\\images\\products\\10a03ae6-5dcc-4c4e-a68e-1edcecf80ce6.docx"
+    },
+    {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\21ef4b27-7c66-4fd9-990d-7cf223749dcd.xlsx",
       "PackagePath": "staticwebassets\\images\\products\\21ef4b27-7c66-4fd9-990d-7cf223749dcd.xlsx"
     },
@@ -59,6 +67,10 @@
     {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\7870e8b9-a339-40d7-ab18-16361cdd6e36.xlsx",
       "PackagePath": "staticwebassets\\images\\products\\7870e8b9-a339-40d7-ab18-16361cdd6e36.xlsx"
+    },
+    {
+      "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\7be263b2-6c1e-4908-b571-1a59f0cbdca8.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\7be263b2-6c1e-4908-b571-1a59f0cbdca8.jpg"
     },
     {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\ExportDataApprovePraInvoice_20231211094820.xlsx",
@@ -121,10 +133,6 @@
       "PackagePath": "staticwebassets\\js\\index_itemrequest.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\index_itemservice.js",
-      "PackagePath": "staticwebassets\\js\\index_itemservice.js"
-    },
-    {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\index_pinjamruangan_admin.js",
       "PackagePath": "staticwebassets\\js\\index_pinjamruangan_admin.js"
     },
@@ -135,6 +143,10 @@
     {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\index_roomlist.js",
       "PackagePath": "staticwebassets\\js\\index_roomlist.js"
+    },
+    {
+      "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\index_serviceitems.js",
+      "PackagePath": "staticwebassets\\js\\index_serviceitems.js"
     },
     {
       "Id": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\location.js",

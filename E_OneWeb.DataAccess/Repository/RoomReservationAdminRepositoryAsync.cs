@@ -26,8 +26,9 @@ namespace E_OneWeb.DataAccess.Repository
 				objFromDb.Status = room.Status;
 				objFromDb.Flag = room.Flag;
 				objFromDb.BookingBy = room.BookingBy;
-				objFromDb.BookingDate = room.BookingDate;
-				objFromDb.BookingId = room.BookingId;
+				objFromDb.BookingStartDate = room.BookingStartDate;
+                objFromDb.BookingEndDate = room.BookingEndDate;
+                objFromDb.BookingId = room.BookingId;
 				_db.SaveChanges();
 			}
 		}

@@ -109,8 +109,9 @@ namespace E_OneWeb.Areas.Admin.Controllers
 			RoomReservationAdmin.Status = null;
 			RoomReservationAdmin.Flag = null;
 			RoomReservationAdmin.BookingBy = null;
-			RoomReservationAdmin.BookingDate = null;
-			RoomReservationAdmin.BookingId = null;
+			RoomReservationAdmin.BookingStartDate = null;
+            RoomReservationAdmin.BookingEndDate = null;
+            RoomReservationAdmin.BookingId = null;
 			_unitOfWork.RoomReservationAdmin.Update(RoomReservationAdmin);
 			_unitOfWork.Save();		
 

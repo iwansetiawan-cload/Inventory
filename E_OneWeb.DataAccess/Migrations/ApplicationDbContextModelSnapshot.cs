@@ -691,11 +691,14 @@ namespace E_OneWeb.DataAccess.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<DateTime?>("BookingDate")
+                    b.Property<DateTime?>("BookingEndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("BookingId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("BookingStartDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("Flag")
                         .HasColumnType("int");
@@ -738,6 +741,9 @@ namespace E_OneWeb.DataAccess.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Dosen")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
@@ -747,6 +753,9 @@ namespace E_OneWeb.DataAccess.Migrations
 
                     b.Property<DateTime?>("EntryDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("RefFile")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RoomAdminId")
                         .HasColumnType("int");
@@ -759,6 +768,9 @@ namespace E_OneWeb.DataAccess.Migrations
 
                     b.Property<int?>("StatusId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Study")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()

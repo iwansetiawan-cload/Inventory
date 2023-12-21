@@ -10,6 +10,8 @@ namespace E_OneWeb.Models.ViewModels
     public class RoomReservationUserVM
     {
         public RoomReservationUser RoomReservationUser { get; set; }
-        //public IEnumerable<SelectListItem> RoomList { get; set; }
+        public string StatusMessage { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
     }
 }

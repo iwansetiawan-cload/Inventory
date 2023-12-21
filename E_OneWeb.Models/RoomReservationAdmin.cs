@@ -24,6 +24,7 @@ namespace E_OneWeb.Models
         public int? BookingId { get; set;}
         [MaxLength(255)]
         public string? BookingBy { get; set; }
-        public DateTime? BookingDate { get; set; }
+        public DateTime? BookingStartDate { get; set; }
+        public DateTime? BookingEndDate { get; set; }
     }
 }

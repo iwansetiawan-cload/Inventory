@@ -42,6 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\images\files\" />
     <Folder Include="wwwroot\images\products\" />
   </ItemGroup>
 

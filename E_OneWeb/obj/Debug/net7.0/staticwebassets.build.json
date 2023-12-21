@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WBzyYDcByJio1UCT9OyAxxB5TC5T9a98rPPlTDC7WOQ=",
+  "Hash": "ojA1MbKu6AGCQzfQhR4JPnOVOYiPHTE7ISY9/PPLEnY=",
   "Source": "E_OneWeb",
   "BasePath": "_content/E_OneWeb",
   "Mode": "Default",
@@ -1258,6 +1258,40 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\05d932cb-ccf7-4a8a-bf2b-a5016ed500eb.jpg",
+      "SourceId": "E_OneWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
+      "BasePath": "_content/E_OneWeb",
+      "RelativePath": "images/products/05d932cb-ccf7-4a8a-bf2b-a5016ed500eb.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\05d932cb-ccf7-4a8a-bf2b-a5016ed500eb.jpg"
+    },
+    {
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\10a03ae6-5dcc-4c4e-a68e-1edcecf80ce6.docx",
+      "SourceId": "E_OneWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
+      "BasePath": "_content/E_OneWeb",
+      "RelativePath": "images/products/10a03ae6-5dcc-4c4e-a68e-1edcecf80ce6.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\10a03ae6-5dcc-4c4e-a68e-1edcecf80ce6.docx"
+    },
+    {
       "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\21ef4b27-7c66-4fd9-990d-7cf223749dcd.xlsx",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
@@ -1307,6 +1341,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\products\\7870e8b9-a339-40d7-ab18-16361cdd6e36.xlsx"
+    },
+    {
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\7be263b2-6c1e-4908-b571-1a59f0cbdca8.jpg",
+      "SourceId": "E_OneWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
+      "BasePath": "_content/E_OneWeb",
+      "RelativePath": "images/products/7be263b2-6c1e-4908-b571-1a59f0cbdca8.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\7be263b2-6c1e-4908-b571-1a59f0cbdca8.jpg"
     },
     {
       "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\a38a6deb-9a5b-421e-9ab7-a1675dc66b25.xlsx",
@@ -1513,23 +1564,6 @@
       "OriginalItemSpec": "wwwroot\\js\\index_itemrequest.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\index_itemservice.js",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "js/index_itemservice.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\index_itemservice.js"
-    },
-    {
       "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\index_pinjamruangan_admin.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
@@ -1579,6 +1613,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\index_roomlist.js"
+    },
+    {
+      "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\index_serviceitems.js",
+      "SourceId": "E_OneWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\",
+      "BasePath": "_content/E_OneWeb",
+      "RelativePath": "js/index_serviceitems.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\index_serviceitems.js"
     },
     {
       "Identity": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\wwwroot\\js\\Items.js",
