@@ -1,4 +1,4 @@
-﻿@model E_OneWeb.Models.Personal
+﻿@model E_OneWeb.Models.ViewModels.RoomReservationUserVM
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,41 +9,146 @@
 <div class="row"> 
     <br />
     <input type="hidden" value="@ViewBag.img" />
+    <input type="hidden" asp-for="RoomReservationUser.Id" id="IdResUser" />
     <div class="row p-3 border">
+
+        <div class="col-12 border-bottom">
+            <h2 class="text-primary">Pinjam Ruangan</h2>
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    Nama Ruangan
+                </div>
+                <div class="col-4">
+                    <div class="input-group">
+                        <input asp-for="RoomReservationUser.RoomReservationAdmin.RoomName" id="RoomName" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="col-2">
+                    Lokasi Gedung
+                </div>
+                <div class="col-4">
+                    <input asp-for="RoomReservationUser.RoomReservationAdmin.LocationName" class="form-control" style="row-gap" id="LocationName" disabled />
+
+                </div>
+            </div>
+
+        </div>
+      
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    Mata Kuliah
+                </div>
+                <div class="col-4">
+                    <input asp-for="RoomReservationUser.Study" class="form-control" style="row-gap" disabled />
+                </div>
+                <div class="col-2">
+                    Dosen
+                </div>
+                <div class="col-4">
+                    <input asp-for="RoomReservationUser.Dosen" class="form-control" style="row-gap" disabled />
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Tanggal Peminjaman</label>
+                </div>
+                <div class="col-4">
+                    <input asp-for="RoomReservationUser.StartDate" class="form-control" type="date" disabled />
+                </div>
+                <div class="col-2">
+                    <label>Dari Jam</label>
+                </div>
+                <div class="col-4">
+                    <input asp-for="StartDate" type="text" id="timepickerStart" class="form-control" disabled />
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Tanggal Selesai</label>
+                </div>
+                <div class="col-4">
+                    <input asp-for="RoomReservationUser.EndDate" class="form-control" type="date" disabled />
+                </div>
+                <div class="col-2">
+                    <label>Sampai Jam</label>
+                </div>
+                <div class="col-4">
+                    <input asp-for="EndDate" type="text" id="timepickerEnd" class="form-control" disabled />
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                <div class="col-2">
+                    Keperluan
+                </div>
+                <div class="col-4">
+                    <textarea asp-for="RoomReservationUser.Description" class="form-control" disabled></textarea>
+                </div>
+                <div class="col-2">
+                    Mengetahui
+                </div>
+                <div class="col-4">
+                    <input asp-for="RoomReservationUser.ApproveBy" class="form-control" style="row-gap" disabled />
+                </div>
+              
+            </div>
+
+        </div>
+    
+        <div class="col-md-12">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">                
+                <button class="btn btn-primary" type="button" title="Download file" onclick="Export()" id="exportfile">Download File &nbsp;&nbsp;<i class="fas fa-file-export"></i></button>
+            </div>
+
+        </div>
+        <br/>
 
         <div class="col-12 border-bottom py-2">
             <h2 class="text-primary">@title</h2>
         </div>
         <div class="col-md-6">
             <div class="form-floating py-2">
-                <input asp-for="UserName" class="form-control" placeholder="User Name" disabled />
+                <input asp-for="Personal.UserName" class="form-control" placeholder="User Name" disabled />
                 <label class="form-label">User Login</label>
             </div>
 
             <div class="form-floating py-2">
-                <input asp-for="FullName" placeholder="Name Lengkap" class="form-control" disabled />
+                <input asp-for="Personal.FullName" placeholder="Name Lengkap" class="form-control" disabled />
                 <label class="form-label">Name Lengkap</label>
             </div>
 
             <div class="form-floating py-2">
-                <input asp-for="NIM" placeholder="NIM" class="form-control" disabled />
+                <input asp-for="Personal.NIM" placeholder="NIM" class="form-control" disabled />
                 <label class="form-label">NIM</label>
             </div>
 
             <div class="form-floating py-2">
-                <input asp-for="Prodi" class="form-control" placeholder="Prodi" disabled />
+                <input asp-for="Personal.Prodi" class="form-control" placeholder="Prodi" disabled />
                 <label class="form-label">Prodi</label>
 
             </div>
 
             <div class="form-floating py-2">
-                <input asp-for="Fakultas" class="form-control" placeholder="Fakultas" disabled />
+                <input asp-for="Personal.Fakultas" class="form-control" placeholder="Fakultas" disabled />
                 <label class="form-label">Fakultas</label>
 
             </div>
 
             <div class="form-floating py-2">
-                <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number" disabled />
+                <input asp-for="Personal.PhoneNumber" class="form-control" placeholder="Phone Number" disabled />
                 <label class="form-label">Phone Number</label>
             </div>
 
@@ -55,10 +160,10 @@
                 </div>
             </div> *@
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                @if (@ViewBag.img != null)
+                @if (@ViewBag.img != "")
                 {
                     <div class="card" style="width: 18rem;">
-                        <img class="rounded float-end" src="@Model.Photo" style="border-radius:5px; border:1px solid #bbb9b9">
+                        <img class="rounded float-end" src="@Model.Personal.Photo" style="border-radius:5px; border:1px solid #bbb9b9">
                     </div>
                 }
                 else
@@ -71,8 +176,8 @@
         </div>
 
 
-        <br />
 
+        <br />
 
         <div class="form-group row py-4">
             <div class="col-5 offset-5">
@@ -99,6 +204,12 @@
         $(document).ready(function () {
             
         });
+        function Export() {
+            var id = $('#IdResUser').val();
+            var urlx = "/Admin/RoomReservationAdmin/Export/" + id;
+            window.location = urlx;
+
+        }
        
     </script>
 

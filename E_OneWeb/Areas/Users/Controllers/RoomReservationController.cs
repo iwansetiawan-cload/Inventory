@@ -117,8 +117,8 @@ namespace E_OneWeb.Areas.Users.Controllers
 
                 RoomReservationAdmin roomReservationAdmin = await _unitOfWork.RoomReservationAdmin.GetAsync(vm.RoomReservationUser.RoomReservationAdmin.Id);
                 vm.RoomReservationUser.RoomReservationAdmin = roomReservationAdmin;
-                vm.RoomReservationUser.StatusId = Gen_5.IDGEN;
-                vm.RoomReservationUser.Status = Gen_5.GENNAME;                
+                vm.RoomReservationUser.StatusId = Gen_4.IDGEN;
+                vm.RoomReservationUser.Status = Gen_4.GENNAME;                
                 vm.RoomReservationUser.StartDate = orderDateTimeStart;                               
                 vm.RoomReservationUser.EndDate = orderDateTimeEnd;
                 await _unitOfWork.RoomReservationUser.AddAsync(vm.RoomReservationUser);
@@ -196,7 +196,7 @@ namespace E_OneWeb.Areas.Users.Controllers
                                 statusid = z.StatusId,
                                 description = z.Description,
                                 entryby = z.EntryBy,
-                            }).Where(i => i.entryby == user.ToString() && (i.statusid == 13 || i.statusid == 14)).ToList().OrderByDescending(o => o.id);
+                            }).Where(i => i.entryby == user.ToString()).ToList().OrderByDescending(o => o.id);
 
             return Json(new { data = datalist });
         }

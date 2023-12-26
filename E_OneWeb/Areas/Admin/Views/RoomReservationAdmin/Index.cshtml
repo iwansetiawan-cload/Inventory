@@ -233,14 +233,17 @@
                 "createdRow": function (row, data, index) {
                     //$('td', row).eq(5).attr('style', 'display:none;');
                     var urls = "/Admin/RoomReservationAdmin/Approve/" + data["id"];
-                    var urlsview = "/Admin/RoomReservationAdmin/ViewPersonal/" + data["userid"];
+                    var urlsview = "/Admin/RoomReservationAdmin/ViewPersonal/" + data["id"];
                     $('td', row).eq(7).attr('style', 'display:none;');
                     $('td', row).eq(8).attr('style', 'display:none;');
                     if (data["flag"] == '1') {
 
-                        $('td', row).eq(6).html("<a class='btn btn-info' title='view' href=" + urlsview + "><i class='fas fa-eye'></i></a>&nbsp <a class='btn btn-success btn-xs btn-edit' title='approved'' onclick=Approved('" + urls + "')><i class='fas fa-check'></i></a> ");
-                    }else{
+                        $('td', row).eq(6).html("<a class='btn btn-info' title='view' href=" + urlsview + "><i class='fas fa-eye'></i></a>&nbsp <a class='btn btn-primary text-white' title='approved'' onclick=Approved('" + urls + "')><i class='fas fa-check'></i></a> ");
+                    } else if (data["flag"] == '2') {
                         $('td', row).eq(6).html("<a class='btn btn-info' title='view' href=" + urlsview + "><i class='fas fa-eye'></i></a>");
+                    }
+                    else {
+                        $('td', row).eq(6).html('');
                     }
                     $('td', row).eq(6).attr('style', 'autoWidth: true; text-align: center;');
                 }
@@ -251,9 +254,9 @@
             swal({
                 title: "Are you sure you want to Approve?",
                 text: "You will not be able to restore the data!",
-                icon: "warning",
+                icon: "success",
                 buttons: true,
-                dangerMode: true
+                reverseButtons: true
             }).then((willDelete) => {
                 if (willDelete) {
                     $.ajax({
@@ -272,6 +275,7 @@
                 }
             });
         }
+              
         
        
     </script>
