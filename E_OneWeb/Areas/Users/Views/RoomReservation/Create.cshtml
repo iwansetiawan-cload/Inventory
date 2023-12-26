@@ -2,10 +2,40 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     var title = "Pinjam Ruangan";
+    // var statusMessageClass = Model.StartsWith("Error") ? "danger" : "success";
 }
-<partial name="StatusMessage" for="StatusMessage" />
+<partial name="_StatusMessage" for="StatusMessage" />
+
+
 
 <form method="post" enctype="multipart/form-data">
+    <input type="hidden" value="@ViewBag.Status" id="idstatus" />
+   @*  @if (@ViewBag.Status != "" && ViewBag.Status != "Save Success")
+    {
+        <p class='alert alert-danger alert-dismissable text-center' id='alert'>
+            @ViewBag.Status
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </p>
+    } *@
+    @if (@ViewBag.Status != "" || ViewBag.Status != null)
+    {
+        if (@ViewBag.Status.Contains("Error"))
+        {
+            <p class='alert alert-danger alert-dismissable text-center' id='alert'>
+                @ViewBag.Reason
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </p>
+        }
+
+        if (@ViewBag.Status.Contains("Success"))
+        {
+            <p class='alert alert-success alert-dismissable text-center' id='alert'>
+                @ViewBag.Reason
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </p>
+        }
+    }
+   
     <br />
     <div class="row p-3 border">
         <input type="hidden" asp-for="RoomReservationUser.UserId"/>
@@ -158,14 +188,34 @@
 
 
         <div class="form-group margin-bottom-2 pt-2">
-           @* <div class="col-md-12 text-center">
-                <button type="submit" id="btnSave" class="btn btn-primary form-control" style="width:145px">Pesan Ruangan</button>
-             
-            </div>*@
+          
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button type="submit" id="btnSave" class="btn btn-primary form-control" style="width:145px">Pesan Ruangan</button>
+                
+                @if (@ViewBag.Status.Contains("Success"))
+                {
+                    <a asp-action="Index" class="btn btn-info form-control" style="width:145px">Cek Pemesanan</a>
+                }else
+                {
+                    <button type="submit" id="btnSave" class="btn btn-primary form-control" style="width:145px">Pesan Ruangan</button>
+                }
             </div>
         </div>
+@* 
+        <div class="form-group row py-4">
+            <div class="col-5 offset-4">
+                <div class="row">
+                   
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-success form-control" style="width:145px">Cek Pemesanan</a>
+                    </div>
+                    <div class="col">
+                        <button type="submit" id="btnSave" class="btn btn-primary form-control" style="width:145px">Pesan Ruangan</button>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div> *@
 
 
    </div>

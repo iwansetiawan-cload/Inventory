@@ -5,14 +5,14 @@
     var status = Context.Request.Query["status"];
     var title = "Reservation";
     var all = "text-primary";
-    var avalable = "text-primary";
+    var available = "text-primary";
     var waiting_approval = "text-primary";
     var room_in_use = "text-primary";
 
     switch (status)
     {
-        case "avalable":
-            avalable = "active text-white";
+        case "available":
+            available = "active text-white";
             break;
         case "waiting_approval":
             waiting_approval = "active text-white";
@@ -40,8 +40,8 @@
         <div class="p-2">
             <ul class="list-group list-group-horizontal-sm">
                 <a style="text-decoration:none;" asp-controller="RoomReservationAdmin"
-                   asp-action="Index" asp-route-status="avalable">
-                <li class="list-group-item @avalable">Room avalable</li>
+                   asp-action="Index" asp-route-status="available">
+                <li class="list-group-item @available">Room available</li>
                 </a>
                 <a style="text-decoration:none;" asp-controller="RoomReservationAdmin"
                    asp-action="Index" asp-route-status="waiting_approval">
@@ -86,6 +86,8 @@
                 <th></th>
                 <th style="display:none">                   
                 </th>
+                <th style="display:none">
+                </th>
             </tr>
         </thead>
     </table>
@@ -93,14 +95,107 @@
 </div>
 
 
+<!-- Modal -->
+<div class="modal fade" id="viewpersonal" tabindex="-1" aria-labelledby="lookupItemsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="lookupItemsLabel">Add Item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-12 pt-2">
+                    <div class="form-group row">
+                        <div class="col-2">
+                            Item Name
+                        </div>
+                        <div class="col-10">
+                            <div class="input-group">
+                                @* <input asp-for="RequestItemDetail.Name" id="itemname" class="form-control" style="row-gap" /> *@
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-12 pt-2">
+                    <div class="form-group row">
+                        <div class="col-2">
+                            Category Name
+                        </div>
+                     
+                        <div class="col-10">
+                           @*  <input type="hidden" asp-for="RequestItemDetail.Category" id="category" />
+                            @Html.DropDownListFor(model => model.ListCategory, ViewBag.CategoryList as SelectList, "- Select a Category -", new { @class = "form-control", @id = "SearchCategory" })
+                           *@
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-12 pt-2">
+                    <div class="form-group row">
+                        <div class="col-2">
+                            Reason
+                        </div>
+                        <div class="col-10">
+                            <div class="input-group">
+                               @*  <textarea asp-for="RequestItemDetail.Reason" id="reason" class="form-control"></textarea> *@
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-12 pt-2">
+                    <div class="form-group row">
+                        <div class="col-2">
+                            Specification
+                        </div>
+                        <div class="col-10">
+                            <div class="input-group">
+                                @* <textarea asp-for="RequestItemDetail.Specification" id="spesifik" class="form-control"></textarea> *@
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-12 pt-2">
+                    <div class="form-group row">
+                        <div class="col-2">
+                            Price
+                        </div>
+                        <div class="col-10">
+                            <div class="input-group">
+                                @* <input type="hidden" asp-for="RequestItemDetail.Price" id="price" />
+                                <input asp-for="PriceString" class="form-control" style="row-gap" onchange="changesqty()" id="PriceString" /> *@
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+               
+               
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="AddItem()" data-bs-dismiss="modal">Add</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts{
 
 
     <script type="text/javascript">
         $(document).ready(function () {
             var url = window.location.search;
-            if (url.includes("avalable")) {
-                loadDataTable("GetOrderList?status=avalable");
+            if (url.includes("available")) {
+                loadDataTable("GetOrderList?status=available");
             }
             else {
                 if (url.includes("waiting_approval")) {
@@ -131,19 +226,23 @@
                     { "data": "startdate", "autoWidth": true },
                     { "data": "enddate", "autoWidth": true },
                     { "data": "id", "autoWidth": true },
-                    { "data": "flag", "autoWidth": true }
+                    { "data": "flag", "autoWidth": true },
+                    { "data": "userid", "autoWidth": true }
 
                 ],
                 "createdRow": function (row, data, index) {
                     //$('td', row).eq(5).attr('style', 'display:none;');
                     var urls = "/Admin/RoomReservationAdmin/Approve/" + data["id"];
+                    var urlsview = "/Admin/RoomReservationAdmin/ViewPersonal/" + data["userid"];
                     $('td', row).eq(7).attr('style', 'display:none;');
+                    $('td', row).eq(8).attr('style', 'display:none;');
                     if (data["flag"] == '1') {
-                        $('td', row).eq(6).html("<a class='btn btn-success btn-xs btn-edit' title='approved'' onclick=Approved('" + urls + "')><i class='fas fa-check'></i></a>");
+
+                        $('td', row).eq(6).html("<a class='btn btn-info' title='view' href=" + urlsview + "><i class='fas fa-eye'></i></a>&nbsp <a class='btn btn-success btn-xs btn-edit' title='approved'' onclick=Approved('" + urls + "')><i class='fas fa-check'></i></a> ");
                     }else{
-                        $('td', row).eq(6).html("");
+                        $('td', row).eq(6).html("<a class='btn btn-info' title='view' href=" + urlsview + "><i class='fas fa-eye'></i></a>");
                     }
-                    $('td', row).eq(6).attr('style', 'min-width: 20px; text-align: center; width: 13px;');
+                    $('td', row).eq(6).attr('style', 'autoWidth: true; text-align: center;');
                 }
             });
         }        

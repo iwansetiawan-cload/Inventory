@@ -30,8 +30,11 @@ namespace E_OneWeb.Areas.Users.Controllers
         {
             return View();
         }
+    
         public async Task<IActionResult> Create(int? id)
         {
+            ViewBag.Status = "";
+            ViewBag.Reason = "";
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
@@ -49,7 +52,7 @@ namespace E_OneWeb.Areas.Users.Controllers
             vm.RoomReservationUser.StartDate = DateTime.Now;
             //ViewBag.TimeNow = DateTime.Now.ToString("HH:mm");
             vm.RoomReservationUser.EndDate = DateTime.Now;
-
+            
             return View(vm);
 
         }
@@ -62,11 +65,27 @@ namespace E_OneWeb.Areas.Users.Controllers
             var Gen_4 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 4 && z.GENVALUE == 1).FirstOrDefault();
             var Gen_5 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 5 && z.GENVALUE == 1).FirstOrDefault();
 
-            var ValBookingRoom = _unitOfWork.GetRommReservationAdmin.GetAll().Where(z => z.Id == vm.RoomReservationUser.RoomAdminId && z.BookingEndDate > vm.RoomReservationUser.EndDate);
+            DateTime orderDate = Convert.ToDateTime(vm.RoomReservationUser.StartDate);
+            TimeSpan orderTime = vm.ClockStart;
+            DateTime orderDateTimeStart = orderDate + orderTime;
 
-            if (ValBookingRoom != null)
+            DateTime orderDateEnd = Convert.ToDateTime(vm.RoomReservationUser.EndDate);
+            TimeSpan orderTimeEnd = vm.ClockEnd;
+            DateTime orderDateTimeEnd = orderDateEnd + orderTimeEnd;
+
+            var ValBookingRoom = _unitOfWork.GetRommReservationAdmin.GetAll().Where(z => z.Id == vm.RoomReservationUser.RoomReservationAdmin.Id && z.BookingEndDate > orderDateTimeStart);
+
+            if (ValBookingRoom.Count() > 0)
             {
-                StatusMessage = "Ruangan sudah di booking";
+                ViewBag.Status = "Error";
+                ViewBag.Reason = "Ruangan sudah di booking dari tanggal: " + ValBookingRoom.FirstOrDefault().BookingStartDate.Value.ToString("dd/MM/yyyy") + " jam: " + ValBookingRoom.FirstOrDefault().BookingStartDate.Value.ToString("HH:mm") +
+                                 " sampai tanggal: " + ValBookingRoom.FirstOrDefault().BookingEndDate.Value.ToString("dd/MM/yyyy") + " jam: " + ValBookingRoom.FirstOrDefault().BookingEndDate.Value.ToString("HH:mm");
+                return View();
+            }
+            if (orderDateTimeStart >= orderDateTimeEnd)
+            {
+                ViewBag.Status = "Error";
+                ViewBag.Reason = "Tanggal Peminjaman harus lebih kecil dari Tanggal Selesai";
                 return View();
             }
 
@@ -99,15 +118,8 @@ namespace E_OneWeb.Areas.Users.Controllers
                 RoomReservationAdmin roomReservationAdmin = await _unitOfWork.RoomReservationAdmin.GetAsync(vm.RoomReservationUser.RoomReservationAdmin.Id);
                 vm.RoomReservationUser.RoomReservationAdmin = roomReservationAdmin;
                 vm.RoomReservationUser.StatusId = Gen_5.IDGEN;
-                vm.RoomReservationUser.Status = Gen_5.GENNAME;
-                DateTime orderDate = Convert.ToDateTime(vm.RoomReservationUser.StartDate);
-                TimeSpan orderTime = vm.ClockStart;
-                DateTime orderDateTime = orderDate + orderTime;
-                vm.RoomReservationUser.StartDate = orderDateTime;
-
-                DateTime orderDateEnd = Convert.ToDateTime(vm.RoomReservationUser.EndDate);
-                TimeSpan orderTimeEnd = vm.ClockEnd;
-                DateTime orderDateTimeEnd = orderDateEnd + orderTimeEnd;                
+                vm.RoomReservationUser.Status = Gen_5.GENNAME;                
+                vm.RoomReservationUser.StartDate = orderDateTimeStart;                               
                 vm.RoomReservationUser.EndDate = orderDateTimeEnd;
                 await _unitOfWork.RoomReservationUser.AddAsync(vm.RoomReservationUser);
                 _unitOfWork.Save();
@@ -121,7 +133,8 @@ namespace E_OneWeb.Areas.Users.Controllers
 				roomReservationAdmin.Flag = Gen_4.GENCODE != null ? Convert.ToInt32(Gen_4.GENCODE) : 0;
 				_unitOfWork.RoomReservationAdmin.Update(roomReservationAdmin);
 				_unitOfWork.Save();
-				ViewBag.Status = "Save Success";
+                ViewBag.Status = "Success";
+                ViewBag.Reason = "Berhasil booking ruangan"; ;
 
             }
             //var errorval = ModelState.Values.SelectMany(i=>i.Errors);
@@ -143,11 +156,11 @@ namespace E_OneWeb.Areas.Users.Controllers
             //    _unitOfWork.Save();
             //    //return RedirectToAction(nameof(Index));
             //}
-            TempData["Success"] = "Save successfully";
+            //TempData["Success"] = "Save successfully";
 
-            return RedirectToAction(nameof(Index));
+            return View();
 
-		}
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetAllRoomAndLocation()
@@ -159,7 +172,7 @@ namespace E_OneWeb.Areas.Users.Controllers
                                 flag = z.Flag,
                                 name_of_room = z.RoomName,
                                 name_of_location = z.LocationName
-                            }).Where(i => i.flag == 0).ToList();
+                            }).ToList();
             return Json(new { data = datalist });
         }
 
@@ -177,13 +190,13 @@ namespace E_OneWeb.Areas.Users.Controllers
                             {
                                 id = z.Id,
                                 roomname = z.RoomReservationAdmin.RoomName +" (" + z.RoomReservationAdmin.LocationName +")",
-                                startdate = Convert.ToDateTime(z.StartDate).ToString("dd/MM/yyyy"),
-                                enddate = Convert.ToDateTime(z.EndDate).ToString("dd/MM/yyyy"),
+                                startdate = Convert.ToDateTime(z.StartDate).ToString("dd/MM/yyyy HH:mm"),
+                                enddate = Convert.ToDateTime(z.EndDate).ToString("dd/MM/yyyy HH:mm"),
                                 status = z.Status,
                                 statusid = z.StatusId,
                                 description = z.Description,
                                 entryby = z.EntryBy,
-                            }).Where(i => i.entryby == user.ToString()).ToList().OrderByDescending(o => o.id);
+                            }).Where(i => i.entryby == user.ToString() && (i.statusid == 13 || i.statusid == 14)).ToList().OrderByDescending(o => o.id);
 
             return Json(new { data = datalist });
         }

@@ -5,6 +5,7 @@ using E_OneWeb.Models.ViewModels;
 using E_OneWeb.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Data;
 using System.Security.Claims;
 
@@ -70,12 +71,13 @@ namespace E_OneWeb.Areas.Admin.Controllers
                             {
                                 id = z.Id,
                                 roomname = z.RoomReservationAdmin.RoomName + " (" + z.RoomReservationAdmin.LocationName + ")",
-                                startdate = Convert.ToDateTime(z.StartDate).ToString("dd-MM-yyyy"),
-                                enddate = Convert.ToDateTime(z.EndDate).ToString("dd-MM-yyyy"),
+                                startdate = Convert.ToDateTime(z.StartDate).ToString("dd-MM-yyyy HH:mm"),
+                                enddate = Convert.ToDateTime(z.EndDate).ToString("dd-MM-yyyy HH:mm"),
                                 status = z.Status,
                                 statusid = z.StatusId,
                                 description = z.Description,
                                 entryby = z.EntryBy,
+                                userid = z.UserId
                             }).ToList();
 
             var datalist = (from z in await _unitOfWork.RoomReservationAdmin.GetAllAsync(includeProperties: "Room")
@@ -89,12 +91,13 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 bookingby = z.BookingBy,
                                 startdate = RoomReservationUserlist.Where(i => i.id == z.BookingId).Count() > 0 ? RoomReservationUserlist.Where(i => i.id == z.BookingId).Select(i => i.startdate).FirstOrDefault() : "",
                                 enddate = RoomReservationUserlist.Where(i => i.id == z.BookingId).Count() > 0 ? RoomReservationUserlist.Where(i=>i.id == z.BookingId).Select(i=> i.enddate).FirstOrDefault() : "",
-                                flag = z.Flag
+                                flag = z.Flag,
+                                userid = RoomReservationUserlist.Where(i => i.id == z.BookingId).Count() > 0 ? RoomReservationUserlist.Where(i => i.id == z.BookingId).Select(i => i.userid).FirstOrDefault() : ""
                             }).Where(o=>o.flag != null).ToList();
 
             switch (status)
             {
-                case "avalable":
+                case "available":
                     datalist = datalist.Where(o => o.flag == 0).ToList();
                     break;
                 case "waiting_approval":
@@ -140,6 +143,32 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             TempData["Success"] = "Room Reservation successfully approved";
             return Json(new { success = true, message = "Approved Successful" });
+
+        }
+
+        public async Task<IActionResult> ViewPersonal(string id)
+        {
+            try
+            {
+                Personal personal = _unitOfWork.Personal.GetAll().Where(z => z.UserId == id).FirstOrDefault();
+                if (personal != null)
+                {
+                    ViewBag.img = personal.Photo;
+                    return View(personal);
+                }
+                else
+                {
+                    ViewBag.img = "";
+                    return View(personal);
+                }                
+               
+            }
+            catch (Exception ex)
+            {
+                ViewBag.img = "";
+                return View();
+            }
+          
 
         }
 
