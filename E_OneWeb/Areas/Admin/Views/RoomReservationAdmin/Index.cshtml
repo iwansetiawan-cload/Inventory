@@ -44,16 +44,16 @@
                 <li class="list-group-item @available">Room available</li>
                 </a>
                 <a style="text-decoration:none;" asp-controller="RoomReservationAdmin"
-                   asp-action="Index" asp-route-status="waiting_approval">
-                <li class="list-group-item @waiting_approval">Waiting approval</li>
-                </a>
-                <a style="text-decoration:none;" asp-controller="RoomReservationAdmin"
                    asp-action="Index" asp-route-status="room_in_use">
                 <li class="list-group-item @room_in_use">Room in use</li>
-                </a>              
+                </a>
+                <a style="text-decoration:none;" asp-controller="RoomReservationAdmin"
+                   asp-action="Index" asp-route-status="waiting_approval">
+                <li class="list-group-item @waiting_approval">Waiting approval</li>
+                </a>                            
                 <a style="text-decoration:none;" asp-controller="RoomReservationAdmin"
                    asp-action="Index" asp-route-status="all">
-                <li class="list-group-item @all">All</li>
+                <li class="list-group-item @all">Approved</li>
                 </a>
             </ul>
         </div>
@@ -83,7 +83,7 @@
                 <th>
                     End Date
                 </th>
-                <th></th>
+                <th style ="min-width:100px"></th>
                 <th style="display:none">                   
                 </th>
                 <th style="display:none">
@@ -236,13 +236,12 @@
                     var urlsview = "/Admin/RoomReservationAdmin/ViewPersonal/" + data["id"];
                     $('td', row).eq(7).attr('style', 'display:none;');
                     $('td', row).eq(8).attr('style', 'display:none;');
-                    if (data["flag"] == '1') {
-
-                        $('td', row).eq(6).html("<a class='btn btn-info' title='view' href=" + urlsview + "><i class='fas fa-eye'></i></a>&nbsp <a class='btn btn-primary text-white' title='approved'' onclick=Approved('" + urls + "')><i class='fas fa-check'></i></a> ");
-                    } else if (data["flag"] == '2') {
+                    if (data["flag"] == '1' || data["flag"] == '3') {
                         $('td', row).eq(6).html("<a class='btn btn-info' title='view' href=" + urlsview + "><i class='fas fa-eye'></i></a>");
                     }
-                    else {
+                    else if (data["flag"] == '2') {
+                        $('td', row).eq(6).html("<a class='btn btn-info' title='view' href=" + urlsview + "><i class='fas fa-eye'></i></a>&nbsp <a class='btn btn-primary text-white' title='approved'' onclick=Approved('" + urls + "')><i class='fas fa-check'></i></a> ");
+                    }else {
                         $('td', row).eq(6).html('');
                     }
                     $('td', row).eq(6).attr('style', 'autoWidth: true; text-align: center;');
