@@ -5031,11 +5031,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj",
+      "projectUniqueName": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj",
       "projectName": "E_OneWeb.Utility",
-      "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj",
+      "projectPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj",
       "packagesPath": "C:\\Users\\iwan-setti\\.nuget\\packages\\",
-      "outputPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\obj\\",
+      "outputPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Utility\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\iwan-setti\\AppData\\Roaming\\NuGet\\NuGet.Config",

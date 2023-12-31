@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\E_OneWeb.csproj": {}
+    "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\E_OneWeb.csproj": {}
   },
   "projects": {
-    "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj": {
+    "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj",
+        "projectUniqueName": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj",
         "projectName": "E_OneWeb.DataAccess",
-        "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj",
+        "projectPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj",
         "packagesPath": "C:\\Users\\iwan-setti\\.nuget\\packages\\",
-        "outputPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.DataAccess\\obj\\",
+        "outputPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\iwan-setti\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj": {
-                "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj"
+              "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj": {
+                "projectPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj"
               },
-              "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj": {
-                "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj"
+              "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj": {
+                "projectPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj"
               }
             }
           }
@@ -102,14 +102,14 @@
         }
       }
     },
-    "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj": {
+    "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj",
+        "projectUniqueName": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj",
         "projectName": "E_OneWeb.Models",
-        "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj",
+        "projectPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj",
         "packagesPath": "C:\\Users\\iwan-setti\\.nuget\\packages\\",
-        "outputPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\obj\\",
+        "outputPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\iwan-setti\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -185,14 +185,14 @@
         }
       }
     },
-    "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj": {
+    "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj",
+        "projectUniqueName": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj",
         "projectName": "E_OneWeb.Utility",
-        "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj",
+        "projectPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj",
         "packagesPath": "C:\\Users\\iwan-setti\\.nuget\\packages\\",
-        "outputPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\obj\\",
+        "outputPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Utility\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\iwan-setti\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -260,14 +260,14 @@
         }
       }
     },
-    "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\E_OneWeb.csproj": {
+    "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\E_OneWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\E_OneWeb.csproj",
+        "projectUniqueName": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\E_OneWeb.csproj",
         "projectName": "E_OneWeb",
-        "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\E_OneWeb.csproj",
+        "projectPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\E_OneWeb.csproj",
         "packagesPath": "C:\\Users\\iwan-setti\\.nuget\\packages\\",
-        "outputPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb\\obj\\",
+        "outputPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\iwan-setti\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -284,14 +284,14 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj": {
-                "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj"
+              "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj": {
+                "projectPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.DataAccess\\E_OneWeb.DataAccess.csproj"
               },
-              "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj": {
-                "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj"
+              "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj": {
+                "projectPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj"
               },
-              "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj": {
-                "projectPath": "D:\\My File\\Core 2022\\Github\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj"
+              "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj": {
+                "projectPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Utility\\E_OneWeb.Utility.csproj"
               }
             }
           }
@@ -313,6 +313,10 @@
             "Grpc.AspNetCore.Server": {
               "target": "Package",
               "version": "[2.59.0, )"
+            },
+            "IKVM": {
+              "target": "Package",
+              "version": "[8.7.3, )"
             },
             "Microsoft.AspNetCore.Buffering": {
               "target": "Package",

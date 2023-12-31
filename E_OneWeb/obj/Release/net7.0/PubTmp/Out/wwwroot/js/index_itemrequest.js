@@ -11,11 +11,12 @@ function loadDataTable() {
             "url": "/Admin/RequestItems/GetAll"
         },
         "columns": [
-            { "data": "refnumber", "width": "20%" },
-            { "data": "requestdate", "width": "20%" },
-            { "data": "requestby", "width": "20%" },
+            { "data": "refnumber", "autoWidth": true },
+            { "data": "requestdate", "autoWidth": true },
+            { "data": "requestby", "autoWidth": true },
            /* { "data": "desc", "width": "20%" },*/
-            { "data": "totalamount", "width": "20%" },
+            { "data": "totalamount", "autoWidth": true },
+            { "data": "status", "autoWidth": true },
             {
                 "data": "id",
                 "render": function (data) {
@@ -31,7 +32,7 @@ function loadDataTable() {
                                 </a>
                             </div>
                            `;
-                }, "width": "40%"
+                }, "autoWidth": true
             }
         ]
     });

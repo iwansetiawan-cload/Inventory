@@ -4,8 +4,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project>
   <PropertyGroup>
-    <_PublishTargetUrl>D:\My File\Core 2022\Publish Prod</_PublishTargetUrl>
-    <History>True|2023-12-04T15:53:32.4192344Z;</History>
+    <_PublishTargetUrl>C:\inetpub\wwwroot\sarpras</_PublishTargetUrl>
+    <History>True|2023-12-29T11:42:41.8398724Z;True|2023-12-29T16:26:17.2627208+07:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

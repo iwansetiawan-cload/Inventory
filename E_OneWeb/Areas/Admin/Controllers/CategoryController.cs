@@ -24,6 +24,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
             //    Categories = await _unitOfWork.Category.GetAllAsync()
             //};
             //var count = categoryVM.Categories.Count();
+            //int value = Convert.ToInt32("1F600", 16);
+            //var emoji = Char.ConvertFromUtf32(value);
             return View();
         }
         public async Task<IActionResult> Upsert(int? id)
