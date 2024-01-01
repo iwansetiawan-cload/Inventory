@@ -63,8 +63,10 @@
                         <img class="rounded float-end" src="@Model.Input.Photo" style="border-radius:5px; border:1px solid #bbb9b9">
                     </div> *@
                     @if (@Model.Input.Photo != null)
-                    {
-                        <img class="card-img-top rounded" src="@Model.Input.Photo" width="300" height="400">
+                    {                       
+                        <div class="card" style="-ms-text-autospace">
+                            <img class="card-img-top rounded" src="@Model.Input.Photo" >
+                        </div>
                     }
                     else
                     {
