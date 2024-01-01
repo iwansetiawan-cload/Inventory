@@ -232,6 +232,14 @@ namespace E_OneWeb.Areas.Admin.Controllers
             try
             {
                 RoomReservationUser roomReservationUser = await _unitOfWork.RoomReservationUser.GetAsync(id);
+                if (roomReservationUser.RefFile != null)
+                {
+                    ViewBag.fileDownload = "true";
+                }
+                else
+                {
+                    ViewBag.fileDownload = "";
+                }
                 RoomReservationAdmin roomReservationAdmin = await _unitOfWork.RoomReservationAdmin.GetAsync(roomReservationUser.RoomAdminId);
 
                 RoomReservationUserVM vm = new RoomReservationUserVM()

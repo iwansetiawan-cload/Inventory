@@ -10,6 +10,7 @@
     <br />
     <input type="hidden" value="@ViewBag.img" />
     <input type="hidden" asp-for="RoomReservationUser.Id" id="IdResUser" />
+    <input type="hidden" value="@ViewBag.fileDownload" id="filedownload" />
     <div class="row p-3 border">
 
         <div class="col-12 border-bottom">
@@ -202,7 +203,12 @@
     <partial name="_ValidationScriptsPartial" />
     <script type="text/javascript">
         $(document).ready(function () {
-            
+
+            if ($("#filedownload").val() == "true") {
+                $("#exportfile").removeAttr("disabled");
+            } else {
+                $("#exportfile").attr("disabled", "disabled");
+            }
         });
         function Export() {
             var id = $('#IdResUser').val();
