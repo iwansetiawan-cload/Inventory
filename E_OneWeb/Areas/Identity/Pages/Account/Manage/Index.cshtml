@@ -18,7 +18,7 @@
             <div class="col-12 border-bottom py-2">
                 <h2 class="text-primary">@ViewData["Title"]</h2>
             </div>       
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="form-floating py-2">
                     <input asp-for="Username" class="form-control" placeholder="User Name" disabled />
                     <label asp-for="Username" class="form-label"></label>
@@ -57,16 +57,14 @@
                 </div>
 
             </div>
-            <div class="col-md-6">
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <div class="col-md-4">
+                <div class="card border-0 p-3 shadow  border-top border-5 rounded">
                  @*    <div class="card" style="width: 18rem;">
                         <img class="rounded float-end" src="@Model.Input.Photo" style="border-radius:5px; border:1px solid #bbb9b9">
                     </div> *@
                     @if (@Model.Input.Photo != null)
-                    {                       
-                        <div class="card" style="width: 18rem;">
-                            <img class="rounded float-end" src="@Model.Input.Photo" style="border-radius:5px; border:1px solid #bbb9b9">
-                        </div>
+                    {
+                        <img class="card-img-top rounded" src="@Model.Input.Photo" width="300" height="400">
                     }
                     else
                     {
@@ -75,14 +73,14 @@
                         </div>
                     }
                 </div>
+
+
                 <div class="form-floating py-2">
                     <input asp-for="Input.Photo" type="file" name="files" id="uploadBox" multiple class="form-control" placeholder="Photo Profile" />
                     <label class="form-label">Photo Profile</label>
                 </div>
-              
-             
             </div>
-
+           
             <br />          
      
             <div class="form-group margin-bottom-2 pt-2">
