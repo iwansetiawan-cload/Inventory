@@ -1,4 +1,4 @@
-﻿@model E_OneWeb.Models.ViewModels.ItemsVM
+﻿@model E_OneWeb.Models.ViewModels.ReportTransferItemVM
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,135 +6,227 @@
 }
 
 <br />
-<div class="row p-1 border">
-    <div class="col-lg-12">
-        <div class="panel">
-            <div class="panel-body">
-                <input type="hidden" value="@ViewBag.Status" id="idstatus" />
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-                <div class="col-12 border-bottom">
-                    <h2 class="text-primary">@title</h2>
-                </div>
-
-                <div class="col-12 pt-4">
-                    <div class="form-group row pt-2">
-
-                        <div class="col-6">
-                            <div class="form-group row">
-                                <div class="col-3">
-                                    <label asp-for="Items.Code"></label>
-                                </div>
-                                <div class="col-9">
-                                    <input asp-for="Items.Code" class="form-control" style="row-gap" id="searchCode" />
-                                    <span asp-validation-for="Items.Code" class="text-danger"></span>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-6">
-                            <div class="form-group row">
-                                <div class="col-3">
-                                    Ownership
-                                </div>
-
-                                <div class="col-9">
-                                    @Html.DropDownListFor(Model => Model.Items.OriginOfGoods, ViewBag.OwnershipList as SelectList, "- Select a Ownership -", new { @class = "form-control" })
-                                    <span asp-validation-for="Items.OriginOfGoods" class="text-danger"></span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="form-group row pt-2">
-                        <div class="col-6">
-                            <div class="form-group row">
-                                <div class="col-3">
-                                    Category
-                                </div>
-                                <div class="col-9">
-                                    @Html.DropDownListFor(Model => Model.Items.CategoryId , Model.CategoryList, "- Select a Category -",
-                                    new { @Class = "form-control", @id="SearchCategory"})
-                                    <span asp-validation-for="Items.CategoryId" class="text-danger"></span>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-6">
-
-                            <div class="form-group row">
-                                <div class="col-3">
-                                    Status
-                                </div>
-
-                                <div class="col-9">
-                                    @Html.DropDownListFor(model => model.Items.Status, ViewBag.StatusList as SelectList, "- Select a Status -", new { @class = "form-control" })
-                                    <span asp-validation-for="Items.Status" class="text-danger"></span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="form-group row py-4">
-                        <div class="col-md-12 text-center">
-                            <button class="btn btn-primary" type="submit" style="width:145px">Search</button>
-                            <button class="btn btn-secondary" type="button" style="width:145px">Clear</button>
-
-                        </div>
-                    </div>
-                
+<form method="post">
+    <div class="row p-1 border">
+        <div class="col-lg-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <input type="hidden" value="@ViewBag.Status" id="idstatus" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="SearchItem" id="ItemsName_" />
+                    <input type="hidden" asp-for="SearchLocationItem" id="SearchLocationItems_" />
+                    <input type="hidden" asp-for="SearchRoomId" id="SearchRoomIds_" />
+                    <input type="hidden" asp-for="SearchRoomName" id="SearchRoomNames_" />
                     <div class="col-12 border-bottom">
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-primary" type="button" title="Download file" onclick="Export()" id="exportfile">Download <i class="fas fa-file-export"></i></button>
+                        <h2 class="text-primary">@title</h2>
+                    </div>
+
+                    <div class="col-12 pt-4">
+                        <div class="form-group row pt-2">
+
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <div class="col-2">
+                                        <label>Item</label>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="input-group">
+                                            <input type="hidden" asp-for="SearchItemId" id="ItemId" />
+                                            <input asp-for="SearchItem" id="ItemsName" class="form-control" disabled />
+                                            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#lookupItems" style="width:80px" id="btn-lookupitems"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <div class="col-2">
+                                        <label>Year/ Month</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(Model => Model.SearchMonth, ViewBag.SearchMonthList as SelectList, "- Select a Month -", new { @class = "form-control", @id="SearchMonths" })
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input asp-for="SearchYear" class="form-control" style="row-gap" id="SearchYears" />
+
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
+                        <div class="form-group row pt-2">
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <div class="col-2">
+                                        <label>Location</label>
+                                    </div>
+                                    <div class="col-10">
+                                        <input asp-for="SearchLocationItem" class="form-control" style="row-gap" id="SearchLocationItems" disabled />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <div class="col-2">
+                                        <label>Room</label>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="input-group">
+
+                                            <input type="hidden" asp-for="SearchRoomId" id="SearchRoomIds" />
+                                            <input asp-for="SearchRoomName" id="SearchRoomNames" class="form-control" disabled />
+                                            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#lookuprooms" style="width:80px" id="btn-lookuproom"><i class="fa fa-search" aria-hidden="true"></i></button>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="form-group row py-4">
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-primary" type="submit" style="width:145px">Search</button>
+                                <button class="btn btn-secondary" type="button" onclick="ClearSearch()" style="width:145px">Clear</button>
+
+                            </div>
+                        </div>
+
+                        <div class="col-12 border-bottom">
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button class="btn btn-primary" type="button" title="Download file" onclick="Export()" id="exportfile" style="width:145px">Download <i class="fas fa-file-export"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br />
+                    <div class="panel-body" style="min-width:100px;overflow:scroll;">
+                        <table id="tblData" class="table table-striped table-hover dataTable no-search table-bordered">
+                            <thead class="thead-dark ">
+                                <tr class="table-info">
+                                    <th>
+                                        Code
+                                    </th>
+                                    <th>
+                                        Item Name
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                    <th>
+                                        Transfer Date
+                                    </th>
+                                    <th>
+                                        Previous Location
+                                    </th>
+                                    <th>
+                                        Current Location
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
 
                 </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</form>
+
+
+<!-- Lookup Items -->
+<div class="modal fade" id="lookupItems" tabindex="-1" aria-labelledby="lookupItemsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="lookupItemsLabel">Choose Items</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
                 <br />
-                <div style="min-width:100px;overflow:scroll;">
-                    <table id="tblData" class="table table-striped table-hover dataTable no-search">
-                        <thead class="thead-dark ">
+                <div class="p-4 border rounded">
+                    <table id="tblDataItems" class="table table-striped table-bordered table-hover table-striped dataTable" style="width:100%">
+                        <thead class="thead-dark">
                             <tr class="table-info">
                                 <th>
-                                    Code
+                                    Item Name
                                 </th>
                                 <th>
-                                    Product Name
+                                    Category
                                 </th>
                                 <th>
-                                    Description
+                                    Room
                                 </th>
                                 <th>
-                                    Category Name
+                                    Location
                                 </th>
-                                <th>
-                                    Name Of Room
-                                </th>
-                                <th>
-                                    Price
-                                </th>
-                                <th>
-                                    Qty
-                                </th>
-                                <th>
-                                    Total Amount
-                                </th>
+
+                                <th style="display:none"></th>
+                                <th style="display:none"></th>
+                                <th style="display:none"></th>
                             </tr>
                         </thead>
                     </table>
                 </div>
 
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
         </div>
-
     </div>
-
-
 </div>
 
+<!-- Lookup Rooms -->
+<div class="modal fade" id="lookuprooms" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Choose Location</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <br />
+                <div class="p-4 border rounded">
+                    <table id="tblDataRoom" class="table table-striped table-bordered table-hover table-striped dataTable" style="width:100%">
+                        <thead class="thead-dark">
+                            <tr class="table-info">
+                                <th>
+                                    Name Of Room
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    Location
+                                </th>
+
+                                <th style="display:none"></th>
+                                <th style="display:none"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 @section Scripts{
@@ -142,22 +234,28 @@
     <script type="text/javascript">
         $(document).ready(function () {
             loadDataTable();
+            loadDataItems();
+            loadDataRoom();
         });
         function Export() {
-
-            var codes = $("#searchCode").val();
-
-            var urlx = "@Url.Action("Export", "ReportTransferItem")" + '?code=' + codes;
+          
+            var urlx = "/Admin/ReportTransferItem/Export";
             window.location = urlx;
-
         }
         function ClearSearch() {
-            $("#Code").val('');
-            $("#OriginOfGoods").val('');
-            $("#CategoryId").val('');
-            $("#Status").val('');
+            $("#ItemId").val('');
+            $("#ItemsName").val('');
+            $("#SearchMonths").val('');
+            $("#SearchYears").val('');
+            $("#SearchLocationItems").val('');
+            $("#SearchRoomIds").val('');
+            $("#SearchRoomNames").val('');
+            $("#SearchRoomIds_").val('');
+            $("#SearchRoomNames_").val('');
+            $("#SearchLocationItems_").val('');
+            $("#ItemsName_").val('');
 
-        }
+        }   
 
         function loadDataTable() {
             dataTable = $('#tblData').DataTable({
@@ -170,17 +268,84 @@
                     { "data": "code", "autoWidth": true },
                     { "data": "name", "autoWidth": true },
                     { "data": "description", "autoWidth": true },
-                    { "data": "category", "autoWidth": true },
-                    { "data": "room", "autoWidth": true },
-                    { "data": "price", "autoWidth": true },
-                    { "data": "qty", "autoWidth": true },
-                    { "data": "totalamount", "autoWidth": true }
+                    { "data": "transferdate", "autoWidth": true },
+                    { "data": "previousroom", "autoWidth": true },
+                    { "data": "currentroom", "autoWidth": true },
                 ],
                 "createdRow": function (row, data, index) {
 
                 }
             });
         }
+
+        function loadDataItems() {
+            dataTable = $('#tblDataItems').DataTable({
+                "ajax": {
+                    "url": "/Admin/ReportTransferItem/GetAllItems"
+                },
+                "columns": [
+                    { "data": "name", "width": "30%" },
+                    { "data": "category", "width": "30%" },
+                    { "data": "room", "width": "10%" },
+                    { "data": "location", "width": "30%" },
+                    { "data": "id", "width": "10%" },
+                    { "data": "roomid", "width": "10%" },
+                    { "data": "name_of_room_and_location_", "width": "20%" }
+
+                ],
+                "createdRow": function (row, data, index) {
+                    $(row).attr('onclick', 'select_row(this)');
+                    $(row).attr('data-bs-dismiss', 'modal');
+                    $('td', row).eq(4).attr('style', 'display:none;');
+                    $('td', row).eq(5).attr('style', 'display:none;');
+                    $('td', row).eq(6).attr('style', 'display:none;');
+                },
+            });
+        }
+
+        function select_row(obj) {
+            var itemname = $('td', obj).eq(0).html().trim();
+            var itemid = $('td', obj).eq(4).html().trim();          
+            var name_of_room_and_location_ = $('td', obj).eq(6).html().trim();
+
+            $('#ItemId').val(itemid); 
+            $('#ItemsName').val(itemname);
+            $('#ItemsName_').val(itemname);
+            $('#SearchLocationItems').val(name_of_room_and_location_);
+            $('#SearchLocationItems_').val(name_of_room_and_location_);
+        }
+
+        function loadDataRoom() {
+            dataTable = $('#tblDataRoom').DataTable({
+                "ajax": {
+                    "url": "/Admin/ReportTransferItem/GetAllRoomAndLocation"
+                },
+                "columns": [
+                    { "data": "name_of_room", "width": "30%" },
+                    { "data": "description", "width": "30%" },
+                    { "data": "name_of_location", "width": "30%" },
+                    { "data": "id", "width": "10%" },
+                    { "data": "name_of_room_and_location", "width": "10%" }
+
+                ],
+                "createdRow": function (row, data, index) {
+                    $(row).attr('onclick', 'select_row2(this)');
+                    $(row).attr('data-bs-dismiss', 'modal');
+                    $('td', row).eq(3).attr('style', 'display:none;');
+                    $('td', row).eq(4).attr('style', 'display:none;');
+                },
+            });
+        }
+        function select_row2(obj) {
+            var name_of_room = $('td', obj).eq(0).html().trim();
+            var id_of_room = $('td', obj).eq(3).html().trim();
+            var name_of_room_and_location_ = $('td', obj).eq(4).html().trim();
+            $('#SearchRoomNames').val(name_of_room_and_location_);
+            $('#SearchRoomNames_').val(name_of_room_and_location_);
+            $('#SearchRoomIds').val(id_of_room);
+            $('#SearchRoomIds_').val(id_of_room)
+        }
+        
 
     </script>
 }

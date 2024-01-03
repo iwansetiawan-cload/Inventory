@@ -70,8 +70,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 room = z.Room.Name,
                                 qty = z.Qty,
                                 ownership = z.OriginOfGoods,
-                                price = z.Price != null ? z.Price : 0,
-                                totalamount = z.TotalAmount != null ? z.TotalAmount : 0,
+                                price = z.Price.HasValue ? z.Price.Value.ToString("#,##0") : "",
+                                totalamount = z.TotalAmount.HasValue ? z.TotalAmount.Value.ToString("#,##0") : "",
                                 status = z.Status
                             }).ToList();
             if (vm.SearchCode != null)
