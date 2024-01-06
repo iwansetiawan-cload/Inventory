@@ -14,43 +14,153 @@ namespace E_OneWeb.Areas.Admin.Controllers
     public class ReportServiceItemController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private static ReportServiceVM staticvm = new ReportServiceVM();
         public ReportServiceItemController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task<IActionResult> Index(ItemsVM vm)
-        {
-            IEnumerable<Category> CatList = await _unitOfWork.Category.GetAllAsync();
-            vm.CategoryList = CatList.Select(i => new SelectListItem
+        public async Task<IActionResult> Index(ReportServiceVM vm)
+        {           
+            staticvm = vm;
+            vm.MonthList = MonthItems.Where(x => x != "").Select((m, i) => new SelectListItem
             {
-                Text = i.Name,
-                Value = i.Id.ToString()
-            });
-            var StatusList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 2).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
-            var OwnershipList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 3).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
-            ViewBag.StatusList = new SelectList(StatusList, "Value", "Text");
-            ViewBag.OwnershipList = new SelectList(OwnershipList, "Value", "Text");
+                Value = (i + 1).ToString(),
+                Text = m
+            }).ToList();
+            ViewBag.SearchMonthList = new SelectList(vm.MonthList, "Value", "Text");
+            var StatusList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6).Select(x => new SelectListItem { Value = x.IDGEN.ToString(), Text = x.GENNAME });
+            ViewBag.SearchStatusList = new SelectList(StatusList, "Value", "Text");
             return View(vm);
         }
-        [HttpGet]
+        public static IEnumerable<String> MonthItems
+        {
+            get
+            {
+                return new System.Globalization.DateTimeFormatInfo().MonthNames;
+            }
+        }
+  
         public async Task<IActionResult> GetAll()
+        {
+
+            var datalist = (from z in await _unitOfWork.ItemService.GetAllAsync(includeProperties: "Items")
+                            select new
+                            {
+                                id = z.Id,
+                                itemid = z.ItemId,
+                                code = z.Items.Code,
+                                name = z.Items.Name,
+                                description = z.RepairDescription,
+                                servicedate = z.ServiceDate != null ? z.ServiceDate.Value.ToString("dd/MM/yyyy") : "",
+                                serviceenddate = z.ServiceEndDate != null ? z.ServiceEndDate.Value.ToString("dd/MM/yyyy") : "",
+                                requestby = z.RequestBy ,
+                                cost = z.CostOfRepair.HasValue ? z.CostOfRepair.Value.ToString("#,##0") : "",
+                                status = z.Status,
+                                statusid = z.StatusId,
+                                month = z.ServiceDate != null ? z.ServiceDate.Value.Month : 0,
+                                year = z.ServiceDate != null ? z.ServiceDate.Value.Year : 0,
+                            }).ToList();
+
+            if (staticvm.SearchItemId != null)
+            {
+                datalist = datalist.Where(o => o.itemid == staticvm.SearchItemId).ToList();
+            }
+            if (staticvm.SearchMonth != null)
+            {
+                datalist = datalist.Where(o => o.month == staticvm.SearchMonth).ToList();
+            }
+            if (staticvm.SearchYear != null)
+            {
+                datalist = datalist.Where(o => o.year == staticvm.SearchYear).ToList();
+            }
+            if (staticvm.SearchStatus != null)
+            {
+                datalist = datalist.Where(o => o.statusid == staticvm.SearchStatus).ToList();
+            }
+
+            return Json(new { data = datalist });
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAllItems()
         {
 
             var datalist = (from z in await _unitOfWork.Items.GetAllAsync(includeProperties: "Category,Room")
                             select new
                             {
                                 id = z.Id,
-                                code = z.Code,
                                 name = z.Name,
-                                description = z.Description,
                                 category = z.Category.Name,
+                                location = _unitOfWork.Location.Get(z.Room.IDLocation).Name,
                                 room = z.Room.Name,
-                                qty = z.Qty,
-                                price = z.Price != null ? z.Price : 0,
-                                totalamount = z.TotalAmount != null ? z.TotalAmount : 0
+                                roomid = z.Room.Id,
+                                name_of_room_and_location_ = z.Room.Name + " (" + _unitOfWork.Location.Get(z.Room.IDLocation).Name + ")"
                             }).ToList();
 
             return Json(new { data = datalist });
+        }        
+        public async Task<FileResult> Export(string code)
+        {
+
+            var datalist = (from z in await _unitOfWork.ItemService.GetAllAsync(includeProperties: "Items")
+                            select new
+                            {
+                                id = z.Id,
+                                itemid = z.ItemId,
+                                code = z.Items.Code,
+                                name = z.Items.Name,
+                                description = z.RepairDescription,
+                                servicedate = z.ServiceDate != null ? z.ServiceDate.Value.ToString("dd/MM/yyyy") : "",
+                                serviceenddate = z.ServiceEndDate != null ? z.ServiceEndDate.Value.ToString("dd/MM/yyyy") : "",
+                                requestby = z.RequestBy,
+                                cost = z.CostOfRepair.HasValue ? z.CostOfRepair.Value.ToString("#,##0") : "",
+                                status = z.Status,
+                                statusid = z.StatusId,
+                                month = z.ServiceDate != null ? z.ServiceDate.Value.Month : 0,
+                                year = z.ServiceDate != null ? z.ServiceDate.Value.Year : 0,
+                                technician = z.Technician,
+                                phone = z.PhoneNumber,
+                                address = z.Address
+                            }).ToList();
+
+            if (staticvm.SearchItemId != null)
+            {
+                datalist = datalist.Where(o => o.itemid == staticvm.SearchItemId).ToList();
+            }
+            if (staticvm.SearchMonth != null)
+            {
+                datalist = datalist.Where(o => o.month == staticvm.SearchMonth).ToList();
+            }
+            if (staticvm.SearchYear != null)
+            {
+                datalist = datalist.Where(o => o.year == staticvm.SearchYear).ToList();
+            }
+            if (staticvm.SearchStatus != null)
+            {
+                datalist = datalist.Where(o => o.statusid == staticvm.SearchStatus).ToList();
+            }
+
+            int Number = 1;
+            var datalist_ = (from z in datalist
+                             select new ExportReportServiceItem
+                             {
+                                 Number = Number++,
+                                 Code = z.code,
+                                 Name = z.name,
+                                 Description = z.description,
+                                 ServiceDate = z.servicedate,
+                                 ServiceEndDate = z.serviceenddate,
+                                 Technician = z.technician,
+                                 PhoneNumber = z.phone,
+                                 Address = z.address,
+                                 RequestBy = z.requestby,
+                                 CostOfRepair = z.cost
+                             }).ToList();
+
+
+            var file = CreateFile(datalist_);
+            return File(file, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Export_Data_ItemService.xlsx");
+
+
         }
         public static byte[] CreateFile<T>(List<T> source)
         {
@@ -79,19 +189,25 @@ namespace E_OneWeb.Areas.Admin.Controllers
             cell.SetCellValue("DESCRIPTION");
             cell.CellStyle = style;
             cell = rowHeader.CreateCell(4);
-            cell.SetCellValue("CATEGORY");
+            cell.SetCellValue("SERVICE DATE");
             cell.CellStyle = style;
             cell = rowHeader.CreateCell(5);
-            cell.SetCellValue("ROOM NAME");
+            cell.SetCellValue("SERVICE END DATE");
             cell.CellStyle = style;
             cell = rowHeader.CreateCell(6);
-            cell.SetCellValue("QTY");
+            cell.SetCellValue("TECHNICIAN");
             cell.CellStyle = style;
             cell = rowHeader.CreateCell(7);
-            cell.SetCellValue("PRICE");
+            cell.SetCellValue("PHONE");
             cell.CellStyle = style;
             cell = rowHeader.CreateCell(8);
-            cell.SetCellValue("TOTAL AMOUNT");
+            cell.SetCellValue("ADDRESS");
+            cell.CellStyle = style;
+            cell = rowHeader.CreateCell(9);
+            cell.SetCellValue("REQUEST BY");
+            cell.CellStyle = style;
+            cell = rowHeader.CreateCell(10);
+            cell.SetCellValue("COST OF REPAIR");
             cell.CellStyle = style;
             //end header
 
@@ -144,51 +260,6 @@ namespace E_OneWeb.Areas.Admin.Controllers
             var content = stream.ToArray();
 
             return content;
-        }
-        [HttpGet("Export")]
-        public async Task<FileResult> Export(string code)
-        {
-
-            var products = (from z in await _unitOfWork.Items.GetAllAsync(includeProperties: "Category,Room")
-                            select new
-                            {
-                                number = z.Id,
-                                code = z.Code,
-                                name = z.Name,
-                                description = z.Description,
-                                category = z.Category.Name,
-                                room = z.Room.Name,
-                                qty = z.Qty,
-                                price = z.Price != null ? z.Price : 0,
-                                totalamount = z.TotalAmount != null ? z.TotalAmount : 0
-
-                            }).ToList();
-
-            if (code != null)
-            {
-                products = products.Where(z => z.code == code).ToList();
-            }
-            int Number = 1;
-            products = (from z in products
-                        select new
-                        {
-                            number = Number++,
-                            code = z.code,
-                            name = z.name,
-                            description = z.description,
-                            category = z.category,
-                            room = z.room,
-                            qty = z.qty,
-                            price = z.price != null ? z.price : 0,
-                            totalamount = z.totalamount != null ? z.totalamount : 0
-
-                        }).ToList();
-
-
-            var file = CreateFile(products);
-            return File(file, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Export_data_item.xlsx");
-
-
         }
     }
 }

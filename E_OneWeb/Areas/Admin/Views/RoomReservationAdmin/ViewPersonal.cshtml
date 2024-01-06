@@ -154,25 +154,22 @@
             </div>
 
         </div>
-        <div class="col-md-6">
-         @*     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <div class="card" style="width: 18rem;">
-                    <img class="rounded float-end" src="@Model.Photo" style="border-radius:5px; border:1px solid #bbb9b9">
-                </div>
-            </div> *@
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <div class="col-md-6">   
+         
+
+            <div class="card border-0 p-3 shadow  border-top border-5 rounded">
                 @if (@ViewBag.img != "")
-                {
-                    <div class="card" style="width: 18rem;">
-                        <img class="rounded float-end" src="@Model.Personal.Photo" style="border-radius:5px; border:1px solid #bbb9b9">
+                {                   
+                    <div class="card" style="-ms-text-autospace">
+                        <img class="card-img-top rounded" src="@Model.Personal.Photo">
                     </div>
                 }
                 else
                 {
                     <div class="card" style="width: 18rem;">
                         <img class="rounded float-end" src="https://placehold.co/300x400/png" style="border-radius:5px; border:1px solid #bbb9b9">
-                    </div>                  
-                }
+                    </div>
+                }              
             </div>
         </div>
 
