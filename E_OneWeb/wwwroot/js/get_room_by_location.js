@@ -21,6 +21,9 @@ function loadDataTable() {
                                 <a href="/Admin/Room/UpsertRoom/${data}" class="btn btn-success text-white" style="cursor:pointer">
                                     <i class="fas fa-edit"></i> 
                                 </a>  
+                                 <a href="/Admin/Room/ViewItemList/${data}" class="btn btn-info" style="cursor:pointer">
+                                    <i class="fas fa-eye"></i>
+                                </a>
                             </div>
                            `;
                 }, "width": "40%"

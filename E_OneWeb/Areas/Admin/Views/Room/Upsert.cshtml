@@ -62,15 +62,14 @@
         @if ((Model.Id != 0) || @ViewBag.Status == "Update Success")
         {
             //edit
-            <br />        
-            <div class="row">
-                <div class="col-md-12">                  
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">                    
+            <br />      
+            <div class="row py-2">
+                <div class="col-md-12">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         @Html.ActionLink(" Create New Room", "UpsertRoom", "Room", new { idlocation = Model.Id }, new { id = "btn-add", @class = "btn btn-primary"})
                     </div>
 
                 </div>
-
             </div>
           
             <div class="p-4 border rounded">
@@ -98,7 +97,7 @@
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />
-	<script src="~/js/getroombylocation.js"></script>
+	<script src="~/js/get_room_by_location.js"></script>
     <script type="text/javascript">
 
 

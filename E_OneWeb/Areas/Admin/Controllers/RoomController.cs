@@ -171,6 +171,41 @@ namespace E_OneWeb.Areas.Admin.Controllers
 			return Json(new { data = datalist });
 		}
 
-		#endregion
-	}
+        #endregion
+
+        public async Task<IActionResult> ViewItemList(int? id)
+        {
+            Room room = new Room();
+            ViewBag.RoomId = id;
+            room = _unitOfWork.Room.Get(id.GetValueOrDefault());
+            if (room == null)
+            {
+                return NotFound();
+            }          
+            return View(room);
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetItemList(int? id)
+        {
+
+            var datalist = (from z in await _unitOfWork.Items.GetAllAsync(includeProperties: "Category,Room")
+                            select new
+                            {
+                                id = z.Id,
+                                code = z.Code,
+                                name = z.Name,
+                                description = z.Description,
+                                price = z.Price != null ? z.Price.Value.ToString("#,##0") : "",
+                                qty = z.Qty != null ? z.Qty : 0,
+                                totalamount = z.TotalAmount != null ? z.TotalAmount : 0,
+                                room = z.Room.Name,
+                                roomid = z.RoomId,
+                                category = z.Category.Name
+                            }).Where(i=>i.roomid == id).ToList().OrderByDescending(o => o.id);
+
+            return Json(new { data = datalist });
+        }
+    }
 }
