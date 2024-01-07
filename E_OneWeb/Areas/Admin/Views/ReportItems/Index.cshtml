@@ -187,7 +187,9 @@
                     { "data": "totalamount", "autoWidth": true }
                 ],
                 "createdRow": function (row, data, index) {
-
+                    $('td', row).eq(5).attr('style', 'text-align:right;');
+                    $('td', row).eq(6).attr('style', 'text-align:center;');
+                    $('td', row).eq(7).attr('style', 'text-align:right;');
                 }
             });
         }

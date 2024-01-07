@@ -1,8 +1,8 @@
-﻿@model E_OneWeb.Models.ViewModels.ReportRequestItemVM
+﻿@model E_OneWeb.Models.ViewModels.ReportReportDepreciationExpenseVM
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var title = "Report Request Item";
+    var title = "Report Depreciation Expense";
 }
 
 <br />
@@ -19,14 +19,34 @@
 
                     <div class="col-12 pt-4">
                         <div class="form-group row pt-2">
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.SearchStartDate, "Start Date", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <input asp-for="SearchStartDate" class="form-control" style="row-gap" id="searchStartDate" type="date" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.SearchEndDate, "End Date", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <input asp-for="SearchEndDate" class="form-control" style="row-gap" id="searchEndDate" type="date" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group row pt-2">
 
                             <div class="col-6">
                             
                                 <div class="form-group row">
-                                    @Html.LabelFor(model => model.SearchRefNumber, "Ref Number", htmlAttributes: new { @class = "control-label col-md-2" })
-
+                                    @Html.LabelFor(model => model.SearchCategory, "Category", htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
-                                        <input asp-for="SearchRefNumber" class="form-control" style="row-gap" id="searchRefNumber" />
+                                        @Html.DropDownListFor(Model => Model.SearchCategory , Model.CategoryList, "- All Category -",
+                                        new { @Class = "form-control", @id="searchCategory"})
                                     </div>
                                 </div>
 
@@ -37,29 +57,15 @@
                                     @Html.LabelFor(model => model.SearchMonth, "Year/ Month", htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-6">
                                         @Html.DropDownListFor(Model => Model.SearchMonth, ViewBag.SearchMonthList as SelectList, "- Select a Month -", new { @class = "form-control", @id="SearchMonths" })
-
                                     </div>
                                     <div class="col-md-4">
                                         <input asp-for="SearchYear" class="form-control" style="row-gap" id="SearchYears" />
-
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-                        <div class="form-group row pt-2">
-                            <div class="col-6">
-                                <div class="form-group row">
-                                    
-                                    @Html.LabelFor(model => model.SearchStatus, "Status", htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-10">
-                                        @Html.DropDownListFor(model => model.SearchStatus, ViewBag.StatusList as SelectList, "- Select a Status -", new { @class = "form-control", @id="searchStatus" })
-
-                                    </div>
-                                </div>
-                            </div>                         
-
-                        </div>
+                       
                         <div class="form-group row py-4">
                             <div class="col-md-12 text-center">
                                 <button class="btn btn-primary" type="submit" style="width:145px">Search</button>
@@ -69,9 +75,7 @@
                         </div>
 
                     </div>
-               @*     <div class="col-12 border-bottom">
-                        <h1 class="text-primary"></h1>
-                    </div>*@
+              
                     <div class="row py-2">
                         <div class="col-md-12">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -85,19 +89,31 @@
                             <thead class="thead-dark">
                                 <tr class="table-info">
                                     <th>
-                                        Ref Number
+                                        Code
                                     </th>
                                     <th>
-                                        Request Date
+                                        Item Name
                                     </th>
                                     <th>
-                                        Requester
+                                        Date of Acquisition
+                                    </th>
+                                    <th>
+                                        Category Name
+                                    </th>
+                                    <th>
+                                        Persent
+                                    </th>
+                                    <th>
+                                        Period
+                                    </th>
+                                    <th>
+                                        Price
+                                    </th>
+                                    <th>
+                                        Qty
                                     </th>
                                     <th>
                                         Total Amount
-                                    </th>
-                                    <th>
-                                        Status
                                     </th>
                                 </tr>
                             </thead>
@@ -113,47 +129,60 @@
     </div>
 </form>
 
-
 @section Scripts{
 
     <script type="text/javascript">
         $(document).ready(function () {
             loadDataTable();
-           
         });
+        function ClearSearch() {
+            $("#searchCode").val('');
+            $("#searchOwnership").val('');
+            $("#searchCategory").val('');
+            $("#searchStatus").val('');
+        }
         function Export() {
 
-            var urlx = "/Admin/ReportRequestItem/Export";
+            var urlx = "/Admin/ReportDepreciationExpense/Export";
             window.location = urlx;
         }
-        function ClearSearch() {
-            $("#searchRefNumber").val('');
-            $("#SearchMonths").val('');
-            $("#SearchYears").val('');
-            $("#searchStatus").val('');
 
-        }
+        //function search() {
+        //    var codes = $("#searchCode").val();
+        //    var ownership = $("#searchOwnership").val();
+        //    var category = $("#searchCategory").val();
+        //    var status = $("#searchStatus").val();
+        //    var urlx = "/Admin/ReportItems/Index?code=" + codes + "&ownership=" + ownership + "&category=" + category + "&status=" + status;
+        //    window.location = urlx;
+
+        //}
 
         function loadDataTable() {
+            var code = $('#searchCode').val();
             dataTable = $('#tblData').DataTable({
                 "order": [[0, "desc"]],
                 "filter": false,
                 "ajax": {
-                    "url": "/Admin/ReportRequestItem/GetAll"
+                    "url": "/Admin/ReportDepreciationExpense/GetAll"
                 },
                 "columns": [
-                    { "data": "refnumber", "autoWidth": true },
-                    { "data": "requestdate", "autoWidth": true },
-                    { "data": "requestby", "autoWidth": true },
-                    { "data": "totalamount", "autoWidth": true },
-                    { "data": "status", "autoWidth": true },
+                    { "data": "code", "autoWidth": true },
+                    { "data": "name", "autoWidth": true },
+                    { "data": "startdatestring", "autoWidth": true },
+                    { "data": "category", "autoWidth": true },
+                    { "data": "persent", "autoWidth": true },
+                    { "data": "period", "autoWidth": true },
+                    { "data": "price", "autoWidth": true },
+                    { "data": "qty", "autoWidth": true },
+                    { "data": "totalamount", "autoWidth": true }
                 ],
                 "createdRow": function (row, data, index) {
-                    $('td', row).eq(3).attr('style', 'text-align:right;');
+                    $('td', row).eq(5).attr('style', 'text-align:right;');
+                    $('td', row).eq(6).attr('style', 'text-align:center;');
+                    $('td', row).eq(7).attr('style', 'text-align:right;');
                 }
             });
         }
-
 
     </script>
 }

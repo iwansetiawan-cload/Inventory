@@ -56,7 +56,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             return Json(new { data = datalist });
         }
-        
+        [Authorize(Roles = SD.Role_Employee)]
         public async Task<IActionResult> Upsert(int? id)
         {           
 
@@ -253,9 +253,10 @@ namespace E_OneWeb.Areas.Admin.Controllers
                
             }
             return RedirectToAction(nameof(Index));         
-        }     
+        }
        
         [HttpPost]
+        [Authorize(Roles = SD.Role_Employee)]
         public JsonResult AddItem(string name,string category, string reason, string price, string qty, string total, string spesifik)
         {
 
@@ -324,6 +325,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = SD.Role_Employee)]
         public async Task<IActionResult> Delete(int id)
         {
             var objFromDb = await _unitOfWork.RequestItemHeader.GetAsync(id);
@@ -423,6 +425,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             return Json(new { data = datalist });
         }
+        [Authorize(Roles = SD.Role_Admin)]
         public async Task<IActionResult> ViewApprove(int? id)
 		{
 
