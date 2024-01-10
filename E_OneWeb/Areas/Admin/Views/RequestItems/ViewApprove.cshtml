@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var title = "Approve Request item";
+    var title = "Menyetujui Permintaan Aset";
 }
 
 <br />
@@ -24,9 +24,7 @@
 
                 <div class="col-6">
                     <div class="form-group row">
-                        <div class="col-3">
-                            Ref Number
-                        </div>
+                        @Html.LabelFor(model => model.RequestItemHeader.ReqNumber, "No.Referensi", htmlAttributes: new { @class = "control-label col-md-3" })
                         <div class="col-9">
                             <input asp-for="RequestItemHeader.ReqNumber" class="form-control" style="row-gap" disabled />
                         </div>
@@ -36,9 +34,7 @@
 
                 <div class="col-6">
                     <div class="form-group row">
-                        <div class="col-3">
-                            Request Date
-                        </div>
+                        @Html.LabelFor(model => model.RequestItemHeader.RequestDate, "Tanggal Permintaan", htmlAttributes: new { @class = "control-label col-md-3" })
                         <div class="col-9">
                             <input asp-for="RequestItemHeader.RequestDate" class="form-control" type="date" disabled />
                         </div>
@@ -50,9 +46,7 @@
             <div class="form-group row pt-2">
                 <div class="col-6">
                     <div class="form-group row">
-                        <div class="col-3">
-                            Requester
-                        </div>
+                        @Html.LabelFor(model => model.RequestItemHeader.Requester, "Permintaan dari", htmlAttributes: new { @class = "control-label col-md-3" })
                         <div class="col-9">
                             <input asp-for="RequestItemHeader.Requester" class="form-control" style="row-gap" disabled />
                         </div>
@@ -79,7 +73,7 @@
                 <div class="col-5 offset-5">
                     <div class="row">                 
                         <div class="col">
-                            <a asp-action="Approve" style="width:245px" class="btn btn-success form-control">Back to List</a>
+                            <a asp-action="Approve" style="width:245px" class="btn btn-success form-control">Kembali ke List</a>
                         </div>
                        
                     </div>
@@ -111,22 +105,22 @@
                 <thead class="thead-dark">
                     <tr class="table-info">
                         <th>
-                            Item Name
+                            Nama Aset
                         </th>
                         <th>
-                            Category Name
+                            Katagori
                         </th>
                         <th>
-                            Spesification
+                            Spesifikasi
                         </th>
                         <th>
-                            Price
+                            Nilai
                         </th>
                         <th>
-                            Qty
+                            Jumalh
                         </th>
                         <th>
-                            Total
+                            Total Nilai
                         </th>
                         <th>
                             Status
@@ -146,7 +140,7 @@
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <div class="form-group row">
                     <div class="col-4">
-                        <label>Grand Total</label>
+                        <label>Nilai Keseluruhan</label>
                     </div>
                     <div class="col-8">
                         <input type="hidden" asp-for="RequestItemHeader.TotalAmount" id="grandtotal" />
@@ -173,9 +167,7 @@
 
                 <div class="col-12 pt-2">
                     <div class="form-group row">
-                        <div class="col-2">
-                            Notes
-                        </div>
+                        @Html.LabelFor(model => model.RequestItemHeader.Notes, "Catatan", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-10">
                             <div class="input-group">
                                 <textarea asp-for="RequestItemHeader.Notes" id="notes" class="form-control"></textarea>
@@ -211,9 +203,7 @@
                 <input type="hidden" asp-for="RequestItemDetail.Id" id="IdDetails" />
                 <div class="col-12 pt-2">
                     <div class="form-group row">
-                        <div class="col-2">
-                            Notes
-                        </div>
+                        @Html.LabelFor(model => model.RequestItemDetail.Notes, "Catatan", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-10">
                             <div class="input-group">
                                 <textarea asp-for="RequestItemDetail.Notes" id="notesdetail" class="form-control"></textarea>

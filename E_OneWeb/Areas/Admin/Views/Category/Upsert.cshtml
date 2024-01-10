@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var title = "Create Category";
+    var title = "Tambah Katagori";
 }
 
 <form method="post">
@@ -13,17 +13,15 @@
         @if (Model.Id != 0)
         {
             //edit
-            title = "Edit Category";
+            title = "Ubah Katagori";
         }
         <div class="col-12 border-bottom">
             <h2 class="text-primary">@title</h2>
         </div>
 
         <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="Name"></label>
-                </div>
+            <div class="form-group row">               
+                @Html.LabelFor(model => model.Name, "Nama", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <input asp-for="Name" class="form-control" style="row-gap" />
                     <span asp-validation-for="Name" class="text-danger"></span>
@@ -33,17 +31,13 @@
         </div>        
 
         <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-2">
-                    <label>Percent</label>
-                </div>
+            <div class="form-group row">          
+                @Html.LabelFor(model => model.Percent, "Persen", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-4">
                     <input asp-for="Percent" class="form-control" style="row-gap" />
                     <span asp-validation-for="Percent" class="text-danger"></span>
-                </div>
-                <div class="col-2">
-                    <label>Period /year</label>
-                </div>
+                </div>           
+                @Html.LabelFor(model => model.Name, "Period /tahun", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-4">
                     <input asp-for="Period" class="form-control" style="row-gap" />
                     <span asp-validation-for="Period" class="text-danger"></span>
@@ -53,10 +47,8 @@
         </div>
 
         <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="Description"></label>
-                </div>
+            <div class="form-group row">             
+                @Html.LabelFor(model => model.Description, "Keterangan", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <textarea asp-for="Description" class="form-control"></textarea>
                 </div>

@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var title = "Report Service And Mantenance";
+    var title = "Laporan Servis";
 }
 
 <br />
@@ -25,8 +25,7 @@
 
                             <div class="col-6">
                                 <div class="form-group row">
-                                    @Html.LabelFor(model => model.SearchItem, "Item", htmlAttributes: new { @class = "control-label col-md-2" })
-
+                                    @Html.LabelFor(model => model.SearchItem, "Nama Aset", htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
                                         <div class="input-group">
                                             <input type="hidden" asp-for="SearchItemId" id="ItemId" />
@@ -59,7 +58,7 @@
                             <div class="col-6">
 
                                 <div class="form-group row">
-                                    @Html.LabelFor(model => model.SearchLocationItem, "Location", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.SearchLocationItem, "Lokasi", htmlAttributes: new { @class = "control-label col-md-2" })
 
                                     <div class="col-md-10">
                                         <input asp-for="SearchLocationItem" class="form-control" style="row-gap" id="SearchLocationItems" disabled />
@@ -104,25 +103,25 @@
                             <thead class="thead-dark ">
                                 <tr class="table-info">
                                     <th>
-                                        Code
+                                        Kode
                                     </th>
                                     <th>
-                                        Item Name
+                                        Nama Aset
                                     </th>
                                     <th>
-                                        Description
+                                        Keterangan
                                     </th>
                                     <th>
-                                        Service Date
+                                        Tanggal Servis
                                     </th>
                                     <th>
-                                        Service End Date
+                                        Tanggal Selesai
                                     </th>
                                     <th>
-                                        Request By
+                                        Permintaan dari
                                     </th>
                                     <th>
-                                        Cost Of Repair
+                                        Nilai Servis
                                     </th>
                                     <th>
                                         Status
@@ -146,7 +145,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="lookupItemsLabel">Choose Items</h5>
+                <h5 class="modal-title" id="lookupItemsLabel">Pilih Aset</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -158,16 +157,16 @@
                         <thead class="thead-dark">
                             <tr class="table-info">
                                 <th>
-                                    Item Name
+                                    Nama Aset
                                 </th>
                                 <th>
-                                    Category
+                                    Katagori
                                 </th>
                                 <th>
-                                    Room
+                                    Ruangan
                                 </th>
                                 <th>
-                                    Location
+                                    Gedung
                                 </th>
 
                                 <th style="display:none"></th>

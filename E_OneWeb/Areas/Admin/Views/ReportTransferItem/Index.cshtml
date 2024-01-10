@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var title = "Report Transfer Item";
+    var title = "Laporan Pemindahan Aset";
 }
 
 <br />
@@ -26,9 +26,7 @@
 
                             <div class="col-6">
                                 <div class="form-group row">
-                                    <div class="col-2">
-                                        <label>Item</label>
-                                    </div>
+                                    @Html.LabelFor(model => model.SearchItem, "Nama Aset", htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-10">
                                         <div class="input-group">
                                             <input type="hidden" asp-for="SearchItemId" id="ItemId" />
@@ -43,9 +41,7 @@
 
                             <div class="col-6">
                                 <div class="form-group row">
-                                    <div class="col-2">
-                                        <label>Year/ Month</label>
-                                    </div>
+                                    @Html.LabelFor(model => model.SearchItem, "Tahun/ bulan", htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-6">
                                         @Html.DropDownListFor(Model => Model.SearchMonth, ViewBag.SearchMonthList as SelectList, "- Select a Month -", new { @class = "form-control", @id="SearchMonths" })
 
@@ -61,9 +57,7 @@
                         <div class="form-group row pt-2">
                             <div class="col-6">
                                 <div class="form-group row">
-                                    <div class="col-2">
-                                        <label>Location</label>
-                                    </div>
+                                    @Html.LabelFor(model => model.SearchItem, "Gedung", htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-10">
                                         <input asp-for="SearchLocationItem" class="form-control" style="row-gap" id="SearchLocationItems" disabled />
                                     </div>
@@ -71,9 +65,7 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group row">
-                                    <div class="col-2">
-                                        <label>Room</label>
-                                    </div>
+                                    @Html.LabelFor(model => model.SearchItem, "Ruangan", htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-10">
                                         <div class="input-group">
 
@@ -111,22 +103,22 @@
                             <thead class="thead-dark ">
                                 <tr class="table-info">
                                     <th>
-                                        Code
+                                        Kode
                                     </th>
                                     <th>
-                                        Item Name
+                                        Nama Aset
                                     </th>
                                     <th>
-                                        Description
+                                        Keterangan
                                     </th>
                                     <th>
-                                        Transfer Date
+                                        Tanggal Pemidahan
                                     </th>
                                     <th>
-                                        Previous Location
+                                        Lokasi Sebelumnya
                                     </th>
                                     <th>
-                                        Current Location
+                                        Lokasi Saat ini
                                     </th>
                                 </tr>
                             </thead>
@@ -148,7 +140,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="lookupItemsLabel">Choose Items</h5>
+                <h5 class="modal-title" id="lookupItemsLabel">Pilih Aset</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -160,16 +152,16 @@
                         <thead class="thead-dark">
                             <tr class="table-info">
                                 <th>
-                                    Item Name
+                                    Nama Aset
                                 </th>
                                 <th>
-                                    Category
+                                    Katagori
                                 </th>
                                 <th>
-                                    Room
+                                    Ruangan
                                 </th>
                                 <th>
-                                    Location
+                                    Gedung
                                 </th>
 
                                 <th style="display:none"></th>
@@ -193,7 +185,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Choose Location</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Pilih Ruangan</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -204,13 +196,13 @@
                         <thead class="thead-dark">
                             <tr class="table-info">
                                 <th>
-                                    Name Of Room
+                                    Nama Ruangan
                                 </th>
                                 <th>
-                                    Description
+                                    Keterangan
                                 </th>
                                 <th>
-                                    Location
+                                    Gedung
                                 </th>
 
                                 <th style="display:none"></th>

@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var title = "Report Request Item";
+    var title = "Laporan Permintaan Aset";
 }
 
 <br />
@@ -23,7 +23,7 @@
                             <div class="col-6">
                             
                                 <div class="form-group row">
-                                    @Html.LabelFor(model => model.SearchRefNumber, "Ref Number", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.SearchRefNumber, "No.Referensi", htmlAttributes: new { @class = "control-label col-md-2" })
 
                                     <div class="col-md-10">
                                         <input asp-for="SearchRefNumber" class="form-control" style="row-gap" id="searchRefNumber" />
@@ -34,7 +34,7 @@
 
                             <div class="col-6">
                                 <div class="form-group row">                                 
-                                    @Html.LabelFor(model => model.SearchMonth, "Year/ Month", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.SearchMonth, "Tahun/ bulan", htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-6">
                                         @Html.DropDownListFor(Model => Model.SearchMonth, ViewBag.SearchMonthList as SelectList, "- Select a Month -", new { @class = "form-control", @id="SearchMonths" })
 
@@ -85,16 +85,16 @@
                             <thead class="thead-dark">
                                 <tr class="table-info">
                                     <th>
-                                        Ref Number
+                                        No.Referensi
                                     </th>
                                     <th>
-                                        Request Date
+                                        Tanggal Permintaan
                                     </th>
                                     <th>
-                                        Requester
+                                        Permintaan dari
                                     </th>
                                     <th>
-                                        Total Amount
+                                        Total Nilai
                                     </th>
                                     <th>
                                         Status

@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var title = "Create Transfer Item";
+    var title = "Tambah Pemindahan Aset";
 }
 <div id='myModal' class='modal fade in'>
     <div class="modal-dialog modal-lg">
@@ -28,7 +28,7 @@
         @if ((Model.ItemTransfer.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Update Success")
         {
             //edit
-            title = "Update Transfer Item";
+            title = "Ubah Pemindahan Aset";
           @*  <input type="hidden" asp-for="ItemTransfer.Id" id="transferid" />*@
             <input type="hidden" asp-for="ItemTransfer.PreviousLocationId" />
         }
@@ -38,12 +38,8 @@
 
         <div class="col-12 pt-2">
             <div class="form-group row">
-                <div class="col-2">
-                    Item
-                </div>
+                @Html.LabelFor(model => model.ItemTransfer.Items.Name, "Nama Aset", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
-    
-                   
                     <div class="input-group">
                         <input type="hidden" asp-for="ItemTransfer.Items.Id" id="ItemId" />
                         <input asp-for="ItemTransfer.Items.Name" id="ItemsName" class="form-control" disabled />           
@@ -58,9 +54,7 @@
     
         <div class="col-12 pt-2">
             <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="ItemTransfer.Description"></label>
-                </div>
+                @Html.LabelFor(model => model.ItemTransfer.Description, "Keterangan", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <textarea asp-for="ItemTransfer.Description" class="form-control"></textarea>
                 </div>
@@ -70,9 +64,7 @@
 
         <div class="col-12 pt-2">
             <div class="form-group row">
-                <div class="col-2">
-                    <label>Transfer Date</label>
-                </div>
+                @Html.LabelFor(model => model.ItemTransfer.TransferDate, "Tanggal Pemindahan", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <input asp-for="ItemTransfer.TransferDate" class="form-control" type="date" />
                     <span asp-validation-for="ItemTransfer.TransferDate" class="text-danger"></span>
@@ -82,9 +74,7 @@
         </div>
         <div class="col-12 pt-2">
             <div class="form-group row">
-                <div class="col-2">
-                    Previous Location
-                </div>
+                @Html.LabelFor(model => model.LocationPrevious, "Lokasi Sebelum", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <input type="hidden" asp-for="ItemTransfer.PreviousLocationId" id="roomId" />    
                     <input asp-for="LocationPrevious" class="form-control" style="row-gap" id="LocationPreviouss" disabled />
@@ -95,9 +85,7 @@
         </div>
         <div class="col-12 pt-2">
             <div class="form-group row">
-                <div class="col-2">
-                    Current Location
-                </div>         
+                @Html.LabelFor(model => model.LocationCurrent, "Lokasi Saat Ini", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <div class="input-group">
                         <input type="hidden" asp-for="ItemTransfer.CurrentLocationId" id="CurrentLocationId" />
@@ -117,7 +105,7 @@
         <div class="form-group margin-bottom-2 pt-2">
             <div class="col-md-12 text-center">
                 <button type="submit" id="btnSave" class="btn btn-primary form-control" style="width:145px">@title.Replace("Transfer Item","")</button>
-                <a asp-action="Index" class="btn btn-success form-control" style="width:145px">Back to List</a>
+                <a asp-action="Index" class="btn btn-success form-control" style="width:145px">Kembali ke List</a>
             </div>
         </div>
 
@@ -130,7 +118,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="lookupItemsLabel">Choose Items</h5>
+                <h5 class="modal-title" id="lookupItemsLabel">Pilih Aset</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -142,16 +130,16 @@
                         <thead class="thead-dark">
                             <tr class="table-info">                               
                                 <th>
-                                    Item Name
+                                    Nama Aset
                                 </th>
                                 <th>
-                                    Category
+                                    Katagori
                                 </th>
                                 <th>
-                                    Room
+                                    Ruangan
                                 </th>
                                 <th>
-                                    Location
+                                    Gedung
                                 </th>
 
                                 <th style="display:none"></th>
@@ -174,7 +162,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Choose Location</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Pilih Lokasi</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -185,13 +173,13 @@
                         <thead class="thead-dark">
                             <tr class="table-info">
                                 <th>
-                                    Name Of Room
+                                    Nama Ruangan
                                 </th>
                                 <th>
-                                    Description
+                                    Keterangan
                                 </th>
                                 <th>
-                                    Location
+                                    Gedung
                                 </th>
 
                                 <th style="display:none"></th>

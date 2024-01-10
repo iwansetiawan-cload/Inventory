@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var title = "Create Location";
+    var title = "Tambah Gedung";
 }
 
 <form method="post">
@@ -13,17 +13,15 @@
         @if (Model.Id != 0)
         {
             //edit
-            title = "Update Location";
+            title = "Ubah Gedung";
         }
         <div class="col-12 border-bottom">
             <h2 class="text-primary">@title</h2>
         </div>
 
         <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="Name"></label>
-                </div>
+            <div class="form-group row">            
+                @Html.LabelFor(model => model.Name, "Nama", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <input asp-for="Name" class="form-control" style="row-gap" />
                     <span asp-validation-for="Name" class="text-danger"></span>
@@ -33,10 +31,8 @@
         </div>
 
         <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="Description"></label>
-                </div>
+            <div class="form-group row">         
+                @Html.LabelFor(model => model.Description, "Keterangan", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <textarea asp-for="Description" class="form-control"></textarea>
                 </div>
@@ -66,7 +62,7 @@
             <div class="row py-2">
                 <div class="col-md-12">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        @Html.ActionLink(" Create New Room", "UpsertRoom", "Room", new { idlocation = Model.Id }, new { id = "btn-add", @class = "btn btn-primary"})
+                        @Html.ActionLink(" Tambah Ruangan", "UpsertRoom", "Room", new { idlocation = Model.Id }, new { id = "btn-add", @class = "btn btn-primary"})
                     </div>
 
                 </div>
@@ -77,10 +73,10 @@
                     <thead class="thead-dark">
                         <tr class="table-info">
                             <th>
-                                Name Of Room
+                                Nama Ruangan
                             </th>
                             <th>
-                                Description
+                                Keterangan
                             </th>
                             <th style="min-width:100px"></th>
                         </tr>

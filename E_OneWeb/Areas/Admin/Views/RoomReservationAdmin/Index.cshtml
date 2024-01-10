@@ -41,19 +41,19 @@
             <ul class="list-group list-group-horizontal-sm">
                 <a style="text-decoration:none;" asp-controller="RoomReservationAdmin"
                    asp-action="Index" asp-route-status="available">
-                <li class="list-group-item @available">Room available</li>
+                <li class="list-group-item @available">Ruangan Tersedia</li>
                 </a>
                 <a style="text-decoration:none;" asp-controller="RoomReservationAdmin"
                    asp-action="Index" asp-route-status="room_in_use">
-                <li class="list-group-item @room_in_use">Room in use</li>
+                <li class="list-group-item @room_in_use">Ruangan Digunakan</li>
                 </a>
                 <a style="text-decoration:none;" asp-controller="RoomReservationAdmin"
                    asp-action="Index" asp-route-status="waiting_approval">
-                <li class="list-group-item @waiting_approval">Waiting approval</li>
+                <li class="list-group-item @waiting_approval">Menunggu Persetujuan</li>
                 </a>                            
                 <a style="text-decoration:none;" asp-controller="RoomReservationAdmin"
                    asp-action="Index" asp-route-status="all">
-                <li class="list-group-item @all">Approved</li>
+                <li class="list-group-item @all">Sudah Disetujui</li>
                 </a>
             </ul>
         </div>
@@ -66,22 +66,22 @@
             <thead class="thead-dark">
                 <tr class="table-info">
                     <th>
-                        Room Name
+                        Nama Ruangan
                     </th>
                     <th>
-                        Location Name
+                        Nama Gedung
                     </th>
                     <th>
                         Status
                     </th>
                     <th>
-                        Booking By
+                        Nama Peminjam
                     </th>
                     <th>
-                        Start Date
+                        Tanggal Pinjam
                     </th>
                     <th>
-                        End Date
+                        Tanggal Selesai
                     </th>
                     <th style="min-width:100px"></th>
                     <th style="display:none">
@@ -110,7 +110,7 @@
                 <div class="col-12 pt-2">
                     <div class="form-group row">
                         <div class="col-2">
-                            Item Name
+                            Nama Aset
                         </div>
                         <div class="col-10">
                             <div class="input-group">
@@ -124,7 +124,7 @@
                 <div class="col-12 pt-2">
                     <div class="form-group row">
                         <div class="col-2">
-                            Category Name
+                            Katagori
                         </div>
                      
                         <div class="col-10">
@@ -138,7 +138,7 @@
                 <div class="col-12 pt-2">
                     <div class="form-group row">
                         <div class="col-2">
-                            Reason
+                            Catatan
                         </div>
                         <div class="col-10">
                             <div class="input-group">
@@ -152,7 +152,7 @@
                 <div class="col-12 pt-2">
                     <div class="form-group row">
                         <div class="col-2">
-                            Specification
+                            Spesifikasi
                         </div>
                         <div class="col-10">
                             <div class="input-group">
@@ -166,7 +166,7 @@
                 <div class="col-12 pt-2">
                     <div class="form-group row">
                         <div class="col-2">
-                            Price
+                            Nilai
                         </div>
                         <div class="col-10">
                             <div class="input-group">

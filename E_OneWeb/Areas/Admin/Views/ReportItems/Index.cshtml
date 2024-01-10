@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var title = "Report Item";
+    var title = "Laporan Aset";
 }
 
 <br />
@@ -23,9 +23,7 @@
 
                             <div class="col-6">
                                 <div class="form-group row">
-                                    <div class="col-3">
-                                        <label asp-for="SearchCode"></label>
-                                    </div>
+                                    @Html.LabelFor(model => model.SearchCode, "Kode", htmlAttributes: new { @class = "control-label col-md-3" })
                                     <div class="col-9">
                                         <input asp-for="SearchCode" class="form-control" style="row-gap" id="searchCode" />
                                     </div>
@@ -35,9 +33,7 @@
 
                             <div class="col-6">
                                 <div class="form-group row">
-                                    <div class="col-3">
-                                        Ownership
-                                    </div>
+                                    @Html.LabelFor(model => model.SearchOwnership, "Kepemilikan", htmlAttributes: new { @class = "control-label col-md-3" })
                                     <div class="col-9">
                                         @Html.DropDownListFor(Model => Model.SearchOwnership, ViewBag.OwnershipList as SelectList, "- Select a Ownership -", new { @class = "form-control", @id = "searchOwnership" })
                                     
@@ -49,9 +45,7 @@
                         <div class="form-group row pt-2">
                             <div class="col-6">
                                 <div class="form-group row">
-                                    <div class="col-3">
-                                        Category
-                                    </div>
+                                    @Html.LabelFor(model => model.SearchOwnership, "Katagori", htmlAttributes: new { @class = "control-label col-md-3" })
                                     <div class="col-9">
                                         @Html.DropDownListFor(Model => Model.SearchCategory , Model.CategoryList, "- Select a Category -",
                                         new { @Class = "form-control", @id="searchCategory"})
@@ -62,11 +56,8 @@
 
                             <div class="col-6">
 
-                                <div class="form-group row">
-                                    <div class="col-3">
-                                        Status
-                                    </div>
-
+                                <div class="form-group row">                                 
+                                    @Html.LabelFor(model => model.SearchOwnership, "Status", htmlAttributes: new { @class = "control-label col-md-3" })
                                     <div class="col-9">
                                         @Html.DropDownListFor(model => model.SearchStatus, ViewBag.StatusList as SelectList, "- Select a Status -", new { @class = "form-control", @id="searchStatus" })
                                  
@@ -97,28 +88,28 @@
                             <thead class="thead-dark ">
                                 <tr class="table-info">
                                     <th>
-                                        Code
+                                        Kode
                                     </th>
                                     <th>
-                                        Item Name
+                                        Nama Aset
                                     </th>
                                     <th>
-                                        Description
+                                        Keterangan
                                     </th>
                                     <th>
-                                        Category Name
+                                        Katagori
                                     </th>
                                     <th>
-                                        Name Of Room
+                                        Ruangan
                                     </th>
                                     <th>
-                                        Price
+                                        Nilai
                                     </th>
                                     <th>
-                                        Qty
+                                        Jumlah
                                     </th>
                                     <th>
-                                        Total Amount
+                                        Total Nilai
                                     </th>
                                 </tr>
                             </thead>

@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var title = "Create Service And Mantenance";
+    var title = "Tambah Servis";
 }
 
 <form method="post">
@@ -16,7 +16,7 @@
         @if ((Model.ItemService.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Update Success")
         {
             //edit
-            title = "Update Service And Mantenance";
+            title = "Ubah Servis";
             <input type="hidden" asp-for="ItemService.Id" />
         }
         <div class="col-12 border-bottom">
@@ -25,9 +25,7 @@
 
         <div class="col-12 pt-2">
             <div class="form-group row">
-                <div class="col-2">
-                    Item
-                </div>
+                @Html.LabelFor(model => model.ItemService.Items.Name, "Nama Aset", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <div class="input-group">
                         <input type="hidden" asp-for="ItemService.Items.Id" id="ItemId" />
@@ -40,9 +38,7 @@
         </div>
         <div class="col-12 pt-2">
             <div class="form-group row">
-                <div class="col-2">
-                    Location
-                </div>
+                @Html.LabelFor(model => model.name_of_room_and_location, "Lokasi", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">         
                     <input asp-for="name_of_room_and_location" class="form-control" style="row-gap" id="LocationName" disabled />
                
@@ -51,19 +47,14 @@
 
         </div>
         <div class="col-12 pt-2">
-            <div class="form-group row">
-              
-                <div class="col-2">
-                    <label>Service Date</label>
-                </div>
+            <div class="form-group row">              
+                @Html.LabelFor(model => model.ItemService.ServiceDate, "Tanggal Servis", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-4">
                     <input asp-for="ItemService.ServiceDate" class="form-control" type="date" />
                     <span asp-validation-for="ItemService.ServiceDate" class="text-danger"></span>
                 </div>
-
-                <div class="col-2">
-                    <label>Service End Date</label>
-                </div>
+               
+                @Html.LabelFor(model => model.ItemService.ServiceEndDate, "Tanggal Selesai", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-4">
                     <input asp-for="ItemService.ServiceEndDate" class="form-control" type="date" />
                     <span asp-validation-for="ItemService.ServiceEndDate" class="text-danger"></span>
@@ -73,9 +64,7 @@
   
         <div class="col-12 pt-2">
             <div class="form-group row">
-                <div class="col-2">                  
-                    <label asp-for="ItemService.RepairDescription"></label>
-                </div>
+                @Html.LabelFor(model => model.ItemService.RepairDescription, "Keterangan", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <textarea asp-for="ItemService.RepairDescription" class="form-control"></textarea>
                 </div>
@@ -84,9 +73,7 @@
         </div>
         <div class="col-12 pt-2">
             <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="ItemService.Technician"></label>
-                </div>
+                @Html.LabelFor(model => model.ItemService.Technician, "Teknisi", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <input asp-for="ItemService.Technician" class="form-control" style="row-gap" />
                     <span asp-validation-for="ItemService.Technician" class="text-danger"></span>
@@ -96,9 +83,7 @@
         </div>
         <div class="col-12 pt-2">
             <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="ItemService.PhoneNumber"></label>
-                </div>
+                @Html.LabelFor(model => model.ItemService.PhoneNumber, "No.Telepon", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <input asp-for="ItemService.PhoneNumber" class="form-control" style="row-gap" />
                     <span asp-validation-for="ItemService.PhoneNumber" class="text-danger"></span>
@@ -108,9 +93,7 @@
         </div>
         <div class="col-12 pt-2">
             <div class="form-group row">
-                <div class="col-2">                    
-                    <label asp-for="ItemService.Address"></label>
-                </div>
+                @Html.LabelFor(model => model.ItemService.Address, "Alamat", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <textarea asp-for="ItemService.Address" class="form-control"></textarea>
                 </div>
@@ -119,9 +102,7 @@
         </div>
         <div class="col-12 pt-2">
             <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="ItemService.RequestBy"></label>
-                </div>
+                @Html.LabelFor(model => model.ItemService.RequestBy, "Permintaan dari", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <input asp-for="ItemService.RequestBy" class="form-control" style="row-gap" />
                     <span asp-validation-for="ItemService.RequestBy" class="text-danger"></span>
@@ -132,12 +113,9 @@
 
         <div class="col-12 pt-2">
             <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="ItemService.CostOfRepair"></label>
-                </div>
+                @Html.LabelFor(model => model.ItemService.CostOfRepair, "Nilai Servis", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <input type="hidden" asp-for="ItemService.CostOfRepair" id="CostOfRepair" />
-                  @*  <input asp-for="ItemService.CostOfRepair" class="form-control" style="row-gap" />*@
                     <input asp-for="CostOfRepairString" class="form-control" style="row-gap" onchange="changesAmount()" id="CostOfRepairString" />
                     <span asp-validation-for="ItemService.CostOfRepair" class="text-danger"></span>
                 </div>
@@ -147,7 +125,7 @@
 
         <div class="form-group margin-bottom-2 pt-4">
             <div class="col-md-12 text-center">
-                <button class="btn btn-primary" type="submit" style="width:145px" id="btnSave">@title.Replace("Service And Mantenance","")</button>
+                <button class="btn btn-primary" type="submit" style="width:145px" id="btnSave">@title.Replace("Servis","")</button>
                 <a asp-action="Index" class="btn btn-success form-control" style="width:145px">Back to List</a>
             </div>
         </div>
@@ -164,7 +142,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalitems">Choose Items</h5>
+                <h5 class="modal-title" id="modalitems">Pilih Aset</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -176,16 +154,16 @@
                         <thead class="thead-dark">
                             <tr class="table-info">
                                 <th>
-                                    Item Name
+                                    Nama Aset
                                 </th>
                                 <th>
-                                    Category
+                                    Katagori
                                 </th>
                                 <th>
-                                    Room
+                                    Ruangan
                                 </th>
                                 <th>
-                                    Location
+                                    Gedung
                                 </th>                              
 
                                 <th style="display:none"></th>
@@ -196,10 +174,7 @@
                 </div>
 
             </div>
-            @* <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add</button>
-            </div>*@
+          
         </div>
     </div>
 </div>
