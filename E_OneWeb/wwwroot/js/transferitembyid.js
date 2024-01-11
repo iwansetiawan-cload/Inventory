@@ -39,8 +39,8 @@ function loadDataTable(ItemID) {
 
 function Delete(url) {
     swal({
-        title: "Are you sure you want to Delete?",
-        text: "You will not be able to restore the data!",
+        title: "Apakah Anda yakin ingin Menghapus?",
+        text: "Anda tidak akan dapat memulihkan data!",
         icon: "warning",
         buttons: true,
         dangerMode: true

@@ -41,7 +41,7 @@
 
                             <div class="col-6">
                                 <div class="form-group row">
-                                    @Html.LabelFor(model => model.SearchItem, "Tahun/ bulan", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.SearchMonth, "Tahun/ bulan", htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-6">
                                         @Html.DropDownListFor(Model => Model.SearchMonth, ViewBag.SearchMonthList as SelectList, "- Select a Month -", new { @class = "form-control", @id="SearchMonths" })
 
@@ -57,7 +57,7 @@
                         <div class="form-group row pt-2">
                             <div class="col-6">
                                 <div class="form-group row">
-                                    @Html.LabelFor(model => model.SearchItem, "Gedung", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.SearchLocationItem, "Gedung", htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-10">
                                         <input asp-for="SearchLocationItem" class="form-control" style="row-gap" id="SearchLocationItems" disabled />
                                     </div>
@@ -65,7 +65,7 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group row">
-                                    @Html.LabelFor(model => model.SearchItem, "Ruangan", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.SearchRoomName, "Ruangan", htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-10">
                                         <div class="input-group">
 
@@ -90,17 +90,20 @@
                             </div>
                         </div>
 
-                        <div class="col-12 border-bottom">
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <button class="btn btn-primary" type="button" title="Download file" onclick="Export()" id="exportfile" style="width:145px">Download <i class="fas fa-file-export"></i></button>
+                        <div class="row py-2">
+                            <div class="col-md-12">
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button class="btn btn-primary" type="button" title="Download file" onclick="Export()" id="exportfile" style="width:145px">Download <i class="fas fa-file-export"></i></button>
+                                </div>
+
                             </div>
                         </div>
 
                     </div>
-                    <br />
-                    <div class="panel-body" style="min-width:100px;overflow:scroll;">
-                        <table id="tblData" class="table table-striped table-hover dataTable no-search table-bordered">
-                            <thead class="thead-dark ">
+                   
+                    <div class="p-2 border rounded" style="min-width:100px;overflow:scroll;">
+                        <table id="tblData" class="table table-striped table-bordered" style="width:100%">
+                            <thead class="thead-dark">
                                 <tr class="table-info">
                                     <th>
                                         Kode

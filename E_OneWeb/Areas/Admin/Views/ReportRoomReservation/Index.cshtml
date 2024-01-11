@@ -57,6 +57,15 @@
 
                             </div>
 
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.SearchLocationName, "Gedung", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-9">
+                                        <input asp-for="SearchLocationName" id="searchLocationName" class="form-control" disabled />
+                                    </div>
+                                </div>
+                            </div>
+
                       
                         </div>
 
@@ -163,8 +172,9 @@
         function ClearSearch() {
             $("#searchCode").val('');
             $("#searchOwnership").val('');
-            $("#searchCategory").val('');
+            $("#searchCategory").val(''); 
             $("#searchStatus").val('');
+            $("#searchLocationName").val('');
         }
         function Export() {
 
@@ -217,12 +227,14 @@
         }
         function select_row(obj) {
             var name_of_room = $('td', obj).eq(0).html().trim();
+            var name_of_location = $('td', obj).eq(2).html().trim();
             var id_of_room = $('td', obj).eq(3).html().trim();
             var name_of_room_and_location_ = $('td', obj).eq(4).html().trim();
-            $('#SearchRoomNames').val(name_of_room_and_location_);
-            $('#SearchRoomNames_').val(name_of_room_and_location_);
+            $('#SearchRoomNames').val(name_of_room);
+            $('#SearchRoomNames_').val(name_of_room);
             $('#SearchRoomIds').val(id_of_room);
             $('#SearchRoomIds_').val(id_of_room)
+            $('#searchLocationName').val(name_of_location);
         }
 
     </script>

@@ -11,6 +11,7 @@ namespace E_OneWeb.Models.ViewModels
     {
         public string? SearchRoomName { get; set; }
         public int? SearchRoomId { get; set; }
+        public string? SearchLocationName { get; set; }
         public DateTime? SearchStartDate { get; set; }
         public DateTime? SearchEndDate { get; set; }
         public IEnumerable<SelectListItem> CategoryList { get; set; }
