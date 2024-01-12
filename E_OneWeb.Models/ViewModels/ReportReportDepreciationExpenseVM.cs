@@ -23,7 +23,7 @@ namespace E_OneWeb.Models.ViewModels
         public string? Name { get; set; }
         public string? StartDate { get; set; }
         public string? Category { get; set; }
-        public int? Percent { get; set; }
+        public decimal? Percent { get; set; }
         public int? Qty { get; set; }
         public string? TotalAmount { get; set; }
         public string? ExpenseAmount { get; set; }

@@ -11,6 +11,7 @@ namespace E_OneWeb.Models.ViewModels
     public class ItemsVM
     {
         public Items Items { get; set; }
+        public string? Percent_String { get; set; }
         public string PriceString { get; set; }
         public string TotalAmountString { get; set; }
         public string DepreciationExpenseString { get; set; }

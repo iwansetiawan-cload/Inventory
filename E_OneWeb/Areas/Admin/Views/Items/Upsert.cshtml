@@ -10,7 +10,7 @@
     <div class="row p-3 border">
         <input type="hidden" value="@ViewBag.Status" id="idstatus" />
         <input type="hidden" asp-for="Items.Period" id="Period_" />
-        <input type="hidden" asp-for="Items.Percent" id="Percent_" />
+        <input type="hidden" asp-for="Percent_String" id="Percent_" />
         <input type="hidden" asp-for="Items.Id" id="itemID" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         
@@ -73,7 +73,7 @@
             <div class="form-group row">
                 @Html.LabelFor(model => model.Items.Percent, "Persen", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-4">
-                    <input asp-for="Items.Percent" class="form-control" style="row-gap" id="percent" disabled />
+                    <input asp-for="Percent_String" step="0.01" type="number" class="form-control" disabled />
                     <span asp-validation-for="Items.Percent" class="text-danger"></span>
                 </div>
                 @Html.LabelFor(model => model.Items.Period, "Period /tahun", htmlAttributes: new { @class = "control-label col-md-2" })

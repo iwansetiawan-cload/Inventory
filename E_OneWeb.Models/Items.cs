@@ -25,7 +25,7 @@ namespace E_OneWeb.Models
         public double? Price { get; set; }
         public int? Qty { get; set; }
         public double? TotalAmount { get; set; }
-        public int? Percent { get; set; }
+        public decimal? Percent { get; set; }
         public int? Period { get; set; }
         public double? DepreciationExpense { get; set; }    
         public int? Status { get; set; }

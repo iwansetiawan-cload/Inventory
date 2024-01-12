@@ -1,10 +1,12 @@
-﻿using E_OneWeb.DataAccess.Repository.IRepository;
+﻿using com.sun.xml.@internal.bind.v2.model.core;
+using E_OneWeb.DataAccess.Repository.IRepository;
 using E_OneWeb.Models;
 using E_OneWeb.Models.ViewModels;
 using E_OneWeb.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using System.Globalization;
 
 namespace E_OneWeb.Areas.Admin.Controllers
 {
@@ -30,6 +32,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Upsert(int? id)
         {
+            CategoryVM categoryVm = new CategoryVM();
             Category category = new Category();
             if (id == null)
             {
@@ -42,19 +45,31 @@ namespace E_OneWeb.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            return View(category);
+            categoryVm.Id = category.Id;
+            categoryVm.Name = category.Name;
+            categoryVm.Description = category.Description;  
+            categoryVm.Percent_String =  category.Percent.Value.ToString("#,##0.00");
+            categoryVm.Period = category.Period;
+            categoryVm.Percent = category.Percent.Value;
+            return View(categoryVm);
 
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Upsert(Category category)
+        public async Task<IActionResult> Upsert(CategoryVM vm)
         {
             if (ModelState.IsValid)
             {
+                Category category = new Category();
+                category = await _unitOfWork.Category.GetAsync(vm.Id);
+                category.Name = vm.Name;
+                category.Description = vm.Description;
+                category.Percent = decimal.Parse(vm.Percent_String, CultureInfo.InvariantCulture);
+                category.Period = vm.Period;
                 if (category.Id == 0)
                 {
-                    await _unitOfWork.Category.AddAsync(category);
+                     _unitOfWork.Category.AddAsync(category);
 
                 }
                 else
@@ -64,7 +79,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 _unitOfWork.Save();
                 return RedirectToAction(nameof(Index));
             }
-            return View(category);
+            return View(vm);
         }
 
         #region API CALLS

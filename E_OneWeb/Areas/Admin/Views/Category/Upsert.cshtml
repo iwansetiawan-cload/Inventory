@@ -1,4 +1,5 @@
-﻿@model E_OneWeb.Models.Category
+﻿@*@model E_OneWeb.Models.Category*@
+@model E_OneWeb.Models.ViewModels.CategoryVM
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -34,8 +35,9 @@
             <div class="form-group row">          
                 @Html.LabelFor(model => model.Percent, "Persen", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-4">
-                    <input asp-for="Percent" class="form-control" style="row-gap" />
-                    <span asp-validation-for="Percent" class="text-danger"></span>
+                  @*  <input asp-for="Percent" class="form-control" style="row-gap" />*@
+                    <input asp-for="Percent_String" step="0.01" type="number" class="form-control" />
+                    <span asp-validation-for="Percent_String" class="text-danger"></span>
                 </div>           
                 @Html.LabelFor(model => model.Name, "Period /tahun", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-4">

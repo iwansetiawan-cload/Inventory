@@ -106,8 +106,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 pricestring = z.Price.HasValue ? z.Price.Value.ToString("#,##0") : "",
                                 totalamountstring = z.TotalAmount.HasValue ? z.TotalAmount.Value.ToString("#,##0") : "",
                                 status = z.Status,
-                                expenseamount = z.TotalAmount * z.Percent / 100,
-                                expensetotalamount = z.TotalAmount - (z.TotalAmount * z.Percent / 100),
+                                expenseamount = ((decimal)z.TotalAmount * z.Percent) / 100,
+                                expensetotalamount = (decimal)z.TotalAmount - (((decimal)z.TotalAmount * z.Percent) / 100),
                                 startdate_calculate = z.Period != null ? z.StartDate.Value.AddYears((int)z.Period) : z.StartDate,
                             }).ToList();
 

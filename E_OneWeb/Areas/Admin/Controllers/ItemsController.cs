@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Data;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Security.Claims;
 
@@ -92,6 +93,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            itemsVM.Percent_String = itemsVM.Items.Percent.Value.ToString("#,##0.00");
             //itemsVM.TotalAmountString = itemsVM.Items.TotalAmount;
             ViewBag.Status = "";
             return View(itemsVM);
@@ -128,14 +130,17 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
                 vm.Items.EntryBy = user.Name;
                 vm.Items.EntryDate = DateTime.Now;
+                decimal? persen = Convert.ToDecimal(vm.Percent_String);
+                vm.Items.Percent = persen;
 
                 int periodExpence = vm.Items.Period != null ? vm.Items.Period.Value : 0;
 
                 DateTime dtStartDate = vm.Items.StartDate.Value.AddYears(periodExpence);
 
                 if (DateTime.Now > dtStartDate)
-                {
-                    vm.Items.DepreciationExpense = vm.Items.TotalAmount * vm.Items.Percent / 100;
+                {                   
+                    decimal? NilaiPenyusutan = ((decimal)vm.Items.TotalAmount * vm.Items.Percent) / 100;
+                    vm.Items.DepreciationExpense = Convert.ToDouble(NilaiPenyusutan);
                 }
                 vm.Items.Room = _unitOfWork.Room.Get(vm.Items.RoomId);
                 if (vm.Items.Id == 0)
