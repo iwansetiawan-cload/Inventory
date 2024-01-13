@@ -37,7 +37,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             if (id == null)
             {
                 //this is for create
-                return View(category);
+                return View(categoryVm);
             }
             //this is for edit
             category = await _unitOfWork.Category.GetAsync(id.GetValueOrDefault());
@@ -62,11 +62,23 @@ namespace E_OneWeb.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 Category category = new Category();
-                category = await _unitOfWork.Category.GetAsync(vm.Id);
-                category.Name = vm.Name;
-                category.Description = vm.Description;
-                category.Percent = decimal.Parse(vm.Percent_String, CultureInfo.InvariantCulture);
-                category.Period = vm.Period;
+                if (vm.Id == 0)
+                {
+                    category.Name = vm.Name;
+                    category.Description = vm.Description;
+                    category.Percent = decimal.Parse(vm.Percent_String, CultureInfo.InvariantCulture);
+                    category.Period = vm.Period;
+                }
+                else
+                {             
+                    category = await _unitOfWork.Category.GetAsync(vm.Id);
+                    category.Name = vm.Name;
+                    category.Description = vm.Description;
+                    category.Percent = decimal.Parse(vm.Percent_String, CultureInfo.InvariantCulture);
+                    category.Period = vm.Period;
+                }
+                
+              
                 if (category.Id == 0)
                 {
                      _unitOfWork.Category.AddAsync(category);
