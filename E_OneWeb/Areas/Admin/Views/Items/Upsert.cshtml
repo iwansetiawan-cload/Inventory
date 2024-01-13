@@ -73,7 +73,7 @@
             <div class="form-group row">
                 @Html.LabelFor(model => model.Items.Percent, "Persen", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-4">
-                    <input asp-for="Percent_String" step="0.01" type="number" class="form-control" disabled />
+                    <input asp-for="Percent_String" step="0.01" type="number" class="form-control" id="Percent_Strings" disabled />
                     <span asp-validation-for="Items.Percent" class="text-danger"></span>
                 </div>
                 @Html.LabelFor(model => model.Items.Period, "Period /tahun", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -400,6 +400,9 @@
 
                     $("#Percent_").val(data.persent_);
                     $("#Period_").val(data.period_);
+
+                    var Percent_String = data.persent_;
+                    $('#Percent_Strings').val(Percent_String);
                 },
                 error: function (request, status, error) {
                     //console.log("error" + error);

@@ -226,7 +226,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
         {
 
             IEnumerable<Category> CatList = await _unitOfWork.Category.GetAllAsync();
-            var res = CatList.Where(z => z.Id == id).Select(i => new { period_ = i.Period , persent_ = i.Percent }).FirstOrDefault();    
+            var res = CatList.Where(z => z.Id == id).Select(i => new { period_ = i.Period , persent_ = i.Percent.Value.ToString("#,##0.00") }).FirstOrDefault();    
             return Json(res);
         }
 
