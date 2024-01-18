@@ -6935,11 +6935,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj",
+      "projectUniqueName": "D:\\My File\\SarPras\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj",
       "projectName": "E_OneWeb.Models",
-      "projectPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj",
+      "projectPath": "D:\\My File\\SarPras\\Inventory\\E_OneWeb.Models\\E_OneWeb.Models.csproj",
       "packagesPath": "C:\\Users\\iwan-setti\\.nuget\\packages\\",
-      "outputPath": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb.Models\\obj\\",
+      "outputPath": "D:\\My File\\SarPras\\Inventory\\E_OneWeb.Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\iwan-setti\\AppData\\Roaming\\NuGet\\NuGet.Config",

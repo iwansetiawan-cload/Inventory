@@ -25,5 +25,7 @@ namespace E_OneWeb.Models
         public int? StatusId { get; set; }
         public string? Status { get; set; }
         public string? Notes { get; set; }
+        public int? RoomId { get; set; }
+        public string? RoomName { get; set; }
     }
 }

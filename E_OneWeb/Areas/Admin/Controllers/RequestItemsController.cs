@@ -104,7 +104,9 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                  price = z.Price.HasValue ? z.Price.Value.ToString("#,##0") : "",
                                  qty = z.Qty,
                                  total = z.Total.HasValue ? z.Total.Value.ToString("#,##0") : "",
-                                 status = z.Status
+                                 status = z.Status,
+                                 roomid = z.RoomId,
+                                 roomname = z.RoomName
                              }).ToList();
 
             foreach (var item in datalist_)
@@ -120,6 +122,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 Items.Qty = Convert.ToInt32(item.qty);
                 Items.Total = Convert.ToDouble(item.total);
                 Items.Status = item.status;
+                Items.RoomId = item.roomid;
+                Items.RoomName = item.roomname;
                 additemlist.Add(Items);
             }
 
@@ -180,7 +184,9 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                        Reason = z.Reason,
                                        Price = z.Price,
                                        Qty = z.Qty,
-                                       Total = z.Total
+                                       Total = z.Total,
+                                       RoomId = z.RoomId,
+                                       RoomName = z.RoomName
                                    }).ToList();
                 vm.AddItemsList = AddItemsList;
                 foreach (var item in AddItemsList)
@@ -195,8 +201,10 @@ namespace E_OneWeb.Areas.Admin.Controllers
                         Specification = item.Specification,
                         Price = item.Price,
                         Qty = item.Qty,
-                        Total = item.Total
-                    
+                        Total = item.Total,
+                        RoomId = item.RoomId,
+                        RoomName = item.RoomName
+
                     };
                     vm.RequestItemDetail = itemDetail;
                     await _unitOfWork.RequestItemDetail.AddAsync(vm.RequestItemDetail);
@@ -225,7 +233,9 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                         Specification = z.Specification,
                                         Price = z.Price,
                                         Qty = z.Qty,
-                                        Total = z.Total
+                                        Total = z.Total,
+                                        RoomId = z.RoomId,
+                                        RoomName = z.RoomName
                                     }).ToList();
                 vm.AddItemsList = AddItemsList;
                 foreach (var item in AddItemsList)
@@ -240,8 +250,9 @@ namespace E_OneWeb.Areas.Admin.Controllers
                         Specification = item.Specification,
                         Price = item.Price,
                         Qty = item.Qty,
-                        Total = item.Total
-
+                        Total = item.Total,
+                        RoomId = item.RoomId,
+                        RoomName = item.RoomName
                     };
                     vm.RequestItemDetail = itemDetail;
                     await _unitOfWork.RequestItemDetail.AddAsync(vm.RequestItemDetail);
@@ -257,7 +268,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
        
         [HttpPost]
         [Authorize(Roles = SD.Role_Employee)]
-        public JsonResult AddItem(string name,string category, string reason, string price, string qty, string total, string spesifik)
+        public JsonResult AddItem(string name,string category, string reason, string price, string qty, string total, string spesifik, int? idroom, string room)
         {
 
             RequestItemDetail Items = new RequestItemDetail();
@@ -269,6 +280,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
             Items.Price = Convert.ToDouble(price);
             Items.Qty = Convert.ToInt32(qty);
             Items.Total = Convert.ToDouble(total);
+            Items.RoomId = idroom;
+            Items.RoomName = room;
 
             additemlist.Add(Items);
             double? totalamount = additemlist.Sum(z=>z.Total);
@@ -594,5 +607,19 @@ namespace E_OneWeb.Areas.Admin.Controllers
         }
         #endregion
 
+        [HttpGet]
+        public IActionResult GetAllRoomAndLocation()
+        {
+            var datalist = (from z in _unitOfWork.Room.GetAll(includeProperties: "Location")
+                            select new
+                            {
+                                id = z.Id,
+                                name_of_room = z.Name,
+                                description = z.Description,
+                                name_of_location = z.Location.Name,
+                                name_of_room_and_location = z.Name + " (" + z.Location.Name + ")"
+                            }).ToList().OrderByDescending(o => o.id);
+            return Json(new { data = datalist });
+        }
     }
 }

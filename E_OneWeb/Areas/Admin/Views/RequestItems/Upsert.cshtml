@@ -64,7 +64,7 @@
                     <div class="form-group row">
                         @Html.LabelFor(model => model.RequestItemHeader.Requester, "File", htmlAttributes: new { @class = "control-label col-md-3" })
                         <div class="col-9">
-                            <input type="file" name="files" id="uploadBox" multiple class="form-control" />                           
+                            <input type="file" name="files" id="uploadBox" multiple class="form-control" />
                         </div>
                     </div>
 
@@ -72,7 +72,7 @@
 
 
             </div>
-            
+
             <div class="form-group row py-4">
                 <div class="col-5 offset-4">
                     <div class="row">
@@ -152,7 +152,7 @@
                         <input type="hidden" asp-for="RequestItemHeader.TotalAmount" id="grandtotal" />
                         <input asp-for="GrandTotalString" class="form-control text-end" style="row-gap" id="GrandTotalString" disabled />
                         <span asp-validation-for="RequestItemHeader.TotalAmount" class="text-danger"></span>
-                      
+
                     </div>
                 </div>
             </div>
@@ -190,7 +190,25 @@
                         <div class="col-10">
                             <input type="hidden" asp-for="RequestItemDetail.Category" id="category" />
                             @Html.DropDownListFor(model => model.ListCategory, ViewBag.CategoryList as SelectList, "- Select a Category -", new { @class = "form-control", @id = "SearchCategory" })
-                      
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-12 pt-2">
+                    <div class="form-group row">
+
+
+                        @Html.LabelFor(model => model.RequestItemDetail.RoomName, "Lokasi", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-10">
+                            <div class="input-group">
+                                <input type="hidden" asp-for="RequestItemDetail.RoomId" id="CurrentLocationId" />
+                                <input asp-for="RequestItemDetail.RoomName" id="LocationCurrents" class="form-control" disabled />
+                                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#Modal1" style="width:80px" id="btn-lookuproom"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                <span asp-validation-for="RequestItemDetail.RoomId" class="text-danger"></span>
+                            </div>
+
                         </div>
                     </div>
 
@@ -218,7 +236,7 @@
                     </div>
 
                 </div>
-            
+
                 <div class="col-12 pt-2">
                     <div class="form-group row">
                         @Html.LabelFor(model => model.RequestItemDetail.Price, "Nilai", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -258,9 +276,48 @@
                 </div>
 
             </div>
-    
-             <div class="modal-footer">              
+
+            <div class="modal-footer">
                 <button type="button" class="btn btn-primary" onclick="AddItem()" data-bs-dismiss="modal">Tambah</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pilih Lokasi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <br />
+                <div class="p-4 border rounded">
+                    <table id="tblDataRoom" class="table table-striped table-bordered table-hover table-striped dataTable" style="width:100%">
+                        <thead class="thead-dark">
+                            <tr class="table-info">
+                                <th>
+                                    Nama Ruangan
+                                </th>
+                                <th>
+                                    Keterangan
+                                </th>
+                                <th>
+                                    Gedung
+                                </th>
+
+                                <th style="display:none"></th>
+                                <th style="display:none"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            </div>
+            <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
@@ -268,18 +325,18 @@
 </div>
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />
-   @* <script src="~/js/Items.js"></script>*@
+    @* <script src="~/js/Items.js"></script>*@
     <script type="text/javascript">
         $(document).ready(function () {
             loadDataItems();
+            loadDataRoom();
             var a = $("#grandtotal").val();
             $("#GrandTotalString").val(numberWithCommas(a));
 
             if ($("#filedownload").val() == "true") {
                 $("#exportfile").removeAttr("disabled");
-            }else
-            {
-                $("#exportfile").attr("disabled", "disabled");                
+            } else {
+                $("#exportfile").attr("disabled", "disabled");
             }
         });
         $("#SearchCategory").change(function () {
@@ -331,16 +388,16 @@
                         "data": "id",
                         "render": function (data) {
                             return `
-                                    <div class="text-center">
+                                            <div class="text-center">
 
-                                        <a onclick=Delete("/Admin/RequestItems/DeleteItem/${data}") class="btn btn-danger text-white" style="cursor:pointer">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                    </div>
-                                   `;
+                                                <a onclick=Delete("/Admin/RequestItems/DeleteItem/${data}") class="btn btn-danger text-white" style="cursor:pointer">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
+                                            </div>
+                                           `;
                         }, "autoWidth": true
                     }
-                ],              
+                ],
             });
         }
         function Delete(url) {
@@ -371,9 +428,9 @@
                 }
             });
         }
-      
+
         function AddItem() {
-    
+
             var name = $("#itemname").val();
             var category = $("#category").val();
             var reason = $("#reason").val();
@@ -381,10 +438,11 @@
             var qty = $("#qty").val();
             var total = $("#totalamount").val();
             var spesifikasi = $("#spesifik").val();
+            var idroom = $("#CurrentLocationId").val();
+            var room = $("#LocationCurrents").val();
 
-            if (name != "" && category != "" && price != "" && qty != "")
-            {
-                var urls = "/Admin/RequestItems/AddItem?name=" + name + "&category=" + category + "&reason=" + reason + "&price=" + price + "&qty=" + qty + "&total=" + total + "&spesifik=" + spesifikasi;
+            if (name != "" && category != "" && price != "" && qty != "") {
+                var urls = "/Admin/RequestItems/AddItem?name=" + name + "&category=" + category + "&reason=" + reason + "&price=" + price + "&qty=" + qty + "&total=" + total + "&spesifik=" + spesifikasi + "&idroom=" + idroom + "&room=" + room;
 
                 try {
                     $.ajax({
@@ -424,19 +482,54 @@
                 } catch (e) {
 
                 }
-            }            
+            }
 
         }
 
-        function Export() {   
+        function Export() {
             var id = $('#IdHeader').val();
             var urlx = "/Admin/RequestItems/Export/" + id;
             window.location = urlx;
 
         }
+
+        function loadDataRoom() {
+            dataTablerm = $('#tblDataRoom').DataTable({
+                "ajax": {
+                    "url": "/Admin/RequestItems/GetAllRoomAndLocation"
+                },
+                "columns": [
+                    { "data": "name_of_room", "width": "30%" },
+                    { "data": "description", "width": "30%" },
+                    { "data": "name_of_location", "width": "30%" },
+                    { "data": "id", "width": "10%" },
+                    { "data": "name_of_room_and_location", "width": "10%" }
+
+                ],
+                "createdRow": function (row, data, index) {
+                    $(row).attr('onclick', 'select_row(this)');
+                    $(row).attr('data-bs-dismiss', 'modal');
+                    $('td', row).eq(3).attr('style', 'display:none;');
+                    $('td', row).eq(4).attr('style', 'display:none;');
+                },
+            });
+        }
+
+        function select_row(obj) {
+            var name_of_room = $('td', obj).eq(0).html().trim();
+            var name_of_location = $('td', obj).eq(2).html().trim();
+            var id_of_room = $('td', obj).eq(3).html().trim();
+            var name_of_room_and_location_ = $('td', obj).eq(4).html().trim();
+
+            $('#LocationCurrents').val(name_of_room_and_location_);
+            $('#LocationCurrents_').val(name_of_room_and_location_);
+            $('#CurrentLocations').val(name_of_location);
+            $('#CurrentRooms').val(name_of_room);
+            $('#CurrentLocationId').val(id_of_room);
+        }
     </script>
 
-  
+
 }
 
 

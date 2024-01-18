@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HVi1ERZyLjWiQXtaQxdgjLp4GbpF/TaNNTZJw77kyac=",
+  "Hash": "HHaKabU95YkL0PWU2z7s7jS45Coa7cKfp9/knDSZVjo=",
   "Source": "E_OneWeb",
   "BasePath": "_content/E_OneWeb",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "E_OneWeb\\wwwroot",
       "Source": "E_OneWeb",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "Pattern": "**"
     }
@@ -1037,10 +1037,10 @@
       "OriginalItemSpec": "C:\\Users\\iwan-setti\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\7.0.5\\staticwebassets\\V5\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\obj\\Debug\\net7.0\\scopedcss\\bundle\\E_OneWeb.styles.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\obj\\Debug\\net7.0\\scopedcss\\bundle\\E_OneWeb.styles.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\obj\\Debug\\net7.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\obj\\Debug\\net7.0\\scopedcss\\bundle\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "E_OneWeb.styles.css",
       "AssetKind": "All",
@@ -1051,13 +1051,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\obj\\Debug\\net7.0\\scopedcss\\bundle\\E_OneWeb.styles.css"
+      "OriginalItemSpec": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\obj\\Debug\\net7.0\\scopedcss\\bundle\\E_OneWeb.styles.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\E_OneWeb.bundle.scp.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\E_OneWeb.bundle.scp.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "E_OneWeb.bundle.scp.css",
       "AssetKind": "All",
@@ -1068,13 +1068,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\E_OneWeb.bundle.scp.css"
+      "OriginalItemSpec": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\E_OneWeb.bundle.scp.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\bundle\\e19c476714.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\bundle\\e19c476714.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "bundle/e19c476714.js",
       "AssetKind": "All",
@@ -1088,10 +1088,10 @@
       "OriginalItemSpec": "wwwroot\\bundle\\e19c476714.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\bundle\\jquery.dataTables.min.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\bundle\\jquery.dataTables.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "bundle/jquery.dataTables.min.js",
       "AssetKind": "All",
@@ -1105,10 +1105,10 @@
       "OriginalItemSpec": "wwwroot\\bundle\\jquery.dataTables.min.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\bundle\\jquery-ui.min.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\bundle\\jquery-ui.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "bundle/jquery-ui.min.js",
       "AssetKind": "All",
@@ -1122,10 +1122,10 @@
       "OriginalItemSpec": "wwwroot\\bundle\\jquery-ui.min.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\bundle\\sweetalert.min.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\bundle\\sweetalert.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "bundle/sweetalert.min.js",
       "AssetKind": "All",
@@ -1139,10 +1139,10 @@
       "OriginalItemSpec": "wwwroot\\bundle\\sweetalert.min.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\bundle\\toastr.min.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\bundle\\toastr.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "bundle/toastr.min.js",
       "AssetKind": "All",
@@ -1156,10 +1156,10 @@
       "OriginalItemSpec": "wwwroot\\bundle\\toastr.min.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\css\\BootswatchThemes.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\css\\BootswatchThemes.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "css/BootswatchThemes.css",
       "AssetKind": "All",
@@ -1173,10 +1173,10 @@
       "OriginalItemSpec": "wwwroot\\css\\BootswatchThemes.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\css\\jquery.dataTables.min.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\css\\jquery.dataTables.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "css/jquery.dataTables.min.css",
       "AssetKind": "All",
@@ -1190,10 +1190,10 @@
       "OriginalItemSpec": "wwwroot\\css\\jquery.dataTables.min.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\css\\jquery-ui.min.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\css\\jquery-ui.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "css/jquery-ui.min.css",
       "AssetKind": "All",
@@ -1207,10 +1207,10 @@
       "OriginalItemSpec": "wwwroot\\css\\jquery-ui.min.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\css\\site.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\css\\site.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -1224,10 +1224,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\css\\toastr.min.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\css\\toastr.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "css/toastr.min.css",
       "AssetKind": "All",
@@ -1241,10 +1241,10 @@
       "OriginalItemSpec": "wwwroot\\css\\toastr.min.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\favicon.ico",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\favicon.ico",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -1258,265 +1258,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\files\\5056747c-22e3-44d5-bda5-bcb3d8ce596d.docx",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\article.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "images/files/5056747c-22e3-44d5-bda5-bcb3d8ce596d.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\files\\5056747c-22e3-44d5-bda5-bcb3d8ce596d.docx"
-    },
-    {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\files\\6e66380a-576f-4b58-9e08-fc7120594365.docx",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "images/files/6e66380a-576f-4b58-9e08-fc7120594365.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\files\\6e66380a-576f-4b58-9e08-fc7120594365.docx"
-    },
-    {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\files\\80cb070a-b36f-44fa-a84a-72200b6ac24d.docx",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "images/files/80cb070a-b36f-44fa-a84a-72200b6ac24d.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\files\\80cb070a-b36f-44fa-a84a-72200b6ac24d.docx"
-    },
-    {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\files\\cfff111e-b91a-43de-9bed-55ca808e60e9.docx",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "images/files/cfff111e-b91a-43de-9bed-55ca808e60e9.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\files\\cfff111e-b91a-43de-9bed-55ca808e60e9.docx"
-    },
-    {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\files\\fcd760d8-5c44-4e09-95a6-9017b3815ca4.docx",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "images/files/fcd760d8-5c44-4e09-95a6-9017b3815ca4.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\files\\fcd760d8-5c44-4e09-95a6-9017b3815ca4.docx"
-    },
-    {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\05d932cb-ccf7-4a8a-bf2b-a5016ed500eb.jpg",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "images/products/05d932cb-ccf7-4a8a-bf2b-a5016ed500eb.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\products\\05d932cb-ccf7-4a8a-bf2b-a5016ed500eb.jpg"
-    },
-    {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\10a03ae6-5dcc-4c4e-a68e-1edcecf80ce6.docx",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "images/products/10a03ae6-5dcc-4c4e-a68e-1edcecf80ce6.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\products\\10a03ae6-5dcc-4c4e-a68e-1edcecf80ce6.docx"
-    },
-    {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\21ef4b27-7c66-4fd9-990d-7cf223749dcd.xlsx",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "images/products/21ef4b27-7c66-4fd9-990d-7cf223749dcd.xlsx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\products\\21ef4b27-7c66-4fd9-990d-7cf223749dcd.xlsx"
-    },
-    {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\52db8309-5665-409e-8073-46c617f44114",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "images/products/52db8309-5665-409e-8073-46c617f44114",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\products\\52db8309-5665-409e-8073-46c617f44114"
-    },
-    {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\7870e8b9-a339-40d7-ab18-16361cdd6e36.xlsx",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "images/products/7870e8b9-a339-40d7-ab18-16361cdd6e36.xlsx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\products\\7870e8b9-a339-40d7-ab18-16361cdd6e36.xlsx"
-    },
-    {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\7be263b2-6c1e-4908-b571-1a59f0cbdca8.jpg",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "images/products/7be263b2-6c1e-4908-b571-1a59f0cbdca8.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\products\\7be263b2-6c1e-4908-b571-1a59f0cbdca8.jpg"
-    },
-    {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\a38a6deb-9a5b-421e-9ab7-a1675dc66b25.xlsx",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "images/products/a38a6deb-9a5b-421e-9ab7-a1675dc66b25.xlsx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\products\\a38a6deb-9a5b-421e-9ab7-a1675dc66b25.xlsx"
-    },
-    {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\capture.docx",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "images/products/capture.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\products\\capture.docx"
-    },
-    {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\ExportDataApprovePraInvoice_20231211094820.xlsx",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "images/products/ExportDataApprovePraInvoice_20231211094820.xlsx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\products\\ExportDataApprovePraInvoice_20231211094820.xlsx"
-    },
-    {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\fbcf7a38-bbf9-49fc-97e9-c83ecb0871aa.docx",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "images/products/fbcf7a38-bbf9-49fc-97e9-c83ecb0871aa.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\products\\fbcf7a38-bbf9-49fc-97e9-c83ecb0871aa.docx"
-    },
-    {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\article.js",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/article.js",
       "AssetKind": "All",
@@ -1530,10 +1275,10 @@
       "OriginalItemSpec": "wwwroot\\js\\article.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\brand.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\brand.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/brand.js",
       "AssetKind": "All",
@@ -1547,10 +1292,10 @@
       "OriginalItemSpec": "wwwroot\\js\\brand.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\categori_index.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\categori_index.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/categori_index.js",
       "AssetKind": "All",
@@ -1564,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\js\\categori_index.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\e19c476714.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\e19c476714.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/e19c476714.js",
       "AssetKind": "All",
@@ -1581,10 +1326,27 @@
       "OriginalItemSpec": "wwwroot\\js\\e19c476714.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\GetItems.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\get_room_by_location.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
+      "BasePath": "_content/E_OneWeb",
+      "RelativePath": "js/get_room_by_location.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\get_room_by_location.js"
+    },
+    {
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\GetItems.js",
+      "SourceId": "E_OneWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/GetItems.js",
       "AssetKind": "All",
@@ -1598,27 +1360,10 @@
       "OriginalItemSpec": "wwwroot\\js\\GetItems.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\getroombylocation.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\index_approverequestitem.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
-      "BasePath": "_content/E_OneWeb",
-      "RelativePath": "js/getroombylocation.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\getroombylocation.js"
-    },
-    {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\index_approverequestitem.js",
-      "SourceId": "E_OneWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/index_approverequestitem.js",
       "AssetKind": "All",
@@ -1632,10 +1377,10 @@
       "OriginalItemSpec": "wwwroot\\js\\index_approverequestitem.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\index_itemrequest.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\index_itemrequest.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/index_itemrequest.js",
       "AssetKind": "All",
@@ -1649,10 +1394,10 @@
       "OriginalItemSpec": "wwwroot\\js\\index_itemrequest.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\index_pinjamruangan_admin.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\index_pinjamruangan_admin.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/index_pinjamruangan_admin.js",
       "AssetKind": "All",
@@ -1666,10 +1411,10 @@
       "OriginalItemSpec": "wwwroot\\js\\index_pinjamruangan_admin.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\index_pinjamruanganuser.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\index_pinjamruanganuser.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/index_pinjamruanganuser.js",
       "AssetKind": "All",
@@ -1683,10 +1428,10 @@
       "OriginalItemSpec": "wwwroot\\js\\index_pinjamruanganuser.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\index_roomlist.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\index_roomlist.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/index_roomlist.js",
       "AssetKind": "All",
@@ -1700,10 +1445,10 @@
       "OriginalItemSpec": "wwwroot\\js\\index_roomlist.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\index_serviceitems.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\index_serviceitems.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/index_serviceitems.js",
       "AssetKind": "All",
@@ -1717,10 +1462,10 @@
       "OriginalItemSpec": "wwwroot\\js\\index_serviceitems.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\Items.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\Items.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/Items.js",
       "AssetKind": "All",
@@ -1734,10 +1479,10 @@
       "OriginalItemSpec": "wwwroot\\js\\Items.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\ItemTransfer.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\ItemTransfer.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/ItemTransfer.js",
       "AssetKind": "All",
@@ -1751,10 +1496,10 @@
       "OriginalItemSpec": "wwwroot\\js\\ItemTransfer.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\location.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\location.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/location.js",
       "AssetKind": "All",
@@ -1768,10 +1513,10 @@
       "OriginalItemSpec": "wwwroot\\js\\location.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\modal.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\modal.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/modal.js",
       "AssetKind": "All",
@@ -1785,10 +1530,10 @@
       "OriginalItemSpec": "wwwroot\\js\\modal.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\modalform.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\modalform.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/modalform.js",
       "AssetKind": "All",
@@ -1802,10 +1547,10 @@
       "OriginalItemSpec": "wwwroot\\js\\modalform.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\purchaseorder.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\purchaseorder.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/purchaseorder.js",
       "AssetKind": "All",
@@ -1819,10 +1564,10 @@
       "OriginalItemSpec": "wwwroot\\js\\purchaseorder.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\purchasing.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\purchasing.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/purchasing.js",
       "AssetKind": "All",
@@ -1836,10 +1581,10 @@
       "OriginalItemSpec": "wwwroot\\js\\purchasing.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\Report_Items.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\Report_Items.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/Report_Items.js",
       "AssetKind": "All",
@@ -1853,10 +1598,10 @@
       "OriginalItemSpec": "wwwroot\\js\\Report_Items.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\room.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\room.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/room.js",
       "AssetKind": "All",
@@ -1870,10 +1615,10 @@
       "OriginalItemSpec": "wwwroot\\js\\room.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\site.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\site.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -1887,10 +1632,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\supplier.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\supplier.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/supplier.js",
       "AssetKind": "All",
@@ -1904,10 +1649,10 @@
       "OriginalItemSpec": "wwwroot\\js\\supplier.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\sweetalert.min.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\sweetalert.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/sweetalert.min.js",
       "AssetKind": "All",
@@ -1921,10 +1666,10 @@
       "OriginalItemSpec": "wwwroot\\js\\sweetalert.min.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\transferitembyid.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\transferitembyid.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "js/transferitembyid.js",
       "AssetKind": "All",
@@ -1938,10 +1683,10 @@
       "OriginalItemSpec": "wwwroot\\js\\transferitembyid.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -1955,10 +1700,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -1972,10 +1717,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -1989,10 +1734,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -2006,10 +1751,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -2023,10 +1768,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -2040,10 +1785,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -2057,10 +1802,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -2074,10 +1819,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -2091,10 +1836,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -2108,10 +1853,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -2125,10 +1870,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -2142,10 +1887,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -2159,10 +1904,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -2176,10 +1921,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -2193,10 +1938,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -2210,10 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -2227,10 +1972,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -2244,10 +1989,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -2261,10 +2006,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -2278,10 +2023,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -2295,10 +2040,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -2312,10 +2057,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -2329,10 +2074,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -2346,10 +2091,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -2363,10 +2108,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -2380,10 +2125,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -2397,10 +2142,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -2414,10 +2159,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -2431,10 +2176,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -2448,10 +2193,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -2465,10 +2210,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -2482,10 +2227,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -2499,10 +2244,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -2516,10 +2261,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -2533,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -2550,10 +2295,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -2567,10 +2312,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -2584,10 +2329,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -2601,10 +2346,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -2618,10 +2363,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -2635,10 +2380,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -2652,10 +2397,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -2669,10 +2414,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -2686,10 +2431,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -2703,10 +2448,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -2720,10 +2465,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -2737,10 +2482,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -2754,10 +2499,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -2771,10 +2516,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -2788,10 +2533,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -2805,10 +2550,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -2822,10 +2567,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -2839,10 +2584,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -2856,10 +2601,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -2873,10 +2618,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -2890,10 +2635,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "E_OneWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\",
+      "ContentRoot": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\",
       "BasePath": "_content/E_OneWeb",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",

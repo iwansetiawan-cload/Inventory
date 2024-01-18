@@ -1,439 +1,379 @@
 {
   "Files": [
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\E_OneWeb.bundle.scp.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\E_OneWeb.bundle.scp.css",
       "PackagePath": "staticwebassets\\E_OneWeb.bundle.scp.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\bundle\\e19c476714.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\bundle\\e19c476714.js",
       "PackagePath": "staticwebassets\\bundle\\e19c476714.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\bundle\\jquery-ui.min.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\bundle\\jquery-ui.min.js",
       "PackagePath": "staticwebassets\\bundle\\jquery-ui.min.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\bundle\\jquery.dataTables.min.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\bundle\\jquery.dataTables.min.js",
       "PackagePath": "staticwebassets\\bundle\\jquery.dataTables.min.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\bundle\\sweetalert.min.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\bundle\\sweetalert.min.js",
       "PackagePath": "staticwebassets\\bundle\\sweetalert.min.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\bundle\\toastr.min.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\bundle\\toastr.min.js",
       "PackagePath": "staticwebassets\\bundle\\toastr.min.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\css\\BootswatchThemes.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\css\\BootswatchThemes.css",
       "PackagePath": "staticwebassets\\css\\BootswatchThemes.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\css\\jquery-ui.min.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\css\\jquery-ui.min.css",
       "PackagePath": "staticwebassets\\css\\jquery-ui.min.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\css\\jquery.dataTables.min.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\css\\jquery.dataTables.min.css",
       "PackagePath": "staticwebassets\\css\\jquery.dataTables.min.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\css\\site.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\css\\toastr.min.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\css\\toastr.min.css",
       "PackagePath": "staticwebassets\\css\\toastr.min.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\favicon.ico",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\files\\5056747c-22e3-44d5-bda5-bcb3d8ce596d.docx",
-      "PackagePath": "staticwebassets\\images\\files\\5056747c-22e3-44d5-bda5-bcb3d8ce596d.docx"
-    },
-    {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\files\\6e66380a-576f-4b58-9e08-fc7120594365.docx",
-      "PackagePath": "staticwebassets\\images\\files\\6e66380a-576f-4b58-9e08-fc7120594365.docx"
-    },
-    {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\files\\80cb070a-b36f-44fa-a84a-72200b6ac24d.docx",
-      "PackagePath": "staticwebassets\\images\\files\\80cb070a-b36f-44fa-a84a-72200b6ac24d.docx"
-    },
-    {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\files\\cfff111e-b91a-43de-9bed-55ca808e60e9.docx",
-      "PackagePath": "staticwebassets\\images\\files\\cfff111e-b91a-43de-9bed-55ca808e60e9.docx"
-    },
-    {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\files\\fcd760d8-5c44-4e09-95a6-9017b3815ca4.docx",
-      "PackagePath": "staticwebassets\\images\\files\\fcd760d8-5c44-4e09-95a6-9017b3815ca4.docx"
-    },
-    {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\05d932cb-ccf7-4a8a-bf2b-a5016ed500eb.jpg",
-      "PackagePath": "staticwebassets\\images\\products\\05d932cb-ccf7-4a8a-bf2b-a5016ed500eb.jpg"
-    },
-    {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\10a03ae6-5dcc-4c4e-a68e-1edcecf80ce6.docx",
-      "PackagePath": "staticwebassets\\images\\products\\10a03ae6-5dcc-4c4e-a68e-1edcecf80ce6.docx"
-    },
-    {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\21ef4b27-7c66-4fd9-990d-7cf223749dcd.xlsx",
-      "PackagePath": "staticwebassets\\images\\products\\21ef4b27-7c66-4fd9-990d-7cf223749dcd.xlsx"
-    },
-    {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\52db8309-5665-409e-8073-46c617f44114",
-      "PackagePath": "staticwebassets\\images\\products"
-    },
-    {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\7870e8b9-a339-40d7-ab18-16361cdd6e36.xlsx",
-      "PackagePath": "staticwebassets\\images\\products\\7870e8b9-a339-40d7-ab18-16361cdd6e36.xlsx"
-    },
-    {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\7be263b2-6c1e-4908-b571-1a59f0cbdca8.jpg",
-      "PackagePath": "staticwebassets\\images\\products\\7be263b2-6c1e-4908-b571-1a59f0cbdca8.jpg"
-    },
-    {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\ExportDataApprovePraInvoice_20231211094820.xlsx",
-      "PackagePath": "staticwebassets\\images\\products\\ExportDataApprovePraInvoice_20231211094820.xlsx"
-    },
-    {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\a38a6deb-9a5b-421e-9ab7-a1675dc66b25.xlsx",
-      "PackagePath": "staticwebassets\\images\\products\\a38a6deb-9a5b-421e-9ab7-a1675dc66b25.xlsx"
-    },
-    {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\capture.docx",
-      "PackagePath": "staticwebassets\\images\\products\\capture.docx"
-    },
-    {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\fbcf7a38-bbf9-49fc-97e9-c83ecb0871aa.docx",
-      "PackagePath": "staticwebassets\\images\\products\\fbcf7a38-bbf9-49fc-97e9-c83ecb0871aa.docx"
-    },
-    {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\GetItems.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\GetItems.js",
       "PackagePath": "staticwebassets\\js\\GetItems.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\ItemTransfer.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\ItemTransfer.js",
       "PackagePath": "staticwebassets\\js\\ItemTransfer.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\Items.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\Items.js",
       "PackagePath": "staticwebassets\\js\\Items.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\Report_Items.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\Report_Items.js",
       "PackagePath": "staticwebassets\\js\\Report_Items.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\article.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\article.js",
       "PackagePath": "staticwebassets\\js\\article.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\brand.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\brand.js",
       "PackagePath": "staticwebassets\\js\\brand.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\categori_index.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\categori_index.js",
       "PackagePath": "staticwebassets\\js\\categori_index.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\e19c476714.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\e19c476714.js",
       "PackagePath": "staticwebassets\\js\\e19c476714.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\getroombylocation.js",
-      "PackagePath": "staticwebassets\\js\\getroombylocation.js"
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\get_room_by_location.js",
+      "PackagePath": "staticwebassets\\js\\get_room_by_location.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\index_approverequestitem.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\index_approverequestitem.js",
       "PackagePath": "staticwebassets\\js\\index_approverequestitem.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\index_itemrequest.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\index_itemrequest.js",
       "PackagePath": "staticwebassets\\js\\index_itemrequest.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\index_pinjamruangan_admin.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\index_pinjamruangan_admin.js",
       "PackagePath": "staticwebassets\\js\\index_pinjamruangan_admin.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\index_pinjamruanganuser.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\index_pinjamruanganuser.js",
       "PackagePath": "staticwebassets\\js\\index_pinjamruanganuser.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\index_roomlist.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\index_roomlist.js",
       "PackagePath": "staticwebassets\\js\\index_roomlist.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\index_serviceitems.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\index_serviceitems.js",
       "PackagePath": "staticwebassets\\js\\index_serviceitems.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\location.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\location.js",
       "PackagePath": "staticwebassets\\js\\location.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\modal.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\modal.js",
       "PackagePath": "staticwebassets\\js\\modal.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\modalform.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\modalform.js",
       "PackagePath": "staticwebassets\\js\\modalform.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\purchaseorder.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\purchaseorder.js",
       "PackagePath": "staticwebassets\\js\\purchaseorder.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\purchasing.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\purchasing.js",
       "PackagePath": "staticwebassets\\js\\purchasing.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\room.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\room.js",
       "PackagePath": "staticwebassets\\js\\room.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\site.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\supplier.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\supplier.js",
       "PackagePath": "staticwebassets\\js\\supplier.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\sweetalert.min.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\sweetalert.min.js",
       "PackagePath": "staticwebassets\\js\\sweetalert.min.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\js\\transferitembyid.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\transferitembyid.js",
       "PackagePath": "staticwebassets\\js\\transferitembyid.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "D:\\My File\\Core 2022\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
