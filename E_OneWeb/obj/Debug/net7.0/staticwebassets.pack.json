@@ -49,6 +49,18 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\8c9faa6f-8f1f-43e5-a7f5-60960f24a358.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\8c9faa6f-8f1f-43e5-a7f5-60960f24a358.jpg"
+    },
+    {
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\b92aa9e5-a6b7-463c-80cd-5e2e4133a2ba.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\b92aa9e5-a6b7-463c-80cd-5e2e4133a2ba.jpg"
+    },
+    {
+      "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\images\\products\\f8697d58-f7a1-4034-931a-895aafe9c50c.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\f8697d58-f7a1-4034-931a-895aafe9c50c.jpg"
+    },
+    {
       "Id": "D:\\My File\\SarPras\\Inventory\\E_OneWeb\\wwwroot\\js\\GetItems.js",
       "PackagePath": "staticwebassets\\js\\GetItems.js"
     },

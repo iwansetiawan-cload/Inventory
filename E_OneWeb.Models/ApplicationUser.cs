@@ -13,10 +13,11 @@ namespace E_OneWeb.Models
     {
         [Required]
         public string Name { get; set; }
+        public string FullName { get; set; }
         public string? Gender { get; set; }
-        public string? CardNumber { get; set; }
-        public string? City { get; set; }
-        public string? PostalCode { get; set; }
+        public string? NIM { get; set; }
+        public string? Fakultas { get; set; }
+        public string? Prodi { get; set; }
         [NotMapped]
         public string Role { get; set; }
 

@@ -22,6 +22,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.CodeAnalysis.Editing;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace E_OneWeb.Areas.Identity.Pages.Account
@@ -36,6 +37,7 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
         //private readonly IEmailSender _emailSender;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -44,7 +46,8 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
             ILogger<RegisterModel> logger,
             //IEmailSender emailSender,
             RoleManager<IdentityRole> roleManager,
-            IUnitOfWork unitOfWork)
+            IUnitOfWork unitOfWork,
+            IWebHostEnvironment hostEnvironment)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -54,6 +57,7 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
             //_emailSender = emailSender;
             _roleManager = roleManager;
             _unitOfWork = unitOfWork;
+            _hostEnvironment = hostEnvironment;
         }
 
         /// <summary>
@@ -106,19 +110,23 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
             /// </summary>
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Compare("Password", ErrorMessage = "Kata sandi dan kata sandi konfirmasi tidak cocok.")]
             public string ConfirmPassword { get; set; }
-            [Required(ErrorMessage = "Name is required ")]
+            [Required(ErrorMessage = "User Login harus diisi ")]
             public string Name { get; set; }
-            [Required(ErrorMessage = "Gender is required ")]
+            [Required(ErrorMessage = "Nama Lengkap harus diisi ")]
+            public string FullName { get; set; }
+            [Required(ErrorMessage = "Jenis Kelamin harus diisi ")]
             public string Gender { get; set; }
-            public string CardNumber { get; set; }          
-            [Required(ErrorMessage = "Phone Number is required ")]
-            [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Phone Number must be numeric")]
+            public string NIM { get; set; }          
+            [Required(ErrorMessage = "No Telepon harus diisi ")]
+            [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "No Telepon harus numeric")]
             public string PhoneNumber { get; set; }
-            public string City { get; set; }
-            public string PostalCode { get; set; }
+            public string Fakultas { get; set; }
+            public string Prodi { get; set; }
             public string Role { get; set; }
+            //[Required(ErrorMessage = "Photo haris diisi ")]
+            public string Photo { get; set; }
             public IEnumerable<SelectListItem> RoleList { get; set; }
         }
 
@@ -131,8 +139,9 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
                 _roleManager.CreateAsync(new IdentityRole(SD.Role_User)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(SD.Role_Employee)).GetAwaiter().GetResult();
-            }            
-
+                _roleManager.CreateAsync(new IdentityRole(SD.Role_Unit)).GetAwaiter().GetResult();
+            }
+        
             //Input = new InputModel()
             //{
             //    CompanyList = _unitOfWork.Company.GetAll().Select(i => new SelectListItem
@@ -154,6 +163,46 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+            Personal personal = new Personal();
+
+            string webRootPath = _hostEnvironment.WebRootPath;
+            var files = HttpContext.Request.Form.Files;
+           
+            if (files.Count > 0)
+            {
+                string fileName = Guid.NewGuid().ToString();
+                var uploads = Path.Combine(webRootPath, @"images\products");
+                var extenstion = Path.GetExtension(files[0].FileName);
+                if (extenstion.ToLower().Contains(".jpg") || extenstion.ToLower().Contains(".jpeg"))
+                {
+                    if (personal.Photo != null)
+                    {
+                        //this is an edit and we need to remove old image
+                        var imagePath = Path.Combine(webRootPath, personal.Photo.TrimStart('\\'));
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            System.IO.File.Delete(imagePath);
+                        }
+                    }
+                    using (var filesStreams = new FileStream(Path.Combine(uploads, fileName + extenstion), FileMode.Create))
+                    {
+                        files[0].CopyTo(filesStreams);
+                    }
+                    personal.Photo = @"\images\products\" + fileName + extenstion;
+                }
+                else
+                {
+                    ModelState.AddModelError("Photo", "Type Photo jpg, jpeg");
+                }
+
+            }
+            else
+            {
+                ModelState.AddModelError("Photo", "Photo harus diisi");
+            }
+
+            var errorList = ModelState.Values.SelectMany(x => x.Errors).ToList();
             if (ModelState.IsValid)
             {
 
@@ -161,13 +210,14 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
                 {
                     UserName = Input.Name,
                     //Email = Input.Email,
-                    City = Input.City,                
+                    Fakultas = Input.Fakultas,                
                     Name = Input.Name,
                     PhoneNumber = Input.PhoneNumber,                   
                     Gender = Input.Gender,
-                    CardNumber = Input.CardNumber,
-                    PostalCode = Input.PostalCode,
-                    Role = Input.Role
+                    NIM = Input.NIM,
+                    Prodi = Input.Prodi,
+                    Role = Input.Role,
+                    FullName = Input.FullName
                 };
 
                 //var user = CreateUser();
@@ -206,17 +256,17 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
 						if (user.Role == null)
 						{
 							await _userManager.AddToRoleAsync(user, SD.Role_User);
-						}
-					}
-
-                    Personal personal = new Personal();
+                        }
+                    }
+                    
+                                        
                     personal.UserName = user.UserName;
-                    personal.FullName = user.UserName;
+                    personal.FullName = user.FullName;
                     personal.Gender = user.Gender;
                     personal.PhoneNumber = user.PhoneNumber;
-                    personal.NIM = user.CardNumber;
-                    personal.Prodi = user.PostalCode;
-                    personal.Fakultas = user.City;
+                    personal.NIM = user.NIM;
+                    personal.Prodi = user.Prodi;
+                    personal.Fakultas = user.Fakultas;
                     personal.EntryDate = DateTime.Now;
                     personal.UserId = userId;
                     _unitOfWork.Personal.Add(personal);

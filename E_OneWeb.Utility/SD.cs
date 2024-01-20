@@ -11,5 +11,6 @@ namespace E_OneWeb.Utility
         public const string Role_User = "Users";
         public const string Role_Admin = "Admin";
         public const string Role_Employee = "Employee";
+        public const string Role_Unit = "Unit";
     }
 }

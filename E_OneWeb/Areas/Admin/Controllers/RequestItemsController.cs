@@ -20,7 +20,7 @@ using Microsoft.AspNetCore.StaticFiles;
 namespace E_OneWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
+    [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee + "," + SD.Role_Unit)]
     public class RequestItemsController : Controller
     {
         public static List<RequestItemDetail> additemlist = new List<RequestItemDetail>();
@@ -32,7 +32,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             _unitOfWork = unitOfWork;
             _hostEnvironment = hostEnvironment;
         }
-        [Authorize(Roles = SD.Role_Employee)]
+        [Authorize(Roles = SD.Role_Employee + "," + SD.Role_Unit)]
         public IActionResult Index()
         {
             return View();
@@ -56,7 +56,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             return Json(new { data = datalist });
         }
-        [Authorize(Roles = SD.Role_Employee)]
+        [Authorize(Roles = SD.Role_Employee + "," + SD.Role_Unit)]
         public async Task<IActionResult> Upsert(int? id)
         {           
 
@@ -134,7 +134,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             return View(requestitemvm);
 
         }
-
+        [Authorize(Roles = SD.Role_Employee + "," + SD.Role_Unit)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Upsert(RequestItemHeaderVM vm)
@@ -265,9 +265,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
             }
             return RedirectToAction(nameof(Index));         
         }
-       
-        [HttpPost]
-        [Authorize(Roles = SD.Role_Employee)]
+        [Authorize(Roles = SD.Role_Employee + "," + SD.Role_Unit)]
+        [HttpPost]        
         public JsonResult AddItem(string name,string category, string reason, string price, string qty, string total, string spesifik, int? idroom, string room)
         {
 
@@ -338,7 +337,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
         }
 
         [HttpDelete]
-        [Authorize(Roles = SD.Role_Employee)]
+        [Authorize(Roles = SD.Role_Employee + "," + SD.Role_Unit)]
         public async Task<IActionResult> Delete(int id)
         {
             var objFromDb = await _unitOfWork.RequestItemHeader.GetAsync(id);

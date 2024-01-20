@@ -13,7 +13,7 @@
         <div class="col-8 offset-2">
             <div class="card">
                 <div class="card-body px-lg-5 pt-4">
-                    <form autocomplete="off" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <form autocomplete="off" asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
                         <h3 class="col-12 text-success text-center py-4">
                             @if (User.IsInRole(SD.Role_Admin))
                             {
@@ -26,8 +26,12 @@
                         </h3>
                         <hr />
                         <div class="py-2">
-                            <input asp-for="Input.Name" placeholder="Nama" class="form-control" />
+                            <input asp-for="Input.Name" placeholder="User Login" class="form-control" />
                             <span asp-validation-for="Input.Name" class="text-danger"></span>
+                        </div>
+                        <div class="py-2">
+                            <input asp-for="Input.FullName" placeholder="Nama Lengkap" class="form-control" />
+                            <span asp-validation-for="Input.FullName" class="text-danger"></span>
                         </div>
                         <div class="py-2">                            
                             @Html.DropDownListFor(m => m.Input.Gender, new List<SelectListItem>() {
@@ -38,17 +42,17 @@
                         </div>
 
                         <div class="py-2">
-                            <input asp-for="Input.CardNumber" placeholder="NIM" class="form-control" />
-                            <span asp-validation-for="Input.CardNumber" class="text-danger"></span>
+                            <input asp-for="Input.NIM" placeholder="NIM" class="form-control" />
+                            <span asp-validation-for="Input.NIM" class="text-danger"></span>
                         </div>
                         <div class="py-2">
-                            <input asp-for="Input.PostalCode" placeholder="Prodi" class="form-control" />
-                            <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+                            <input asp-for="Input.Prodi" placeholder="Prodi" class="form-control" />
+                            <span asp-validation-for="Input.Prodi" class="text-danger"></span>
 
                         </div>
                         <div class="py-2">
-                            <input asp-for="Input.City" placeholder="Fakultas" class="form-control" />
-                            <span asp-validation-for="Input.City" class="text-danger"></span>
+                            <input asp-for="Input.Fakultas" placeholder="Fakultas" class="form-control" />
+                            <span asp-validation-for="Input.Fakultas" class="text-danger"></span>
 
                         </div>
                         @*<div class="py-2">
@@ -61,7 +65,32 @@
                             </div>*@
                             <input asp-for="Input.PhoneNumber" type="text" placeholder="Number WA" class="form-control" />
                             <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-                        </div>        
+                        </div>
+                        
+                        <div class="py-2">
+                        @*    <div class="card border-0 p-3 shadow  border-top border-5 rounded">
+                             
+                                @if (@Model.Input.Photo != null)
+                                {
+                                    <div class="card" style="-ms-text-autospace">
+                                        <img class="card-img-top rounded" src="@Model.Input.Photo">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="card" style="width: 18rem;">
+                                        <img class="rounded float-end" src="https://placehold.co/300x400/png" style="border-radius:5px; border:1px solid #bbb9b9">
+                                    </div>
+                                }
+                            </div>*@
+
+                            <div class="form-floating py-2">
+                                <input asp-for="Input.Photo" type="file" name="files" id="uploadBox" multiple class="form-control" placeholder="Photo Profile" />
+                                <label class="form-label">Photo Profile</label>
+                               
+                            </div>
+                            <span asp-validation-for="Input.Photo" class="text-danger"></span>
+                        </div>
                         
                         <div class="form-row py-2">
                             <div class="col">

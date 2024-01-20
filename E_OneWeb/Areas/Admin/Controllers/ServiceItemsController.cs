@@ -25,7 +25,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
         {
             return View();
         }
-        [Authorize(Roles = SD.Role_Employee)]
+        [Authorize(Roles = SD.Role_Employee + "," + SD.Role_Unit)]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -48,7 +48,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             return Json(new { data = datalist });
         }
-        [Authorize(Roles = SD.Role_Employee)]
+        [Authorize(Roles = SD.Role_Employee + "," + SD.Role_Unit)]
         public async Task<IActionResult> Upsert(int? id)
         {
             ViewBag.Status = "";
@@ -77,7 +77,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             return View(itemservicevm); 
 
         }
-
+        [Authorize(Roles = SD.Role_Employee + "," + SD.Role_Unit)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Upsert(ItemServiceVM vm)
@@ -114,7 +114,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             _unitOfWork.Save();       
             return View(vm);
         }
-        [Authorize(Roles = SD.Role_Employee)]
+        [Authorize(Roles = SD.Role_Employee + "," + SD.Role_Unit)]
         [HttpGet]
         public async Task<IActionResult> GetAllItems()
         {
@@ -131,7 +131,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             return Json(new { data = datalist });
         }
-        [Authorize(Roles = SD.Role_Employee)]
+        [Authorize(Roles = SD.Role_Employee + "," + SD.Role_Unit)]
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
