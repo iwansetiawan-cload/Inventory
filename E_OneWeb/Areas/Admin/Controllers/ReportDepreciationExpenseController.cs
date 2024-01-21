@@ -188,7 +188,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             cell.CellStyle = style;
 
             cell = rowHeader.CreateCell(2);
-            cell.SetCellValue("Tanggal");
+            cell.SetCellValue("Tanggal Perolehan");
             cell.CellStyle = style;
 
             cell = rowHeader.CreateCell(3);

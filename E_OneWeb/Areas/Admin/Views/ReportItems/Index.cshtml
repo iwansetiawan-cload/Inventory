@@ -20,6 +20,26 @@
                 {
                     <div class="col-12 pt-4">
                         <div class="form-group row pt-2">
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.SearchStartDate, "Tgl.Perolehan dari", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-9">
+                                        <input asp-for="SearchStartDate" class="form-control" style="row-gap" id="searchStartDate" type="date" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.SearchEndDate, "Tgl.Perolehan sampai", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-9">
+                                        <input asp-for="SearchEndDate" class="form-control" style="row-gap" id="searchEndDate" type="date" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group row pt-2">
 
                             <div class="col-6">
                                 <div class="form-group row">
@@ -96,6 +116,9 @@
                                         Nama Aset
                                     </th>
                                     <th>
+                                        Tanggal Perolehan
+                                    </th>
+                                    <th>
                                         Keterangan
                                     </th>
                                     <th>
@@ -155,7 +178,9 @@
             var ownership = $("#searchOwnership").val();
             var category = $("#searchCategory").val();
             var status = $("#searchStatus").val();
-            var urlx = "/Admin/ReportItems/Index?code=" + codes + "&ownership=" + ownership + "&category=" + category + "&status=" + status;
+            var startdate = $("#searchStartDate").val();
+            var enddate = $("#searchEndDate").val();
+            var urlx = "/Admin/ReportItems/Index?code=" + codes + "&ownership=" + ownership + "&category=" + category + "&status=" + status + "&startdate=" + startdate + "&enddate=" + enddate;
             window.location = urlx;
           
         }
@@ -171,6 +196,7 @@
                 "columns": [
                     { "data": "code", "autoWidth": true },
                     { "data": "name", "autoWidth": true },
+                    { "data": "startdatestring", "autoWidth": true },
                     { "data": "description", "autoWidth": true },
                     { "data": "category", "autoWidth": true },
                     { "data": "room", "autoWidth": true },

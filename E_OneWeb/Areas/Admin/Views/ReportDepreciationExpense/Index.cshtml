@@ -21,8 +21,8 @@
                         <div class="form-group row pt-2">
                             <div class="col-6">
                                 <div class="form-group row">
-                                    @Html.LabelFor(model => model.SearchStartDate, "Tgl.Perolehan dari", htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
+                                    @Html.LabelFor(model => model.SearchStartDate, "Tgl.Perolehan dari", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-9">
                                         <input asp-for="SearchStartDate" class="form-control" style="row-gap" id="searchStartDate" type="date" />
                                     </div>
                                 </div>
@@ -30,8 +30,8 @@
 
                             <div class="col-6">
                                 <div class="form-group row">
-                                    @Html.LabelFor(model => model.SearchEndDate, "Tgl.Perolehan sampai", htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
+                                    @Html.LabelFor(model => model.SearchEndDate, "Tgl.Perolehan sampai", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-9">
                                         <input asp-for="SearchEndDate" class="form-control" style="row-gap" id="searchEndDate" type="date" />
                                     </div>
                                 </div>
@@ -43,8 +43,8 @@
                             <div class="col-6">
                             
                                 <div class="form-group row">
-                                    @Html.LabelFor(model => model.SearchCategory, "Katagori", htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
+                                    @Html.LabelFor(model => model.SearchCategory, "Katagori", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-9">
                                         @Html.DropDownListFor(Model => Model.SearchCategory , Model.CategoryList, "- Semua Katagori -",
                                         new { @Class = "form-control", @id="searchCategory"})
                                     </div>
@@ -54,8 +54,8 @@
 
                             <div class="col-6">
                                 <div class="form-group row">                                 
-                                    @Html.LabelFor(model => model.SearchMonth, "Tahun/ bulan", htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-6">
+                                    @Html.LabelFor(model => model.SearchMonth, "Tahun/ bulan", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-5">
                                         @Html.DropDownListFor(Model => Model.SearchMonth, ViewBag.SearchMonthList as SelectList, "- Select a Month -", new { @class = "form-control", @id="SearchMonths" })
                                     </div>
                                     <div class="col-md-4">
@@ -136,10 +136,8 @@
             loadDataTable();
         });
         function ClearSearch() {
-            $("#searchCode").val('');
-            $("#searchOwnership").val('');
+            $("#SearchMonths").val('');
             $("#searchCategory").val('');
-            $("#searchStatus").val('');
         }
         function Export() {
 
@@ -148,7 +146,6 @@
         }
 
         function loadDataTable() {
-            var code = $('#searchCode').val();
             dataTable = $('#tblData').DataTable({
                 "order": [[0, "desc"]],
                 "filter": false,

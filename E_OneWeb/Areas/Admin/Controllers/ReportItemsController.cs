@@ -33,12 +33,15 @@ namespace E_OneWeb.Areas.Admin.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task<IActionResult> Index(ReportItemVM vm, string code, string ownership, int? category, int? status)
+        public async Task<IActionResult> Index(ReportItemVM vm, string code, string ownership, int? category, int? status, string startdate, string enddate)
         {
             staticvm.SearchCode = code;
             staticvm.SearchOwnership = ownership;
             staticvm.SearchCategory = category;
             staticvm.SearchStatus = status;
+            staticvm.SearchStartDate = startdate == null ? Convert.ToDateTime("01-01-2000") : Convert.ToDateTime(startdate);
+            staticvm.SearchEndDate = enddate == null ? DateTime.Now : Convert.ToDateTime(enddate);
+
             vm = staticvm;
             IEnumerable<Category> CatList = await _unitOfWork.Category.GetAllAsync();
             vm.CategoryList = CatList.Select(i => new SelectListItem
@@ -72,8 +75,14 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 ownership = z.OriginOfGoods,
                                 price = z.Price.HasValue ? z.Price.Value.ToString("#,##0") : "",
                                 totalamount = z.TotalAmount.HasValue ? z.TotalAmount.Value.ToString("#,##0") : "",
-                                status = z.Status
+                                status = z.Status,
+                                startdate = z.StartDate,
+                                startdatestring = z.StartDate != null ? z.StartDate.Value.ToString("dd/MM/yyyy") : ""
                             }).ToList();
+            if (vm.SearchStartDate != null && vm.SearchEndDate != null)
+            {
+                datalist = datalist.Where(o => o.startdate >= staticvm.SearchStartDate && o.startdate <= staticvm.SearchEndDate).ToList();
+            }
             if (vm.SearchCode != null)
             {
                 datalist = datalist.Where(o => o.code == vm.SearchCode).ToList();
@@ -118,43 +127,47 @@ namespace E_OneWeb.Areas.Admin.Controllers
             //}
 
             var cell = rowHeader.CreateCell(0);
-            cell.SetCellValue("NO");
+            cell.SetCellValue("No");
             cell.CellStyle = style;
 
             cell = rowHeader.CreateCell(1);
-            cell.SetCellValue("CODE");
+            cell.SetCellValue("Kode");
             cell.CellStyle = style;
 
             cell = rowHeader.CreateCell(2);
-            cell.SetCellValue("ITEM NAME");
+            cell.SetCellValue("Nama Harta Tetap");
             cell.CellStyle = style;
 
             cell = rowHeader.CreateCell(3);
-            cell.SetCellValue("DESCRIPTION");
+            cell.SetCellValue("Tanggal Perolehan");
             cell.CellStyle = style;
 
             cell = rowHeader.CreateCell(4);
-            cell.SetCellValue("CATEGORY");
+            cell.SetCellValue("Keterangan");
             cell.CellStyle = style;
 
             cell = rowHeader.CreateCell(5);
-            cell.SetCellValue("LOCATION");
+            cell.SetCellValue("Katagori");
             cell.CellStyle = style;
 
             cell = rowHeader.CreateCell(6);
-            cell.SetCellValue("ROOM");
+            cell.SetCellValue("Gedung");
             cell.CellStyle = style;
 
             cell = rowHeader.CreateCell(7);
-            cell.SetCellValue("PRICE");
+            cell.SetCellValue("Ruangan");
             cell.CellStyle = style;
 
             cell = rowHeader.CreateCell(8);
-            cell.SetCellValue("QTY");
+            cell.SetCellValue("Nilai Perolehan");
             cell.CellStyle = style;
 
             cell = rowHeader.CreateCell(9);
-            cell.SetCellValue("TOTAL AMOUNT");
+            cell.SetCellValue("Jumlah");
+            cell.CellStyle = style;
+
+            cell = rowHeader.CreateCell(10);
+            cell.SetCellValue("Total Nilai Perolehan");
             cell.CellStyle = style;
             //end header
 
@@ -228,9 +241,15 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 totalamount = z.TotalAmount != null ? z.TotalAmount : 0,
                                 ownership = z.OriginOfGoods,
                                 categoryid = z.CategoryId,
-                                status = z.Status
+                                status = z.Status,
+                                startdate = z.StartDate,
+                                startdatestring = z.StartDate != null ? z.StartDate.Value.ToString("dd/MM/yyyy") : ""
                             }).ToList();
 
+            if (staticvm.SearchStartDate != null && staticvm.SearchEndDate != null)
+            {
+                datalist = datalist.Where(o => o.startdate >= staticvm.SearchStartDate && o.startdate <= staticvm.SearchEndDate).ToList();
+            }
             if (staticvm.SearchCode != null)
             {
                 datalist = datalist.Where(o => o.code == staticvm.SearchCode).ToList();
@@ -255,6 +274,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                             Number = Number++,
                             Code = z.code,
                             Name = z.name,
+                            StartDate = z.startdatestring,
                             Description = z.description,
                             Category = z.category,
                             Location = z.location,

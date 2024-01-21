@@ -50,3 +50,8 @@ PRINT 'INSERT GENMASTER 6'
 	Insert Into GENMASTER VALUES (1,'Approved',1,6,'SYSTEM',GETDATE())
 	Insert Into GENMASTER VALUES (2,'Rejected',2,6,'SYSTEM',GETDATE())
 END
+
+--create user [IIS APPPOOL\SarPrasApp] for login [IIS APPPOOL\SarPrasApp]
+--go
+--execute sp_addrolemember N'db_owner', N'IIS APPPOOL\SarPrasApp'
+--go
