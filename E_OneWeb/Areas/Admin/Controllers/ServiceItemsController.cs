@@ -8,19 +8,26 @@ using E_OneWeb.Models;
 using E_OneWeb.Models.ViewModels;
 using System.Drawing.Drawing2D;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
+using System.Linq;
+using static com.sun.tools.@internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 
 namespace E_OneWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
+    [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee + "," + SD.Role_Unit)]
     public class ServiceItemsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public ServiceItemsController(IUnitOfWork unitOfWork)
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        public ServiceItemsController(IUnitOfWork unitOfWork,RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager)
         {
             _unitOfWork = unitOfWork;
+            _roleManager = roleManager;
+            _userManager = userManager;
         }
-        [Authorize(Roles = SD.Role_Employee)]
+        [Authorize(Roles = SD.Role_Employee + "," + SD.Role_Unit)]
         public IActionResult Index()
         {
             return View();
@@ -29,8 +36,19 @@ namespace E_OneWeb.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-         
-			var datalist = (from z in await _unitOfWork.ItemService.GetAllAsync(includeProperties: "Items")
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+
+            //var RoleList = _roleManager.Roles.ToList();
+
+            var rolesUser = _unitOfWork.ApplicationUser.GetAll();
+            //var RoleUserList = _userManager.Users.ToList();
+
+            List<string> UserUnitList = rolesUser.Where(z => z.RolesName == user.RolesName).Select(u=>u.UserName).ToList();
+
+
+            var datalist = (from z in await _unitOfWork.ItemService.GetAllAsync(includeProperties: "Items")
                             select new
                             {
                                 id = z.Id,
@@ -42,10 +60,14 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 requestby = z.RequestBy,
                                 costofrepair = z.CostOfRepair.HasValue ? z.CostOfRepair.Value.ToString("#,##0") : "",
                                 status = z.Status,
-                                notes = z.Notes
+                                notes = z.Notes,
+                                entryby = z.EntryBy,
+                                approveby = z.ApproveBy,
+                                approvedate = z.ApproveDate != null ? z.ApproveDate.Value.ToString("dd-MM-yyyy") : ""
 
-							}).OrderByDescending(i => i.id).ToList();
+							}).Where(u=> UserUnitList.Contains(u.entryby)).OrderByDescending(i => i.id).ToList();
 
+           
             return Json(new { data = datalist });
         }
         [Authorize(Roles = SD.Role_Employee + "," + SD.Role_Unit)]
@@ -89,7 +111,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6 && z.GENVALUE == 0).FirstOrDefault();
             vm.ItemService.StatusId = Gen_6.IDGEN;
             vm.ItemService.Status = Gen_6.GENNAME;
-            vm.ItemService.EntryBy = user.Name;
+            vm.ItemService.EntryBy = user.UserName;
             vm.ItemService.EntryDate = DateTime.Now;
 
             IEnumerable<Items> itemList = await _unitOfWork.Items.GetAllAsync();
@@ -146,16 +168,30 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
         }
 
-        #region Approve by Admin
-        [Authorize(Roles = SD.Role_Admin)]
+        #region Approve by Admin and 
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         public IActionResult Approve()
         {
             return View();
         }
-        [Authorize(Roles = SD.Role_Admin)]
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         [HttpGet]
         public async Task<IActionResult> GetAllApprove()
         {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+            var rolesUser = _unitOfWork.ApplicationUser.GetAll();
+            List<string> UserUnitList;
+            if (user.RolesName == "Employee")
+            {
+                UserUnitList = rolesUser.Where(z => z.RolesName == "Unit").Select(u => u.UserName).ToList();
+            }
+            else
+            {
+                UserUnitList = rolesUser.Where(z => z.RolesName == "Employee").Select(u => u.UserName).ToList();
+            }
+
 
             var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6).ToList();
 
@@ -171,13 +207,14 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 requestby = z.RequestBy,
                                 costofrepair = z.CostOfRepair.HasValue ? z.CostOfRepair.Value.ToString("#,##0") : "",
                                 status = Gen_6.Where(i => i.IDGEN == z.StatusId).Select(i => i.GENNAME).FirstOrDefault(),
-                                notes = z.Notes
+                                notes = z.Notes,
+                                entryby = z.EntryBy
 
-                            }).OrderByDescending(i => i.id).ToList();
+                            }).Where(u => UserUnitList.Contains(u.entryby)).OrderByDescending(i => i.id).ToList();
 
             return Json(new { data = datalist });
         }
-        [Authorize(Roles = SD.Role_Admin)]
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         public async Task<IActionResult> ViewApprove(int? id)
         {
 
@@ -207,18 +244,27 @@ namespace E_OneWeb.Areas.Admin.Controllers
             return View(itemservicevm);
 
         }
-        [Authorize(Roles = SD.Role_Admin)]
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         [HttpPost]
         public async Task<IActionResult> Approved(int id)
         {
             try
             {
+                var claimsIdentity = (ClaimsIdentity)User.Identity;
+                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+
                 var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6 && z.GENVALUE == 1).FirstOrDefault();
 
                 ItemService itemService = await _unitOfWork.ItemService.GetAsync(id);
                 itemService.StatusId = Gen_6.IDGEN;
                 itemService.Status = Gen_6.GENNAME;
                 itemService.Notes = "";
+                itemService.ApproveBy = user.UserName;
+                itemService.ApproveDate = DateTime.Now;
+                itemService.RejectedBy = null;
+                itemService.RejectedDate = null;
+
                 _unitOfWork.ItemService.Update(itemService);
 
                 TempData["Success"] = "Successfully approved";
@@ -232,18 +278,25 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
 
         }
-        [Authorize(Roles = SD.Role_Admin)]
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         [HttpPost]
         public async Task<IActionResult> Rejected(string note, int id)
         {
             try
             {
+                var claimsIdentity = (ClaimsIdentity)User.Identity;
+                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
                 var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6 && z.GENVALUE == 2).FirstOrDefault();
 
                 ItemService itemService = await _unitOfWork.ItemService.GetAsync(id);
                 itemService.StatusId = Gen_6.IDGEN;
                 itemService.Status = Gen_6.GENNAME;
                 itemService.Notes = note;
+                itemService.RejectedBy = user.UserName;
+                itemService.RejectedDate = DateTime.Now;
+                itemService.ApproveBy = null;
+                itemService.ApproveDate = null;
                 _unitOfWork.ItemService.Update(itemService);
 
                 TempData["Success"] = "Successfully reject";

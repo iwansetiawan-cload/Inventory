@@ -242,12 +242,13 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
                     //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                     //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                    if (user.NormalizedEmail == "IWAN.SETTI@YAHOO.COM" && user.PhoneNumber == "081289277785")
+                    if (user.UserName == "iwansetti" && user.PhoneNumber == "081289277785")
                     {
                         await _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin));
                         if (user.Role == null)
                         {
                             await _userManager.AddToRoleAsync(user, SD.Role_Admin);
+                            user.RolesName = SD.Role_Admin;
                         }
                     }
                     else
@@ -256,6 +257,7 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
 						if (user.Role == null)
 						{
 							await _userManager.AddToRoleAsync(user, SD.Role_User);
+                            user.RolesName = SD.Role_User;
                         }
                     }
                     

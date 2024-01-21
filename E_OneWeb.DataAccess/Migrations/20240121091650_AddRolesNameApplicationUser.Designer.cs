@@ -4,6 +4,7 @@ using E_OneWeb.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_OneWeb.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240121091650_AddRolesNameApplicationUser")]
+    partial class AddRolesNameApplicationUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -156,12 +159,6 @@ namespace E_OneWeb.DataAccess.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ApproveBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ApproveDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<double?>("CostOfRepair")
                         .HasColumnType("float");
 
@@ -184,12 +181,6 @@ namespace E_OneWeb.DataAccess.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("RejectedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("RejectedDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("RepairDescription")
                         .HasColumnType("nvarchar(max)");
@@ -579,12 +570,6 @@ namespace E_OneWeb.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ApproveBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ApproveDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
 
@@ -607,12 +592,6 @@ namespace E_OneWeb.DataAccess.Migrations
 
                     b.Property<string>("Reason")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RejectedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("RejectedDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<int?>("RoomId")
                         .HasColumnType("int");
@@ -645,12 +624,6 @@ namespace E_OneWeb.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ApproveBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ApproveDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("EntryBy")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
@@ -663,12 +636,6 @@ namespace E_OneWeb.DataAccess.Migrations
 
                     b.Property<string>("RefFile")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RejectedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("RejectedDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("ReqNumber")
                         .IsRequired()

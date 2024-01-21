@@ -18,6 +18,7 @@ namespace E_OneWeb.Models
         public string? NIM { get; set; }
         public string? Fakultas { get; set; }
         public string? Prodi { get; set; }
+        public string? RolesName { get; set; }
         [NotMapped]
         public string Role { get; set; }
 

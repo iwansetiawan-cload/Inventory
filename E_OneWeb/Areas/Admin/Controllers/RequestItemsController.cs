@@ -16,6 +16,8 @@ using OfficeOpenXml;
 using static System.Net.Mime.MediaTypeNames;
 using System.IO.Pipes;
 using Microsoft.AspNetCore.StaticFiles;
+using System.Security.Claims;
+using static com.sun.tools.@internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 
 namespace E_OneWeb.Areas.Admin.Controllers
 {
@@ -40,6 +42,12 @@ namespace E_OneWeb.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+            var rolesUser = _unitOfWork.ApplicationUser.GetAll();
+
+            List<string> UserUnitList = rolesUser.Where(z => z.RolesName == user.RolesName).Select(u => u.UserName).ToList();
 
             var datalist = (from z in await _unitOfWork.RequestItemHeader.GetAllAsync()
                             select new
@@ -50,9 +58,12 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 requestby = z.Requester,
                                 desc = z.Notes,
                                 totalamount = z.TotalAmount.HasValue ? z.TotalAmount.Value.ToString("#,##0") : "",
-                                status = z.Status
+                                status = z.Status,
+                                entryby = z.EntryBy,
+                                approveby = z.ApproveBy,
+                                approvedate = z.ApproveDate != null ? z.ApproveDate.Value.ToString("dd-MM-yyyy") : ""
 
-                            }).OrderByDescending(i => i.id).ToList();
+                            }).Where(u => UserUnitList.Contains(u.entryby)).OrderByDescending(i => i.id).ToList();
 
             return Json(new { data = datalist });
         }
@@ -138,7 +149,12 @@ namespace E_OneWeb.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Upsert(RequestItemHeaderVM vm)
-        {           
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+            vm.RequestItemHeader.EntryBy = user.Name;
+            vm.RequestItemHeader.EntryDate = DateTime.Now;
 
             IEnumerable<Category> CatList = await _unitOfWork.Category.GetAllAsync();
             vm.ListCategory = CatList.Select(x => new SelectListItem { Value = x.Name, Text = x.Name });
@@ -413,7 +429,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
 
         #region Approve by Admin
-        [Authorize(Roles = SD.Role_Admin)]
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         public IActionResult Approve()
 		{
 			return View();
@@ -421,6 +437,19 @@ namespace E_OneWeb.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllApprove()
         {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+            var rolesUser = _unitOfWork.ApplicationUser.GetAll();
+            List<string> UserUnitList;
+            if (user.RolesName == "Employee")
+            {
+                UserUnitList = rolesUser.Where(z => z.RolesName == "Unit").Select(u => u.UserName).ToList();
+            }
+            else
+            {
+                UserUnitList = rolesUser.Where(z => z.RolesName == "Employee").Select(u => u.UserName).ToList();
+            }
 
             var datalist = (from z in await _unitOfWork.RequestItemHeader.GetAllAsync()
                             select new
@@ -431,13 +460,14 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 requestby = z.Requester,
                                 desc = z.Notes,
                                 totalamount = z.TotalAmount.HasValue ? z.TotalAmount.Value.ToString("#,##0") : "",
-                                status = z.Status
+                                status = z.Status,
+                                entryby = z.EntryBy
 
-                            }).OrderByDescending(i => i.id).ToList();
+                            }).Where(u => UserUnitList.Contains(u.entryby)).OrderByDescending(i => i.id).ToList();
 
             return Json(new { data = datalist });
         }
-        [Authorize(Roles = SD.Role_Admin)]
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         public async Task<IActionResult> ViewApprove(int? id)
 		{
 
@@ -515,11 +545,19 @@ namespace E_OneWeb.Areas.Admin.Controllers
         {
             try
             {
+                var claimsIdentity = (ClaimsIdentity)User.Identity;
+                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
                 var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6 && z.GENVALUE == 1).FirstOrDefault();
 
                 RequestItemHeader requestItemHeader = await _unitOfWork.RequestItemHeader.GetAsync(id);
                 requestItemHeader.StatusId = Gen_6.IDGEN;
                 requestItemHeader.Status = Gen_6.GENNAME;
+                requestItemHeader.ApproveBy = user.UserName;
+                requestItemHeader.ApproveDate = DateTime.Now;
+                requestItemHeader.RejectedBy = null;
+                requestItemHeader.RejectedDate = null;
+
                 _unitOfWork.RequestItemHeader.Update(requestItemHeader);
 
                 TempData["Success"] = "Successfully approved";
@@ -538,12 +576,19 @@ namespace E_OneWeb.Areas.Admin.Controllers
         {
             try
             {
+                var claimsIdentity = (ClaimsIdentity)User.Identity;
+                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
                 var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6 && z.GENVALUE == 2).FirstOrDefault();
 
                 RequestItemHeader requestItemHeader = await _unitOfWork.RequestItemHeader.GetAsync(idheader);
                 requestItemHeader.StatusId = Gen_6.IDGEN;
                 requestItemHeader.Status = Gen_6.GENNAME;
                 requestItemHeader.Notes = note;
+                requestItemHeader.RejectedBy = user.UserName;
+                requestItemHeader.RejectedDate = DateTime.Now;
+                requestItemHeader.ApproveBy = null;
+                requestItemHeader.ApproveDate = null;
                 _unitOfWork.RequestItemHeader.Update(requestItemHeader);
 
                 TempData["Success"] = "Successfully reject";
@@ -563,11 +608,18 @@ namespace E_OneWeb.Areas.Admin.Controllers
         {
             try
             {
+                var claimsIdentity = (ClaimsIdentity)User.Identity;
+                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
                 var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6 && z.GENVALUE == 1).FirstOrDefault();
 
                 RequestItemDetail requestItemDetail = await _unitOfWork.RequestItemDetail.GetAsync(id);
                 requestItemDetail.StatusId = Gen_6.IDGEN;
                 requestItemDetail.Status = Gen_6.GENNAME;
+                requestItemDetail.ApproveBy = user.UserName;
+                requestItemDetail.ApproveDate = DateTime.Now;
+                requestItemDetail.RejectedBy = null;
+                requestItemDetail.RejectedDate = null;
                 _unitOfWork.RequestItemDetail.Update(requestItemDetail);
              
                 TempData["Success"] = "Successfully approved";
@@ -586,11 +638,19 @@ namespace E_OneWeb.Areas.Admin.Controllers
         {
             try
             {
+                var claimsIdentity = (ClaimsIdentity)User.Identity;
+                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
                 var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6 && z.GENVALUE == 2).FirstOrDefault();
 
                 RequestItemDetail requestItemDetail = await _unitOfWork.RequestItemDetail.GetAsync(iddetail);
                 requestItemDetail.StatusId = Gen_6.IDGEN;
                 requestItemDetail.Status = Gen_6.GENNAME;
+                requestItemDetail.RejectedBy = user.UserName;
+                requestItemDetail.RejectedDate = DateTime.Now;
+                requestItemDetail.ApproveBy = null;
+                requestItemDetail.ApproveDate = null;
+
                 _unitOfWork.RequestItemDetail.Update(requestItemDetail);
 
                 TempData["Success"] = "Successfully reject";

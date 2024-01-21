@@ -26,5 +26,9 @@ namespace E_OneWeb.Models
         public DateTime? EntryDate { get; set; }
 		public string? Status { get; set; }
         public int? StatusId { get; set; }
+        public string? ApproveBy { get; set; }
+        public DateTime? ApproveDate { get; set; }
+        public string? RejectedBy { get; set; }
+        public DateTime? RejectedDate { get; set; }
     }
 }

@@ -40,5 +40,9 @@ namespace E_OneWeb.Models
         public DateTime? EntryDate { get; set; }	
 		public int? RoomId { get; set; }
 		public int? LocationId { get; set; }
-	}
+        public string? ApproveBy { get; set; }
+        public DateTime? ApproveDate { get; set; }
+        public string? RejectedBy { get; set; }
+        public DateTime? RejectedDate { get; set; }
+    }
 }

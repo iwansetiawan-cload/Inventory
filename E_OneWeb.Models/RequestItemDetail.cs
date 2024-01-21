@@ -27,5 +27,9 @@ namespace E_OneWeb.Models
         public string? Notes { get; set; }
         public int? RoomId { get; set; }
         public string? RoomName { get; set; }
+        public string? ApproveBy { get; set; }
+        public DateTime? ApproveDate { get; set; }
+        public string? RejectedBy { get; set; }
+        public DateTime? RejectedDate { get; set; }
     }
 }
