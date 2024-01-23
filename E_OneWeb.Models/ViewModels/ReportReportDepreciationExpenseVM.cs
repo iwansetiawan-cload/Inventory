@@ -14,6 +14,7 @@ namespace E_OneWeb.Models.ViewModels
         public int? SearchCategory { get; set; }
         public DateTime? SearchStartDate { get; set; }
         public DateTime? SearchEndDate { get; set; }
+        public DateTime? SearchCalculateDate { get; set; }
         public IEnumerable<SelectListItem> CategoryList { get; set; }
         public IEnumerable<SelectListItem> MonthList { get; set; }
     }

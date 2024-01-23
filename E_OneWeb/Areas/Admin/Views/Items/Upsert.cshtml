@@ -12,6 +12,8 @@
         <input type="hidden" asp-for="Items.Period" id="Period_" />
         <input type="hidden" asp-for="Percent_String" id="Percent_" />
         <input type="hidden" asp-for="Items.Id" id="itemID" />
+        <input type="hidden" asp-for="Items.DepreciationExpense" id="DepreciationExpense_" />
+        <input type="hidden" asp-for="DepreciationExpenseString" id="DepreciationExpenseString_" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         
         @if ((Model.Items.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Update Success")
@@ -116,19 +118,34 @@
                 </div>
             </div>
 
-        </div>
+        </div>       
+
        
-        <div class="col-12 pt-2">
-            <div class="form-group row">
-                @Html.LabelFor(model => model.Items.DepreciationExpense, "Beban Penyusutan", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-10">
-                    <input type="hidden" asp-for="Items.DepreciationExpense" id="depreciationexpense" />
-                    <input asp-for="DepreciationExpenseString" class="form-control" style="row-gap" id="DepreciationExpenseString" disabled />
-                    <span asp-validation-for="Items.DepreciationExpense" class="text-danger"></span>
+
+        @if (@ViewBag.Status == "Update Success")
+        {
+            <div class="col-12 pt-2">
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Items.DepreciationExpense, "Nilai Buku", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-10">
+                        <input value="@ViewBag.DepreciationExpense" id="DepreciationExpenses" class="form-control" style="row-gap" disabled />
+                        @*<input asp-for="DepreciationExpenseString" class="form-control" style="row-gap" id="DepreciationExpenseString" disabled />*@                      
+                    </div>
                 </div>
             </div>
-
-        </div>
+        }
+        else
+        {
+            <div class="col-12 pt-2">
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Items.DepreciationExpense, "Nilai Buku", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-10">
+                        @*   <input type="hidden" asp-for="Items.DepreciationExpense" id="depreciationexpense" />*@
+                        <input asp-for="DepreciationExpenseString" class="form-control" style="row-gap" id="DepreciationExpenseString" disabled />
+                    </div>
+                </div>
+            </div>
+        }
         <div class="col-12 pt-2">
             <div class="form-group row">      
                 @Html.LabelFor(model => model.Items.OriginOfGoods, "Kepemilikan", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -409,8 +426,7 @@
                 }
             });
         }
-
-  
+    
         $(document).ready(function () {
             loadDataRoom();
             loadDataTransfer();
@@ -421,7 +437,7 @@
             var totalamount = $("#totalamount").val();
             $("#TotalAmountString").val(numberWithCommas(totalamount));
 
-            var expance = $("#depreciationexpense").val();
+            var expance = $("#DepreciationExpense_").val();
             $("#DepreciationExpenseString").val(numberWithCommas(expance));
             
 

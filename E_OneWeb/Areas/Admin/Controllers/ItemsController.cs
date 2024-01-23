@@ -2,9 +2,12 @@
 using E_OneWeb.Models;
 using E_OneWeb.Models.ViewModels;
 using E_OneWeb.Utility;
+using MathNet.Numerics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using sun.misc;
+using sun.nio.cs.ext;
 using System.Data;
 using System.Diagnostics;
 using System.Globalization;
@@ -124,28 +127,28 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             if (vm.Items.CategoryId > 0 && vm.Items.RoomId > 0)
             {
-                var claimsIdentity = (ClaimsIdentity)User.Identity;
-                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-                var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
 
-                vm.Items.EntryBy = user.Name;
-                vm.Items.EntryDate = DateTime.Now;
-                decimal? persen = Convert.ToDecimal(vm.Percent_String);
-                vm.Items.Percent = persen;
+                #region Variable
+                decimal? Percent = Convert.ToDecimal(vm.Percent_String);
+                vm.Items.Percent = Percent;
+                int PeriodExpence = vm.Items.Period != null ? vm.Items.Period.Value : 0;
+                #endregion
 
-                int periodExpence = vm.Items.Period != null ? vm.Items.Period.Value : 0;
+                #region Hitung Nilai Buku
+                decimal Nilai_Buku = GetNilaiPenyusutan(vm.Items.StartDate, vm.Items.TotalAmount, PeriodExpence, Percent);
+                vm.Items.DepreciationExpense = Math.Round((double)Nilai_Buku);
+                ViewBag.DepreciationExpense = Nilai_Buku.ToString("#,##0");
+                #endregion
 
-                DateTime dtStartDate = vm.Items.StartDate.Value.AddYears(periodExpence);
-
-                if (DateTime.Now > dtStartDate)
-                {                   
-                    decimal? NilaiPenyusutan = ((decimal)vm.Items.TotalAmount * vm.Items.Percent) / 100;
-                    vm.Items.DepreciationExpense = Convert.ToDouble(NilaiPenyusutan);
-                }
                 vm.Items.Room = _unitOfWork.Room.Get(vm.Items.RoomId);
                 if (vm.Items.Id == 0)
                 {
+                    var claimsIdentity = (ClaimsIdentity)User.Identity;
+                    var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                    var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
 
+                    vm.Items.EntryBy = user.Name;
+                    vm.Items.EntryDate = DateTime.Now;
                     await _unitOfWork.Items.AddAsync(vm.Items);
                     ViewBag.Status = "Save Success";
                     _unitOfWork.Save();
@@ -164,6 +167,30 @@ namespace E_OneWeb.Areas.Admin.Controllers
             ViewBag.StatusList = new SelectList(StatusList, "Value", "Text", vm.Items.Status);
             ViewBag.OwnershipList = new SelectList(OwnershipList, "Value", "Text", vm.Items.OriginOfGoods);
             return View(vm);
+        }
+
+        private decimal GetNilaiPenyusutan(DateTime? StartDate, double? TotalAmount, int Period, decimal? Persen)
+        {
+            decimal Result = 0;
+            try
+            {                
+                DateTime dtStartDate = StartDate.Value.AddYears(Period);
+                int? GetDays = (int)CalculateInMonth365(StartDate.Value, DateTime.Now);
+                int? GetPeriodDays = (int)CalculateInMonth365(StartDate.Value, dtStartDate);
+
+                decimal? Penyusutan_perHari = ((decimal)TotalAmount * Persen / 100) / 12;
+                decimal? Pembagian_perhari = (decimal)GetDays / (decimal)GetPeriodDays;
+                decimal? Nilai_penyusutan = Penyusutan_perHari * 12 * Period * Pembagian_perhari;
+                decimal Nilai_buku = (decimal)TotalAmount - (decimal)Nilai_penyusutan;
+                Result = Nilai_buku;
+            }
+            catch (Exception ex)
+            {
+                string err = ex.Message.ToString();
+                return Result;                            
+            }
+        
+            return Result;
         }
 
         [HttpDelete]
@@ -242,7 +269,31 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 name_of_location = z.Location.Name
                             }).ToList().OrderByDescending(o => o.id);
             return Json(new { data = datalist });
-        }         
+        }
 
+        public int MonthDiff(DateTime tgl1, DateTime tgl2)
+        {
+            int m1;
+            int m2;
+            if (tgl1 < tgl2)
+            {
+                m1 = (tgl2.Month - tgl1.Month);//for years
+                m2 = (tgl2.Year - tgl1.Year) * 12; //for months
+            }
+            else
+            {
+                m1 = (tgl1.Month - tgl2.Month);//for years
+                m2 = (tgl1.Year - tgl2.Year) * 12; //for months
+            }
+
+            return m1 + m2;
+
+        }
+        public double CalculateInMonth365(DateTime tgl2, DateTime tgl1)
+        {
+            double Result = 0;
+            Result = (tgl1 - tgl2).TotalDays ;
+            return Result;
+        }
     }
 }

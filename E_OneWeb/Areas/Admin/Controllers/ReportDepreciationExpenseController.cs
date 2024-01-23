@@ -2,10 +2,12 @@
 using E_OneWeb.Models;
 using E_OneWeb.Models.ViewModels;
 using E_OneWeb.Utility;
+using java.time;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using NPOI.XSSF.UserModel;
+using sun.misc;
 using static com.sun.tools.@internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 
 namespace E_OneWeb.Areas.Admin.Controllers
@@ -23,9 +25,10 @@ namespace E_OneWeb.Areas.Admin.Controllers
         public async Task<IActionResult> Index(ReportReportDepreciationExpenseVM vm)
         {
             vm.SearchStartDate = vm.SearchStartDate == null ? Convert.ToDateTime("01-01-2000") : vm.SearchStartDate;
-            vm.SearchEndDate = vm.SearchEndDate == null ? DateTime.Now : vm.SearchEndDate; 
-            vm.SearchYear = vm.SearchYear == null ? DateTime.Now.Year : vm.SearchYear;
-            vm.SearchMonth = vm.SearchMonth == null ? DateTime.Now.Month : vm.SearchMonth;
+            vm.SearchEndDate = vm.SearchEndDate == null ? DateTime.Now : vm.SearchEndDate;
+            vm.SearchCalculateDate = vm.SearchCalculateDate == null ? DateTime.Now : vm.SearchCalculateDate;
+            //vm.SearchYear = vm.SearchYear == null ? DateTime.Now.Year : vm.SearchYear;
+            //vm.SearchMonth = vm.SearchMonth == null ? DateTime.Now.Month : vm.SearchMonth;
             IEnumerable<Category> CatList = await _unitOfWork.Category.GetAllAsync();
             vm.CategoryList = CatList.Select(i => new SelectListItem
             {
@@ -120,49 +123,28 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 datalist = datalist.Where(o => o.categoryid == staticvm.SearchCategory).ToList();
             }
 
-            if (staticvm.SearchYear != null && staticvm.SearchMonth != null)
+            //DateTime DtPeriode = new DateTime((int)staticvm.SearchYear, (int)staticvm.SearchMonth, 1);
+            DateTime DtPeriode = staticvm.SearchCalculateDate == null ? DateTime.Now : (DateTime)staticvm.SearchCalculateDate;
+            int Number = 1;
+            var datalist_ = (from z in datalist
+            select new ExportReportDepreciationExpense
             {
-                DateTime DtPeriode = new DateTime((int)staticvm.SearchYear, (int)staticvm.SearchMonth, 1);
-                int Number = 1;
-                var datalist_ = (from z in datalist
-                                 select new ExportReportDepreciationExpense
-                                 {
-                                     Number = Number++,
-                                     Name = z.name,
-                                     StartDate = z.startdatestring,
-                                     Category = z.category,
-                                     Percent = z.persent,
-                                     Qty = z.qty,
-                                     TotalAmount = z.totalamountstring,
-                                     ExpenseAmount = z.startdate_calculate <= DtPeriode ? z.expenseamount.Value.ToString("#,##0") : "0",
-                                     ExpenseTotalAmount = z.startdate_calculate <= DtPeriode ? z.expensetotalamount.Value.ToString("#,##0") : z.totalamount.Value.ToString("#,##0")
-                                 }).ToList();
+                                 Number = Number++,
+                                 Name = z.name,
+                                 StartDate = z.startdatestring,
+                                 Category = z.category,
+                                 Percent = z.persent,
+                                 Qty = z.qty,
+                                 TotalAmount = z.totalamountstring,
+                                 //ExpenseAmount = z.startdate_calculate <= DtPeriode ? z.expenseamount.Value.ToString("#,##0") : "0",
+                                 ExpenseAmount = GetNilaiPenyusutan(z.startdate, z.totalamount, z.period, z.persent, DtPeriode).ToString("#,##0"),
+                                 //ExpenseTotalAmount = z.startdate_calculate <= DtPeriode ? z.expensetotalamount.Value.ToString("#,##0") : z.totalamount.Value.ToString("#,##0")
+                                 ExpenseTotalAmount = GetNilaiBuku(z.startdate, z.totalamount, z.period, z.persent, DtPeriode).ToString("#,##0")
+                             }).ToList();
 
 
-                var file = CreateFile(datalist_);
-                return File(file, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Report_Depreciation_Expense.xlsx");
-            }
-            else
-            {
-                int Number = 1;
-                var datalist_ = (from z in datalist
-                                 select new ExportReportDepreciationExpense
-                                 {
-                                     Number = Number++,
-                                     Name = z.name,
-                                     StartDate = z.startdatestring,
-                                     Category = z.category,
-                                     Percent = z.persent,
-                                     Qty = z.qty,
-                                     TotalAmount = z.totalamountstring,
-                                     ExpenseAmount = "0",
-                                     ExpenseTotalAmount = z.totalamount.Value.ToString("#,##0")
-                                 }).ToList();
-
-
-                var file = CreateFile(datalist_);
-                return File(file, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Report_Depreciation_Expense.xlsx");
-            }
+            var file = CreateFile(datalist_);
+            return File(file, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Report_Depreciation_Expense.xlsx");
 
         }
         public static byte[] CreateFile<T>(List<T> source)
@@ -267,7 +249,58 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             return content;
         }
+        private decimal GetNilaiPenyusutan(DateTime? StartDate, double? TotalAmount, int? Period, decimal? Persen, DateTime DtPeriode)
+        {
+            decimal Result = 0;
+            try
+            {
+                DateTime dtStartDate = StartDate.Value.AddYears((int)Period);
+                int? GetDays = (int)CalculateInMonth365(StartDate.Value, DtPeriode);
+                int? GetPeriodDays = (int)CalculateInMonth365(StartDate.Value, dtStartDate);
 
-        
+                decimal? Penyusutan_perHari = ((decimal)TotalAmount * Persen / 100) / 12;
+                decimal? Pembagian_perhari = (decimal)GetDays / (decimal)GetPeriodDays;
+                decimal? Nilai_penyusutan = Penyusutan_perHari * 12 * Period * Pembagian_perhari;
+                Result = (decimal)Nilai_penyusutan;
+            }
+            catch (Exception ex)
+            {
+                string err = ex.Message.ToString();
+                return Result;
+            }
+
+            return Result;
+        }
+
+        private decimal GetNilaiBuku(DateTime? StartDate, double? TotalAmount, int? Period, decimal? Persen, DateTime DtPeriode)
+        {
+            decimal Result = 0;
+            try
+            {
+                DateTime dtStartDate = StartDate.Value.AddYears((int)Period);
+                int? GetDays = (int)CalculateInMonth365(StartDate.Value, DtPeriode);
+                int? GetPeriodDays = (int)CalculateInMonth365(StartDate.Value, dtStartDate);
+
+                decimal? Penyusutan_perHari = ((decimal)TotalAmount * Persen / 100) / 12;
+                decimal? Pembagian_perhari = (decimal)GetDays / (decimal)GetPeriodDays;
+                decimal? Nilai_penyusutan = Penyusutan_perHari * 12 * Period * Pembagian_perhari;
+                decimal Nilai_buku = (decimal)TotalAmount - (decimal)Nilai_penyusutan;
+                Result = Nilai_buku;
+            }
+            catch (Exception ex)
+            {
+                string err = ex.Message.ToString();
+                return Result;
+            }
+
+            return Result;
+        }
+        public double CalculateInMonth365(DateTime tgl2, DateTime tgl1)
+        {
+            double Result = 0;
+            Result = (tgl1 - tgl2).TotalDays;
+            return Result;
+        }
+
     }
 }

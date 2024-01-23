@@ -54,12 +54,17 @@
 
                             <div class="col-6">
                                 <div class="form-group row">                                 
-                                    @Html.LabelFor(model => model.SearchMonth, "Tahun/ bulan", htmlAttributes: new { @class = "control-label col-md-3" })
+                               @*     @Html.LabelFor(model => model.SearchMonth, "Tahun/ bulan", htmlAttributes: new { @class = "control-label col-md-3" })
                                     <div class="col-md-5">
                                         @Html.DropDownListFor(Model => Model.SearchMonth, ViewBag.SearchMonthList as SelectList, "- Select a Month -", new { @class = "form-control", @id="SearchMonths" })
                                     </div>
                                     <div class="col-md-4">
                                         <input asp-for="SearchYear" class="form-control" style="row-gap" id="SearchYears" />
+                                    </div>*@
+
+                                    @Html.LabelFor(model => model.SearchCalculateDate, "Tgl.Hitung", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-9">
+                                        <input asp-for="SearchCalculateDate" class="form-control" style="row-gap" id="searchCalculateDate" type="date" />
                                     </div>
                                 </div>
 
@@ -79,7 +84,7 @@
                     <div class="row py-2">
                         <div class="col-md-12">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <button class="btn btn-primary" type="button" title="Download file" onclick="Export()" id="exportfile" style="width:145px">Download <i class="fas fa-file-export"></i></button>
+                                <button class="btn btn-primary" type="button" title="Download data" onclick="Export()" id="exportfile" style="width:145px">Download <i class="fas fa-file-export"></i></button>
                             </div>
 
                         </div>
