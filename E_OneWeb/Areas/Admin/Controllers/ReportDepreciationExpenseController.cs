@@ -2,13 +2,13 @@
 using E_OneWeb.Models;
 using E_OneWeb.Models.ViewModels;
 using E_OneWeb.Utility;
-using java.time;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using NPOI.XSSF.UserModel;
-using sun.misc;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Finance.Implementations;
+using System.Data;
 using static com.sun.tools.@internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+using NPOI.XSSF.UserModel;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace E_OneWeb.Areas.Admin.Controllers
 {
@@ -109,9 +109,9 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 pricestring = z.Price.HasValue ? z.Price.Value.ToString("#,##0") : "",
                                 totalamountstring = z.TotalAmount.HasValue ? z.TotalAmount.Value.ToString("#,##0") : "",
                                 status = z.Status,
-                                expenseamount = ((decimal)z.TotalAmount * z.Percent) / 100,
-                                expensetotalamount = (decimal)z.TotalAmount - (((decimal)z.TotalAmount * z.Percent) / 100),
-                                startdate_calculate = z.Period != null ? z.StartDate.Value.AddYears((int)z.Period) : z.StartDate,
+                                //expenseamount = ((decimal)z.TotalAmount * z.Percent) / 100,
+                                //expensetotalamount = (decimal)z.TotalAmount - (((decimal)z.TotalAmount * z.Percent) / 100),
+                                //startdate_calculate = z.Period != null ? z.StartDate.Value.AddYears((int)z.Period) : z.StartDate,
                             }).ToList();
 
             if (staticvm.SearchStartDate != null && staticvm.SearchEndDate != null)
@@ -262,6 +262,10 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 decimal? Pembagian_perhari = (decimal)GetDays / (decimal)GetPeriodDays;
                 decimal? Nilai_penyusutan = Penyusutan_perHari * 12 * Period * Pembagian_perhari;
                 Result = (decimal)Nilai_penyusutan;
+                if (Result < 0)
+                {
+                    Result = 0;
+                }
             }
             catch (Exception ex)
             {
@@ -286,6 +290,10 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 decimal? Nilai_penyusutan = Penyusutan_perHari * 12 * Period * Pembagian_perhari;
                 decimal Nilai_buku = (decimal)TotalAmount - (decimal)Nilai_penyusutan;
                 Result = Nilai_buku;
+                if (Result < 0)
+                {
+                    Result = 0;
+                }
             }
             catch (Exception ex)
             {

@@ -49,7 +49,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 								roomname = z.Name,							
 								locationname = z.Location.Name,
 								description = z.Description,
-                                idreservation = RoomReservationList.Where(i=>i.idroom == z.Id && i.flag != null).Count() > 0 ? 1 : 0
+                                idreservation = RoomReservationList.Where(i=>i.idroom == z.Id && i.flag > 0).Count() > 0 ? 1 : 0
 							}).ToList();
 			
 
@@ -81,7 +81,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
 				vm.RoomReservationAdmin.StatusId = Gen_4.IDGEN;
 				vm.RoomReservationAdmin.Status = Gen_4.GENNAME;
-				vm.RoomReservationAdmin.Flag = Gen_4.GENCODE != null ? Convert.ToInt32(Gen_4.GENCODE) : 0;
+				vm.RoomReservationAdmin.Flag = 1;
 
 				_unitOfWork.RoomReservationAdmin.AddAsync(vm.RoomReservationAdmin);
 				_unitOfWork.Save();
@@ -90,7 +90,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 			{
 				RoomReservationAdmin.StatusId = Gen_4.IDGEN;
 				RoomReservationAdmin.Status = Gen_4.GENNAME;
-				RoomReservationAdmin.Flag = Gen_4.GENCODE != null ? Convert.ToInt32(Gen_4.GENCODE) : 0;
+				RoomReservationAdmin.Flag = 1;
 				_unitOfWork.RoomReservationAdmin.Update(RoomReservationAdmin);
 				_unitOfWork.Save();
 			}			
@@ -107,7 +107,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 			RoomReservationAdmin RoomReservationAdmin = RoomReservationist.Where(z => z.RoomId == idRoom).FirstOrDefault();
 			RoomReservationAdmin.StatusId = null;
 			RoomReservationAdmin.Status = null;
-			RoomReservationAdmin.Flag = null;
+			RoomReservationAdmin.Flag = 0;
 			RoomReservationAdmin.BookingBy = null;
 			RoomReservationAdmin.BookingStartDate = null;
             RoomReservationAdmin.BookingEndDate = null;

@@ -2,12 +2,9 @@
 using E_OneWeb.Models;
 using E_OneWeb.Models.ViewModels;
 using E_OneWeb.Utility;
-using MathNet.Numerics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using sun.misc;
-using sun.nio.cs.ext;
 using System.Data;
 using System.Diagnostics;
 using System.Globalization;

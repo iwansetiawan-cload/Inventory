@@ -10,6 +10,9 @@ namespace E_OneWeb.Models.ViewModels
     public class RoomReservationAdminVM
     {
         public RoomReservationAdmin RoomReservationAdmin { get; set; }
-        //public IEnumerable<SelectListItem> RoomList { get; set; }
+        public IEnumerable<SelectListItem> RoomList { get; set; }
+        public TimeSpan ClockStart { get; set; }
+        public TimeSpan ClockEnd { get; set; }
+        public string RoomAndLocation { get; set; }
     }
 }

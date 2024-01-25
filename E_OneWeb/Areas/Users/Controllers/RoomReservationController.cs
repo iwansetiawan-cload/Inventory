@@ -2,13 +2,10 @@
 using E_OneWeb.Models.ViewModels;
 using E_OneWeb.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
-using Microsoft.IdentityModel.Tokens;
 using E_OneWeb.Utility;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
-using Microsoft.Extensions.Hosting;
 
 namespace E_OneWeb.Areas.Users.Controllers
 {
@@ -88,6 +85,12 @@ namespace E_OneWeb.Areas.Users.Controllers
                 ViewBag.Reason = "Tanggal Peminjaman harus lebih kecil dari Tanggal Selesai";
                 return View();
             }
+            if (orderDateTimeStart < DateTime.Now)
+            {
+                ViewBag.Status = "Error";
+                ViewBag.Reason = "Tanggal dan jam peminjaman harus lebih besar dari waktu saat ini";
+                return View();
+            }
 
             if (vm.RoomReservationUser.Id == 0)
             {
@@ -130,11 +133,10 @@ namespace E_OneWeb.Areas.Users.Controllers
                 roomReservationAdmin.BookingEndDate = vm.RoomReservationUser.EndDate;
                 roomReservationAdmin.StatusId = Gen_4.IDGEN;
                 roomReservationAdmin.Status = Gen_4.GENNAME;
-				roomReservationAdmin.Flag = Gen_4.GENCODE != null ? Convert.ToInt32(Gen_4.GENCODE) : 0;
 				_unitOfWork.RoomReservationAdmin.Update(roomReservationAdmin);
 				_unitOfWork.Save();
                 ViewBag.Status = "Success";
-                ViewBag.Reason = "Berhasil booking ruangan"; ;
+                ViewBag.Reason = "Berhasil booking ruangan";
 
             }
             //var errorval = ModelState.Values.SelectMany(i=>i.Errors);
@@ -162,6 +164,92 @@ namespace E_OneWeb.Areas.Users.Controllers
 
         }
 
+        public async Task<IActionResult> BookingClassRoom(int? id)
+        {
+            ViewBag.Status = "";
+            ViewBag.Reason = "";
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+            RoomReservationUserVM vm = new RoomReservationUserVM()
+            {
+                RoomReservationUser = new RoomReservationUser()
+
+            };
+
+            vm.RoomReservationUser.UserId = user.Id;
+            vm.RoomReservationUser.EntryBy = user.Name;
+            vm.RoomReservationUser.EntryDate = DateTime.Now;
+
+            return View(vm);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> BookingClassRoom(RoomReservationUserVM vm)
+        {
+            var Gen_4 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 4 && z.GENVALUE == 2).FirstOrDefault();
+
+            DateTime orderDate = Convert.ToDateTime(vm.StartDate);
+            TimeSpan orderTime = vm.ClockStart;
+            DateTime orderDateTimeStart = orderDate + orderTime;
+
+            DateTime orderDateEnd = Convert.ToDateTime(vm.EndDate);
+            TimeSpan orderTimeEnd = vm.ClockEnd;
+            DateTime orderDateTimeEnd = orderDateEnd + orderTimeEnd;
+
+            if (vm.RoomReservationUser.Id == 0)
+            {
+                string webRootPath = _hostEnvironment.WebRootPath;
+                var files = HttpContext.Request.Form.Files;
+                if (files.Count > 0)
+                {
+                    string fileName = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(webRootPath, @"images\files");
+                    var extenstion = Path.GetExtension(files[0].FileName);
+
+                    if (vm.RoomReservationUser.RefFile != null)
+                    {
+                        //this is an edit and we need to remove old image
+                        var imagePath = Path.Combine(webRootPath, vm.RoomReservationUser.RefFile.TrimStart('\\'));
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            System.IO.File.Delete(imagePath);
+                        }
+                    }
+                    using (var filesStreams = new FileStream(Path.Combine(uploads, fileName + extenstion), FileMode.Create))
+                    {
+                        files[0].CopyTo(filesStreams);
+                    }
+                    vm.RoomReservationUser.RefFile = fileName + extenstion;
+                }
+
+                RoomReservationAdmin roomReservationAdmin = await _unitOfWork.RoomReservationAdmin.GetAsync(vm.RoomReservationUser.RoomReservationAdmin.Id);
+                vm.RoomReservationUser.RoomReservationAdmin = roomReservationAdmin;
+                vm.RoomReservationUser.StatusId = Gen_4.IDGEN;
+                vm.RoomReservationUser.Status = Gen_4.GENNAME;
+                vm.RoomReservationUser.StartDate = orderDateTimeStart;
+                vm.RoomReservationUser.EndDate = orderDateTimeEnd;
+                await _unitOfWork.RoomReservationUser.AddAsync(vm.RoomReservationUser);
+                _unitOfWork.Save();
+
+                roomReservationAdmin.BookingId = vm.RoomReservationUser.Id;
+                roomReservationAdmin.BookingBy = vm.RoomReservationUser.EntryBy;
+                roomReservationAdmin.StatusId = Gen_4.IDGEN;
+                roomReservationAdmin.Status = Gen_4.GENNAME;
+                _unitOfWork.RoomReservationAdmin.Update(roomReservationAdmin);
+                _unitOfWork.Save();
+                ViewBag.Status = "Success";
+                ViewBag.Reason = "Berhasil booking ruang kelas"; ;
+
+            }
+           
+
+            return View(vm);
+
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAllRoomAndLocation()
         {
@@ -172,7 +260,27 @@ namespace E_OneWeb.Areas.Users.Controllers
                                 flag = z.Flag,
                                 name_of_room = z.RoomName,
                                 name_of_location = z.LocationName
-                            }).ToList();
+                            }).Where(u => u.flag == 1).ToList();
+            return Json(new { data = datalist });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllRoomAndLocationClassRoom()
+        {
+            var datalist = (from z in await _unitOfWork.RoomReservationAdmin.GetAllAsync()
+                            select new
+                            {
+                                id = z.Id,
+                                flag = z.Flag,
+                                name_of_room = z.RoomName,
+                                name_of_location = z.LocationName,
+                                startdate = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("dd/MM/yyyy") : "",
+                                enddate = z.BookingEndDate != null ? z.BookingEndDate.Value.ToString("dd/MM/yyyy") : "",
+                                startdatetime = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("dd/MM/yyyy HH:mm") : "",
+                                enddatetime = z.BookingEndDate != null ? z.BookingEndDate.Value.ToString("dd/MM/yyyy HH:mm") : "",
+                                clockstart = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("HH:mm") : "",
+                                clockend = z.BookingStartDate != null ? z.BookingEndDate.Value.ToString("HH:mm") : ""
+                            }).Where(u=>u.flag == 2).ToList();
             return Json(new { data = datalist });
         }
 

@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     var status = Context.Request.Query["status"];
-    var title = "Reservation";
+    var title = "Peminjaman Ruangan";
     var all = "text-primary";
     var available = "text-primary";
     var waiting_approval = "text-primary";
@@ -84,10 +84,9 @@
                         Tanggal Selesai
                     </th>
                     <th style="min-width:100px"></th>
-                    <th style="display:none">
-                    </th>
-                    <th style="display:none">
-                    </th>
+                    <th style="display:none"></th>
+                    <th style="display:none"></th>
+                    <th style="display:none"></th>
                 </tr>
             </thead>
         </table>
@@ -229,15 +228,17 @@
                     { "data": "enddate", "autoWidth": true },
                     { "data": "id", "autoWidth": true },
                     { "data": "flag", "autoWidth": true },
-                    { "data": "userid", "autoWidth": true }
+                    { "data": "userid", "autoWidth": true },
+                    { "data": "bookingid", "autoWidth": true }
 
                 ],
                 "createdRow": function (row, data, index) {
                     //$('td', row).eq(5).attr('style', 'display:none;');
                     var urls = "/Admin/RoomReservationAdmin/Approve/" + data["id"];
-                    var urlsview = "/Admin/RoomReservationAdmin/ViewPersonal/" + data["id"];
+                    var urlsview = "/Admin/RoomReservationAdmin/ViewPersonal/" + data["bookingid"];
                     $('td', row).eq(7).attr('style', 'display:none;');
                     $('td', row).eq(8).attr('style', 'display:none;');
+                    $('td', row).eq(9).attr('style', 'display:none;');
                     if (data["flag"] == '1' || data["flag"] == '3') {
                         $('td', row).eq(6).html("<a class='btn btn-info' title='view' href=" + urlsview + "><i class='fas fa-eye'></i></a>");
                     }
@@ -253,8 +254,8 @@
 
         function Approved(url) {
             swal({
-                title: "Apakah Anda yakin ingin Menghapus?",
-                text: "Anda tidak akan dapat memulihkan data!",
+                title: "Apakah Anda yakin ingin Menyetujui?",
+                //text: "Anda tidak akan dapat memulihkan data!",
                 icon: "success",
                 buttons: true,
                 reverseButtons: true
