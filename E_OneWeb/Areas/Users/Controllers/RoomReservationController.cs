@@ -92,6 +92,12 @@ namespace E_OneWeb.Areas.Users.Controllers
                 ViewBag.Reason = "Tanggal dan jam peminjaman harus lebih besar dari waktu saat ini";
                 return View();
             }
+            if (vm.RoomReservationUser.RoomReservationAdmin.Id == 0)
+            {
+                ViewBag.Status = "Error";
+                ViewBag.Reason = "Ruangan harus dipilih";
+                return View();
+            }
 
             if (vm.RoomReservationUser.Id == 0)
             {
@@ -199,6 +205,12 @@ namespace E_OneWeb.Areas.Users.Controllers
             DateTime orderDateEnd = Convert.ToDateTime(vm.EndDate);
             TimeSpan orderTimeEnd = vm.ClockEnd;
             DateTime orderDateTimeEnd = orderDateEnd + orderTimeEnd;
+            if (vm.RoomReservationUser.RoomReservationAdmin.Id == 0)
+            {
+                ViewBag.Status = "Error";
+                ViewBag.Reason = "Ruangan harus dipilih";
+                return View();
+            }
 
             if (vm.RoomReservationUser.Id == 0)
             {
