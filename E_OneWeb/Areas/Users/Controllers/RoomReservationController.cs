@@ -6,6 +6,7 @@ using System.Security.Claims;
 using E_OneWeb.Utility;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
+using NPOI.SS.Formula.Functions;
 
 namespace E_OneWeb.Areas.Users.Controllers
 {
@@ -272,6 +273,7 @@ namespace E_OneWeb.Areas.Users.Controllers
                             {
                                 id = z.Id,
                                 flag = z.Flag,
+                                status = z.Status,
                                 name_of_room = z.RoomName,
                                 name_of_location = z.LocationName,
                                 startdate = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("dd/MM/yyyy") : "",
@@ -280,7 +282,7 @@ namespace E_OneWeb.Areas.Users.Controllers
                                 enddatetime = z.BookingEndDate != null ? z.BookingEndDate.Value.ToString("dd/MM/yyyy HH:mm") : "",
                                 clockstart = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("HH:mm") : "",
                                 clockend = z.BookingStartDate != null ? z.BookingEndDate.Value.ToString("HH:mm") : ""
-                            }).Where(u=>u.flag == 2).ToList();
+                            }).Where(u=> u.flag == 2 && u.status == "Room Available").ToList();
             return Json(new { data = datalist });
         }
 
@@ -327,5 +329,28 @@ namespace E_OneWeb.Areas.Users.Controllers
         }
 
         #endregion
+
+        [HttpGet]
+        public async Task<IActionResult> GetBookingListUser(int? id)
+        {
+            var datalist = (from z in await _unitOfWork.RoomReservationUser.GetAllAsync(includeProperties: "RoomReservationAdmin")
+                                    select new
+                                    {
+                                        id = z.Id,
+                                        idadmin = z.RoomAdminId,
+                                        locationname = z.RoomReservationAdmin.LocationName,
+                                        roomid = z.RoomReservationAdmin.RoomId,
+                                        roomname = z.RoomReservationAdmin.RoomName,
+                                        startdate = z.StartDate != null ? z.StartDate.Value.ToString("dd/MM/yyyy HH:mm") : "",
+                                        enddate = z.EndDate != null ? z.EndDate.Value.ToString("dd/MM/yyyy HH:mm") : "",
+                                        status = z.Status,
+                                        statusid = z.StatusId,
+                                        bookingby = z.EntryBy,
+                                        flag = z.RoomReservationAdmin.Flag,
+                                    }).Where(o => o.idadmin == id).ToList();
+          
+
+            return Json(new { data = datalist });
+        }
     }
 }
