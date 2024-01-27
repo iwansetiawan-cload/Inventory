@@ -65,7 +65,16 @@
                     <div class="row py-2">
                         <div class="col-md-12">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <button class="btn btn-primary" type="button" title="Download data" onclick="Export()" id="exportfile" style="width:145px">Download <i class="fas fa-file-export"></i></button>
+                                <ul class="navbar-nav me-auto">
+                                    <li class="nav-item dropdown">
+                                        <a class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Download Data</a>
+
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" onclick="Export()">Format Excel</a>
+                                            <a class="dropdown-item" onclick="ExportPDF()">Fromat PDF</a>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
 
                         </div>
@@ -146,6 +155,11 @@
 
             var urlx = "/Admin/ReportRoomAndLocation/Export";
             window.location = urlx;
+        }
+        function ExportPDF() {
+
+            var urlx = "/Admin/ReportRoomAndLocation/ExportPDF";
+            window.open(urlx, "_blank");
         }
         function ClearSearch() {
             $("#SearchLocations").val('');

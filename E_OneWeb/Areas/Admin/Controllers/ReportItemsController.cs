@@ -178,7 +178,11 @@ namespace E_OneWeb.Areas.Admin.Controllers
             cell = rowHeader.CreateCell(9);
             cell.SetCellValue("Jumlah");
             cell.CellStyle = style;
-                  
+
+            cell = rowHeader.CreateCell(10);
+            cell.SetCellValue("Total Nilai");
+            cell.CellStyle = style;
+
             //end header
 
             //content
@@ -360,7 +364,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                             }).ToList(); 
 
             DataTable dttbl = CreateDataTable(datalist2);
-            string physicalPath = "wwwroot\\images\\products\\DataAset.pdf";
+            string physicalPath = "wwwroot\\images\\products\\DaftarAset.pdf";
             ExportDataTableToPdf(dttbl, physicalPath, "Daftar Aset");
 
             
@@ -444,7 +448,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             //Report Header
             BaseFont bfntHead = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-            iTextSharp.text.Font fntHead = new iTextSharp.text.Font(bfntHead, 16, 1, BaseColor.DARK_GRAY);
+            iTextSharp.text.Font fntHead = new iTextSharp.text.Font(bfntHead, 14, 1, BaseColor.DARK_GRAY);
             Paragraph prgHeading = new Paragraph();
             prgHeading.Alignment = Element.ALIGN_CENTER;
             prgHeading.Add(new Chunk(strHeader.ToUpper(), fntHead));
@@ -472,7 +476,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             table.HorizontalAlignment = 0;
             table.TotalWidth = 520f;
             table.LockedWidth = true;
-            float[] widths = new float[] { 10f, 50f, 80f, 50f, 40f, 30f, 30f, 30f, 20f, 30f, };
+            float[] widths = new float[] { 20f, 50f, 80f, 50f, 40f, 30f, 30f, 30f, 20f, 30f, };
             table.SetWidths(widths);
             //Table header
             BaseFont btnColumnHeader = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
