@@ -302,43 +302,66 @@ namespace E_OneWeb.Areas.Admin.Controllers
         }
         public async Task<FileResult> ExportPDF()
         {
-            //Aspose.Pdf.License license = new Aspose.Pdf.License();
 
-            //try
-            //{
-            //    license.SetLicense("Aspose.Words.lic");
-            //    Console.WriteLine("License set successfully.");
-            //}
-            //catch (Exception e)
-            //{
-            //    // We do not ship any license with this example, visit the Aspose site to obtain either a temporary or permanent license. 
-            //    Console.WriteLine("\nThere was an error setting the license: " + e.Message);
-            //}
-
-            //Aspose.Pdf.License license = new Aspose.Pdf.License();
-
-            //FileStream myStream = new FileStream("Aspose.Pdf.lic", FileMode.Open);
-
-            //license.SetLicense(myStream);
-            int Number = 1;
             var datalist = (from z in await _unitOfWork.Items.GetAllAsync(includeProperties: "Category,Room")
                             select new
                             {
-                                number = Number++,
+                                number = z.Id,
                                 code = z.Code,
                                 name = z.Name,
                                 description = z.Description,
                                 category = z.Category.Name,
                                 location = _unitOfWork.Location.Get(z.Room.IDLocation).Name,
                                 room = z.Room.Name,
-                                price = z.Price != null ? z.Price.Value.ToString("#,##0") : "0",
-                                qty = z.Qty != null ? z.Qty.Value.ToString("#,##0") : "0",
-                                totalamount = z.TotalAmount != null ? z.TotalAmount.Value.ToString("#,##0") : "0"
+                                qty = z.Qty,
+                                price = z.Price != null ? z.Price : 0,
+                                totalamount = z.TotalAmount != null ? z.TotalAmount : 0,
+                                ownership = z.OriginOfGoods,
+                                categoryid = z.CategoryId,
+                                status = z.Status,
+                                startdate = z.StartDate,
+                                startdatestring = z.StartDate != null ? z.StartDate.Value.ToString("dd/MM/yyyy") : ""
+                            }).ToList();
+            if (staticvm.SearchStartDate != null && staticvm.SearchEndDate != null)
+            {
+                datalist = datalist.Where(o => o.startdate >= staticvm.SearchStartDate && o.startdate <= staticvm.SearchEndDate).ToList();
+            }
+            if (staticvm.SearchCode != null)
+            {
+                datalist = datalist.Where(o => o.code == staticvm.SearchCode).ToList();
+            }
+            if (staticvm.SearchOwnership != null)
+            {
+                datalist = datalist.Where(o => o.ownership == staticvm.SearchOwnership).ToList();
+            }
+            if (staticvm.SearchCategory != null)
+            {
+                datalist = datalist.Where(o => o.categoryid == staticvm.SearchCategory).ToList();
+            }
+            if (staticvm.SearchStatus != null)
+            {
+                datalist = datalist.Where(o => o.status == staticvm.SearchStatus).ToList();
+            }
+
+            int Number = 1;
+            var datalist2 = (from z in datalist
+                            select new
+                            {
+                                number = Number++,
+                                code = z.code,
+                                name = z.name,
+                                description = z.description,
+                                category = z.category,
+                                location = z.location,
+                                room = z.room,
+                                price = z.price != null ? z.price.Value.ToString("#,##0") : "0",
+                                qty = z.qty != null ? z.qty.Value.ToString("#,##0") : "0",
+                                totalamount = z.totalamount != null ? z.totalamount.Value.ToString("#,##0") : "0"
                             }).ToList(); 
 
-            DataTable dttbl = CreateDataTable(datalist);
+            DataTable dttbl = CreateDataTable(datalist2);
             string physicalPath = "wwwroot\\images\\products\\DataAset.pdf";
-            ExportDataTableToPdf(dttbl, physicalPath, "Data Aset");
+            ExportDataTableToPdf(dttbl, physicalPath, "Daftar Aset");
 
             
             byte[] pdfBytes = System.IO.File.ReadAllBytes(physicalPath);
