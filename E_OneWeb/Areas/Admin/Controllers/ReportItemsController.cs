@@ -20,6 +20,19 @@ using SixLabors.ImageSharp;
 using sun.misc;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
+using System.Data.Common;
+using com.sun.org.apache.xerces.@internal.impl.dv.xs;
+//using Document = Aspose.Pdf.Document;
+//using Color = Aspose.Pdf.Color;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using Document = iTextSharp.text.Document;
+using static NPOI.HSSF.Util.HSSFColor;
+using Color = SixLabors.ImageSharp.Color;
+using iText.Layout.Properties;
+using SixLabors.ImageSharp.ColorSpaces;
+using NPOI.SS.UserModel;
 
 namespace E_OneWeb.Areas.Admin.Controllers
 {
@@ -165,10 +178,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             cell = rowHeader.CreateCell(9);
             cell.SetCellValue("Jumlah");
             cell.CellStyle = style;
-
-            cell = rowHeader.CreateCell(10);
-            cell.SetCellValue("Total Nilai Perolehan");
-            cell.CellStyle = style;
+                  
             //end header
 
             //content
@@ -290,5 +300,254 @@ namespace E_OneWeb.Areas.Admin.Controllers
             
 
         }
+        public async Task<FileResult> ExportPDF()
+        {
+            //Aspose.Pdf.License license = new Aspose.Pdf.License();
+
+            //try
+            //{
+            //    license.SetLicense("Aspose.Words.lic");
+            //    Console.WriteLine("License set successfully.");
+            //}
+            //catch (Exception e)
+            //{
+            //    // We do not ship any license with this example, visit the Aspose site to obtain either a temporary or permanent license. 
+            //    Console.WriteLine("\nThere was an error setting the license: " + e.Message);
+            //}
+
+            //Aspose.Pdf.License license = new Aspose.Pdf.License();
+
+            //FileStream myStream = new FileStream("Aspose.Pdf.lic", FileMode.Open);
+
+            //license.SetLicense(myStream);
+            int Number = 1;
+            var datalist = (from z in await _unitOfWork.Items.GetAllAsync(includeProperties: "Category,Room")
+                            select new
+                            {
+                                number = Number++,
+                                code = z.Code,
+                                name = z.Name,
+                                description = z.Description,
+                                category = z.Category.Name,
+                                location = _unitOfWork.Location.Get(z.Room.IDLocation).Name,
+                                room = z.Room.Name,
+                                price = z.Price != null ? z.Price.Value.ToString("#,##0") : "0",
+                                qty = z.Qty != null ? z.Qty.Value.ToString("#,##0") : "0",
+                                totalamount = z.TotalAmount != null ? z.TotalAmount.Value.ToString("#,##0") : "0"
+                            }).ToList(); 
+
+            DataTable dttbl = CreateDataTable(datalist);
+            string physicalPath = "wwwroot\\images\\products\\DataAset.pdf";
+            ExportDataTableToPdf(dttbl, physicalPath, "Data Aset");
+
+            
+            byte[] pdfBytes = System.IO.File.ReadAllBytes(physicalPath);
+            MemoryStream ms = new MemoryStream(pdfBytes);
+            return new FileStreamResult(ms, "application/pdf");
+            
+            //return File(System.IO.File.ReadAllBytes(@"D:\test.pdf"), "application/pdf");
+
+
+            //var document = new Document {
+            //    PageInfo = new PageInfo { Margin = new MarginInfo(28, 28, 28, 40) }
+            //};
+            //var pdfpage = document.Pages.Add();
+            //Table tabel = new Table 
+            //{
+            //    ColumnWidths = "25% 25% 25% 25%",
+            //    DefaultCellPadding = new MarginInfo(10,5,10,5),
+            //    Border = new BorderInfo(BorderSide.All, .5f, Color.Black),
+            //    DefaultCellBorder = new BorderInfo(BorderSide.All, .2f, Color.Black),
+
+            //};
+            ////CreateDataTable(datalist);
+
+            //tabel.ImportDataTable(CreateDataTable(datalist), true, 0, 0);
+            //document.Pages[1].Paragraphs.Add(tabel);
+
+            //using (var streamout = new MemoryStream())
+            //{
+            //    document.Save(streamout);
+            //    return new FileContentResult(streamout.ToArray(), "application/pdf")
+            //    { 
+            //        FileDownloadName = "Data_Aset.pdf"
+            //    };
+
+            //}
+            //return null;
+
+        }
+
+        public static DataTable CreateDataTable<T>(IEnumerable<T> entities)
+        {
+            var dt = new DataTable();
+
+            //creating columns
+            foreach (var prop in typeof(T).GetProperties())
+            {
+                dt.Columns.Add(prop.Name, prop.PropertyType);
+            }
+
+            //creating rows
+            foreach (var entity in entities)
+            {
+                var values = GetObjectValues(entity);
+                dt.Rows.Add(values);
+            }
+
+
+            return dt;
+        }
+
+        public static object[] GetObjectValues<T>(T entity)
+        {
+            var values = new List<object>();
+            foreach (var prop in typeof(T).GetProperties())
+            {
+                values.Add(prop.GetValue(entity));
+            }
+
+            return values.ToArray();
+        }
+
+        void ExportDataTableToPdf(DataTable dtblTable, String strPdfPath, string strHeader)
+        { 
+           
+            System.IO.FileStream fs = new FileStream(strPdfPath, FileMode.Create, FileAccess.Write, FileShare.None);
+            Document document = new Document();
+            document.SetPageSize(iTextSharp.text.PageSize.A4);
+            PdfWriter writer = PdfWriter.GetInstance(document, fs);
+            document.Open();
+
+            //Report Header
+            BaseFont bfntHead = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            iTextSharp.text.Font fntHead = new iTextSharp.text.Font(bfntHead, 16, 1, BaseColor.DARK_GRAY);
+            Paragraph prgHeading = new Paragraph();
+            prgHeading.Alignment = Element.ALIGN_CENTER;
+            prgHeading.Add(new Chunk(strHeader.ToUpper(), fntHead));
+            document.Add(prgHeading);
+
+            //Author
+            //Paragraph prgAuthor = new Paragraph();
+            //BaseFont btnAuthor = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            //iTextSharp.text.Font fntAuthor = new iTextSharp.text.Font(btnAuthor, 8, 2, BaseColor.DARK_GRAY);
+            //prgAuthor.Alignment = Element.ALIGN_RIGHT;
+            ////prgAuthor.Add(new Chunk("Author : Dotnet Mob", fntAuthor));
+            //prgAuthor.Add(new Chunk("\nPrint Date : " + DateTime.Now.ToShortDateString(), fntAuthor));
+            //document.Add(prgAuthor);
+
+            //Add a line seperation
+            //Paragraph p = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.BLACK, Element.ALIGN_LEFT, 1)));
+            //document.Add(p);
+
+            //Add line break
+            document.Add(new Chunk("\n", fntHead));
+
+            //Write the table
+            //PdfPTable table = new PdfPTable(dtblTable.Columns.Count);
+            PdfPTable table = new PdfPTable(10);
+            table.HorizontalAlignment = 0;
+            table.TotalWidth = 520f;
+            table.LockedWidth = true;
+            float[] widths = new float[] { 10f, 50f, 80f, 50f, 40f, 30f, 30f, 30f, 20f, 30f, };
+            table.SetWidths(widths);
+            //Table header
+            BaseFont btnColumnHeader = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            iTextSharp.text.Font fntColumnHeader = new  iTextSharp.text.Font(btnColumnHeader, 8, 1, BaseColor.WHITE);
+            //for (int i = 0; i < dtblTable.Columns.Count; i++)
+            //{
+            //    PdfPCell cell = new PdfPCell();
+            //    cell.BackgroundColor = BaseColor.GRAY;
+            //    cell.AddElement(new Chunk(dtblTable.Columns[i].ColumnName.ToUpper(), fntColumnHeader));
+            //    table.AddCell(cell);
+            //}
+            //PdfPCell cell = new PdfPCell();
+            //cell.BackgroundColor = BaseColor.DARK_GRAY;
+            //cell.AddElement(new Chunk("No", fntColumnHeader));
+            //table.AddCell(cell);
+            //PdfPCell cell2 = new PdfPCell();
+            //cell2.BackgroundColor = BaseColor.DARK_GRAY;
+            //cell2.AddElement(new Chunk("Kode", fntColumnHeader));
+            //table.AddCell(cell2);
+            //PdfPCell cell3 = new PdfPCell();
+            //cell3.BackgroundColor = BaseColor.DARK_GRAY;
+            //cell3.AddElement(new Chunk("Nama Harta Tetap", fntColumnHeader));
+            //table.AddCell(cell3);
+            //PdfPCell cell4 = new PdfPCell();
+            //cell4.BackgroundColor = BaseColor.DARK_GRAY;
+            //cell4.AddElement(new Chunk("Keterangan", fntColumnHeader));
+            //table.AddCell(cell4);
+            //PdfPCell cell5 = new PdfPCell();
+            //cell5.BackgroundColor = BaseColor.DARK_GRAY;
+            //cell5.AddElement(new Chunk("Katagori", fntColumnHeader));
+            //table.AddCell(cell5);
+            //PdfPCell cell6 = new PdfPCell();
+            //cell6.BackgroundColor = BaseColor.DARK_GRAY;
+            //cell6.AddElement(new Chunk("Gedung", fntColumnHeader));
+            //table.AddCell(cell6);
+            //PdfPCell cell7 = new PdfPCell();
+            //cell7.BackgroundColor = BaseColor.DARK_GRAY;
+            //cell7.AddElement(new Chunk("Ruangan", fntColumnHeader));
+            //table.AddCell(cell7);
+            //PdfPCell cell8 = new PdfPCell();
+            //cell8.BackgroundColor = BaseColor.DARK_GRAY;
+            //cell8.AddElement(new Chunk("Nilai Perolehan", fntColumnHeader));
+            //table.AddCell(cell8);
+            //PdfPCell cell9 = new PdfPCell();
+            //cell9.BackgroundColor = BaseColor.DARK_GRAY;
+            //cell9.AddElement(new Chunk("Jumlah", fntColumnHeader));
+            //table.AddCell(cell9);
+            //PdfPCell cell10 = new PdfPCell();
+            //cell10.BackgroundColor = BaseColor.DARK_GRAY;
+            //cell10.AddElement(new Chunk("Total Nilai", fntColumnHeader));
+            //table.AddCell(cell10);
+
+            addCell(table, "No", 1);
+            addCell(table, "Kode", 1);
+            addCell(table, "Nama Harta Tetap", 1);
+            addCell(table, "Keterangan", 1);
+            addCell(table, "Katagori", 1);
+            addCell(table, "Gedung", 1);
+            addCell(table, "Ruangan", 1);
+            addCell(table, "Nilai Perolehan", 1);
+            addCell(table, "Jumlah", 1);
+            addCell(table, "Total Nilai", 1);
+            //table Data
+            for (int i = 0; i < dtblTable.Rows.Count; i++)
+            {
+                for (int j = 0; j < dtblTable.Columns.Count; j++)
+                {                 
+                    BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
+                    iTextSharp.text.Font times = new iTextSharp.text.Font(bfTimes, 6, iTextSharp.text.Font.NORMAL, iTextSharp.text.BaseColor.BLACK);
+
+                    PdfPCell cell = new PdfPCell(new Phrase(dtblTable.Rows[i][j].ToString(), times));
+                    cell.Rowspan = 1;
+                    cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+                    cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                    table.AddCell(cell);
+                    //table.AddCell(dtblTable.Rows[i][j].ToString());
+                }
+            }
+
+            document.Add(table);
+            document.Close();
+            writer.Close();
+            fs.Close();
+
+        }
+
+        private static void addCell(PdfPTable table, string text, int rowspan)
+        {
+            BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, false);
+            iTextSharp.text.Font times = new iTextSharp.text.Font(bfTimes, 7, iTextSharp.text.Font.NORMAL, iTextSharp.text.BaseColor.BLACK);
+
+            PdfPCell cell = new PdfPCell(new Phrase(text, times));
+            cell.BackgroundColor = BaseColor.WHITE;
+            cell.Rowspan = rowspan;
+            cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+            cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+            table.AddCell(cell);
+        }
+
     }
 }

@@ -40,6 +40,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcVXBzZXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/My File/SarPras/Inventory/E_OneWeb/Areas/Admin/Views/ClassList/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2xhc3NMaXN0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/My File/SarPras/Inventory/E_OneWeb/Areas/Admin/Views/ClassList/Upsert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2xhc3NMaXN0XFVwc2VydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/My File/SarPras/Inventory/E_OneWeb/Areas/Admin/Views/Items/HistoryTransferItem.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSXRlbXNcSGlzdG9yeVRyYW5zZmVySXRlbS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -354,6 +362,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/My File/SarPras/Inventory/E_OneWeb/Areas/Users/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlcnNcVmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/My File/SarPras/Inventory/E_OneWeb/Areas/Users/Views/RoomReservation/BookingClassRoom.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlcnNcVmlld3NcUm9vbVJlc2VydmF0aW9uXEJvb2tpbmdDbGFzc1Jvb20uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/My File/SarPras/Inventory/E_OneWeb/Areas/Users/Views/RoomReservation/Create.cshtml]

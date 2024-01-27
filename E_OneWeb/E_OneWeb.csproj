@@ -18,6 +18,8 @@
     <PackageReference Include="EPPlus" Version="6.2.10" />
     <PackageReference Include="Grpc.AspNetCore.Server" Version="2.59.0" />
     <PackageReference Include="IKVM" Version="8.7.3" />
+    <PackageReference Include="itext7.pdfhtml" Version="5.0.2" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.3" />
     <PackageReference Include="Microsoft.AspNetCore.Buffering" Version="0.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
