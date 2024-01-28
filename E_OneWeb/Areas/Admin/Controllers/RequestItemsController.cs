@@ -648,6 +648,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 requestItemDetail.Status = Gen_6.GENNAME;
                 requestItemDetail.RejectedBy = user.UserName;
                 requestItemDetail.RejectedDate = DateTime.Now;
+                requestItemDetail.Notes = note;
                 requestItemDetail.ApproveBy = null;
                 requestItemDetail.ApproveDate = null;
 
