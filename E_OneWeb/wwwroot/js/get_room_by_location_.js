@@ -11,8 +11,8 @@ function loadDataTable() {
             "url": "/Admin/Room/GetAllRoom"
         },
         "columns": [
-            { "data": "name", "width": "45%" },
-            { "data": "description", "width": "45%" },
+            { "data": "name", "autoWidth": true },
+            { "data": "description", "autoWidth": true },
             {
                 "data": "id",
                 "render": function (data) {
@@ -21,12 +21,15 @@ function loadDataTable() {
                                 <a href="/Admin/Room/UpsertRoom/${data}" class="btn btn-success text-white" style="cursor:pointer">
                                     <i class="fas fa-edit"></i> 
                                 </a>  
+                                 <a onclick=Delete("/Admin/Room/DeleteRoom/${data}") class="btn btn-danger text-white" style="cursor:pointer">
+                                    <i class="fas fa-trash-alt"></i> 
+                                </a>
                                  <a href="/Admin/Room/ViewItemList/${data}" class="btn btn-info" style="cursor:pointer">
                                     <i class="fas fa-eye"></i>
                                 </a>
                             </div>
                            `;
-                }, "width": "40%"
+                }, "autoWidth": true
             }
         ]
     });

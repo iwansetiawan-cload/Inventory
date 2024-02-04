@@ -207,5 +207,21 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             return Json(new { data = datalist });
         }
+        [HttpDelete]
+        public IActionResult DeleteRoom(int id)
+        {
+            var objFromDb = _unitOfWork.Room.Get(id);
+            if (objFromDb == null)
+            {
+                TempData["Error"] = "Error deleting Category";
+                return Json(new { success = false, message = "Error while deleting" });
+            }
+            _unitOfWork.Room.Remove(objFromDb);
+            _unitOfWork.Save();
+
+            TempData["Success"] = "Category successfully deleted";
+            return Json(new { success = true, message = "Delete Successful" });
+
+        }
     }
 }

@@ -3,6 +3,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     var title = "Tambah Ruangan";
+    var title_btn = "Create";
 }
 
 <form method="post">
@@ -15,7 +16,8 @@
         @if ((Model.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Update Success")
         {
             //edit
-            title = "Update Room";
+            title = "Ubah Ruangan";
+            title_btn = "Update";
             <input type="hidden" asp-for="Id" id="id" />
         }
         <div class="col-12 border-bottom">
@@ -48,15 +50,15 @@
                 @if (Model.Id != 0)
                 {
                   @*  <partial name="_EditAndBackToListButton" model="Model.Id" />*@
-                    <button type="submit" id="btnSave" class="btn btn-primary form-control" style="width:145px">@title.Replace("Room","")</button>                   
-                    @Html.ActionLink(" Kembali ke List", "Upsert", "Room", new { id = Model.IDLocation }, new { id = "btn-backtolist", @class = "btn btn-success form-control" , @style="width:145px" })
+                    <button type="submit" id="btnSave" class="btn btn-primary form-control" style="width:145px">@title_btn</button>
+                    @Html.ActionLink(" Back to List", "Upsert", "Room", new { id = Model.IDLocation }, new { id = "btn-backtolist", @class = "btn btn-success form-control" , @style="width:145px" })
                  
                 }
                 else
                 {
                    @* <partial name="_CreateAndBackToListButton" />*@
                     <button type="submit" class="btn btn-primary form-control" style="width:145px">Create</button>
-                    @Html.ActionLink(" Kembali ke List", "Upsert", "Room", new { id = Model.IDLocation }, new { id = "btn-backtolist", @class = "btn btn-success form-control" , @style="width:145px" })
+                    @Html.ActionLink(" Back to List", "Upsert", "Room", new { id = Model.IDLocation }, new { id = "btn-backtolist", @class = "btn btn-success form-control" , @style="width:145px" })
                     
                 }
             </div>
