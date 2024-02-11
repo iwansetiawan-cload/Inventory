@@ -24,6 +24,9 @@ namespace E_OneWeb.DataAccess.Repository
             {
                 objFromDb.StatusId = room.StatusId;
                 objFromDb.Status = room.Status;
+                objFromDb.Notes = room.Notes;
+                objFromDb.RejectedBy = room.RejectedBy;
+                objFromDb.RejectedDate = room.RejectedDate;
                 _db.SaveChanges();
             }
         }

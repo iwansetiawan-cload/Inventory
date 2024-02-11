@@ -14,7 +14,8 @@ function loadDataTable() {
             { "data": "roomname", "autoWidth": true },
             { "data": "startdate", "autoWidth": true },
             { "data": "enddate", "autoWidth": true },
-            { "data": "status", "autoWidth": true }
+            { "data": "status", "autoWidth": true },
+            { "data": "notes", "autoWidth": true }
         ]
     });
 }

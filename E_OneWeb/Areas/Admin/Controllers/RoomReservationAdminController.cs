@@ -147,25 +147,43 @@ namespace E_OneWeb.Areas.Admin.Controllers
             }
             else
             {                
-                var roomReservationUser = await _unitOfWork.RoomReservationUser.GetAllAsync();
+                //var roomReservationUser = await _unitOfWork.RoomReservationUser.GetAllAsync();
 
-                var RoomReservationAdminlist = (from z in await _unitOfWork.RoomReservationAdmin.GetAllAsync(includeProperties: "Room")
-                                                select new
-                                                {
-                                                    id = z.Id,
-                                                    bookingid = z.BookingId,
-                                                    roomname = z.RoomName,
-                                                    locationname = z.LocationName,
-                                                    status = "Sudah Disetujui",
-                                                    statusid = z.StatusId,
-                                                    bookingby = z.BookingBy,
-                                                    startdate = Convert.ToDateTime(z.BookingStartDate).ToString("dd-MM-yyyy HH:mm"),
-                                                    enddate = Convert.ToDateTime(z.BookingEndDate).ToString("dd-MM-yyyy HH:mm"),
-                                                    flag = 3,
-                                                    flagval = z.Flag,
-                                                    userid = roomReservationUser.Where(i=>i.Id == z.BookingId).Select(x=>x.UserId).FirstOrDefault()
-                                                }).Where(v=>v.statusid == 11).ToList();
-                return Json(new { data = RoomReservationAdminlist });
+                //var RoomReservationAdminlist = (from z in await _unitOfWork.RoomReservationAdmin.GetAllAsync(includeProperties: "Room")
+                //                                select new
+                //                                {
+                //                                    id = z.Id,
+                //                                    bookingid = z.BookingId,
+                //                                    roomname = z.RoomName,
+                //                                    locationname = z.LocationName,
+                //                                    status = "Sudah Disetujui",
+                //                                    statusid = z.StatusId,
+                //                                    bookingby = z.BookingBy,
+                //                                    startdate = Convert.ToDateTime(z.BookingStartDate).ToString("dd-MM-yyyy HH:mm"),
+                //                                    enddate = Convert.ToDateTime(z.BookingEndDate).ToString("dd-MM-yyyy HH:mm"),
+                //                                    flag = 3,
+                //                                    flagval = z.Flag,
+                //                                    userid = roomReservationUser.Where(i=>i.Id == z.BookingId).Select(x=>x.UserId).FirstOrDefault()
+                //                                }).Where(v=>v.statusid == 11).ToList();
+                //return Json(new { data = RoomReservationAdminlist });
+
+                var RoomReservationUserlist = (from z in await _unitOfWork.RoomReservationUser.GetAllAsync(includeProperties: "RoomReservationAdmin")
+                                               select new
+                                               {
+                                                   id = z.Id,
+                                                   bookingid = z.Id,
+                                                   roomname = z.RoomReservationAdmin.RoomName,
+                                                   locationname = z.RoomReservationAdmin.LocationName,
+                                                   startdate = Convert.ToDateTime(z.StartDate).ToString("dd-MM-yyyy HH:mm"),
+                                                   enddate = Convert.ToDateTime(z.EndDate).ToString("dd-MM-yyyy HH:mm"),
+                                                   status = z.StatusId == 11 ? "Disetujui" : "Ditolak",
+                                                   statusid = z.StatusId,
+                                                   bookingby = z.EntryBy,
+                                                   flag = 3,
+                                                   flagval = z.RoomReservationAdmin.Flag,
+                                                   userid = z.UserId
+                                               }).Where(v => v.statusid == 11 || v.statusid == 18).ToList();
+                return Json(new { data = RoomReservationUserlist });
             }
            
 
@@ -194,10 +212,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
         public async Task<IActionResult> Approve(int id)
         {
             var Gen_4 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 4 && z.GENVALUE == 2).FirstOrDefault();
-            var Gen_5 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 5 && z.GENVALUE == 2).FirstOrDefault();
-
             int? IdGen4 = Gen_4 != null ? Convert.ToInt32(Gen_4.IDGEN) : 0;
-            int? IdGen5 = Gen_5 != null ? Convert.ToInt32(Gen_5.IDGEN) : 0;
 
             #region Update User
             RoomReservationUser RoomReservationUser = await _unitOfWork.RoomReservationUser.GetAsync(id);
@@ -219,6 +234,47 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             TempData["Success"] = "Room Reservation successfully approved";
             return Json(new { success = true, message = "Approved Successful" });
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> Rejected(string note, int id)
+        {
+            try
+            {
+                var claimsIdentity = (ClaimsIdentity)User.Identity;
+                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+
+                var Gen_4 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 4 && z.GENVALUE == 3).FirstOrDefault();
+                int? IdGen4 = Gen_4 != null ? Convert.ToInt32(Gen_4.IDGEN) : 0;
+
+                #region Update User
+                RoomReservationUser RoomReservationUser = await _unitOfWork.RoomReservationUser.GetAsync(id);
+
+                RoomReservationUser.StatusId = IdGen4;
+                RoomReservationUser.Status = Gen_4.GENNAME;
+                RoomReservationUser.Notes = note;
+                RoomReservationUser.RejectedBy = user.UserName;
+                RoomReservationUser.RejectedDate = DateTime.Now;
+                _unitOfWork.RoomReservationUser.Update(RoomReservationUser);
+                #endregion
+
+                #region Update Admin       
+                RoomReservationAdmin roomReservationAdmin = await _unitOfWork.RoomReservationAdmin.GetAsync(RoomReservationUser.RoomAdminId);
+                roomReservationAdmin.StatusId = IdGen4;
+                roomReservationAdmin.Status = Gen_4.GENNAME;
+                _unitOfWork.RoomReservationAdmin.Update(roomReservationAdmin);
+                #endregion
+
+                TempData["Success"] = "Successfully reject";
+                return Json(new { success = true, message = "Reject Successful" });
+            }
+            catch (Exception)
+            {
+                TempData["Failed"] = "Error reject";
+                return Json(new { success = false, message = "Reject Error" });
+            }
+
 
         }
 

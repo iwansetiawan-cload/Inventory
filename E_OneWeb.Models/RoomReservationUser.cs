@@ -31,5 +31,8 @@ namespace E_OneWeb.Models
         public string? EntryBy { get; set; }
         public DateTime? EntryDate { get; set; }
         public string? RefFile { get; set; }
+        public string? Notes { get; set; }
+        public string? RejectedBy { get; set; }
+        public DateTime? RejectedDate { get; set; }
     }
 }

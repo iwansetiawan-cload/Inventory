@@ -318,6 +318,7 @@ namespace E_OneWeb.Areas.Users.Controllers
                                 statusid = z.StatusId,
                                 description = z.Description,
                                 entryby = z.EntryBy,
+                                notes = z.Notes
                             }).Where(i => i.entryby == user.ToString()).ToList().OrderByDescending(o => o.id);
 
             return Json(new { data = datalist });
