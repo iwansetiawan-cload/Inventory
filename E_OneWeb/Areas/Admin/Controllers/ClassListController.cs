@@ -138,7 +138,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             _unitOfWork.Save();
 
-            return View(vm);
+            //return View(vm);
+            return RedirectToAction(nameof(Index));
         }
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
