@@ -7,6 +7,7 @@
 
 <form method="post">
     <br />
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="row p-3 border">
         <input type="hidden" value="@ViewBag.Status" id="idstatus" />
         <input type="hidden" asp-for="Items.Period" id="Period_" />
@@ -29,6 +30,7 @@
                 @Html.LabelFor(model => model.Items.Code, "Kode", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <input asp-for="Items.Code" class="form-control" style="row-gap" id="codes" />
+                    <span asp-validation-for="Items.Code" class="text-danger"></span>
                 </div>
             </div>
 
