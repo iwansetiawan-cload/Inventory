@@ -352,7 +352,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             if (fileUpload.ContentType == "application/vnd.ms-excel" || fileUpload.ContentType == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
             {
                 string fileName = Guid.NewGuid().ToString() + "_" + fileUpload.FileName;
-                string rootPath = "D:\\My File\\";// _webHostEnvironment.ContentRootPath;
+                string rootPath = "C:\\Software\\";// _webHostEnvironment.ContentRootPath;
                 string filePath = Path.Combine(rootPath, fileName);
                 using (var stream = System.IO.File.Create(filePath))
                 {
