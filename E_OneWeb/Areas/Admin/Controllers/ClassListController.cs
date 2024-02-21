@@ -41,8 +41,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                                 statusid = z.StatusId,
                                                 bookingby = z.BookingBy,
                                                 flag = z.Flag,
-                                                bookingdate = z.BookingStartDate != null ? Convert.ToDateTime(z.BookingStartDate).ToString("dd-MM-yyyy HH:mm") : "",
-                                                bookingenddate = z.BookingEndDate != null ? Convert.ToDateTime(z.BookingEndDate).ToString("dd-MM-yyyy HH:mm") : ""
+                                                bookingdate = z.BookingStartDate != null ? Convert.ToDateTime(z.BookingStartDate).ToString("dd-MM-yyyy") : "",
+                                                bookingenddate = z.BookingEndDate != null ? Convert.ToDateTime(z.BookingStartDate).ToString("HH:mm") + " - " + Convert.ToDateTime(z.BookingEndDate).ToString("HH:mm") : ""
                                             }).Where(u=>u.flag == 2).ToList();
 
             return Json(new { data = datalist });
@@ -114,7 +114,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             TimeSpan orderTime = vm.ClockStart;
             DateTime orderDateTimeStart = orderDate + orderTime;
 
-            DateTime orderDateEnd = Convert.ToDateTime(vm.RoomReservationAdmin.BookingEndDate);
+            DateTime orderDateEnd = Convert.ToDateTime(vm.RoomReservationAdmin.BookingStartDate);
             TimeSpan orderTimeEnd = vm.ClockEnd;
             DateTime orderDateTimeEnd = orderDateEnd + orderTimeEnd;
 

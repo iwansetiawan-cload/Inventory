@@ -97,15 +97,32 @@
                 <div class="col-6">
                     <input asp-for="StartDate" id="startDate" class="form-control" style="row-gap" disabled />
                 </div>
-                <div class="col-4">
+              @*  <div class="col-4">
                     <input asp-for="ClockStart" type="text" id="timepickerStart" class="form-control" disabled />
-                </div>
+                </div>*@
 
             </div>
 
         </div>
 
         <div class="col-12 pt-2">
+            <div class="form-group row">
+                @Html.LabelFor(model => model.ClockStart, "Mulai jam", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-4">                    
+                    <input asp-for="ClockStart" type="text" id="timepickerStart" class="form-control" disabled />
+                </div>
+                @Html.LabelFor(model => model.ClockEnd, "Sampai jam", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-4">
+                    <input asp-for="ClockEnd" type="text" id="timepickerEnd" class="form-control" disabled />
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+       @* <div class="col-12 pt-2">
             <div class="form-group row">
                 @Html.LabelFor(model => model.EndDate, "Tanggal Selesai", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-6">
@@ -117,7 +134,7 @@
 
             </div>
 
-        </div>
+        </div>*@
 
         <div class="col-12 pt-2">
             <div class="form-group row">         
@@ -194,7 +211,7 @@
                                     Tanggal Peminjaman
                                 </th>
                                 <th>
-                                    Tanggal Selesai
+                                    Waktu
                                 </th>
                                 <th style="display:none"></th>
                                 <th style="display:none"></th>
@@ -233,7 +250,7 @@
                     { "data": "name_of_room", "autoWidth": true },
                     { "data": "name_of_location", "autoWidth": true },
                     { "data": "startdatetime", "autoWidth": true },
-                    { "data": "enddatetime", "autoWidth": true },
+                    { "data": "clockstart_clockend", "autoWidth": true },
                     { "data": "id", "autoWidth": true },
                     { "data": "startdate", "autoWidth": true },
                     { "data": "enddate", "autoWidth": true },
