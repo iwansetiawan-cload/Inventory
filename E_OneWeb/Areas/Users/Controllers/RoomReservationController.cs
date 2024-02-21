@@ -279,7 +279,8 @@ namespace E_OneWeb.Areas.Users.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetAllRoomAndLocationClassRoom()
-        {           
+        {
+            string dtnow = DateTime.Now.ToString("dd/MM/yyyy");
             var datalist = (from z in await _unitOfWork.RoomReservationAdmin.GetAllAsync()
                             select new
                             {
@@ -296,7 +297,7 @@ namespace E_OneWeb.Areas.Users.Controllers
                                 clockend = z.BookingStartDate != null ? z.BookingEndDate.Value.ToString("HH:mm") : "",
                                 bookingdate = z.BookingStartDate,
                                 clockstart_clockend = z.BookingEndDate != null ? z.BookingStartDate.Value.ToString("HH:mm") + " - " + z.BookingEndDate.Value.ToString("HH:mm") : "",
-                            }).Where(u=> u.flag == 2 && u.status == "Room Available" && u.bookingdate > DateTime.Now).ToList();
+                            }).Where(u=> u.flag == 2 && u.status == "Room Available" && Convert.ToDateTime(u.startdate) >= Convert.ToDateTime(dtnow)).ToList();
             return Json(new { data = datalist });
         }
 
