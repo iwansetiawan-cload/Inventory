@@ -39,8 +39,8 @@
         <input type="hidden" asp-for="RoomReservationUser.EntryDate" />
         <input type="hidden" asp-for="ClockStart" id="clockstart_" />
         <input type="hidden" asp-for="ClockEnd" id="clockend_" />
-        <input type="hidden" asp-for="StartDate" id="startDate_" />
-        <input type="hidden" asp-for="EndDate" id="endDate_" />
+        <input type="hidden" asp-for="StartDateValue" id="startDate_" />
+        <input type="hidden" asp-for="EndDateValue" id="endDate_" />
         <div class="col-12 border-bottom">
             <h2 class="text-primary">@title</h2>
         </div>
@@ -95,7 +95,7 @@
       
                 @Html.LabelFor(model => model.StartDate, "Tanggal Peminjaman", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-6">
-                    <input asp-for="StartDate" id="startDate" class="form-control" style="row-gap" disabled />
+                    <input asp-for="StartDate" id="startDateShow" class="form-control" style="row-gap" disabled />
                 </div>
               @*  <div class="col-4">
                     <input asp-for="ClockStart" type="text" id="timepickerStart" class="form-control" disabled />
@@ -249,7 +249,7 @@
                 "columns": [
                     { "data": "name_of_room", "autoWidth": true },
                     { "data": "name_of_location", "autoWidth": true },
-                    { "data": "startdatetime", "autoWidth": true },
+                    { "data": "startdateshow", "autoWidth": true },
                     { "data": "clockstart_clockend", "autoWidth": true },
                     { "data": "id", "autoWidth": true },
                     { "data": "startdate", "autoWidth": true },
@@ -277,6 +277,7 @@
             var name_of_location = $('td', obj).eq(1).html().trim();
             var id_of_room = $('td', obj).eq(4).html().trim();
             var startdate_show = $('td', obj).eq(2).html().trim();
+
             var startdate = $('td', obj).eq(5).html().trim();
             var enddate = $('td', obj).eq(6).html().trim();            
             var clockstart = $('td', obj).eq(7).html().trim();
@@ -284,7 +285,7 @@
             $('#RoomName').val(name_of_room);
             $('#LocationName').val(name_of_location);
             $('#RoomId').val(id_of_room);
-            $('#startDate').val(startdate_show);
+            $('#startDateShow').val(startdate_show);
             $('#endDate').val(enddate);
             $('#timepickerStart').val(clockstart);
             $('#timepickerEnd').val(clockend);    

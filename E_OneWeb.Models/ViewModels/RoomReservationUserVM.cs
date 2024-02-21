@@ -15,6 +15,8 @@ namespace E_OneWeb.Models.ViewModels
         public TimeSpan ClockEnd { get; set; }
         public string? StartDate { get; set; }
         public string? EndDate { get; set; }
+        public DateTime? StartDateValue { get; set; }
+        public DateTime? EndDateValue { get; set; }
         public Personal? Personal { get; set; }
     }
 }

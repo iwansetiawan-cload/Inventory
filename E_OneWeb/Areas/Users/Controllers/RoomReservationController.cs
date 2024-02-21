@@ -198,13 +198,13 @@ namespace E_OneWeb.Areas.Users.Controllers
         {
             var Gen_4 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 4 && z.GENVALUE == 2).FirstOrDefault();
 
-            DateTime orderDate = Convert.ToDateTime(vm.StartDate);
-            TimeSpan orderTime = vm.ClockStart;
-            DateTime orderDateTimeStart = orderDate + orderTime;
+            //DateTime orderDate = Convert.ToDateTime(vm.StartDateValue);
+            //TimeSpan orderTime = vm.ClockStart;
+            //DateTime orderDateTimeStart = orderDate + orderTime;
 
-            DateTime orderDateEnd = Convert.ToDateTime(vm.EndDate);
-            TimeSpan orderTimeEnd = vm.ClockEnd;
-            DateTime orderDateTimeEnd = orderDateEnd + orderTimeEnd;
+            //DateTime orderDateEnd = Convert.ToDateTime(vm.EndDateValue);
+            //TimeSpan orderTimeEnd = vm.ClockEnd;
+            //DateTime orderDateTimeEnd = orderDateEnd + orderTimeEnd;
             if (vm.RoomReservationUser.RoomReservationAdmin.Id == 0)
             {
                 ViewBag.Status = "Error";
@@ -242,8 +242,8 @@ namespace E_OneWeb.Areas.Users.Controllers
                 vm.RoomReservationUser.RoomReservationAdmin = roomReservationAdmin;
                 vm.RoomReservationUser.StatusId = Gen_4.IDGEN;
                 vm.RoomReservationUser.Status = Gen_4.GENNAME;
-                vm.RoomReservationUser.StartDate = orderDateTimeStart;
-                vm.RoomReservationUser.EndDate = orderDateTimeEnd;
+                vm.RoomReservationUser.StartDate = vm.StartDateValue;
+                vm.RoomReservationUser.EndDate = vm.EndDateValue;
                 await _unitOfWork.RoomReservationUser.AddAsync(vm.RoomReservationUser);
                 _unitOfWork.Save();
 
@@ -288,9 +288,9 @@ namespace E_OneWeb.Areas.Users.Controllers
                                 status = z.Status,
                                 name_of_room = z.RoomName,
                                 name_of_location = z.LocationName,
-                                startdate = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("dd/MM/yyyy HH:mm") : "",
-                                enddate = z.BookingEndDate != null ? z.BookingEndDate.Value.ToString("dd/MM/yyyy HH:mm") : "",
-                                startdatetime = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("dd/MM/yyyy") : "",
+                                startdate = z.BookingStartDate,
+                                enddate = z.BookingEndDate,
+                                startdateshow = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("dd/MM/yyyy") : "",
                                 enddatetime = z.BookingEndDate != null ? z.BookingStartDate.Value.ToString("dd/MM/yyyy") : "",
                                 clockstart = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("HH:mm") : "",
                                 clockend = z.BookingStartDate != null ? z.BookingEndDate.Value.ToString("HH:mm") : "",
