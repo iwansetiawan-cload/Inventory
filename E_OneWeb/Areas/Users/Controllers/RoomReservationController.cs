@@ -292,7 +292,7 @@ namespace E_OneWeb.Areas.Users.Controllers
                                 startdate = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("dd/MM/yyyy") : "",
                                 enddate = z.BookingEndDate != null ? z.BookingEndDate.Value.ToString("dd/MM/yyyy") : "",
                                 startdatetime = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("dd/MM/yyyy") : "",
-                                enddatetime = z.BookingEndDate != null ? z.BookingEndDate.Value.ToString("HH:mm") : "",
+                                enddatetime = z.BookingEndDate != null ? z.BookingStartDate.Value.ToString("HH:mm") + " - " + z.BookingEndDate.Value.ToString("HH:mm") : "",
                                 clockstart = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("HH:mm") : "",
                                 clockend = z.BookingStartDate != null ? z.BookingEndDate.Value.ToString("HH:mm") : "",
                                 bookingdate = z.BookingStartDate,
