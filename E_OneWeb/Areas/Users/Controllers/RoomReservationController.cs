@@ -279,8 +279,7 @@ namespace E_OneWeb.Areas.Users.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetAllRoomAndLocationClassRoom()
-        {
-            string dtnow = DateTime.Now.ToString("dd/MM/yyyy");
+        {           
             var datalist = (from z in await _unitOfWork.RoomReservationAdmin.GetAllAsync()
                             select new
                             {
@@ -292,12 +291,12 @@ namespace E_OneWeb.Areas.Users.Controllers
                                 startdate = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("dd/MM/yyyy") : "",
                                 enddate = z.BookingEndDate != null ? z.BookingEndDate.Value.ToString("dd/MM/yyyy") : "",
                                 startdatetime = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("dd/MM/yyyy") : "",
-                                enddatetime = z.BookingEndDate != null ? z.BookingStartDate.Value.ToString("HH:mm") + " - " + z.BookingEndDate.Value.ToString("HH:mm") : "",
+                                enddatetime = z.BookingEndDate != null ? z.BookingStartDate.Value.ToString("dd/MM/yyyy") : "",
                                 clockstart = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("HH:mm") : "",
                                 clockend = z.BookingStartDate != null ? z.BookingEndDate.Value.ToString("HH:mm") : "",
                                 bookingdate = z.BookingStartDate,
                                 clockstart_clockend = z.BookingEndDate != null ? z.BookingStartDate.Value.ToString("HH:mm") + " - " + z.BookingEndDate.Value.ToString("HH:mm") : "",
-                            }).Where(u=> u.flag == 2 && u.status == "Room Available" && Convert.ToDateTime(u.startdate) >= Convert.ToDateTime(dtnow)).ToList();
+                            }).Where(u=> u.flag == 2 && u.status == "Room Available").ToList();
             return Json(new { data = datalist });
         }
 
