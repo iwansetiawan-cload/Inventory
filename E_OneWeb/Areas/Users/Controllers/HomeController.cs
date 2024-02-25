@@ -123,5 +123,9 @@ namespace E_OneWeb.Areas.Users.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult ManualBook()
+        {
+            return View();
+        }
     }
 }
