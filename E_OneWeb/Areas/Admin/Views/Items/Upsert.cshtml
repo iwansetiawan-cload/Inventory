@@ -372,6 +372,12 @@
 	@*<script src="~/js/transferitembyid.js"></script>*@
     <script type="text/javascript">
 
+        $('.collapse').on('show.bs.collapse', function () {
+            $(this).parent().find(".fa-chevron-circle-down").toggleClass("fa-chevron-circle-down fa-chevron-circle-up");
+        }).on('hide.bs.collapse', function () {
+            $(this).parent().find(".fa-chevron-circle-up").toggleClass("fa-chevron-circle-up fa-chevron-circle-down");
+        });
+
         function changesqty() {
             $("#price").val($("#PriceString").val().replace(/[,a-zA-Z]/g, ''));
             var a = $('#qty').val();

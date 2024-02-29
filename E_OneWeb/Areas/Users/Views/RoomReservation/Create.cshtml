@@ -301,6 +301,12 @@
         $('#timepickerStart').timepicker();
         $('#timepickerEnd').timepicker();
 
+        $('.collapse').on('show.bs.collapse', function () {
+            $(this).parent().find(".fa-chevron-circle-down").toggleClass("fa-chevron-circle-down fa-chevron-circle-up");
+        }).on('hide.bs.collapse', function () {
+            $(this).parent().find(".fa-chevron-circle-up").toggleClass("fa-chevron-circle-up fa-chevron-circle-down");
+        });
+
         $(document).ready(function () {          
             loadDataRoom();
             //var status = $("#idstatus").val();
