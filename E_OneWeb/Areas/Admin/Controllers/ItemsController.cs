@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Hosting;
 using NPOI.SS.Formula.Functions;
 using NPOI.XSSF.UserModel;
 using org.omg.CORBA.DynAnyPackage;
@@ -26,9 +27,11 @@ namespace E_OneWeb.Areas.Admin.Controllers
     {
 
         private readonly IUnitOfWork _unitOfWork;
-        public ItemsController(IUnitOfWork unitOfWork) 
+        private readonly IWebHostEnvironment _hostEnvironment;
+        public ItemsController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment) 
         {
             _unitOfWork = unitOfWork;
+            _hostEnvironment = hostEnvironment;
         }
         public IActionResult Index()
         {            
@@ -351,9 +354,12 @@ namespace E_OneWeb.Areas.Admin.Controllers
            
             if (fileUpload.ContentType == "application/vnd.ms-excel" || fileUpload.ContentType == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
             {
+                string webRootPath = _hostEnvironment.WebRootPath;
                 string fileName = Guid.NewGuid().ToString() + "_" + fileUpload.FileName;
-                string rootPath = "C:\\Software\\";// _webHostEnvironment.ContentRootPath;
-                string filePath = Path.Combine(rootPath, fileName);
+                //string rootPath = "C:\\Software\\";// _webHostEnvironment.ContentRootPath;
+                var uploads = Path.Combine(webRootPath, @"images\products");
+                string filePath = Path.Combine(uploads, fileName);
+               
                 using (var stream = System.IO.File.Create(filePath))
                 {
                     await fileUpload.CopyToAsync(stream);
