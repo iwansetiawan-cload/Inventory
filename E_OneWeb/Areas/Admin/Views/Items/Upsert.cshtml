@@ -452,10 +452,11 @@
             var ItemID = $('#itemID').val();
             if (ItemID == 0) {
                 $("#btn-lookuproom").removeAttr("disabled");
+                $("#codes").removeAttr("disabled");
             }
             else {
                 $("#btn-lookuproom").attr("disabled", "disabled");
-               
+                $("#codes").attr("disabled", "disabled");
             }
            
             var status = $("#idstatus").val();

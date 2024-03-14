@@ -135,7 +135,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             var ListItems = await _unitOfWork.Items.GetAllAsync();
            
-            if (ListItems.Where(z => z.Code == vm.Items.Code).Count() > 0)
+            if (ListItems.Where(z => z.Code == vm.Items.Code).Count() > 0 && vm.Items.Id == 0)
             {
                 ModelState.AddModelError("Code", "Kode sudah digunakan");
             }
