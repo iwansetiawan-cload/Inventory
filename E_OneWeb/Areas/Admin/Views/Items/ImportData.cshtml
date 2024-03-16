@@ -109,6 +109,7 @@
                                 </div>
                                 <div class="col-6">
                                     <input asp-for="Valid" class="form-control text-end" style="row-gap" id="txtJmlValid" disabled />
+                                 @*   <input type="text" value="@ViewBag.JmlValid" class="form-control" style="text-align:center" readonly="readonly" id="txtJmlValid" />*@
                                 </div>                               
                             </div>
                             <div class="form-group row pt-2">
@@ -116,7 +117,8 @@
                                     <label>Invalid :</label>
                                 </div>
                                 <div class="col-6">
-                                    <input asp-for="Invalid" class="form-control text-end" style="row-gap" id="txtInvalid" disabled />
+                                    <input asp-for="Invalid" class="form-control text-end" style="row-gap" id="txtJmlInvalid" disabled />
+                                  @*  <input type="text" value="@ViewBag.JmlInvalid" class="form-control" style="text-align:center" readonly="readonly" id="txtJmlInvalid" />*@
                                 </div>
                             </div>
                        
@@ -251,12 +253,13 @@
                                     if (result.import) {
                                         toastr.success(result.message);
                                         loadDataImport();
+                                        CountImport();
                                     }
                                     else {
                                         toastr.error(result.message);
                                     }
-                                    $('#txtInvalid').val(result.jmlinvalid);
-                                    $('#txtJmlValid').val(result.jmlvalid);
+                                    //$('#txtInvalid').val(result.jmlinvalid);
+                                    //$('#txtJmlValid').val(result.jmlvalid);
 
 
                                    if (result.jmlvalid > 0) 
@@ -433,6 +436,7 @@
                     else {
                         toastr.error(data.message);
                     }
+                    CountImport();
                 }
             });
         }
@@ -442,6 +446,36 @@
         //    var urlx = "/Admin/Items/ProcessImport";
         //    window.open(urlx, "_blank");
         //}
+        function CountImport() {
+            var urls = "@Url.Action("CountImport", "Items")";
+            //var param = { "uname": "", "ukey": "" };
+            //param.uname = $("#U_Name").val();
+            //param.ukey = $("#U_Key").val();
+            $.ajax({
+                url: urls,
+                dataType: 'json',
+                type: 'POST',
+                contentType: 'application/json;',
+                //data: JSON.stringify(param),
+                success: function (data) {
+                    $("#txtJmlValid").val(data.valid);
+                    $("#txtJmlInvalid").val(data.invalid);                   
+
+                    console.log("valid : " + parseInt(data.valid));
+                    if (parseInt(data.valid) > 0) {
+                        console.log("a");
+                        $("#btn-process").removeAttr("disabled");
+                    }
+                    else {
+                        console.log("b");
+                        $("#btn-process").attr("disabled", "disabled");
+                    }
+                },
+                error: function (request, status, error) {
+                    //console.log("error" + error);
+                }
+            });
+        }
     </script>
 
 
