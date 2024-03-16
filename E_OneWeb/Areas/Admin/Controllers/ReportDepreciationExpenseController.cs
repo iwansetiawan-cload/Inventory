@@ -117,7 +117,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
         private decimal GetNilaiBuku(DateTime? StartDate, double? TotalAmount, int? Period, decimal? Persen, DateTime DtPeriode)
         {
-            decimal Result = 0;
+            decimal Result = 1;
             try
             {
                 DateTime dtStartDate = StartDate.Value.AddYears((int)Period);
@@ -131,7 +131,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 Result = Nilai_buku;
                 if (Result < 0)
                 {
-                    Result = 0;
+                    Result = 1;
                 }
             }
             catch (Exception ex)
