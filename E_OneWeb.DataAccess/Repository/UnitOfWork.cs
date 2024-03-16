@@ -35,6 +35,8 @@ namespace E_OneWeb.DataAccess.Repository
             RoomReservationAdmin = new RoomReservationAdminRepositoryAsync(_db);
             Personal = new PersonalRepositoryAsync(_db);
             GetRommReservationAdmin = new GetRoomReservationAdminRepository(_db);
+            ImportItems = new ImportItemsRepository(_db);
+            SP_Call = new SP_Call(_db);
         }
         public IArticleRepository Article { get; private set; }
         public IApplicationUserRepository ApplicationUser { get; private set; }
@@ -54,6 +56,8 @@ namespace E_OneWeb.DataAccess.Repository
         public IRoomReservationRepositoryAdminAsync RoomReservationAdmin { get; private set; }
         public IPersonalRepositoryAsync Personal { get; private set; }
         public IGetRommReservationAdminRepository GetRommReservationAdmin { get; private set; }
+        public IImportItemsRepository ImportItems { get; private set; }
+        public ISP_Call SP_Call { get; private set; }
         public void Dispose()
         {
             _db.Dispose();
