@@ -359,10 +359,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             }                       
 
             if (fileUpload.ContentType == "application/vnd.ms-excel" || fileUpload.ContentType == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-            {
-               
-                valid = _unitOfWork.ImportItems.GetAll().Where(z => z.EntryBy == user.Name && z.ImportStatus == "Valid").Count();
-                invalid = _unitOfWork.ImportItems.GetAll().Where(z => z.EntryBy == user.Name && z.ImportStatus == "Invalid").Count();
+            {                              
 
                 List<ImportItems> ListImport = _unitOfWork.ImportItems.GetAll().Where(z => z.EntryBy == user.Name).ToList();
 
@@ -604,10 +601,10 @@ namespace E_OneWeb.Areas.Admin.Controllers
                         importItems.Name = newImport.Name;
                         importItems.Description = newImport.Description;
                         importItems.StartDate_String = newImport.StartDate_String;
-                        if (!string.IsNullOrEmpty(newImport.StartDate_String))
-                        {
-                            importItems.StartDate = DateTime.Parse(newImport.StartDate_String);
-                        }                     
+                        //if (!string.IsNullOrEmpty(newImport.StartDate_String))
+                        //{
+                        //    importItems.StartDate = DateTime.Parse(newImport.StartDate_String);
+                        //}                     
                         importItems.Category_String = newImport.Category;
                         importItems.Price_String = newImport.Price_String;
                         importItems.Qty_String = newImport.Qty_String;
@@ -648,7 +645,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 
             }
 
-            return Json(new { import = true, message = "Import Successful", jmlvalid = 0, jmlinvalid = 0 });
+            return Json(new { import = true, message = "Import Successful", jmlvalid = valid, jmlinvalid = invalid });
           
         }
 
