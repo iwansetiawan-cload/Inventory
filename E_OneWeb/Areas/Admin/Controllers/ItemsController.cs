@@ -344,308 +344,110 @@ namespace E_OneWeb.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> ImportData(IFormFile fileUpload)
         {
-            List<string> sheetNames = new List<string>();
-            int valid = 0;
-            int invalid = 0;
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
-
-            if (fileUpload == null)
+            try
             {
-                ViewBag.Message = "File is empty!";
-                //return View();
-                return Json(new { import = false, message = "File is empty!", jmlvalid = valid, jmlinvalid = invalid });
-            }                       
+                List<string> sheetNames = new List<string>();
+                int valid = 0;
+                int invalid = 0;
+                var claimsIdentity = (ClaimsIdentity)User.Identity;
+                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
 
-            if (fileUpload.ContentType == "application/vnd.ms-excel" || fileUpload.ContentType == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-            {                              
-
-                List<ImportItems> ListImport = _unitOfWork.ImportItems.GetAll().Where(z => z.EntryBy == user.Name).ToList();
-
-                _unitOfWork.ImportItems.RemoveRange(ListImport);
-                _unitOfWork.Save();
-
-                string webRootPath = _hostEnvironment.WebRootPath;
-                string fileName = Guid.NewGuid().ToString() + "_" + fileUpload.FileName;
-                //string rootPath = "C:\\Software\\";// _webHostEnvironment.ContentRootPath;
-                var uploads = Path.Combine(webRootPath, @"images\products");
-                string filePath = Path.Combine(uploads, fileName);
-               
-                using (var stream = System.IO.File.Create(filePath))
+                if (fileUpload == null)
                 {
-                    await fileUpload.CopyToAsync(stream);
+                    ViewBag.Message = "File is empty!";
+                    //return View();
+                    return Json(new { import = false, message = "File is empty!", jmlvalid = valid, jmlinvalid = invalid });
                 }
 
-                DataTableCollection tables = ReadFromExcel(filePath, ref sheetNames);
-                //dtImport = new DataTable();
-               
-                //var ListItems = await _unitOfWork.Items.GetAllAsync();
-
-                //ItemsVM.staticGridView = new List<ImportData>();
-
-                //var ConditionList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 1).ToList();
-                //var StatusList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 2).ToList();
-                //var OwnershipList = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 3).ToList();
-                           
-
-                foreach (DataTable dt in tables)
+                if (fileUpload.ContentType == "application/vnd.ms-excel" || fileUpload.ContentType == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
                 {
-                    int RowNumber = dt.Rows.Count;
 
-                    for (int i = 0; i < RowNumber; i++)
+                    List<ImportItems> ListImport = _unitOfWork.ImportItems.GetAll().Where(z => z.EntryBy == user.Name).ToList();
+                    _unitOfWork.ImportItems.RemoveRange(ListImport);
+                    _unitOfWork.Save();
+
+                    string webRootPath = _hostEnvironment.WebRootPath;
+                    string fileName = Guid.NewGuid().ToString() + "_" + fileUpload.FileName;
+                    //string rootPath = "C:\\Software\\";// _webHostEnvironment.ContentRootPath;
+                    var uploads = Path.Combine(webRootPath, @"images\products");
+                    string filePath = Path.Combine(uploads, fileName);
+
+                    using (var stream = System.IO.File.Create(filePath))
                     {
-                        ImportData newImport = new ImportData();
-                        newImport.No = dt.Rows[i][0].ToString();
-                        newImport.Code = dt.Rows[i][1].ToString();
-                        newImport.Name = dt.Rows[i][2].ToString();
-                        newImport.Description = dt.Rows[i][3].ToString();
-                        newImport.StartDate_String = dt.Rows[i][4].ToString();
-                        newImport.Category = dt.Rows[i][5].ToString();
-                        newImport.Price_String = dt.Rows[i][6].ToString();
-                        newImport.Qty_String = dt.Rows[i][7].ToString();
-                        newImport.OriginOfGoods = dt.Rows[i][8].ToString();
-                        newImport.Location = dt.Rows[i][9].ToString();
-                        newImport.Room = dt.Rows[i][10].ToString();
-                        newImport.Condition = dt.Rows[i][11].ToString();
-                        newImport.Status = dt.Rows[i][12].ToString();
+                        await fileUpload.CopyToAsync(stream);
+                    }
+                    DataTableCollection tables = ReadFromExcel(filePath, ref sheetNames);  
 
-                        #region Validation
-                        //if (ListItems.Where(z => z.Code == newImport.Code).Count() > 0)
-                        //{
-                        //    newImport.Remarks = "Kode sudah digunakan. ";
-                        //}
+                    foreach (DataTable dt in tables)
+                    {
+                        int RowNumber = dt.Rows.Count;
 
-                        //if (string.IsNullOrEmpty(newImport.StartDate_String))
-                        //{
+                        for (int i = 0; i < RowNumber; i++)
+                        {
+                            ImportData newImport = new ImportData();
+                            newImport.No = dt.Rows[i][0].ToString();
+                            newImport.Code = dt.Rows[i][1].ToString();
+                            newImport.Name = dt.Rows[i][2].ToString();
+                            newImport.Description = dt.Rows[i][3].ToString();
+                            newImport.StartDate_String = dt.Rows[i][4].ToString();
+                            newImport.Category = dt.Rows[i][5].ToString();
+                            newImport.Price_String = dt.Rows[i][6].ToString();
+                            newImport.Qty_String = dt.Rows[i][7].ToString();
+                            newImport.OriginOfGoods = dt.Rows[i][8].ToString();
+                            newImport.Location = dt.Rows[i][9].ToString();
+                            newImport.Room = dt.Rows[i][10].ToString();
+                            newImport.Condition = dt.Rows[i][11].ToString();
+                            newImport.Status = dt.Rows[i][12].ToString();                           
 
-                        //    newImport.Remarks = newImport.Remarks + "Tanggal perolehan harus diisi. ";
-                        //}
-                        //else
-                        //{
-                        //    newImport.StartDate = DateTime.Parse(newImport.StartDate_String);
-                        //}
+                            ImportItems importItems = new ImportItems();
+                            importItems.Number = i + 1;
+                            importItems.Code = newImport.Code;
+                            importItems.Name = newImport.Name;
+                            importItems.Description = newImport.Description;
+                            importItems.StartDate_String = newImport.StartDate_String;
+                            //if (!string.IsNullOrEmpty(newImport.StartDate_String))
+                            //{
+                            //    importItems.StartDate = DateTime.Parse(newImport.StartDate_String);
+                            //}                     
+                            importItems.Category_String = newImport.Category;
+                            importItems.Price_String = newImport.Price_String;
+                            importItems.Qty_String = newImport.Qty_String;
+                            importItems.Ownership = newImport.OriginOfGoods;
+                            importItems.LocationName = newImport.Location;
+                            importItems.RoomName = newImport.Room;
+                            importItems.Condition_String = newImport.Condition;
+                            importItems.Status_String = newImport.Status;
+                            importItems.EntryBy = user.Name;
+                            importItems.EntryDate = DateTime.Now;
+                            importItems.ImportStatus = "Valid";
 
-                        //if (string.IsNullOrEmpty(newImport.Category))
-                        //{
+                            _unitOfWork.ImportItems.Add(importItems);
+                            _unitOfWork.Save();
+                        }
 
-                        //    newImport.Remarks = newImport.Remarks + "Katagori harus diisi. ";
-                        //}
-                        //else
-                        //{
-                        //    var category = await _unitOfWork.Category.GetAllAsync();
-                        //    int categoryid = category.Where(z => z.Name == newImport.Category).Select(i => i.Id).FirstOrDefault();
+                        var parameter = new DynamicParameters();
+                        parameter.Add("@UserName", user.Name);
+                        _unitOfWork.SP_Call.Execute(SD.Proc_Validation_ImportItems, parameter);             
 
-                        //    if (categoryid > 0)
-                        //    {
-                        //        newImport.CategoryId = categoryid;
-                        //    }
-                        //    else
-                        //    {
-                        //        newImport.Remarks = newImport.Remarks + "Nama katagori tidak ditemukan. ";
-                        //    }
+                    }
 
-                        //}
-
-                        //if (string.IsNullOrEmpty(newImport.Price_String))
-                        //{
-
-                        //    newImport.Remarks = newImport.Remarks + "Nilai aset harus diisi. ";
-                        //}
-                        //else
-                        //{
-                        //    double number;
-                        //    if (Double.TryParse(newImport.Price_String, out number))
-                        //    {
-                        //        newImport.Price = double.Parse(newImport.Price_String);
-                        //    }
-                        //    else
-                        //    {
-                        //        newImport.Remarks = newImport.Remarks + "Format nilai aset harus numerik. ";
-                        //    }
-                        //}
-                        //if (string.IsNullOrEmpty(newImport.Qty_String))
-                        //{
-
-                        //    newImport.Remarks = newImport.Remarks + "Jumlah aset harus diisi. ";
-                        //}
-                        //else
-                        //{
-                        //    int number;
-                        //    if (int.TryParse(newImport.Qty_String, out number))
-                        //    {
-                        //        newImport.Qty = int.Parse(newImport.Qty_String);
-                        //    }
-                        //    else
-                        //    {
-                        //        newImport.Remarks = newImport.Remarks + "Format nilai aset harus numerik. ";
-                        //    }
-                        //}
-
-                        //if (newImport.Price != null && newImport.Qty != null)
-                        //{
-                        //    newImport.TotalAmount = newImport.Price * newImport.Qty;
-                        //}
-
-                        //if (string.IsNullOrEmpty(newImport.OriginOfGoods))
-                        //{
-
-                        //    newImport.Remarks = newImport.Remarks + "Kepemilikan harus diisi. ";
-                        //}
-                        //else
-                        //{
-                        //    int OwnerShipId = OwnershipList.Where(z => z.GENNAME == newImport.OriginOfGoods).Select(i => i.IDGEN).FirstOrDefault();
-
-                        //    if (OwnerShipId > 0)
-                        //    {
-                        //        newImport.OwnerShipId = OwnerShipId;
-                        //    }
-                        //    else
-                        //    {
-                        //        newImport.Remarks = newImport.Remarks + "Nama kepemilikan tidak ditemukan. ";
-                        //    }
-
-                        //}
-
-                        //if (string.IsNullOrEmpty(newImport.Location))
-                        //{
-
-                        //    newImport.Remarks = newImport.Remarks + "Nama gedung harus diisi. ";
-                        //}
-                        //else
-                        //{
-                        //    int locationid = _unitOfWork.Location.GetAll().Where(z => z.Name == newImport.Location).Select(o => o.Id).FirstOrDefault();
-
-                        //    if (locationid == 0)
-                        //    {
-                        //        newImport.Remarks = newImport.Remarks + "Nama gedung tidak ditemukan. ";
-                        //    }
-
-                        //    if (string.IsNullOrEmpty(newImport.Room))
-                        //    {
-
-                        //        newImport.Remarks = newImport.Remarks + "Nama ruangan harus diisi. ";
-                        //    }
-                        //    else
-                        //    {
-                        //        int roomid = _unitOfWork.Room.GetAll().Where(z => z.Name == newImport.Room && z.IDLocation == locationid).Select(o => o.Id).FirstOrDefault();
-                        //        if (roomid > 0)
-                        //        {
-                        //            newImport.RoomId = roomid;
-                        //        }
-                        //        else
-                        //        {
-                        //            newImport.Remarks = newImport.Remarks + "Nama ruangan tidak ditemukan. ";
-                        //        }
-                        //    }
-
-                        //}
-
-                        //if (string.IsNullOrEmpty(newImport.Condition))
-                        //{
-
-                        //    newImport.Remarks = newImport.Remarks + "Kondisi harus diisi. ";
-                        //}
-                        //else
-                        //{
-                        //    int ConditionId = ConditionList.Where(z => z.GENNAME == newImport.Condition).Select(i => i.IDGEN).FirstOrDefault();
-                        //    if (ConditionId > 0)
-                        //    {
-                        //        newImport.ConditionId = ConditionId;
-                        //    }
-                        //    else
-                        //    {
-                        //        newImport.Remarks = newImport.Remarks + "Nama Kondisi tidak ditemukan. ";
-                        //    }
-
-                        //}
-
-                        //if (string.IsNullOrEmpty(newImport.Status))
-                        //{
-
-                        //    newImport.Remarks = newImport.Remarks + "Status harus diisi. ";
-                        //}
-                        //else
-                        //{
-                        //    int StatusId = StatusList.Where(z => z.GENNAME == newImport.Status).Select(i => i.IDGEN).FirstOrDefault();
-                        //    if (StatusId > 0)
-                        //    {
-                        //        newImport.StatusId = StatusId;
-                        //    }
-                        //    else
-                        //    {
-                        //        newImport.Remarks = newImport.Remarks + "Nama status tidak ditemukan. ";
-                        //    }
-
-                        //}
-
-                        #endregion
-
-                        //if (string.IsNullOrEmpty(newImport.Remarks))
-                        //{
-                        //    newImport.ValidInvalid = "Valid";
-                        //    valid++;
-                        //}
-                        //else
-                        //{
-                        //    newImport.ValidInvalid = "Invalid";
-                        //    invalid++;
-                        //}
-                        
-
-                        //ItemsVM.staticGridView.Add(newImport);
-
-                        ImportItems importItems = new ImportItems();
-                        importItems.Number = i + 1;
-                        importItems.Code = newImport.Code;
-                        importItems.Name = newImport.Name;
-                        importItems.Description = newImport.Description;
-                        importItems.StartDate_String = newImport.StartDate_String;
-                        //if (!string.IsNullOrEmpty(newImport.StartDate_String))
-                        //{
-                        //    importItems.StartDate = DateTime.Parse(newImport.StartDate_String);
-                        //}                     
-                        importItems.Category_String = newImport.Category;
-                        importItems.Price_String = newImport.Price_String;
-                        importItems.Qty_String = newImport.Qty_String;
-                        importItems.Ownership = newImport.OriginOfGoods;
-                        importItems.LocationName = newImport.Location;
-                        importItems.RoomName = newImport.Room;
-                        importItems.Condition_String = newImport.Condition;
-                        importItems.Status_String = newImport.Status;
-                        importItems.EntryBy = user.Name;
-                        importItems.EntryDate = DateTime.Now;
-                        importItems.ImportStatus = "Valid";
-
-                        _unitOfWork.ImportItems.Add(importItems);
-                        _unitOfWork.Save();
-                    }                    
-
-                    var parameter = new DynamicParameters();
-                    parameter.Add("@UserName", user.Name);
-                    _unitOfWork.SP_Call.Execute(SD.Proc_Validation_ImportItems, parameter);
-                    //if (dtImport.Rows.Count > 0)
-                    //{
-                    //    DataTable dtTemp = ToDataTable(newImport);
-                    //    dtImport.Rows.Add(dtTemp.Rows[0].ItemArray);
-                    //}
-                    //else
-                    //{
-                    //    dtImport = ToDataTable(newImport);
-                    //}
+                    //this is an edit and we need to remove old image            
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath);
+                    }
 
                 }
 
-                //this is an edit and we need to remove old image            
-                if (System.IO.File.Exists(filePath))
-                {
-                    System.IO.File.Delete(filePath);
-                }
-
-                
+                return Json(new { import = true, message = "Import Successful", jmlvalid = valid, jmlinvalid = invalid });
             }
-
-            return Json(new { import = true, message = "Import Successful", jmlvalid = valid, jmlinvalid = invalid });
+            catch (Exception ex)
+            {
+                string errorstring = ex.Message.ToString();
+                return Json(new { import = false, message = "Import Error", jmlvalid = 0, jmlinvalid = 0 });
+            }
+            
           
         }
 
