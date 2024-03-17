@@ -335,7 +335,13 @@ namespace E_OneWeb.Areas.Admin.Controllers
         }
 
         public async Task<IActionResult> ImportData()
-        { 
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+            List<ImportItems> ListImport = _unitOfWork.ImportItems.GetAll().Where(z => z.EntryBy == user.Name).ToList();
+            _unitOfWork.ImportItems.RemoveRange(ListImport);
+            _unitOfWork.Save();
             return View();
         }       
         public DataTable dtImport { get; set; }
