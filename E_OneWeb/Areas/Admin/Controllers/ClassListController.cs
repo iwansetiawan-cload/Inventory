@@ -1,12 +1,17 @@
-﻿using E_OneWeb.DataAccess.Repository;
+﻿using Dapper;
+using E_OneWeb.DataAccess.Repository;
 using E_OneWeb.DataAccess.Repository.IRepository;
 using E_OneWeb.Models;
 using E_OneWeb.Models.ViewModels;
 using E_OneWeb.Utility;
+using ExcelDataReader;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Hosting;
+using NPOI.SS.Formula.Functions;
+using NPOI.XSSF.UserModel;
 using System.Data;
 using System.Diagnostics;
 using System.Security.Claims;
@@ -19,15 +24,17 @@ namespace E_OneWeb.Areas.Admin.Controllers
     public class ClassListController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public ClassListController( IUnitOfWork unitOfWork)
+        private readonly IWebHostEnvironment _hostEnvironment;
+        public ClassListController( IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
         {
             _unitOfWork = unitOfWork;
+            _hostEnvironment = hostEnvironment;
         }
         public IActionResult Index()
         {
             return View();
         }
-        [HttpGet]
+        [HttpGet]   
         public async Task<IActionResult> GetAll()
         {
 
@@ -155,5 +162,247 @@ namespace E_OneWeb.Areas.Admin.Controllers
             return Json(new { success = true, message = "Delete Successful" });
 
         }
+
+        #region Import Data
+        public async Task<IActionResult> ImportData()
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+            List<ImportBookingClass> ListImport = _unitOfWork.ImportBookingClass.GetAll().Where(z => z.EntryBy == user.Name).ToList();
+            _unitOfWork.ImportBookingClass.RemoveRange(ListImport);
+            _unitOfWork.Save();
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ImportData(IFormFile fileUpload)
+        {
+            try
+            {
+                List<string> sheetNames = new List<string>();
+                int valid = 0;
+                int invalid = 0;
+                var claimsIdentity = (ClaimsIdentity)User.Identity;
+                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+
+                if (fileUpload == null)
+                {
+                    ViewBag.Message = "File is empty!";
+                    //return View();
+                    return Json(new { import = false, message = "File is empty!", jmlvalid = valid, jmlinvalid = invalid });
+                }
+
+                if (fileUpload.ContentType == "application/vnd.ms-excel" || fileUpload.ContentType == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+                {
+
+                    List<ImportBookingClass> ListImport = _unitOfWork.ImportBookingClass.GetAll().Where(z => z.EntryBy == user.Name).ToList();
+                    _unitOfWork.ImportBookingClass.RemoveRange(ListImport);
+                    _unitOfWork.Save();
+
+                    string webRootPath = _hostEnvironment.WebRootPath;
+                    string fileName = Guid.NewGuid().ToString() + "_" + fileUpload.FileName;
+                    //string rootPath = "C:\\Software\\";// _webHostEnvironment.ContentRootPath;
+                    var uploads = Path.Combine(webRootPath, @"images\products");
+                    string filePath = Path.Combine(uploads, fileName);
+
+                    using (var stream = System.IO.File.Create(filePath))
+                    {
+                        await fileUpload.CopyToAsync(stream);
+                    }
+                    DataTableCollection tables = ReadFromExcel(filePath, ref sheetNames);
+
+                    foreach (DataTable dt in tables)
+                    {
+                        int RowNumber = dt.Rows.Count;
+
+                        for (int i = 0; i < RowNumber; i++)
+                        {
+                            ImportBookingClass newImport = new ImportBookingClass();
+                            newImport.LocationName = dt.Rows[i][1].ToString();
+                            newImport.RoomName = dt.Rows[i][2].ToString();
+                            newImport.StartDate = dt.Rows[i][3].ToString();
+                            newImport.EndDate = dt.Rows[i][4].ToString();
+                            newImport.EntryBy = user.Name;
+                            newImport.EntryDate = DateTime.Now;
+                            newImport.ImportStatus = "Valid";
+                            newImport.Number = i + 1;                                                  
+
+                            _unitOfWork.ImportBookingClass.Add(newImport);
+                            _unitOfWork.Save();
+                        }
+
+                        var parameter = new DynamicParameters();
+                        parameter.Add("@UserName", user.Name);
+                        _unitOfWork.SP_Call.Execute(SD.Proc_Validation_ImportBookingRoom, parameter);
+
+                    }
+
+                    //this is an edit and we need to remove old image            
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath);
+                    }
+
+                }
+
+                return Json(new { import = true, message = "Import Successful", jmlvalid = valid, jmlinvalid = invalid });
+            }
+            catch (Exception ex)
+            {
+                string errorstring = ex.Message.ToString();
+                return Json(new { import = false, message = "Import Error", jmlvalid = 0, jmlinvalid = 0 });
+            }
+
+
+        }
+        DataTableCollection ReadFromExcel(string filePath, ref List<string> sheetNames)
+        {
+            try
+            {
+                DataTableCollection tableCollection = null;
+
+                using (var stream = System.IO.File.Open(filePath, FileMode.Open, FileAccess.Read))
+                {
+                    System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+                    using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
+                    {
+                        DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()
+                        {
+                            ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }
+                        });
+
+                        tableCollection = result.Tables;
+
+                        foreach (DataTable table in tableCollection)
+                        {
+                            sheetNames.Add(table.TableName);
+                        }
+                    }
+                }
+
+                return tableCollection;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public ActionResult CountImport()
+        {
+            bool success = true;
+            string error = string.Empty;
+            int valid = 0;
+            int invalid = 0;
+            try
+            {
+                var claimsIdentity = (ClaimsIdentity)User.Identity;
+                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+                valid = _unitOfWork.ImportBookingClass.GetAll().Where(z => z.EntryBy == user.Name && z.ImportStatus == "Valid").Count();
+                invalid = _unitOfWork.ImportBookingClass.GetAll().Where(z => z.EntryBy == user.Name && z.ImportStatus == "Invalid").Count();
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message.ToString();
+            }
+
+            return Json(new { success = success, error = error, valid = valid, invalid = invalid });
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetImportData()
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);           
+
+            var datalist = (from z in _unitOfWork.ImportBookingClass.GetAll().Where(z => z.EntryBy == user.Name)
+                            select new
+                            {
+                                no = z.Number,
+                                validinvalid = z.ImportStatus,
+                                remarks = z.ImportRemark,                                
+                                location = z.LocationName,
+                                room = z.RoomName,
+                                startdate = z.StartDate,
+                                enddate = z.EndDate
+                            }).ToList();
+
+            return Json(new { data = datalist });
+        }
+        [HttpPost]
+        public async Task<IActionResult> ProcessImport()
+        {
+            try
+            {
+                var claimsIdentity = (ClaimsIdentity)User.Identity;
+                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+
+                var parameter = new DynamicParameters();
+                parameter.Add("@UserName", user.Name);
+                _unitOfWork.SP_Call.Execute(SD.Proc_Process_BookingRoom, parameter);
+
+                List<ImportBookingClass> ListImport = _unitOfWork.ImportBookingClass.GetAll().Where(z => z.EntryBy == user.Name).ToList();
+
+                _unitOfWork.ImportBookingClass.RemoveRange(ListImport);
+                _unitOfWork.Save();
+
+                TempData["Success"] = "Successfully Process";
+                return Json(new { success = true, message = "Process Successful" });
+
+            }
+            catch (Exception)
+            {
+                TempData["Failed"] = "Error Process";
+                return Json(new { success = false, message = "Process Error" });
+            }
+
+
+        }
+        public async Task<IActionResult> GetTemplate()
+        {
+            var workbook = new XSSFWorkbook();
+            var sheet = workbook.CreateSheet("Sheet1");
+            var rowHeader = sheet.CreateRow(0);
+
+            var properties = typeof(T).GetProperties();
+
+            //header
+            var font = workbook.CreateFont();
+            font.IsBold = true;
+            var style = workbook.CreateCellStyle();
+            style.SetFont(font);
+
+            var cell = rowHeader.CreateCell(0);
+            cell.SetCellValue("No");
+            cell.CellStyle = style;            
+
+            cell = rowHeader.CreateCell(1);
+            cell.SetCellValue("Nama Gedung");
+            cell.CellStyle = style;
+
+            cell = rowHeader.CreateCell(2);
+            cell.SetCellValue("Nama Ruangan");
+            cell.CellStyle = style;
+
+            cell = rowHeader.CreateCell(3);
+            cell.SetCellValue("Mulai Format(dd/MM/yyyy HH:mm)");
+            cell.CellStyle = style;
+
+            cell = rowHeader.CreateCell(4);
+            cell.SetCellValue("Sampai Format(dd/MM/yyyy HH:mm)");
+            cell.CellStyle = style;
+
+            var stream = new MemoryStream();
+            workbook.Write(stream);
+            var content = stream.ToArray();
+
+            return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Template_ImportBookingClass.xlsx");
+        }
+        #endregion
     }
 }

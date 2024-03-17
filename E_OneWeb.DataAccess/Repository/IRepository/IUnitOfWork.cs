@@ -28,6 +28,8 @@ namespace E_OneWeb.DataAccess.Repository.IRepository
         IGetRommReservationAdminRepository GetRommReservationAdmin { get; }
         ISP_Call SP_Call { get; }
         IImportItemsRepository ImportItems { get; }
+        IImportBookingClassRepository ImportBookingClass { get; }
+        
         void Save();
     }
 }

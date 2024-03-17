@@ -15,5 +15,7 @@ namespace E_OneWeb.Utility
         public const string Proc_Category_Get = "usp_GetCategory";
         public const string Proc_Validation_ImportItems = "Sp_validationImportItems";
         public const string Proc_Process_ImportItems = "Sp_processImportItems";
+        public const string Proc_Validation_ImportBookingRoom = "Sp_validationBookingRoom";
+        public const string Proc_Process_BookingRoom = "Sp_processBookingRoom";
     }
 }
