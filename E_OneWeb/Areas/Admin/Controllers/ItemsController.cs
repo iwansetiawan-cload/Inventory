@@ -106,7 +106,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 return NotFound();
             }
             itemsVM.Percent_String = itemsVM.Items.Percent.Value.ToString("#,##0.00");
-            //itemsVM.TotalAmountString = itemsVM.Items.TotalAmount;
+            itemsVM.Code_Before = itemsVM.Items.Code;
             ViewBag.Status = "";
             return View(itemsVM);
 
@@ -137,7 +137,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             var ListItems = await _unitOfWork.Items.GetAllAsync();
            
-            if (ListItems.Where(z => z.Code == vm.Items.Code).Count() > 0 && vm.Items.Id == 0)
+            if (ListItems.Where(z => z.Code == vm.Items.Code).Count() > 0 && vm.Items.Code != vm.Code_Before)
             {
                 ModelState.AddModelError("Code", "Kode sudah digunakan");
             }

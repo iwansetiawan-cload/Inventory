@@ -21,6 +21,7 @@ namespace E_OneWeb.Models.ViewModels
         public string File { get; set; }
         public string Valid { get; set; }
         public string Invalid { get; set; }
+        public string? Code_Before { get; set; }
         public static List<ImportData> staticGridView { get; set; }
     }
     public class ImportData

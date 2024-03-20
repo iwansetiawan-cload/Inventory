@@ -105,6 +105,10 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 {
                     Result = 0;
                 }
+                if (Result > (decimal)TotalAmount)
+                {
+                    Result = (decimal)TotalAmount;
+                }
             }
             catch (Exception ex)
             {
@@ -207,12 +211,14 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                  ExpenseTotalAmount = GetNilaiBuku(z.startdate, z.totalamount, z.period, z.persent, DtPeriode).ToString("#,##0")
                              }).ToList();
 
+            double? totalPerolehan = datalist_.Sum(o => Convert.ToDouble(o.TotalAmount));
+            double? totalPenyusutann = datalist_.Sum(o => Convert.ToDouble(o.ExpenseAmount));
 
-            var file = CreateFile(datalist_);
+            var file = CreateFile(datalist_, totalPerolehan, totalPenyusutann);
             return File(file, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Export_Data_Penyusutan_Aset.xlsx");
 
         }
-        public static byte[] CreateFile<T>(List<T> source)
+        public static byte[] CreateFile<T>(List<T> source, double? totalPerolehan,double? totalPenyusutann)
         {
             var workbook = new XSSFWorkbook();
             var sheet = workbook.CreateSheet("Sheet1");
@@ -259,15 +265,18 @@ namespace E_OneWeb.Areas.Admin.Controllers
             cell.CellStyle = style;
 
             cell = rowHeader.CreateCell(8);
-            cell.SetCellValue("Nilai Buku");
+            cell.SetCellValue("Nilai Buku");           
             cell.CellStyle = style;
 
             //end header
 
             //content
             var rowNum = 1;
+            double? TotalPerolehan = 0;   
+
             foreach (var item in source)
             {
+                TotalPerolehan = TotalPerolehan ;
                 var rowContent = sheet.CreateRow(rowNum);
 
                 var colContentIndex = 0;
@@ -306,6 +315,21 @@ namespace E_OneWeb.Areas.Admin.Controllers
             }
 
             //end content
+
+            #region Footer
+            var rowFooter = sheet.CreateRow(rowNum + 1);
+            cell = rowFooter.CreateCell(5);
+            cell.SetCellValue("Total : ");
+            cell.CellStyle = style;
+
+            cell = rowFooter.CreateCell(6);
+            cell.SetCellValue("" + totalPerolehan.Value.ToString("#,##0") + "");
+            cell.CellStyle = style;
+
+            cell = rowFooter.CreateCell(7);
+            cell.SetCellValue("" + totalPenyusutann.Value.ToString("#,##0") + "");
+            cell.CellStyle = style;
+            #endregion
 
 
             var stream = new MemoryStream();

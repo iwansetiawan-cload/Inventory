@@ -15,6 +15,7 @@
         <input type="hidden" asp-for="Items.Id" id="itemID" />
         <input type="hidden" asp-for="Items.DepreciationExpense" id="DepreciationExpense_" />
         <input type="hidden" asp-for="DepreciationExpenseString" id="DepreciationExpenseString_" />
+        <input type="hidden" asp-for="Code_Before" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         
         @if ((Model.Items.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Update Success")
@@ -29,7 +30,7 @@
             <div class="form-group row">               
                 @Html.LabelFor(model => model.Items.Code, "Kode", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
-                    <input asp-for="Items.Code" class="form-control" style="row-gap" id="codes" />
+                    <input asp-for="Items.Code" class="form-control" style="row-gap"/>
                     <span asp-validation-for="Items.Code" class="text-danger"></span>
                 </div>
             </div>
@@ -452,11 +453,11 @@
             var ItemID = $('#itemID').val();
             if (ItemID == 0) {
                 $("#btn-lookuproom").removeAttr("disabled");
-                $("#codes").removeAttr("disabled");
+                //$("#codes").removeAttr("disabled");
             }
             else {
                 $("#btn-lookuproom").attr("disabled", "disabled");
-                $("#codes").attr("disabled", "disabled");
+                //$("#codes").attr("disabled", "disabled");
             }
            
             var status = $("#idstatus").val();
