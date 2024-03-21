@@ -92,7 +92,12 @@
                                    `;
                         }, "autoWidth": true
                     }
-                ]
+                ],
+                "createdRow": function (row, data, index) {
+                    if (data["status"] == 'Approved' || data["status"] == 'Rejected') {
+                        $('td', row).eq(8).html('');
+                    }
+                }
             });
         }
 
