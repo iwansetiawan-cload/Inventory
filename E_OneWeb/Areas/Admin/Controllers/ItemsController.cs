@@ -42,8 +42,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
         //public static int? ItemID { get; set; }
         [HttpGet]
         public async Task<IActionResult> GetAll()
-        {
-
+        {          
             var datalist = (from z in await _unitOfWork.Items.GetAllAsync(includeProperties: "Category,Room")
                             select new
                             {
@@ -55,7 +54,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 qty = z.Qty != null ? z.Qty : 0,
                                 totalamount = z.TotalAmount != null ? z.TotalAmount : 0,
                                 room = z.Room.Name,
-                                category = z.Category.Name
+                                category = z.Category.Name,
+                                ownership = _unitOfWork.Genmaster.GetAll().Where(o=>o.IDGEN ==Convert.ToInt32( z.OriginOfGoods)).Select(i=>i.GENNAME).FirstOrDefault()
                             }).ToList().OrderByDescending(o=>o.id);
 
             return Json(new { data = datalist });
