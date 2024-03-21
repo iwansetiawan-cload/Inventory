@@ -391,9 +391,12 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                  ExpenseTotalAmount = GetNilaiBuku(z.startdate, z.totalamount, z.period, z.persent, DtPeriode).ToString("#,##0")
                              }).ToList();
 
+            double? totalPerolehan = datalist_.Sum(o => Convert.ToDouble(o.TotalAmount));
+            double? totalPenyusutann = datalist_.Sum(o => Convert.ToDouble(o.ExpenseAmount));
+
             DataTable dttbl = CreateDataTable(datalist_);
             string physicalPath = "wwwroot\\images\\products\\DaftarPenyusutanAset.pdf";
-            ExportDataTableToPdf(dttbl, physicalPath, "Daftar Nilai Penyusutan Aset");
+            ExportDataTableToPdf(dttbl, physicalPath, "Daftar Nilai Penyusutan Aset", totalPerolehan, totalPenyusutann);
 
 
             byte[] pdfBytes = System.IO.File.ReadAllBytes(physicalPath);
@@ -432,9 +435,9 @@ namespace E_OneWeb.Areas.Admin.Controllers
             return values.ToArray();
         }
 
-        void ExportDataTableToPdf(DataTable dtblTable, String strPdfPath, string strHeader)
+        void ExportDataTableToPdf(DataTable dtblTable, String strPdfPath, string strHeader, double? totalPerolehan, double? totalPenyusutann)
         {
-
+            PdfPCell cell = null;
             System.IO.FileStream fs = new FileStream(strPdfPath, FileMode.Create, FileAccess.Write, FileShare.None);
             Document document = new Document();
             document.SetPageSize(iTextSharp.text.PageSize.A4);
@@ -474,19 +477,72 @@ namespace E_OneWeb.Areas.Admin.Controllers
             addCell(table, "Nilai Buku", 1);          
 
             //table Data
-            for (int i = 0; i < dtblTable.Rows.Count; i++)
+            for (int i = 0; i < dtblTable.Rows.Count + 1; i++)
             {
+                BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
+                iTextSharp.text.Font times = new iTextSharp.text.Font(bfTimes, 6, iTextSharp.text.Font.NORMAL, iTextSharp.text.BaseColor.BLACK);
                 for (int j = 0; j < dtblTable.Columns.Count; j++)
                 {
-                    BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
-                    iTextSharp.text.Font times = new iTextSharp.text.Font(bfTimes, 6, iTextSharp.text.Font.NORMAL, iTextSharp.text.BaseColor.BLACK);
-
-                    PdfPCell cell = new PdfPCell(new Phrase(dtblTable.Rows[i][j].ToString(), times));
-                    cell.Rowspan = 1;
-                    cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
-                    cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
-                    table.AddCell(cell);
+                    if (dtblTable.Rows.Count > i)
+                    {
+                        cell = new PdfPCell(new Phrase(dtblTable.Rows[i][j].ToString(), times));
+                        cell.Rowspan = 1;
+                        cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+                        cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                        table.AddCell(cell);
+                    }
+                    else
+                    {
+                        if (j == 0)
+                        {
+                            cell = new PdfPCell(new Phrase("", times));
+                            //cell.Rowspan = 1;
+                            cell.Colspan = 4;
+                            cell.Border = 0;
+                            cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+                            cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                            table.AddCell(cell);
+                            
+                        }
+                        else if (j == 1)
+                        {
+                            cell = new PdfPCell(new Phrase("TOTAL :", times));
+                            cell.Rowspan = 1;
+                            cell.Colspan = 2;
+                            cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+                            cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                            table.AddCell(cell);
+                            
+                        }
+                        else if (j == 2)
+                        {
+                            cell = new PdfPCell(new Phrase(totalPerolehan.Value.ToString("#,##0"), times));
+                            cell.Rowspan = 1;
+                            cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+                            cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                            table.AddCell(cell);
+                        }
+                        else if (j == 3)
+                        {
+                            cell = new PdfPCell(new Phrase(totalPenyusutann.Value.ToString("#,##0"), times));
+                            cell.Rowspan = 1;
+                            cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+                            cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                            table.AddCell(cell);
+                        }
+                        else {
+                            cell = new PdfPCell(new Phrase("", times));
+                            cell.Border = 0;
+                            //cell.BorderColorBottom = BaseColor.WHITE;
+                            cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+                            cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                            table.AddCell(cell);
+                        }
+                       
+                    }
+                 
                 }
+              
             }
 
             document.Add(table);
