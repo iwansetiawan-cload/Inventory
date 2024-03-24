@@ -311,5 +311,26 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
         }
         #endregion
+        [HttpGet]
+        public async Task<IActionResult> GetServiceItem(int? id, int? serviceId)
+        {
+
+            var datalist = (from z in await _unitOfWork.ItemService.GetAllAsync(includeProperties: "Items")
+                            select new
+                            {
+                                id = z.Id,
+                                itemid = z.ItemId,
+                                servicedate = Convert.ToDateTime(z.ServiceDate).ToString("dd-MM-yyyy"),
+                                serviceenddate = Convert.ToDateTime(z.ServiceEndDate).ToString("dd-MM-yyyy"),
+                                desc = z.RepairDescription,
+                                tecnician = z.Technician,
+                                phone = z.PhoneNumber,
+                                requestby = z.RequestBy,
+                                costofrepair = z.CostOfRepair.HasValue ? z.CostOfRepair.Value.ToString("#,##0") : ""
+
+                            }).Where(o => o.itemid == id && o.id != serviceId).OrderByDescending(i => i.id).ToList();
+
+            return Json(new { data = datalist });
+        }
     }
 }

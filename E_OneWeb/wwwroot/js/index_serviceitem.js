@@ -36,7 +36,12 @@ function loadDataTable() {
                            `;
                 }, "autoWidth": true
             }
-        ]
+        ],
+        "createdRow": function (row, data, index) {
+            if (data["status"] == 'Approved' || data["status"] == 'Rejected') {
+                $('td', row).eq(10).html('');
+            }
+        }
     });
 }
 
