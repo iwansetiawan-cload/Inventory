@@ -215,14 +215,15 @@ namespace E_OneWeb.Areas.Admin.Controllers
             double? totalPenyusutann = datalist_.Sum(o => Convert.ToDouble(o.ExpenseAmount));
 
             var file = CreateFile(datalist_, totalPerolehan, totalPenyusutann);
-            return File(file, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Export_Data_Penyusutan_Aset.xlsx");
+            return File(file, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Export_Data_Penyusutan_Aset_" + DateTime.Now.ToString("yyyyMMdd:hh.mm") + ".xlsx");
 
         }
         public static byte[] CreateFile<T>(List<T> source, double? totalPerolehan,double? totalPenyusutann)
         {
             var workbook = new XSSFWorkbook();
             var sheet = workbook.CreateSheet("Sheet1");
-            var rowHeader = sheet.CreateRow(0);
+            var rowHeaderName = sheet.CreateRow(0);  
+            var rowHeader = sheet.CreateRow(2);
 
             var properties = typeof(T).GetProperties();
 
@@ -231,6 +232,10 @@ namespace E_OneWeb.Areas.Admin.Controllers
             font.IsBold = true;
             var style = workbook.CreateCellStyle();
             style.SetFont(font);
+
+            var cellHeader = rowHeaderName.CreateCell(0);
+            cellHeader.SetCellValue("DAFTAR NILAI PENYUSUTAN ASET");
+            cellHeader.CellStyle = style;
 
             var cell = rowHeader.CreateCell(0);
             cell.SetCellValue("No");
@@ -317,7 +322,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             //end content
 
             #region Footer
-            var rowFooter = sheet.CreateRow(rowNum + 1);
+            var rowFooter = sheet.CreateRow(rowNum);
             cell = rowFooter.CreateCell(5);
             cell.SetCellValue("Total : ");
             cell.CellStyle = style;
@@ -445,8 +450,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
             document.Open();
 
             //Report Header
-            BaseFont bfntHead = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-            iTextSharp.text.Font fntHead = new iTextSharp.text.Font(bfntHead, 14, 1, BaseColor.DARK_GRAY);
+            BaseFont bfntHead = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, BaseFont.MACROMAN, BaseFont.NOT_EMBEDDED);
+            iTextSharp.text.Font fntHead = new iTextSharp.text.Font(bfntHead, 12, 1, BaseColor.DARK_GRAY);
             Paragraph prgHeading = new Paragraph();
             prgHeading.Alignment = Element.ALIGN_CENTER;
             prgHeading.Add(new Chunk(strHeader.ToUpper(), fntHead));
@@ -454,6 +459,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             //Add line break
             document.Add(new Chunk("\n", fntHead));
+
 
             //Write the table         
             PdfPTable table = new PdfPTable(9);
@@ -466,15 +472,15 @@ namespace E_OneWeb.Areas.Admin.Controllers
             BaseFont btnColumnHeader = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
             iTextSharp.text.Font fntColumnHeader = new iTextSharp.text.Font(btnColumnHeader, 8, 1, BaseColor.WHITE);
 
-            addCell(table, "No", 1);
-            addCell(table, "Nama Harta Tetap", 1);
-            addCell(table, "Tanggal Perolehan", 1);
-            addCell(table, "Katagori", 1);
-            addCell(table, "Persen", 1);
-            addCell(table, "Jumlah", 1);
-            addCell(table, "Nilai Perolehan", 1);
-            addCell(table, "Nilai Penyusutan", 1);
-            addCell(table, "Nilai Buku", 1);          
+            addCellHeader(table, "No", 1);
+            addCellHeader(table, "Nama Harta Tetap", 1);
+            addCellHeader(table, "Tanggal Perolehan", 1);
+            addCellHeader(table, "Katagori", 1);
+            addCellHeader(table, "Persen", 1);
+            addCellHeader(table, "Jumlah", 1);
+            addCellHeader(table, "Nilai Perolehan", 1);
+            addCellHeader(table, "Nilai Penyusutan", 1);
+            addCellHeader(table, "Nilai Buku", 1);          
 
             //table Data
             for (int i = 0; i < dtblTable.Rows.Count + 1; i++)
@@ -546,6 +552,27 @@ namespace E_OneWeb.Areas.Admin.Controllers
             }
 
             document.Add(table);
+
+
+            PdfPTable tbfooter = new PdfPTable(3);
+            tbfooter.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
+            tbfooter.DefaultCell.Border = 0;
+            tbfooter.AddCell(new Paragraph());
+            tbfooter.AddCell(new Paragraph());
+            var _cell2 = new PdfPCell(new Paragraph(new Chunk("This is my Footer...", FontFactory.GetFont("Arial", 8, iTextSharp.text.Font.NORMAL, iTextSharp.text.BaseColor.BLUE))));
+            _cell2.HorizontalAlignment = Element.ALIGN_RIGHT;
+            _cell2.Border = 0;
+            tbfooter.AddCell(_cell2);
+            tbfooter.AddCell(new Paragraph());
+            tbfooter.AddCell(new Paragraph());
+            var _celly = new PdfPCell(new Paragraph(writer.PageNumber.ToString()));//For page no.
+            _celly.HorizontalAlignment = Element.ALIGN_RIGHT;
+            _celly.Border = 0;
+            tbfooter.AddCell(_celly);
+            float[] widths1 = new float[] { 20f, 20f, 60f };
+            tbfooter.SetWidths(widths1);
+            tbfooter.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetBottom(document.BottomMargin), writer.DirectContent);
+
             document.Close();
             writer.Close();
             fs.Close();
@@ -559,6 +586,18 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             PdfPCell cell = new PdfPCell(new Phrase(text, times));
             cell.BackgroundColor = BaseColor.WHITE;
+            cell.Rowspan = rowspan;
+            cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+            cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+            table.AddCell(cell);
+        }
+        private static void addCellHeader(PdfPTable table, string text, int rowspan)
+        {
+            BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, false);
+            iTextSharp.text.Font times = new iTextSharp.text.Font(bfTimes, 7, iTextSharp.text.Font.NORMAL, iTextSharp.text.BaseColor.BLACK);
+
+            PdfPCell cell = new PdfPCell(new Phrase(text, times));
+            cell.BackgroundColor = BaseColor.LIGHT_GRAY;
             cell.Rowspan = rowspan;
             cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
