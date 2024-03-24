@@ -212,13 +212,13 @@ namespace E_OneWeb.Areas.Admin.Controllers
                              }).ToList();
 
             double? totalPerolehan = datalist_.Sum(o => Convert.ToDouble(o.TotalAmount));
-            double? totalPenyusutann = datalist_.Sum(o => Convert.ToDouble(o.ExpenseAmount));
+            double? totalPenyusutan = datalist_.Sum(o => Convert.ToDouble(o.ExpenseAmount));
 
-            var file = CreateFile(datalist_, totalPerolehan, totalPenyusutann);
+            var file = CreateFile(datalist_, totalPerolehan, totalPenyusutan);
             return File(file, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Export_Data_Penyusutan_Aset_" + DateTime.Now.ToString("yyyyMMdd:hh.mm") + ".xlsx");
 
         }
-        public static byte[] CreateFile<T>(List<T> source, double? totalPerolehan,double? totalPenyusutann)
+        public static byte[] CreateFile<T>(List<T> source, double? totalPerolehan,double? totalPenyusutan)
         {
             var workbook = new XSSFWorkbook();
             var sheet = workbook.CreateSheet("Sheet1");
@@ -276,7 +276,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             //end header
 
             //content
-            var rowNum = 1;
+            var rowNum = 3;
             double? TotalPerolehan = 0;   
 
             foreach (var item in source)
@@ -332,7 +332,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             cell.CellStyle = style;
 
             cell = rowFooter.CreateCell(7);
-            cell.SetCellValue("" + totalPenyusutann.Value.ToString("#,##0") + "");
+            cell.SetCellValue("" + totalPenyusutan.Value.ToString("#,##0") + "");
             cell.CellStyle = style;
             #endregion
 
