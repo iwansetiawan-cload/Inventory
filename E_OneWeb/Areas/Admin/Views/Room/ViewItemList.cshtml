@@ -54,7 +54,7 @@
                                 </li>
                             </ul>
                             @Html.ActionLink("Pindah Aset", "Upsert", "ItemTransfer", new { idlocation = Model.Id }, new { id = "btn_addtransfer", @class = "btn btn-primary", @style = "width:145px"})
-                            @Html.ActionLink("Servis Aset", "Upsert", "ServiceItems", new { idlocation = Model.Id }, new { id = "btn_addservice", @class = "btn btn-primary", @style = "width:145px"})
+                            @*@Html.ActionLink("Servis Aset", "Upsert", "ServiceItems", new { idlocation = Model.Id }, new { id = "btn_addservice", @class = "btn btn-primary", @style = "width:145px"})*@
                         </div>
 
                     </div>
@@ -126,7 +126,10 @@
                                     <div class="text-center">
                                         <a href="/Admin/Items/Upsert/${data}" class="btn btn-success text-white" style="cursor:pointer">
                                             <i class="fas fa-edit"></i>
-                                        </a>                                       
+                                        </a>
+                                        <a href="/Admin/ServiceItems/Create/${data}" class="btn btn-primary" style="cursor:pointer">
+                                            servis
+                                        </a>
                                     </div>
                                    `;
                         }, "autoWidth": true

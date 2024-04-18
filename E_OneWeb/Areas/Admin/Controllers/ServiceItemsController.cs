@@ -332,5 +332,63 @@ namespace E_OneWeb.Areas.Admin.Controllers
 
             return Json(new { data = datalist });
         }
+
+        public async Task<IActionResult> Create(int? id)
+        {
+            ItemServiceVM itemservicevm = new ItemServiceVM()
+            {
+                ItemService = new ItemService()
+
+            };
+
+            itemservicevm.ItemService.Items = await _unitOfWork.Items.GetAsync(id.GetValueOrDefault());
+            
+            Room room = _unitOfWork.Room.Get(itemservicevm.ItemService.Items.RoomId);
+            Location location = _unitOfWork.Location.Get(room.IDLocation);
+            ViewBag.Status = "";
+            itemservicevm.name_of_room_and_location = room.Name + " (" + location.Name + ")";
+            //this is for create
+            itemservicevm.ItemService.ServiceDate = DateTime.Now;
+            itemservicevm.ItemService.ServiceEndDate = DateTime.Now;
+
+            if (itemservicevm.ItemService == null)
+            {
+                return NotFound();
+            }
+            return View(itemservicevm);
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(ItemServiceVM vm)
+        {
+
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+            var Gen_6 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 6 && z.GENVALUE == 0).FirstOrDefault();
+            vm.ItemService.StatusId = Gen_6.IDGEN;
+            vm.ItemService.Status = Gen_6.GENNAME;
+            vm.ItemService.EntryBy = user.UserName;
+            vm.ItemService.EntryDate = DateTime.Now;
+
+            IEnumerable<Items> itemList = await _unitOfWork.Items.GetAllAsync();
+            var Items = itemList.Where(z => z.Id == vm.ItemService.Items.Id).FirstOrDefault();
+            var Rooms = _unitOfWork.Room.Get(Items.RoomId);
+            var Locations = _unitOfWork.Location.Get(Rooms.IDLocation);
+            vm.ItemService.LocationId = Locations.Id;
+            vm.ItemService.RoomId = Items.RoomId;
+            vm.ItemService.Items = Items;
+            vm.name_of_room_and_location = Rooms.Name + " (" + Locations.Name + ")";
+            if (vm.ItemService.Id == 0)
+            {
+                _unitOfWork.ItemService.AddAsync(vm.ItemService);
+                ViewBag.Status = "Save Success";
+
+            }
+      
+            _unitOfWork.Save();
+            return View(vm);
+        }
     }
 }
