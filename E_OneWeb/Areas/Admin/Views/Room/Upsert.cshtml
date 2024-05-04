@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var title = "Tambah Gedung";
+    var title = "Tambah Lokasi/ Gedung";
 }
 
 <form method="post">
@@ -13,7 +13,7 @@
         @if (Model.Id != 0)
         {
             //edit
-            title = "Ubah Gedung";
+            title = "Ubah Lokasi/ Gedung";
         }
         <div class="col-12 border-bottom">
             <h2 class="text-primary">@title</h2>
@@ -62,7 +62,7 @@
             <div class="row py-2">
                 <div class="col-md-12">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        @Html.ActionLink(" Tambah Ruangan", "UpsertRoom", "Room", new { idlocation = Model.Id }, new { id = "btn-add", @class = "btn btn-primary"})
+                        @Html.ActionLink(" Tambah Area/Ruangan", "UpsertRoom", "Room", new { idlocation = Model.Id }, new { id = "btn-add", @class = "btn btn-primary"})
                     </div>
 
                 </div>

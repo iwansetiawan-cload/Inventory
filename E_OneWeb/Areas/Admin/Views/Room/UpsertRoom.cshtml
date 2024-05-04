@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var title = "Tambah Ruangan";
+    var title = "Tambah Area/ Ruangan";
     var title_btn = "Create";
 }
 
@@ -16,7 +16,7 @@
         @if ((Model.Id != 0 && @ViewBag.Status == "") || @ViewBag.Status == "Update Success")
         {
             //edit
-            title = "Ubah Ruangan";
+            title = "Ubah Area/ Ruangan";
             title_btn = "Update";
             <input type="hidden" asp-for="Id" id="id" />
         }

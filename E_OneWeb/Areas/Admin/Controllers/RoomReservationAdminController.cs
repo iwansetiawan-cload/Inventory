@@ -121,7 +121,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                                     flag = 1,
                                                     flagval = z.Flag,
                                                     userid = Getavailablelist.Where(o => o.idadmin == z.Id).Select(i => i.id).FirstOrDefault()
-                                                }).Where(o => listIdAdmin.Contains(o.id)).ToList();
+                                                }).Where(o => listIdAdmin.Contains(o.id) && Convert.ToDateTime(o.enddate) >= DateTime.Now).ToList();
                 return Json(new { data = RoomReservationAdminlist });
               
             }
@@ -136,37 +136,18 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                                    locationname = z.RoomReservationAdmin.LocationName,
                                                    startdate = Convert.ToDateTime(z.StartDate).ToString("dd-MM-yyyy HH:mm"),
                                                    enddate = Convert.ToDateTime(z.EndDate).ToString("dd-MM-yyyy HH:mm"),
+                                                   enddate_ = z.EndDate,
                                                    status = "Menunggu Persetujuan",
                                                    statusid = z.StatusId,
                                                    bookingby = z.EntryBy,
                                                    flag = 2,//_unitOfWork.Genmaster.GetAll().Where(i=>i.IDGEN == z.StatusId).Select(o=>o.GENVALUE).FirstOrDefault(),
                                                    flagval = z.RoomReservationAdmin.Flag,
                                                    userid = z.UserId
-                                               }).Where(v=>v.statusid == 10).ToList();
+                                               }).Where(v=>v.statusid == 10 && v.enddate_ >= DateTime.Now ).ToList();
                 return Json(new { data = RoomReservationUserlist });
             }
             else
-            {                
-                //var roomReservationUser = await _unitOfWork.RoomReservationUser.GetAllAsync();
-
-                //var RoomReservationAdminlist = (from z in await _unitOfWork.RoomReservationAdmin.GetAllAsync(includeProperties: "Room")
-                //                                select new
-                //                                {
-                //                                    id = z.Id,
-                //                                    bookingid = z.BookingId,
-                //                                    roomname = z.RoomName,
-                //                                    locationname = z.LocationName,
-                //                                    status = "Sudah Disetujui",
-                //                                    statusid = z.StatusId,
-                //                                    bookingby = z.BookingBy,
-                //                                    startdate = Convert.ToDateTime(z.BookingStartDate).ToString("dd-MM-yyyy HH:mm"),
-                //                                    enddate = Convert.ToDateTime(z.BookingEndDate).ToString("dd-MM-yyyy HH:mm"),
-                //                                    flag = 3,
-                //                                    flagval = z.Flag,
-                //                                    userid = roomReservationUser.Where(i=>i.Id == z.BookingId).Select(x=>x.UserId).FirstOrDefault()
-                //                                }).Where(v=>v.statusid == 11).ToList();
-                //return Json(new { data = RoomReservationAdminlist });
-
+            {          
                 var RoomReservationUserlist = (from z in await _unitOfWork.RoomReservationUser.GetAllAsync(includeProperties: "RoomReservationAdmin")
                                                select new
                                                {
