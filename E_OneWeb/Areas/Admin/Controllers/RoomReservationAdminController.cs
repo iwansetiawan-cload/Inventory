@@ -118,10 +118,11 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                                     bookingby = Getavailablelist.Where(o=>o.idadmin == z.Id).Select(i => i.bookingby).FirstOrDefault(),
                                                     startdate = Convert.ToDateTime(Getavailablelist.Where(o => o.idadmin == z.Id).Select(i => i.startdate).FirstOrDefault()).ToString("dd-MM-yyyy HH:mm"),
                                                     enddate = Convert.ToDateTime(Getavailablelist.Where(o => o.idadmin == z.Id).Select(i => i.enddate).FirstOrDefault()).ToString("dd-MM-yyyy HH:mm"),
+                                                    enddate_ = Getavailablelist.Where(o => o.idadmin == z.Id).Select(i => i.enddate).FirstOrDefault(),
                                                     flag = 1,
                                                     flagval = z.Flag,
                                                     userid = Getavailablelist.Where(o => o.idadmin == z.Id).Select(i => i.id).FirstOrDefault()
-                                                }).Where(o => listIdAdmin.Contains(o.id) && Convert.ToDateTime(o.enddate) >= DateTime.Now).ToList();
+                                                }).Where(o => listIdAdmin.Contains(o.id) && o.enddate_ >= DateTime.Now).ToList();
                 return Json(new { data = RoomReservationAdminlist });
               
             }
