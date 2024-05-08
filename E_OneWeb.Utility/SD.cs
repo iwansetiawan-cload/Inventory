@@ -17,5 +17,7 @@ namespace E_OneWeb.Utility
         public const string Proc_Process_ImportItems = "Sp_processImportItems";
         public const string Proc_Validation_ImportBookingRoom = "Sp_validationBookingRoom";
         public const string Proc_Process_BookingRoom = "Sp_processBookingRoom";
+        public const string Proc_Validation_ImportFixedSchedulerRoom = "Sp_validationImportFixedSchedulerRoom";
+        public const string Proc_Process_ImportFixedSchedulerRoom = "Sp_processImportFixedSchedulerRoom";
     }
 }

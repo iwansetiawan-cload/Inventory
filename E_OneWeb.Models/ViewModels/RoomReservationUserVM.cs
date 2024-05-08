@@ -18,5 +18,15 @@ namespace E_OneWeb.Models.ViewModels
         public DateTime? StartDateValue { get; set; }
         public DateTime? EndDateValue { get; set; }
         public Personal? Personal { get; set; }
+       
+    }
+    public class GridBookingRoom {
+        public int id { get; set; }
+        public string? roomname { get; set; }    
+        public string? booking_date { get; set;}
+        public string? booking_clock { get;set; }
+        public string? study { get; set; }
+        public string? dosen { get; set; }
+
     }
 }

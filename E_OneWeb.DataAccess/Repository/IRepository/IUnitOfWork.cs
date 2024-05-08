@@ -29,7 +29,8 @@ namespace E_OneWeb.DataAccess.Repository.IRepository
         ISP_Call SP_Call { get; }
         IImportItemsRepository ImportItems { get; }
         IImportBookingClassRepository ImportBookingClass { get; }
-        
+        IFixedSchedulerRoomRepositoryAsync FixedSchedulerRoom { get; }
+        IImportFixedSchedulerRoomRepository ImportFixedSchedulerRoom { get; }
         void Save();
     }
 }

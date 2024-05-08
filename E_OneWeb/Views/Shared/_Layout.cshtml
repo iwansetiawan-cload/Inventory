@@ -99,7 +99,6 @@
 
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
-                                    @*<a class="dropdown-item" asp-area="Admin" asp-controller="Brand" asp-action="Index">Brand</a>*@
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="Room" asp-action="Index">Location</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="Items" asp-action="Index">Items</a>
@@ -112,11 +111,7 @@
 
                                 
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" asp-area="Admin" asp-controller="ItemTransfer" asp-action="Index">Transfer Items</a>
-                                   @* <a class="dropdown-item" asp-area="Admin" asp-controller="Supplier" asp-action="Index">Supplier</a>
-
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" asp-area="Admin" asp-controller="PurchaseOrder" asp-action="Index">Purchasing Order</a>*@
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="ItemTransfer" asp-action="Index">Transfer Items</a>                                  
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -137,18 +132,7 @@
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="RequestItems" asp-action="Approve">Approve Request</a>
                                 </div>
                             </li>
-
-                         @*   <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sales Management</a>
-
-
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Supplier" asp-action="Index">Sales</a>
-
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" asp-area="Admin" asp-controller="PurchaseOrder" asp-action="Index">Point Of Sales</a>
-                                </div>
-                            </li>*@
+                   
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Room Reservation</a>
 
@@ -156,6 +140,7 @@
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="RoomList" asp-action="Index">Room List</a>
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="ClassList" asp-action="Index">Class Room</a>
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="RoomReservationAdmin" asp-action="Index">Reservation</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="FixedSchedulerRoom" asp-action="Index">Daftar Ruang Kelas Tetap</a>
                                 </div>                               
                                 
                             </li>

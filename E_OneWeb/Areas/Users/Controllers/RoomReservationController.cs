@@ -7,6 +7,9 @@ using E_OneWeb.Utility;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
 using NPOI.SS.Formula.Functions;
+using NuGet.Packaging;
+using System.Globalization;
+using static com.sun.tools.@internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 
 namespace E_OneWeb.Areas.Users.Controllers
 {
@@ -69,7 +72,7 @@ namespace E_OneWeb.Areas.Users.Controllers
 
             DateTime orderDateEnd = Convert.ToDateTime(vm.RoomReservationUser.EndDate);
             TimeSpan orderTimeEnd = vm.ClockEnd;
-            DateTime orderDateTimeEnd = orderDateEnd + orderTimeEnd;
+            DateTime orderDateTimeEnd = orderDate + orderTimeEnd;            
 
             var ValBookingRoom = _unitOfWork.GetRommReservationAdmin.GetAll().Where(z => z.Id == vm.RoomReservationUser.RoomReservationAdmin.Id && z.BookingEndDate > orderDateTimeStart);
 
@@ -78,14 +81,47 @@ namespace E_OneWeb.Areas.Users.Controllers
                 ViewBag.Status = "Error";
                 ViewBag.Reason = "Ruangan sudah di booking dari tanggal: " + ValBookingRoom.FirstOrDefault().BookingStartDate.Value.ToString("dd/MM/yyyy") + " jam: " + ValBookingRoom.FirstOrDefault().BookingStartDate.Value.ToString("HH:mm") +
                                  " sampai tanggal: " + ValBookingRoom.FirstOrDefault().BookingEndDate.Value.ToString("dd/MM/yyyy") + " jam: " + ValBookingRoom.FirstOrDefault().BookingEndDate.Value.ToString("HH:mm");
-                return View();
+                return View(vm);
             }
-            if (orderDateTimeStart >= orderDateTimeEnd)
+
+            string? dayss = orderDate.ToString("dddd");
+            var inx = Array.FindIndex(CultureInfo.CurrentCulture.DateTimeFormat.DayNames, x => x == dayss);
+            var BookingFixed = await _unitOfWork.FixedSchedulerRoom.GetAllAsync();
+            BookingFixed = BookingFixed.Where(z=>z.Flag == inx ).ToList();
+
+            var GetValBookingFixed_ = (from z in BookingFixed
+                                      select new
+                                    {
+                                        getdatestart_ = Convert.ToDateTime(orderDate).ToString("yyyy-MM-dd") + " "  + Convert.ToDateTime(z.ValStart_Clock).ToString("HH:mm"),
+                                        getdateend_ = Convert.ToDateTime(orderDate).ToString("yyyy-MM-dd") + " " + Convert.ToDateTime(z.ValEnd_Clock).ToString("HH:mm"),
+                                        study_ = z.Study,
+                                        dosen_ = z.Dosen
+                                      }).ToList();
+
+            var GetValBookingFixed = (from z in GetValBookingFixed_
+                                       select new
+                                      {
+                                          getdatestart = Convert.ToDateTime(z.getdatestart_),
+                                          getdateend = Convert.ToDateTime(z.getdateend_),
+                                          study = z.study_,
+                                          dosen = z.dosen_
+                                       }).ToList();
+            GetValBookingFixed = GetValBookingFixed.Where(x => x.getdatestart < orderDateTimeStart && x.getdateend > orderDateTimeEnd).ToList();
+
+            if (GetValBookingFixed.Count() > 0)
             {
                 ViewBag.Status = "Error";
-                ViewBag.Reason = "Tanggal Peminjaman harus lebih kecil dari Tanggal Selesai";
-                return View();
+                ViewBag.Reason = "Ruangan akan digunakan untuk kelas: " + GetValBookingFixed.FirstOrDefault().study + ", dosen: " + GetValBookingFixed.FirstOrDefault().dosen +
+                                 " jam: " + GetValBookingFixed.FirstOrDefault().getdatestart.ToString("HH:mm") + "-" + GetValBookingFixed.FirstOrDefault().getdateend.ToString("HH:mm");
+                return View(vm);
             }
+
+            //if (orderDateTimeStart >= orderDateTimeEnd)
+            //{
+            //    ViewBag.Status = "Error";
+            //    ViewBag.Reason = "Tanggal Peminjaman harus lebih kecil dari Tanggal Selesai";
+            //    return View();
+            //}
             if (orderDateTimeStart < DateTime.Now)
             {
                 ViewBag.Status = "Error";
@@ -314,8 +350,8 @@ namespace E_OneWeb.Areas.Users.Controllers
                             {
                                 id = z.Id,
                                 roomname = z.RoomReservationAdmin.RoomName +" (" + z.RoomReservationAdmin.LocationName +")",
-                                startdate = Convert.ToDateTime(z.StartDate).ToString("dd/MM/yyyy HH:mm"),
-                                enddate = Convert.ToDateTime(z.EndDate).ToString("dd/MM/yyyy HH:mm"),
+                                bookingdate = z.StartDate != null ? z.StartDate.Value.ToString("dd/MM/yyyy") : "",
+                                bookingclock = z.StartDate != null ? z.StartDate.Value.ToString("HH:mm") + "-" + Convert.ToDateTime(z.EndDate).ToString("HH:mm") : "",
                                 status = z.Status,
                                 statusid = z.StatusId,
                                 description = z.Description,
@@ -344,28 +380,81 @@ namespace E_OneWeb.Areas.Users.Controllers
         }
 
         #endregion
-
+        public List<GridBookingRoom> ListBookingRoom { get; set; }
         [HttpGet]
-        public async Task<IActionResult> GetBookingListUser(int? id)
+        public async Task<IActionResult> GetBookingListUser(int id)
         {
-            var datalist = (from z in await _unitOfWork.RoomReservationUser.GetAllAsync(includeProperties: "RoomReservationAdmin")
-                                    select new
-                                    {
-                                        id = z.Id,
-                                        idadmin = z.RoomAdminId,
-                                        locationname = z.RoomReservationAdmin.LocationName,
-                                        roomid = z.RoomReservationAdmin.RoomId,
-                                        roomname = z.RoomReservationAdmin.RoomName,
-                                        startdate = z.StartDate != null ? z.StartDate.Value.ToString("dd/MM/yyyy HH:mm") : "",
-                                        enddate = z.EndDate != null ? z.EndDate.Value.ToString("dd/MM/yyyy HH:mm") : "",
-                                        status = z.Status,
-                                        statusid = z.StatusId,
-                                        bookingby = z.EntryBy,
-                                        flag = z.RoomReservationAdmin.Flag,
-                                    }).Where(o => o.idadmin == id).ToList();
-          
+            try
+            {
+                RoomReservationAdmin RoomID = await _unitOfWork.RoomReservationAdmin.GetAsync(id);
 
-            return Json(new { data = datalist });
+                List<GridBookingRoom> ListGridBookingRoom = new List<GridBookingRoom>();
+                var datalist = (from z in await _unitOfWork.RoomReservationUser.GetAllAsync(includeProperties: "RoomReservationAdmin")
+                                select new GridBookingRoom
+                                {
+                                    //id = z.Id,
+                                    id = z.RoomAdminId,
+                                    //locationname = z.RoomReservationAdmin.LocationName,
+                                    //roomid = z.RoomReservationAdmin.RoomId,
+                                    roomname = z.RoomReservationAdmin.RoomName,
+                                    booking_date = z.StartDate != null ? z.StartDate.Value.ToString("dd/MM/yyyy") : "",
+                                    booking_clock = z.StartDate != null ? z.StartDate.Value.ToString("HH:mm") + "-" + z.EndDate.Value.ToString("HH:mm"): "",
+                                    study = z.Study,
+                                    dosen = z.Dosen,
+                                    //bookingby = z.EntryBy,
+                                    //flag = z.RoomReservationAdmin.Flag,
+                                }).Where(o => o.id == id).ToList();
+
+                var datalist2 = (from z in await _unitOfWork.FixedSchedulerRoom.GetAllAsync(includeProperties: "Room")
+                                 select new GridBookingRoom
+                                 {
+                                     id = z.RoomId,
+                                     roomname = z.RoomName,
+                                     booking_date = z.Days,
+                                     booking_clock = z.Start_Clock + "-" + z.End_Clock,
+                                     study = z.Study,
+                                     dosen = z.Dosen
+                                 }).Where(o => o.id == RoomID.RoomId).ToList();
+                
+                //foreach (var item in datalist)
+                //{
+                //    GridBookingRoom gridBookingRoom = new GridBookingRoom
+                //    {
+                //        id = item.id,
+                //        roomname = item.roomname,
+                //        booking_date = item.booking_date,
+                //        booking_clock = item.booking_clock,
+                //    };
+                //    ListGridBookingRoom.Add(gridBookingRoom);
+                //}
+
+
+                //foreach (var item in datalist2)
+                //{
+                //    GridBookingRoom gridBookingRoom = new GridBookingRoom
+                //    {
+                //        id = item.id,
+                //        roomname = item.roomname,
+                //        booking_date = item.booking_date,
+                //        booking_clock = item.booking_clock,
+                //    };
+                //    ListGridBookingRoom.Add(gridBookingRoom);
+                //}
+                ListGridBookingRoom.AddRange(datalist);
+                ListGridBookingRoom.AddRange(datalist2);
+                //var ListGridBookingRoom_ = ListGridBookingRoom.ToList();
+
+                return Json(new { data = ListGridBookingRoom });
+            }
+            catch (Exception ex)
+            {
+                string err = ex.Message.ToString();
+                return Json(new { data = "" });
+         
+            }
+            
+
+           
         }
     }
 }

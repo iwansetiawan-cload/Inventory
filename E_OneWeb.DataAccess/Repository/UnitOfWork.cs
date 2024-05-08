@@ -38,6 +38,9 @@ namespace E_OneWeb.DataAccess.Repository
             ImportItems = new ImportItemsRepository(_db);
             ImportBookingClass = new ImportBookingClassRepository(_db);
             SP_Call = new SP_Call(_db);
+            ImportFixedSchedulerRoom = new ImportFixedSchedulerRoomRepository(_db);
+            FixedSchedulerRoom = new FixedSchedulerRoomRepositoryAsync(_db);
+
         }
         public IArticleRepository Article { get; private set; }
         public IApplicationUserRepository ApplicationUser { get; private set; }
@@ -60,6 +63,8 @@ namespace E_OneWeb.DataAccess.Repository
         public IImportItemsRepository ImportItems { get; private set; }
         public IImportBookingClassRepository ImportBookingClass { get; private set; }
         public ISP_Call SP_Call { get; private set; }
+        public IFixedSchedulerRoomRepositoryAsync FixedSchedulerRoom { get; private set; }
+        public IImportFixedSchedulerRoomRepository ImportFixedSchedulerRoom { get; private set; }
         public void Dispose()
         {
             _db.Dispose();

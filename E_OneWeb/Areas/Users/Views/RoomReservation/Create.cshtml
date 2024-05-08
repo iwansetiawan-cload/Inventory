@@ -10,13 +10,7 @@
 
 <form method="post" enctype="multipart/form-data">
     <input type="hidden" value="@ViewBag.Status" id="idstatus" />
-   @*  @if (@ViewBag.Status != "" && ViewBag.Status != "Save Success")
-    {
-        <p class='alert alert-danger alert-dismissable text-center' id='alert'>
-            @ViewBag.Status
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </p>
-    } *@
+
     @if (@ViewBag.Status != "" || ViewBag.Status != null)
     {
         if (@ViewBag.Status.Contains("Error"))
@@ -43,7 +37,9 @@
         <input type="hidden" asp-for="RoomReservationUser.UserId"/>
         <input type="hidden" asp-for="RoomReservationUser.EntryBy"/>
         <input type="hidden" asp-for="RoomReservationUser.EntryDate"/>
-        @*<input type="hidden" asp-for="RoomReservationUser.RoomReservationAdmin.Id" id="cekidroom" />*@
+        <input type="hidden" asp-for="RoomReservationUser.RoomReservationAdmin.Id" id="RoomAdminId_" />
+        <input type="hidden" asp-for="RoomReservationUser.RoomReservationAdmin.RoomName" id="RoomName_" />
+        <input type="hidden" asp-for="RoomReservationUser.RoomReservationAdmin.LocationName" id="LocationName_" />
         <div class="col-12 border-bottom">
             <h2 class="text-primary">@title</h2>
         </div>
@@ -91,7 +87,7 @@
         <div class="col-12 pt-2">
             <div class="form-group row">
                 <div class="col-2">
-                    Dosen
+                    Dosen UTS/UAS
                 </div>
                 <div class="col-10">
                     <input asp-for="RoomReservationUser.Dosen" class="form-control" style="row-gap" />
@@ -105,14 +101,11 @@
                 <div class="col-2">
                     <label>Tanggal Peminjaman</label>
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     <input asp-for="RoomReservationUser.StartDate" class="form-control" type="date" />                        
                     <span asp-validation-for="RoomReservationUser.StartDate" class="text-danger"></span>
                 </div>
-                <div class="col-4">
-                    <input asp-for="ClockStart" type="text" id="timepickerStart" class="form-control" />
-                    <span asp-validation-for="ClockStart" class="text-danger"></span>
-                </div>
+               
        
             </div>
 
@@ -121,12 +114,16 @@
         <div class="col-12 pt-2">
             <div class="form-group row">
                 <div class="col-2">
-                    <label>Tanggal Selesai</label>
+                    <label>Jam Peminjaman</label>
                 </div>
-                <div class="col-6">
+              @*  <div class="col-6">
                     <input asp-for="RoomReservationUser.EndDate" class="form-control" type="date" />
                     <span asp-validation-for="RoomReservationUser.EndDate" class="text-danger"></span>
-                </div>            
+                </div>   *@
+                <div class="col-4">
+                    <input asp-for="ClockStart" type="text" id="timepickerStart" class="form-control" />
+                    <span asp-validation-for="ClockStart" class="text-danger"></span>
+                </div>
                 <div class="col-4">
                     <input asp-for="ClockEnd" type="text" id="timepickerEnd" class="form-control" />
                     <span asp-validation-for="ClockEnd" class="text-danger"></span>
@@ -224,18 +221,20 @@
                                             Tanggal Peminjaman
                                         </th>
                                         <th>
-                                            Tanggal Selesai
+                                            Jam Peminjaman
+                                        </th>
+                                        <th>
+                                            Mata Kuliah
+                                        </th>
+                                        <th>
+                                            Dosen UTS/UAS
                                         </th>
                                      
                                     </tr>
                                 </thead>
                             </table>
                         </div>
-
-
                         <br />
-
-
                     </div>
                 </div>
 
@@ -309,6 +308,11 @@
 
         $(document).ready(function () {          
             loadDataRoom();
+            var id = $('#RoomAdminId_').val();
+            if (id != "") {
+                loadDataBooking(id);
+            }
+            
             //var status = $("#idstatus").val();
 
             //if (status != "") {
@@ -352,8 +356,11 @@
             var adminid_room = $('td', obj).eq(2).html().trim();
 
             $('#RoomName').val(name_of_room);
+            $('#RoomName_').val(name_of_room);
             $('#LocationName').val(name_of_location);
+            $('#LocationName_').val(name_of_location);
             $('#RoomAdminId').val(adminid_room);
+            $('#RoomAdminId_').val(adminid_room);
             $("#btnSave").removeAttr("disabled");
             loadDataBooking(adminid_room);
         }
@@ -374,8 +381,10 @@
                 },
                 "columns": [
                     { "data": "roomname", "autoWidth": true },
-                    { "data": "startdate", "autoWidth": true },
-                    { "data": "enddate", "autoWidth": true }
+                    { "data": "booking_date", "autoWidth": true },
+                    { "data": "booking_clock", "autoWidth": true },
+                    { "data": "study", "autoWidth": true },
+                    { "data": "dosen", "autoWidth": true }
                 ]
             });
         }
