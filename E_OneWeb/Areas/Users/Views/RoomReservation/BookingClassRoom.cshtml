@@ -107,11 +107,11 @@
 
         <div class="col-12 pt-2">
             <div class="form-group row">
-                @Html.LabelFor(model => model.ClockStart, "Mulai jam", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.ClockStart, "Jam Mulai", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-4">                    
                     <input asp-for="ClockStart" type="text" id="timepickerStart" class="form-control" disabled />
                 </div>
-                @Html.LabelFor(model => model.ClockEnd, "Sampai jam", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.ClockEnd, "Jam Sampai", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-4">
                     <input asp-for="ClockEnd" type="text" id="timepickerEnd" class="form-control" disabled />
                 </div>

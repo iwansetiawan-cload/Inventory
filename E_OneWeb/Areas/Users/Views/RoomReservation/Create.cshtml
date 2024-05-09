@@ -37,6 +37,8 @@
         <input type="hidden" asp-for="RoomReservationUser.UserId"/>
         <input type="hidden" asp-for="RoomReservationUser.EntryBy"/>
         <input type="hidden" asp-for="RoomReservationUser.EntryDate"/>
+    @*    <input type="hidden" asp-for="ClockStart" />
+        <input type="hidden" asp-for="ClockEnd" />*@
         <input type="hidden" asp-for="RoomReservationUser.RoomReservationAdmin.Id" id="RoomAdminId_" />
         <input type="hidden" asp-for="RoomReservationUser.RoomReservationAdmin.RoomName" id="RoomName_" />
         <input type="hidden" asp-for="RoomReservationUser.RoomReservationAdmin.LocationName" id="LocationName_" />
@@ -52,6 +54,7 @@
 
                     <div class="input-group">
                         <input type="hidden" asp-for="RoomReservationUser.RoomReservationAdmin.Id" id="RoomAdminId" />
+                        <input type="hidden" asp-for="RoomReservationUser.RoomReservationAdmin.RoomId" id="RoomId" />
                         <input asp-for="RoomReservationUser.RoomReservationAdmin.RoomName" id="RoomName" class="form-control" disabled />
                         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#lookupRoomAdmin" style="width:145px" id="btn-lookuproomadmin"><i class="fa fa-search" aria-hidden="true"></i></button>
                        
@@ -111,15 +114,15 @@
 
         </div>
 
-        <div class="col-12 pt-2">
+@*        <div class="col-12 pt-2">
             <div class="form-group row">
                 <div class="col-2">
                     <label>Jam Peminjaman</label>
                 </div>
-              @*  <div class="col-6">
+                <div class="col-6">
                     <input asp-for="RoomReservationUser.EndDate" class="form-control" type="date" />
                     <span asp-validation-for="RoomReservationUser.EndDate" class="text-danger"></span>
-                </div>   *@
+                </div>   
                 <div class="col-4">
                     <input asp-for="ClockStart" type="text" id="timepickerStart" class="form-control" />
                     <span asp-validation-for="ClockStart" class="text-danger"></span>
@@ -131,7 +134,33 @@
               
             </div>
 
+        </div>*@
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+              
+                @Html.LabelFor(model => model.ClockStart, "Jam Mulai", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-4">
+                    <div class="input-group clockpicker">
+                      @*  <input type="text" class="form-control" value="00:00" id="Timepicker_Start">*@
+                        <input asp-for="ClockStart" type="text" value="@ViewBag.ClockStart" id="Timepicker_Start" class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                    </div>
+                </div>
+                @Html.LabelFor(model => model.ClockStart, "Jam Selesai", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-4">                  
+                    <div class="input-group clockpicker">
+             @*           <input type="text" class="form-control" value="00:00" id="Timepicker_End">*@
+                        <input asp-for="ClockEnd" type="text" value="@ViewBag.ClockEnd" id="Timepicker_End" class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
+     
        @* <div class="row">
             <div class="col-sm-6">
                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
@@ -269,7 +298,8 @@
                                 </th>
                                 <th>
                                     Lokasi Gedung
-                                </th>                           
+                                </th>
+                                <th style="display:none"></th>
                                 <th style="display:none"></th>
                             </tr>
                         </thead>
@@ -292,13 +322,28 @@
    @* <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         *@
-    <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
+
+   @* <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />*@
+	<script src="~/js/dist/bootstrap-clockpicker.js"></script>
+	<script src="~/js/dist/bootstrap-clockpicker.min.js"></script>
+	<script src="~/js/dist/jquery-clockpicker.js"></script>
+	<script src="~/js/dist/jquery-clockpicker.min.js"></script>
+	<link href="~/js/dist/jquery-clockpicker.css" rel="stylesheet" />
+	<link href="~/js/dist/jquery-clockpicker.min.css" rel="stylesheet" />
     <partial name="_ValidationScriptsPartial" />
     <script type="text/javascript">
-        $('#timepickerStart').timepicker();
-        $('#timepickerEnd').timepicker();
+        $('.clockpicker').clockpicker({
+            placement: 'top',
+            align: 'left',
+            donetext: 'Done'
+        });
+
+        //$('#timepickerStart').timepicker();
+        //$('#timepickerEnd').timepicker();
+
+     
 
         $('.collapse').on('show.bs.collapse', function () {
             $(this).parent().find(".fa-chevron-circle-down").toggleClass("fa-chevron-circle-down fa-chevron-circle-up");
@@ -340,12 +385,14 @@
                     { "data": "name_of_room", "width": "30%" },
                     { "data": "name_of_location", "width": "30%" },
                     { "data": "id", "width": "10%" },
+                    { "data": "roomId", "width": "10%" },
 
                 ],
                 "createdRow": function (row, data, index) {
                     $(row).attr('onclick', 'select_row(this)');
                     $(row).attr('data-bs-dismiss', 'modal');
                     $('td', row).eq(2).attr('style', 'display:none;');
+                    $('td', row).eq(3).attr('style', 'display:none;');
                 },
             });
         }
@@ -354,6 +401,7 @@
             var name_of_room = $('td', obj).eq(0).html().trim();
             var name_of_location = $('td', obj).eq(1).html().trim();
             var adminid_room = $('td', obj).eq(2).html().trim();
+            var roomid = $('td', obj).eq(3).html().trim();
 
             $('#RoomName').val(name_of_room);
             $('#RoomName_').val(name_of_room);
@@ -361,6 +409,7 @@
             $('#LocationName_').val(name_of_location);
             $('#RoomAdminId').val(adminid_room);
             $('#RoomAdminId_').val(adminid_room);
+            $('#RoomId').val(roomid);
             $("#btnSave").removeAttr("disabled");
             loadDataBooking(adminid_room);
         }

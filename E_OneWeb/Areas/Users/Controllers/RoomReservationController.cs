@@ -42,7 +42,6 @@ namespace E_OneWeb.Areas.Users.Controllers
             RoomReservationUserVM vm = new RoomReservationUserVM()
             {
                 RoomReservationUser = new RoomReservationUser()
-
             };
           
             vm.RoomReservationUser.UserId = user.Id;
@@ -53,7 +52,9 @@ namespace E_OneWeb.Areas.Users.Controllers
             vm.RoomReservationUser.StartDate = DateTime.Now;
             //ViewBag.TimeNow = DateTime.Now.ToString("HH:mm");
             vm.RoomReservationUser.EndDate = DateTime.Now;
-            
+            ViewBag.ClockStart = DateTime.Now.ToString("HH:mm");
+            ViewBag.ClockEnd = DateTime.Now.ToString("HH:mm");
+
             return View(vm);
 
         }
@@ -72,22 +73,32 @@ namespace E_OneWeb.Areas.Users.Controllers
 
             DateTime orderDateEnd = Convert.ToDateTime(vm.RoomReservationUser.EndDate);
             TimeSpan orderTimeEnd = vm.ClockEnd;
-            DateTime orderDateTimeEnd = orderDate + orderTimeEnd;            
+            DateTime orderDateTimeEnd = orderDate + orderTimeEnd;
 
-            var ValBookingRoom = _unitOfWork.GetRommReservationAdmin.GetAll().Where(z => z.Id == vm.RoomReservationUser.RoomReservationAdmin.Id && z.BookingEndDate > orderDateTimeStart);
+            ViewBag.ClockStart = orderDateTimeStart.ToString("HH:mm");
+            ViewBag.ClockEnd = orderDateTimeEnd.ToString("HH:mm");
+
+            if (orderDateTimeEnd < DateTime.Now)
+            {
+                ViewBag.Status = "Error";
+                ViewBag.Reason = "Tanggal dan jam peminjaman harus lebih besar dari waktu saat ini";
+                return View(vm);
+            }
+
+            var ValBookingRoom = _unitOfWork.GetRommReservationAdmin.GetAll().Where(z => z.Id == vm.RoomReservationUser.RoomReservationAdmin.Id && 
+            ((z.BookingStartDate < orderDateTimeEnd && z.BookingEndDate > orderDateTimeStart)) || (orderDateTimeStart < z.BookingStartDate && orderDateTimeEnd > z.BookingStartDate) || (orderDateTimeStart > z.BookingStartDate && orderDateTimeStart < z.BookingEndDate));
 
             if (ValBookingRoom.Count() > 0)
             {
                 ViewBag.Status = "Error";
-                ViewBag.Reason = "Ruangan sudah di booking dari tanggal: " + ValBookingRoom.FirstOrDefault().BookingStartDate.Value.ToString("dd/MM/yyyy") + " jam: " + ValBookingRoom.FirstOrDefault().BookingStartDate.Value.ToString("HH:mm") +
-                                 " sampai tanggal: " + ValBookingRoom.FirstOrDefault().BookingEndDate.Value.ToString("dd/MM/yyyy") + " jam: " + ValBookingRoom.FirstOrDefault().BookingEndDate.Value.ToString("HH:mm");
+                ViewBag.Reason = "Ruangan sudah di booking dari tanggal: " + ValBookingRoom.FirstOrDefault().BookingStartDate.Value.ToString("dd/MM/yyyy") + " jam: " + ValBookingRoom.FirstOrDefault().BookingStartDate.Value.ToString("HH:mm") + "-" + ValBookingRoom.FirstOrDefault().BookingEndDate.Value.ToString("HH:mm");
                 return View(vm);
             }
 
             string? dayss = orderDate.ToString("dddd");
             var inx = Array.FindIndex(CultureInfo.CurrentCulture.DateTimeFormat.DayNames, x => x == dayss);
             var BookingFixed = await _unitOfWork.FixedSchedulerRoom.GetAllAsync();
-            BookingFixed = BookingFixed.Where(z=>z.Flag == inx ).ToList();
+            BookingFixed = BookingFixed.Where(z=>z.Flag == inx && z.RoomId == vm.RoomReservationUser.RoomReservationAdmin.RoomId).ToList();
 
             var GetValBookingFixed_ = (from z in BookingFixed
                                       select new
@@ -106,7 +117,7 @@ namespace E_OneWeb.Areas.Users.Controllers
                                           study = z.study_,
                                           dosen = z.dosen_
                                        }).ToList();
-            GetValBookingFixed = GetValBookingFixed.Where(x => x.getdatestart < orderDateTimeStart && x.getdateend > orderDateTimeEnd).ToList();
+            GetValBookingFixed = GetValBookingFixed.Where(x => (x.getdatestart < orderDateTimeStart && x.getdateend > orderDateTimeEnd) || (orderDateTimeStart < x.getdatestart && orderDateTimeEnd > x.getdatestart) || (orderDateTimeStart > x.getdatestart && orderDateTimeStart < x.getdateend)).ToList();
 
             if (GetValBookingFixed.Count() > 0)
             {
@@ -122,17 +133,12 @@ namespace E_OneWeb.Areas.Users.Controllers
             //    ViewBag.Reason = "Tanggal Peminjaman harus lebih kecil dari Tanggal Selesai";
             //    return View();
             //}
-            if (orderDateTimeStart < DateTime.Now)
-            {
-                ViewBag.Status = "Error";
-                ViewBag.Reason = "Tanggal dan jam peminjaman harus lebih besar dari waktu saat ini";
-                return View();
-            }
+     
             if (vm.RoomReservationUser.RoomReservationAdmin.Id == 0)
             {
                 ViewBag.Status = "Error";
                 ViewBag.Reason = "Ruangan harus dipilih";
-                return View();
+                return View(vm);
             }
 
             if (vm.RoomReservationUser.Id == 0)
@@ -308,7 +314,8 @@ namespace E_OneWeb.Areas.Users.Controllers
                                 id = z.Id,
                                 flag = z.Flag,
                                 name_of_room = z.RoomName,
-                                name_of_location = z.LocationName
+                                name_of_location = z.LocationName,
+                                roomId = z.RoomId,
                             }).Where(u => u.flag == 1).ToList();
             return Json(new { data = datalist });
         }
