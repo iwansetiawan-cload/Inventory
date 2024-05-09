@@ -237,8 +237,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 location = z.LocationName,
                                 room = z.RoomName,
                                 days = z.Days,
-                                startclock = z.ValStart_Clock,
-                                endclock = z.ValEnd_Clock,
+                                startclock = z.Start_Clock,
+                                endclock = z.End_Clock,
                                 study = z.Study,
                                 dosen = z.Dosen
                             }).ToList();
