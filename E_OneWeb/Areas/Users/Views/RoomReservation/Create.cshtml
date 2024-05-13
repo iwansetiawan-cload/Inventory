@@ -47,9 +47,7 @@
         </div>
         <div class="col-12 pt-2">
             <div class="form-group row">
-                <div class="col-2">
-                    Nama Ruangan
-                </div>
+                @Html.LabelFor(model => model.RoomReservationUser.RoomReservationAdmin.RoomName, "Nama Ruangan", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
 
                     <div class="input-group">
@@ -65,10 +63,8 @@
         </div>
 
         <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-2">
-                    Lokasi Gedung
-                </div>
+            <div class="form-group row">       
+                @Html.Label("", "Lokasi Gedung", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <input asp-for="RoomReservationUser.RoomReservationAdmin.LocationName" class="form-control" style="row-gap" id="LocationName" disabled />
 
@@ -77,10 +73,8 @@
 
         </div>
          <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-2">
-                    Mata Kuliah
-                </div>
+            <div class="form-group row">           
+                @Html.Label("", "Mata Kuliah", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <input asp-for="RoomReservationUser.Study" class="form-control" style="row-gap" />
                 </div>
@@ -88,10 +82,8 @@
 
         </div>
         <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-2">
-                    Dosen UTS/UAS
-                </div>
+            <div class="form-group row">           
+                @Html.Label("", "Dosen UTS/UAS", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <input asp-for="RoomReservationUser.Dosen" class="form-control" style="row-gap" />
                 </div>
@@ -100,10 +92,8 @@
         </div>
 
         <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-2">
-                    <label>Tanggal Peminjaman</label>
-                </div>
+            <div class="form-group row">            
+                @Html.LabelFor(model => model.RoomReservationUser.StartDate, "Tanggal Peminjaman", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-4">
                     <input asp-for="RoomReservationUser.StartDate" class="form-control" type="date" />                        
                     <span asp-validation-for="RoomReservationUser.StartDate" class="text-danger"></span>
@@ -178,10 +168,8 @@
        
 
         <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-2">
-                   Keperluan
-                </div>
+            <div class="form-group row">            
+                @Html.Label("", "Keperluan", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <textarea asp-for="RoomReservationUser.Description" class="form-control"></textarea>
                 </div>
@@ -190,10 +178,8 @@
         </div>
 
         <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-2">
-                    Mengetahui
-                </div>
+            <div class="form-group row">           
+                @Html.Label("", "Mengetahui", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <input asp-for="RoomReservationUser.ApproveBy" class="form-control" style="row-gap" />
                 </div>
@@ -201,10 +187,8 @@
 
         </div>
         <div class="col-12 pt-2">
-            <div class="form-group row">
-                <div class="col-2">
-                    Upload File
-                </div>
+            <div class="form-group row">               
+                @Html.Label("", "Upload File", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <input type="file" name="files" id="uploadBox" multiple class="form-control" />
                 </div>
