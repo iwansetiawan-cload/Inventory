@@ -86,7 +86,7 @@ namespace E_OneWeb.Areas.Users.Controllers
             }
 
             var ValBookingRoom = _unitOfWork.GetRommReservationAdmin.GetAll().Where(z => z.Id == vm.RoomReservationUser.RoomReservationAdmin.Id && 
-            ((z.BookingStartDate < orderDateTimeEnd && z.BookingEndDate > orderDateTimeStart)) || (orderDateTimeStart < z.BookingStartDate && orderDateTimeEnd > z.BookingStartDate) || (orderDateTimeStart > z.BookingStartDate && orderDateTimeStart < z.BookingEndDate));
+            ((orderDateTimeStart >= z.BookingStartDate && orderDateTimeStart < z.BookingEndDate) || (orderDateTimeEnd > z.BookingStartDate && orderDateTimeEnd <= z.BookingEndDate) || (orderDateTimeStart <= z.BookingStartDate && orderDateTimeEnd >= z.BookingEndDate)));
 
             if (ValBookingRoom.Count() > 0)
             {
@@ -117,7 +117,7 @@ namespace E_OneWeb.Areas.Users.Controllers
                                           study = z.study_,
                                           dosen = z.dosen_
                                        }).ToList();
-            GetValBookingFixed = GetValBookingFixed.Where(x => (x.getdatestart < orderDateTimeStart && x.getdateend > orderDateTimeEnd) || (orderDateTimeStart < x.getdatestart && orderDateTimeEnd > x.getdatestart) || (orderDateTimeStart > x.getdatestart && orderDateTimeStart < x.getdateend)).ToList();
+            GetValBookingFixed = GetValBookingFixed.Where(x => (orderDateTimeStart >= x.getdatestart && orderDateTimeStart < x.getdateend) || (orderDateTimeEnd > x.getdatestart && orderDateTimeEnd <= x.getdateend) || (orderDateTimeStart <= x.getdatestart && orderDateTimeEnd >= x.getdateend)).ToList();
 
             if (GetValBookingFixed.Count() > 0)
             {
