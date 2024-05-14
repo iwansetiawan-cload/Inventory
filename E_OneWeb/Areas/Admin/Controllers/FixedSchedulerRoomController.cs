@@ -43,7 +43,9 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                     locationname = z.LocationName,
                                     days = z.Days,
                                     clock = z.Start_Clock + "-" + z.End_Clock,
+                                    prodi = z.Prodi,
                                     study = z.Study,
+                                    semester = z.Semester,
                                     dosen = z.Dosen
                                 }).ToList();
 
@@ -130,8 +132,10 @@ namespace E_OneWeb.Areas.Admin.Controllers
                             //}
                             newImport.Start_Clock = dt.Rows[i][4].ToString();
                             newImport.End_Clock = dt.Rows[i][5].ToString();
-                            newImport.Study = dt.Rows[i][6].ToString();
-                            newImport.Dosen = dt.Rows[i][7].ToString();
+                            newImport.Prodi = dt.Rows[i][6].ToString();
+                            newImport.Study = dt.Rows[i][7].ToString();
+                            newImport.Semester = dt.Rows[i][8].ToString();
+                            newImport.Dosen = dt.Rows[i][9].ToString();
                             newImport.EntryBy = user.Name;
                             newImport.EntryDate = DateTime.Now;
                             newImport.ImportStatus = "Valid";
@@ -239,7 +243,9 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 days = z.Days,
                                 startclock = z.Start_Clock,
                                 endclock = z.End_Clock,
+                                prodi = z.Prodi,
                                 study = z.Study,
+                                semester = z.Semester,
                                 dosen = z.Dosen
                             }).ToList();
 
@@ -306,18 +312,26 @@ namespace E_OneWeb.Areas.Admin.Controllers
             cell.CellStyle = style;
 
             cell = rowHeader.CreateCell(4);
-            cell.SetCellValue("Mulai Jam Format(HH:mm AM/PM)");
+            cell.SetCellValue("Jam Mulai Format(HH:mm)");
             cell.CellStyle = style;
 
             cell = rowHeader.CreateCell(5);
-            cell.SetCellValue("sampai Jam Format(HH:mm AM/PM)");
+            cell.SetCellValue("Jam Selesai Format(HH:mm)");
             cell.CellStyle = style;
 
             cell = rowHeader.CreateCell(6);
-            cell.SetCellValue("Mata Kuliah");
+            cell.SetCellValue("Prodi");
             cell.CellStyle = style;
 
             cell = rowHeader.CreateCell(7);
+            cell.SetCellValue("Mata Kuliah");
+            cell.CellStyle = style;
+
+            cell = rowHeader.CreateCell(8);
+            cell.SetCellValue("Semester");
+            cell.CellStyle = style;
+
+            cell = rowHeader.CreateCell(9);
             cell.SetCellValue("Dosen UTS/UAS");
             cell.CellStyle = style;
 

@@ -116,10 +116,10 @@ BEGIN
 		(SELECT TOP 1 Id FROM Rooms WHERE Name=LTRIM(RTRIM(UP.RoomName))
 		AND IDLocation = (SELECT TOP 1 Id FROM Locations WHERE Name=LTRIM(RTRIM(UP.LocationName)))),
 		ValDays = [Days],
-		Start_Clock = FORMAT(CONVERT(DATETIME, Start_Clock,103),'HH:mm'),
-		End_Clock = FORMAT(CONVERT(DATETIME, End_Clock,103),'HH:mm'),
-		ValStart_Clock = @DATEEXEC + FORMAT(CONVERT(DATETIME, Start_Clock,103),'HH:mm'),
-		ValEnd_Clock = @DATEEXEC + FORMAT(CONVERT(DATETIME, End_Clock,103),'HH:mm'),
+		Start_Clock = FORMAT(CONVERT(DATETIME, Start_Clock),'HH:mm'),
+		End_Clock = FORMAT(CONVERT(DATETIME, End_Clock),'HH:mm'),
+		ValStart_Clock = @DATEEXEC + FORMAT(CONVERT(DATETIME, Start_Clock),'HH:mm'),
+		ValEnd_Clock = @DATEEXEC + FORMAT(CONVERT(DATETIME, End_Clock),'HH:mm'),
 		Flag = case when ltrim(rtrim([Days])) = 'senin' then 1 when  ltrim(RTRIM([Days])) = 'selasa' then 2 when  ltrim(RTRIM([Days])) = 'rabu' then 3
 			   when  ltrim(RTRIM([Days])) = 'kamis' then 4 when ltrim(RTRIM([Days])) = 'jumat' then 5 when  ltrim(RTRIM([Days])) = 'sabtu' then 6 when  ltrim(RTRIM([Days])) = 'minggu' then 7  end
 		FROM ImportFixedSchedulerRoom UP

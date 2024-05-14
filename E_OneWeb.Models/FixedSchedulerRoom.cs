@@ -23,7 +23,9 @@ namespace E_OneWeb.Models
         public string? End_Clock { get; set; }
         public DateTime? ValStart_Clock { get; set; }
         public DateTime? ValEnd_Clock { get; set; }
+        public string? Prodi { get; set; }
         public string? Study { get; set; }
+        public string? Semester { get; set; }
         public string? Dosen { get; set; }
         public int? Flag { get; set; }
         [MaxLength(255)]

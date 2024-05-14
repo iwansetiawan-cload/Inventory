@@ -39,7 +39,13 @@
                    Nama Gedung
                 </th>
                 <th>
+                   Prodi
+                </th>
+                <th>
                    Mata Kuliah
+                </th>
+                <th>
+                   Semester
                 </th>
                 <th>
                    Dosen UTS/UAS
@@ -70,12 +76,14 @@
                     { "data": "clock", "autoWidth": true },
                     { "data": "roomname", "autoWidth": true },
                     { "data": "locationname", "autoWidth": true },
+                    { "data": "prodi", "autoWidth": true },
                     { "data": "study", "autoWidth": true },
+                    { "data": "semester", "autoWidth": true },
                     { "data": "dosen", "autoWidth": true }
                 ],
                 "createdRow": function (row, data, index) {
                     //$('td', row).eq(4).attr('style', 'text-align:right;');
-                    //$('td', row).eq(6).attr('style', 'text-align:center;');
+                    $('td', row).eq(0).attr('style', 'text-align:center;');
                     //$('td', row).eq(7).attr('style', 'text-align:right;');
                 }
             });
