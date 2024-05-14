@@ -25,7 +25,9 @@ namespace E_OneWeb.Models.ViewModels
         public string? roomname { get; set; }    
         public string? booking_date { get; set;}
         public string? booking_clock { get;set; }
+        public string? prodi { get; set; }
         public string? study { get; set; }
+        public string? semester { get; set; }
         public string? dosen { get; set; }
 
     }

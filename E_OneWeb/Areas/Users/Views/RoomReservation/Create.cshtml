@@ -72,11 +72,29 @@
             </div>
 
         </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                @Html.Label("", "Prodi", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-10">
+                    <input asp-for="RoomReservationUser.Description" class="form-control"></input>
+                </div>
+            </div>
+
+        </div>
          <div class="col-12 pt-2">
             <div class="form-group row">           
                 @Html.Label("", "Mata Kuliah", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <input asp-for="RoomReservationUser.Study" class="form-control" style="row-gap" />
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                @Html.Label("", "Semester", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-10">
+                    <input asp-for="RoomReservationUser.ApproveBy" class="form-control" style="row-gap" />
                 </div>
             </div>
 
@@ -165,27 +183,9 @@
                 </div>
             </div>
         </div>*@
-       
+               
 
-        <div class="col-12 pt-2">
-            <div class="form-group row">            
-                @Html.Label("", "Keperluan", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-10">
-                    <textarea asp-for="RoomReservationUser.Description" class="form-control"></textarea>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col-12 pt-2">
-            <div class="form-group row">           
-                @Html.Label("", "Mengetahui", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-10">
-                    <input asp-for="RoomReservationUser.ApproveBy" class="form-control" style="row-gap" />
-                </div>
-            </div>
-
-        </div>
+        
         <div class="col-12 pt-2">
             <div class="form-group row">               
                 @Html.Label("", "Upload File", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -237,7 +237,13 @@
                                             Jam Peminjaman
                                         </th>
                                         <th>
+                                            Prodi
+                                        </th>
+                                        <th>
                                             Mata Kuliah
+                                        </th>
+                                        <th>
+                                            Semester
                                         </th>
                                         <th>
                                             Dosen UTS/UAS
@@ -416,7 +422,9 @@
                     { "data": "roomname", "autoWidth": true },
                     { "data": "booking_date", "autoWidth": true },
                     { "data": "booking_clock", "autoWidth": true },
+                    { "data": "prodi", "autoWidth": true },
                     { "data": "study", "autoWidth": true },
+                    { "data": "semester", "autoWidth": true },
                     { "data": "dosen", "autoWidth": true }
                 ]
             });

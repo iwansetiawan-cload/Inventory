@@ -404,12 +404,12 @@ namespace E_OneWeb.Areas.Users.Controllers
                                     //locationname = z.RoomReservationAdmin.LocationName,
                                     //roomid = z.RoomReservationAdmin.RoomId,
                                     roomname = z.RoomReservationAdmin.RoomName,
-                                    booking_date = z.StartDate != null ? z.StartDate.Value.ToString("dd/MM/yyyy") : "",
+                                    booking_date = z.StartDate != null ? z.StartDate.Value.ToString("dddd", new System.Globalization.CultureInfo("id-ID")) + "-" +  z.StartDate.Value.ToString("dd/MM/yyyy") : "",
                                     booking_clock = z.StartDate != null ? z.StartDate.Value.ToString("HH:mm") + "-" + z.EndDate.Value.ToString("HH:mm"): "",
                                     study = z.Study,
                                     dosen = z.Dosen,
-                                    //bookingby = z.EntryBy,
-                                    //flag = z.RoomReservationAdmin.Flag,
+                                    prodi = z.Description,
+                                    semester = z.ApproveBy
                                 }).Where(o => o.id == id).ToList();
 
                 var datalist2 = (from z in await _unitOfWork.FixedSchedulerRoom.GetAllAsync(includeProperties: "Room")
@@ -420,7 +420,9 @@ namespace E_OneWeb.Areas.Users.Controllers
                                      booking_date = z.Days,
                                      booking_clock = z.Start_Clock + "-" + z.End_Clock,
                                      study = z.Study,
-                                     dosen = z.Dosen
+                                     dosen = z.Dosen,
+                                     prodi = z.Prodi,
+                                     semester = z.Semester
                                  }).Where(o => o.id == RoomID.RoomId).ToList();
                 
                 //foreach (var item in datalist)
