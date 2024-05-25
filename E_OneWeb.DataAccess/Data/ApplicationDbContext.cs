@@ -33,7 +33,10 @@ namespace E_OneWeb.DataAccess.Data
         public DbSet<ImportBookingClass> ImportBookingClass { get; set; }
         public DbSet<FixedSchedulerRoom> FixedSchedulerRoom { get; set; }
         public DbSet<ImportFixedSchedulerRoom> ImportFixedSchedulerRoom { get; set; }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public DbSet<VehicleReservationAdmin> VehicleReservationAdmin { get; set; }
+        public DbSet<VehicleReservationUser> VehicleReservationUser { get; set; }		
+		public DbSet<Drivers> Drivers { get; set; }
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
         }

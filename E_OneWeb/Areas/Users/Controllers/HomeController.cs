@@ -2,7 +2,9 @@
 using E_OneWeb.DataAccess.Repository.IRepository;
 using E_OneWeb.Models;
 using E_OneWeb.Models.ViewModels;
+using E_OneWeb.Utility;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using System.Data;
@@ -24,10 +26,23 @@ namespace E_OneWeb.Areas.Users.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            //IEnumerable<Article> articleList = _unitOfWork.Article.GetAll();
-            //return View(articleList);
+            var countNotice = (from z in await  _unitOfWork.VehicleReservationUser.GetAllAsync()
+                               select new GridVehicleReservationAdmin
+                               {
+                                   id = z.Id,
+                                   flag = z.Flag
+                               }).Where(i => i.flag == 1).Count();
+          
+            if (countNotice > 0)
+            {
+                HttpContext.Session.SetInt32(SD.ssNotice, countNotice);
+            }
+            else
+            {
+                HttpContext.Session.SetString(SD.ssNotice, "o");
+            }
             return View();
         }
         [HttpGet]

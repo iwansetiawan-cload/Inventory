@@ -1,5 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using E_OneWeb.Utility;
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
@@ -14,6 +16,9 @@
             <li class="nav-item">
                 <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fa fa-fw fa-user"></i>&nbsp;Hello @UserManager.GetUserName(User)!</a>
             </li>
+          @*  <li class="nav-item">
+                <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;Message</a>
+            </li>*@
             <li class="nav-item">
                 <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                     <button id="logout" type="submit" class="nav-link btn btn-link border-0">Logout</button>
@@ -23,6 +28,35 @@
         }
         else
         {
+            @*    <li class="nav-item">
+                <a id="manage" class="nav-link" asp-area="Admin" asp-controller="Notification" asp-action="Index" title="Notif"><i class="fa fa-fw fa-bell"></i></a>
+            </li>*@
+            @if (User.IsInRole(SD.Role_Admin))
+            {
+                @if (HttpContextAccessor.HttpContext.Session.GetInt32(SD.ssNotice) != null && HttpContextAccessor.HttpContext.Session.GetString(SD.ssNotice) != "o")
+                {
+                    <li style="color:white;">
+                        <a asp-area="Admin" asp-controller="Notification" asp-action="Index" title="Notif" style="color:lawngreen" class="nav-link">
+                            @{
+                                var count = HttpContextAccessor.HttpContext.Session.GetInt32(SD.ssNotice);
+                            }
+                            <i class="fa fa-fw fa-bell"></i>(@count)
+
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li style="color:white;">
+                        <a href="#" class="nav-link">
+                            <i class="fa fa-fw fa-bell"></i>(0)
+                        </a>
+                    </li>
+                }
+            }
+           
+         
+        
             <li class="nav-item">
                 <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fa fa-fw fa-user"></i>&nbsp;Hello @UserManager.GetUserName(User)!</a>
             </li>

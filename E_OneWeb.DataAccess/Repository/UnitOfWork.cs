@@ -40,6 +40,9 @@ namespace E_OneWeb.DataAccess.Repository
             SP_Call = new SP_Call(_db);
             ImportFixedSchedulerRoom = new ImportFixedSchedulerRoomRepository(_db);
             FixedSchedulerRoom = new FixedSchedulerRoomRepositoryAsync(_db);
+            VehicleReservationAdmin = new VehicleReservationAdminRepositoryAsync(_db);
+            VehicleReservationUser = new VehicleReservationUserRepositoryAsync(_db);
+            Driver = new DriversRepository(_db);
 
         }
         public IArticleRepository Article { get; private set; }
@@ -65,6 +68,9 @@ namespace E_OneWeb.DataAccess.Repository
         public ISP_Call SP_Call { get; private set; }
         public IFixedSchedulerRoomRepositoryAsync FixedSchedulerRoom { get; private set; }
         public IImportFixedSchedulerRoomRepository ImportFixedSchedulerRoom { get; private set; }
+        public IVehicleReservationAdminRepositoryAsync VehicleReservationAdmin { get; private set; }
+        public IVehicleReservationUserRepositoryAsync VehicleReservationUser { get; private set; }
+        public IDriversRepository Driver { get; private set; }
         public void Dispose()
         {
             _db.Dispose();

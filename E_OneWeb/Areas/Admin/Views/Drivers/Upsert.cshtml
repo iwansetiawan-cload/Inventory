@@ -1,0 +1,71 @@
+﻿@model E_OneWeb.Models.Drivers
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var title = "Tambah Supir";
+}
+
+<form method="post">
+    <br />
+    <div class="row p-3 border">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (Model.Id != 0)
+        {
+            //edit
+            title = "Ubah Supir";
+        }
+        <div class="col-12 border-bottom">
+            <h2 class="text-primary">@title</h2>
+        </div>
+
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Name, "Nama", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-10">
+                    <input asp-for="Name" class="form-control" style="row-gap" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div> 
+
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Address, "Alamat", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-10">
+                    <input asp-for="Address" class="form-control" style="row-gap" />
+                </div>
+            </div>
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                @Html.LabelFor(model => model.PhoneNumber, "No Telepon", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-10">
+                    <input asp-for="PhoneNumber" class="form-control" style="row-gap" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+
+        <br />
+        <div class="form-group margin-bottom-2 pt-2">
+            <div class="col-md-12 text-center">
+                @if (Model.Id != 0)
+                {
+                    <partial name="_EditAndBackToListButton" model="Model.Id" />
+                }
+                else
+                {
+                    <partial name="_CreateAndBackToListButton" />
+                }
+            </div>
+        </div>
+
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

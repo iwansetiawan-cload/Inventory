@@ -359,11 +359,33 @@ namespace E_OneWeb.Areas.Users.Controllers
                                 roomname = z.RoomReservationAdmin.RoomName +" (" + z.RoomReservationAdmin.LocationName +")",
                                 bookingdate = z.StartDate != null ? z.StartDate.Value.ToString("dd/MM/yyyy") : "",
                                 bookingclock = z.StartDate != null ? z.StartDate.Value.ToString("HH:mm") + "-" + Convert.ToDateTime(z.EndDate).ToString("HH:mm") : "",
-                                status = z.Status,
+                                status = z.Status == "Waiting Approval" ? "Menunggu Persetujuan" : z.Status == "Approved" ? "Disetujui" : z.Status == "Rejected" ? "Ditolak" : z.Status,
                                 statusid = z.StatusId,
                                 description = z.Description,
                                 entryby = z.EntryBy,
                                 notes = z.Notes
+                            }).Where(i => i.entryby == user.ToString()).ToList().OrderByDescending(o => o.id);
+
+            return Json(new { data = datalist });
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetVehicleReservation()
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+
+            var datalist = (from z in await _unitOfWork.VehicleReservationUser.GetAllAsync(includeProperties: "VehicleReservationAdmin")
+                            select new
+                            {
+                                id = z.Id,
+                                name = z.VehicleReservationAdmin.ItemName,
+                                bookingdate = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("dd/MM/yyyy") : "",
+                                bookingclock = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("HH:mm") + "-" + z.BookingEndDate.Value.ToString("HH:mm") : "",
+                                status = z.Status,
+                                statusid = z.StatusId,
+                                entryby = z.EntryBy,
+                                notes = z.NotesReject
                             }).Where(i => i.entryby == user.ToString()).ToList().OrderByDescending(o => o.id);
 
             return Json(new { data = datalist });

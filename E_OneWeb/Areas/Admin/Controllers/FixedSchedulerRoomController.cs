@@ -10,6 +10,7 @@ using System.Data;
 using System.Security.Claims;
 using NPOI.SS.Formula.Functions;
 using sun.misc;
+using E_OneWeb.Models.ViewModels;
 
 namespace E_OneWeb.Areas.Admin.Controllers
 {
@@ -24,8 +25,23 @@ namespace E_OneWeb.Areas.Admin.Controllers
             _unitOfWork = unitOfWork;
             _hostEnvironment = hostEnvironment;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var countNotice = (from z in await _unitOfWork.VehicleReservationUser.GetAllAsync()
+                               select new GridVehicleReservationAdmin
+                               {
+                                   id = z.Id,
+                                   flag = z.Flag
+                               }).Where(i => i.flag == 1).Count();
+
+            if (countNotice > 0)
+            {
+                HttpContext.Session.SetInt32(SD.ssNotice, countNotice);
+            }
+            else
+            {
+                HttpContext.Session.SetString(SD.ssNotice, "o");
+            }
             return View();
         }
         [HttpGet]

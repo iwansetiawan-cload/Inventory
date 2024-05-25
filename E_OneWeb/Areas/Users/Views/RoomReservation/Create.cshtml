@@ -43,7 +43,7 @@
         <input type="hidden" asp-for="RoomReservationUser.RoomReservationAdmin.RoomName" id="RoomName_" />
         <input type="hidden" asp-for="RoomReservationUser.RoomReservationAdmin.LocationName" id="LocationName_" />
         <div class="col-12 border-bottom">
-            <h2 class="text-primary">@title</h2>
+            <h3 class="text-primary">@title</h3>
         </div>
         <div class="col-12 pt-2">
             <div class="form-group row">
@@ -76,7 +76,7 @@
             <div class="form-group row">
                 @Html.Label("", "Prodi", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
-                    <input asp-for="RoomReservationUser.Description" class="form-control"></input>
+                    <input asp-for="RoomReservationUser.Description" class="form-control" />
                 </div>
             </div>
 

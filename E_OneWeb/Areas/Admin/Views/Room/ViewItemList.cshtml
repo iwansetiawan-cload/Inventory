@@ -106,7 +106,7 @@
             var idroom = $("#roomid").val();
             dataTable = $('#DataViewItem').DataTable({
                 "order": [[0, "desc"]],
-                "filter": false,
+                "filter": true,
                 "ajax": {
                     "url": "/Admin/Room/GetItemList",
                     "data": {

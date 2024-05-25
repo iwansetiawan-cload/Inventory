@@ -22,11 +22,26 @@ namespace E_OneWeb.Areas.Admin.Controllers
 			_logger = logger;
 			_unitOfWork = unitOfWork;
 		}
-		public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var countNotice = (from z in await _unitOfWork.VehicleReservationUser.GetAllAsync()
+                               select new GridVehicleReservationAdmin
+                               {
+                                   id = z.Id,
+                                   flag = z.Flag
+                               }).Where(i => i.flag == 1).Count();
+
+            if (countNotice > 0)
+            {
+                HttpContext.Session.SetInt32(SD.ssNotice, countNotice);
+            }
+            else
+            {
+                HttpContext.Session.SetString(SD.ssNotice, "o");
+            }
             return View();
         }
-		[HttpGet]
+        [HttpGet]
 		public async Task<IActionResult> GetAll()
 		{
             //var RoomReservation = _unitOfWork.RoomReservationAdmin.GetAllAsync();
@@ -107,7 +122,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
 			RoomReservationAdmin RoomReservationAdmin = RoomReservationist.Where(z => z.RoomId == idRoom).FirstOrDefault();
 			RoomReservationAdmin.StatusId = null;
 			RoomReservationAdmin.Status = null;
-			RoomReservationAdmin.Flag = 0;
+			RoomReservationAdmin.Flag = null;
 			RoomReservationAdmin.BookingBy = null;
 			RoomReservationAdmin.BookingStartDate = null;
             RoomReservationAdmin.BookingEndDate = null;

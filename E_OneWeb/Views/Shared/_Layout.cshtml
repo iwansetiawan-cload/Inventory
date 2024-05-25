@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="refresh" content="120">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>unblsarpras - Sarana dan Prasarana Universitas Borneo Lestari</title>
@@ -51,6 +52,11 @@
                                 <a class="nav-link" asp-area="Users" asp-controller="RoomReservation" asp-action="Create">
                                     Pinjam Ruangan
                                     <span class="visually-hidden">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Users" asp-controller="VehicleReservation" asp-action="Create">
+                                    Pinjam Kendaraan
                                 </a>
                             </li>
                       @*      <li class="nav-item">
@@ -134,15 +140,24 @@
                             </li>
                    
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Room Reservation</a>
+                                <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Peminjaman Ruangan/ Kelas</a>
 
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="RoomList" asp-action="Index">Daftar Ruangan</a>
                                     @*<a class="dropdown-item" asp-area="Admin" asp-controller="ClassList" asp-action="Index">Daftar Peminjaman Kelas</a>*@
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="FixedSchedulerRoom" asp-action="Index">Daftar Ruang Kelas Tetap</a>
-                                    <a class="dropdown-item" asp-area="Admin" asp-controller="RoomReservationAdmin" asp-action="Index">Peminjaman Ruangan/ Kelas</a>                                   
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="RoomReservationAdmin" asp-action="Index">Daftar Peminjam</a>
                                 </div>                               
                                 
+                            </li>
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Peminjaman Kendaraan</a>
+
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Drivers" asp-action="Index">Daftar Supir</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="VehicleList" asp-action="Index">Daftar Kendaraan</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="VehicleBooking" asp-action="Index">Daftar Peminjam</a>
+                                </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Reporting</a>
@@ -158,6 +173,7 @@
                                 </div>
 
                             </li>
+                        
 
                         }
 

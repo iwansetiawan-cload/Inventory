@@ -1,0 +1,382 @@
+﻿@model E_OneWeb.Models.ViewModels.VehicleReservationUserVM
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var title = "Pinjam Kendaraan";
+}
+<partial name="_StatusMessage" for="StatusMessage" />
+
+
+
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" value="@ViewBag.Status" id="idstatus" />
+
+    @if (@ViewBag.Status != "" || ViewBag.Status != null)
+    {
+        if (@ViewBag.Status.Contains("Error"))
+        {
+            <p class='alert alert-danger alert-dismissable text-center' id='alert'>
+                @ViewBag.Reason
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </p>
+
+
+        }
+
+        if (@ViewBag.Status.Contains("Success"))
+        {
+            <p class='alert alert-success alert-dismissable text-center' id='alert'>
+                @ViewBag.Reason
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </p>
+        }
+    }
+
+    <br />
+    <div class="row p-3 border">
+        <input type="hidden" asp-for="VehicleReservationUser.UserId" />
+        <input type="hidden" asp-for="VehicleReservationUser.EntryBy" />
+        <input type="hidden" asp-for="VehicleReservationUser.EntryDate" />     
+      
+        <input type="hidden" asp-for="VehicleReservationUser.VehicleReservationAdmin.ItemName" id="ItemName_" />
+        <input type="hidden" asp-for="VehicleReservationUser.VehicleReservationAdmin.Items.Description" id="Description_" />
+        <div class="col-12 border-bottom">
+            <h3 class="text-primary">@title</h3>
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                @Html.LabelFor(model => model.VehicleReservationUser.VehicleReservationAdmin.ItemName, "Nama Kendaraan", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-10">
+
+                    <div class="input-group">
+                        <input type="hidden" asp-for="VehicleReservationUser.VehicleReservationAdmin.Id" id="bookingId" />
+                        <input asp-for="VehicleReservationUser.VehicleReservationAdmin.ItemName" id="ItemName" class="form-control" disabled />
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#lookupItemAdmin" style="width:145px" id="btn-lookupitemadmin"><i class="fa fa-search" aria-hidden="true"></i></button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                @Html.Label("", "Keterangan", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-10">
+                    <input asp-for="VehicleReservationUser.VehicleReservationAdmin.Items.Description" class="form-control" style="row-gap" id="Description" disabled />
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                @Html.Label("", "Tujuan", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-10">
+                    <input asp-for="VehicleReservationUser.Destination" class="form-control" style="row-gap" />
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                @Html.Label("", "Keperluan", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-10">
+                    <textarea asp-for="VehicleReservationUser.Utilities" class="form-control"></textarea>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                @Html.Label("", "No Telepon", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-10">
+                    <input asp-for="VehicleReservationUser.Phone" class="form-control" style="row-gap" />
+                    <span asp-validation-for="VehicleReservationUser.Phone" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+     @*   <div class="col-12 pt-2">
+            <div class="form-group row">
+               
+            </div>
+
+        </div>*@
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                @Html.LabelFor(model => model.VehicleReservationUser.DriverName, "Menggunakan Supir", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-2">
+                    @Html.RadioButtonFor(model => model.FlagDriver, "0", new { id = "clickNo", @style = "row-gap;", @checked = "checked" }) <label for="0" style="display:inline-block;padding-top:2px;">Tidak</label> &nbsp;
+                    @Html.RadioButtonFor(model => model.FlagDriver, "1", new { id = "clickYes", @style = "row-gap;" }) <label for="1" style="display:inline-block;padding-top:2px;">Ya</label>
+                </div>
+
+                @Html.LabelFor(model => model.VehicleReservationUser.DriverName, "Nama Supir", htmlAttributes: new { @class = "control-label col-md-2" , @id ="lblDriver"})
+                <div class="col-6">
+                    @Html.DropDownListFor(Model => Model.VehicleReservationUser.DriverId , Model.ListDriver,
+                    new { @Class = "form-control", @id="SearchDriver"})
+                </div>
+            </div>
+
+        </div>
+        
+
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+                @Html.LabelFor(model => model.VehicleReservationUser.BookingStartDate, "Tanggal Peminjaman", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-4">
+                    <input asp-for="VehicleReservationUser.BookingStartDate" class="form-control" type="date" />
+                    <span asp-validation-for="VehicleReservationUser.BookingStartDate" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 pt-2">
+            <div class="form-group row">
+
+                @Html.LabelFor(model => model.ClockStart, "Jam Mulai", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-4">
+                    <div class="input-group clockpicker">
+                        <input asp-for="ClockStart" type="text" value="@ViewBag.ClockStart" id="Timepicker_Start" class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                    </div>
+                </div>
+                @Html.LabelFor(model => model.ClockStart, "Jam Selesai", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-4">
+                    <div class="input-group clockpicker">
+                        <input asp-for="ClockEnd" type="text" value="@ViewBag.ClockEnd" id="Timepicker_End" class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+        <br />
+
+
+        <div class="form-group margin-bottom-2 pt-2">
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+                @if (@ViewBag.Status.Contains("Success"))
+                {
+                    <a asp-action="Index" asp-controller="RoomReservation" class="btn btn-info form-control" style="width:145px">Cek Pemesanan</a>
+                }
+                else
+                {
+                    <button type="submit" id="btnSave" class="btn btn-primary form-control" style="width:145px">Pesan Ruangan</button>
+                }
+            </div>
+        </div>
+        <br />
+        <div id="accordion" class="col-12 pt-2">
+
+            <div class="card">
+                <div class="card-header d-md-flex justify-content-md-end">
+                    <a class="btn" data-bs-toggle="collapse" href="#historytranfer">
+                        Daftar waktu yang sudah digunakan <i class="indicator fa fa-chevron-circle-down"></i>
+                    </a>
+                </div>
+                <div class="collapse" id="historytranfer">
+
+                    <div class="panel-body" style="min-width:100%;overflow:scroll">
+                        <div class="p-4 border rounded">
+                            <table id="tblDataBookingList" class="table table-striped table-bordered" style="width:100%">
+                                <thead class="thead-dark">
+                                    <tr class="table-info">
+                                        <th>
+                                            Nama Kendaraan
+                                        </th>
+                                        <th>
+                                            Tanggal Peminjaman
+                                        </th>
+                                        <th>
+                                            Jam Peminjaman
+                                        </th>
+                                        <th>
+                                            Tujuan
+                                        </th>
+                                        <th>
+                                            Keperluan
+                                        </th>                                 
+
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <br />
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="lookupItemAdmin" tabindex="-1" aria-labelledby="lookupItemAdminLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="lookupItemAdminLabel">Cari Ruangan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <br />
+                <div class="p-4 border rounded">
+                    <table id="tblDataItem" class="table table-striped table-bordered table-hover table-striped dataTable" style="width:100%">
+                        <thead class="thead-dark">
+                            <tr class="table-info">
+                                <th>
+                                    Nama Kendaraan
+                                </th>
+                                <th>
+                                    Keterangan
+                                </th>
+                                <th>
+                                    Ruangan
+                                </th>
+                                <th style="display:none"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @*
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+    <script src="http://fonts.googleapis.com/icon?family=Material+Icons"></script>*@
+
+    @* <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        *@
+
+
+    @* <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />*@
+    <script src="~/js/dist/bootstrap-clockpicker.js"></script>
+    <script src="~/js/dist/bootstrap-clockpicker.min.js"></script>
+    <script src="~/js/dist/jquery-clockpicker.js"></script>
+    <script src="~/js/dist/jquery-clockpicker.min.js"></script>
+    <link href="~/js/dist/jquery-clockpicker.css" rel="stylesheet" />
+    <link href="~/js/dist/jquery-clockpicker.min.css" rel="stylesheet" />
+    <partial name="_ValidationScriptsPartial" />
+    <script type="text/javascript">
+        $('.clockpicker').clockpicker({
+            placement: 'top',
+            align: 'left',
+            donetext: 'Done'
+        });
+
+        $('.collapse').on('show.bs.collapse', function () {
+            $(this).parent().find(".fa-chevron-circle-down").toggleClass("fa-chevron-circle-down fa-chevron-circle-up");
+        }).on('hide.bs.collapse', function () {
+            $(this).parent().find(".fa-chevron-circle-up").toggleClass("fa-chevron-circle-up fa-chevron-circle-down");
+        });
+   
+        $("#clickNo").change(function () {
+
+            if ($('#clickNo').prop('checked')) {
+                $("#SearchDriver").hide();
+                $("#lblDriver").hide();
+            } else {
+                $("#SearchDriver").show();
+                $("#lblDriver").show();
+            }
+
+        });
+        $("#clickYes").change(function () {
+            if ($('#clickYes').prop('checked')) {
+                $("#SearchDriver").show();
+                $("#lblDriver").show();
+            } else {
+                $("#SearchDriver").hide();
+                $("#lblDriver").hide();
+            }
+
+        });
+        $(document).ready(function () {
+            $("#SearchDriver").hide();
+            $("#lblDriver").hide();
+            $("#clickNo").prop("checked", true);
+            loadDataItem();
+         
+        });
+        function loadDataItem() {
+            dataTable = $('#tblDataItem').DataTable({
+                "ajax": {
+                    "url": "/Users/VehicleReservation/GetAllItems"
+                },
+                "columns": [
+                    { "data": "name", "autoWidth": true },
+                    { "data": "desc", "autoWidth": true },
+                    { "data": "roomname", "autoWidth": true },
+                    { "data": "id", "autoWidth": true },
+
+                ],
+                "createdRow": function (row, data, index) {
+                    $(row).attr('onclick', 'select_row(this)');
+                    $(row).attr('data-bs-dismiss', 'modal');
+                    $('td', row).eq(3).attr('style', 'display:none;');
+                },
+            });
+        }
+
+        function select_row(obj) {
+            var name = $('td', obj).eq(0).html().trim();
+            var desc = $('td', obj).eq(1).html().trim();
+            var idbooking = $('td', obj).eq(3).html().trim();
+
+            $('#ItemName').val(name);
+            $('#Description').val(desc);
+            $('#bookingId').val(idbooking);
+            $('#Description_').val(desc);
+            $('#ItemName_').val(name);
+            //loadDataBooking(adminid_room);
+        }
+
+        function loadDataBooking(adminid_room) {
+            var RoomId = $('#RoomId').val();
+            var table = $('#tblDataBookingList2').DataTable();
+            //clear datatable
+            table.clear().draw();
+            //destroy datatable
+            table.destroy();
+            dataTable = $('#tblDataBookingList2').DataTable({
+                "ajax": {
+                    "url": "/Users/VehicleReservation/GetBookingListUser",
+                    "data": {
+                        "id": adminid_room
+                    }
+                },
+                "columns": [
+                    { "data": "itemname", "autoWidth": true },
+                    { "data": "booking_date", "autoWidth": true },
+                    { "data": "booking_clock", "autoWidth": true },
+                    { "data": "utility", "autoWidth": true },
+                    { "data": "destination", "autoWidth": true }
+                ]
+            });
+        }
+    </script>
+}
+
+

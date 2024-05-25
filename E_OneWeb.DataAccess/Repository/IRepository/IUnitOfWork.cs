@@ -31,6 +31,9 @@ namespace E_OneWeb.DataAccess.Repository.IRepository
         IImportBookingClassRepository ImportBookingClass { get; }
         IFixedSchedulerRoomRepositoryAsync FixedSchedulerRoom { get; }
         IImportFixedSchedulerRoomRepository ImportFixedSchedulerRoom { get; }
+        IVehicleReservationAdminRepositoryAsync VehicleReservationAdmin { get; }
+        IVehicleReservationUserRepositoryAsync VehicleReservationUser { get; }
+        IDriversRepository Driver { get; }
         void Save();
     }
 }
