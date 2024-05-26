@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ProgramOld.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\bundle\tinymce.min.js" />
   </ItemGroup>
 
@@ -34,6 +38,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.7" />
     <PackageReference Include="NPOI" Version="2.6.2" />
+    <PackageReference Include="Twilio" Version="7.0.5" />
   </ItemGroup>
 
   <ItemGroup>
