@@ -29,6 +29,7 @@ namespace E_OneWeb.Models.ViewModels
         public string? study { get; set; }
         public string? semester { get; set; }
         public string? dosen { get; set; }
+        public DateTime? bookingenddate { get; set; }
 
     }
 }

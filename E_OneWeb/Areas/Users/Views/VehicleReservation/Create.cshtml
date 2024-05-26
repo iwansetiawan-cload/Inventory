@@ -35,8 +35,7 @@
     <div class="row p-3 border">
         <input type="hidden" asp-for="VehicleReservationUser.UserId" />
         <input type="hidden" asp-for="VehicleReservationUser.EntryBy" />
-        <input type="hidden" asp-for="VehicleReservationUser.EntryDate" />     
-      
+        <input type="hidden" asp-for="VehicleReservationUser.EntryDate" />
         <input type="hidden" asp-for="VehicleReservationUser.VehicleReservationAdmin.ItemName" id="ItemName_" />
         <input type="hidden" asp-for="VehicleReservationUser.VehicleReservationAdmin.Items.Description" id="Description_" />
         <div class="col-12 border-bottom">
@@ -167,7 +166,7 @@
                 }
                 else
                 {
-                    <button type="submit" id="btnSave" class="btn btn-primary form-control" style="width:145px">Pesan Ruangan</button>
+                    <button type="submit" id="btnSave" class="btn btn-primary form-control" style="width:150px">Pesan Kendaraan</button>
                 }
             </div>
         </div>
@@ -317,7 +316,12 @@
             $("#SearchDriver").hide();
             $("#lblDriver").hide();
             $("#clickNo").prop("checked", true);
+            var id = $("#bookingId").val();
+            if (id != "") {
+                loadDataBooking(id);
+            }
             loadDataItem();
+          
          
         });
         function loadDataItem() {
@@ -350,21 +354,20 @@
             $('#bookingId').val(idbooking);
             $('#Description_').val(desc);
             $('#ItemName_').val(name);
-            //loadDataBooking(adminid_room);
+            loadDataBooking(idbooking);
         }
 
-        function loadDataBooking(adminid_room) {
-            var RoomId = $('#RoomId').val();
-            var table = $('#tblDataBookingList2').DataTable();
+        function loadDataBooking(idbooking) {            
+            var table = $('#tblDataBookingList').DataTable();
             //clear datatable
             table.clear().draw();
             //destroy datatable
             table.destroy();
-            dataTable = $('#tblDataBookingList2').DataTable({
+            dataTable = $('#tblDataBookingList').DataTable({
                 "ajax": {
                     "url": "/Users/VehicleReservation/GetBookingListUser",
                     "data": {
-                        "id": adminid_room
+                        "id": idbooking
                     }
                 },
                 "columns": [

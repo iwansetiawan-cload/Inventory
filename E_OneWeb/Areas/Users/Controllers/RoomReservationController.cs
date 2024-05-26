@@ -426,13 +426,14 @@ namespace E_OneWeb.Areas.Users.Controllers
                                     //locationname = z.RoomReservationAdmin.LocationName,
                                     //roomid = z.RoomReservationAdmin.RoomId,
                                     roomname = z.RoomReservationAdmin.RoomName,
-                                    booking_date = z.StartDate != null ? z.StartDate.Value.ToString("dddd", new System.Globalization.CultureInfo("id-ID")) + "-" +  z.StartDate.Value.ToString("dd/MM/yyyy") : "",
+                                    booking_date = z.StartDate != null ? z.StartDate.Value.ToString("dddd", new System.Globalization.CultureInfo("id-ID")) + " - " +  z.StartDate.Value.ToString("dd/MM/yyyy") : "",
                                     booking_clock = z.StartDate != null ? z.StartDate.Value.ToString("HH:mm") + "-" + z.EndDate.Value.ToString("HH:mm"): "",
                                     study = z.Study,
                                     dosen = z.Dosen,
                                     prodi = z.Description,
-                                    semester = z.ApproveBy
-                                }).Where(o => o.id == id).ToList();
+                                    semester = z.ApproveBy,
+                                    bookingenddate = z.EndDate
+                                }).Where(o => o.id == id && o.bookingenddate >= DateTime.Now).ToList();
 
                 var datalist2 = (from z in await _unitOfWork.FixedSchedulerRoom.GetAllAsync(includeProperties: "Room")
                                  select new GridBookingRoom

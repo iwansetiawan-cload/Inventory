@@ -55,12 +55,14 @@ namespace E_OneWeb.Areas.Users.Controllers
                                 select new 
                                 {
                                     id = z.Id,
+                                    bookingid = z.BookingId,
                                     itemname = z.VehicleReservationAdmin.ItemName,                           
                                     booking_date = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("dd/MM/yyyy") : "",
                                     booking_clock = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("HH:mm") + "-" + z.BookingEndDate.Value.ToString("HH:mm") : "",
+                                    bookingenddate = z.BookingEndDate,
                                     utility = z.Utilities,
                                     destination = z.Destination
-                                }).Where(o => o.id == id).ToList();
+                                }).Where(o => o.bookingid == id && o.bookingenddate >= DateTime.Now).ToList();
 
 
                 return Json(new { data = datalist });
@@ -127,7 +129,7 @@ namespace E_OneWeb.Areas.Users.Controllers
 
             ViewBag.ClockStart = orderDateTimeStart.ToString("HH:mm");
             ViewBag.ClockEnd = orderDateTimeEnd.ToString("HH:mm");
-
+           
             if (orderDateTimeEnd < DateTime.Now)
             {
                 ViewBag.Status = "Error";
@@ -141,13 +143,29 @@ namespace E_OneWeb.Areas.Users.Controllers
                 ViewBag.Status = "Error";
                 ViewBag.Reason = "Kendaraan harus dipilih";
                 return View(vm);
-            }
+            }          
 
             if (vm.VehicleReservationUser.Id == 0)
             {
-
                 VehicleReservationAdmin vehicleReservationAdmin = await _unitOfWork.VehicleReservationAdmin.GetAsync(vm.VehicleReservationUser.VehicleReservationAdmin.Id);
                 vm.VehicleReservationUser.VehicleReservationAdmin = vehicleReservationAdmin;
+                var dataBooking = (from z in await _unitOfWork.VehicleReservationUser.GetAllAsync(includeProperties: "VehicleReservationAdmin")
+                                   select new
+                                   {
+                                       id = z.Id,
+                                       bookingid = z.BookingId,
+                                       bookingstartdate = z.BookingStartDate,
+                                       bookingenddate = z.BookingEndDate
+                                   }).Where(o => o.bookingid == vehicleReservationAdmin.Id && o.bookingenddate >= DateTime.Now
+                                   && ((orderDateTimeStart >= o.bookingstartdate && orderDateTimeStart < o.bookingenddate) || (orderDateTimeEnd > o.bookingstartdate && orderDateTimeEnd <= o.bookingenddate) || (orderDateTimeStart <= o.bookingstartdate && orderDateTimeEnd >= o.bookingenddate))).ToList();
+
+                if (dataBooking.Count() > 0)
+                {
+                    ViewBag.Status = "Error";
+                    ViewBag.Reason = "Kendaraan sudah di pinjam dari tanggal: " + dataBooking.FirstOrDefault().bookingstartdate.Value.ToString("dd/MM/yyyy") + " jam: " + dataBooking.FirstOrDefault().bookingstartdate.Value.ToString("HH:mm") + "-" + dataBooking.FirstOrDefault().bookingenddate.Value.ToString("HH:mm");
+                    return View(vm);
+                }
+
                 vm.VehicleReservationUser.StatusId = Gen_5.IDGEN;
                 vm.VehicleReservationUser.Status = Gen_5.GENNAME;
                 vm.VehicleReservationUser.Flag = (int)Gen_5.GENVALUE;
