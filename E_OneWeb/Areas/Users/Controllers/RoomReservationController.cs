@@ -209,7 +209,8 @@ namespace E_OneWeb.Areas.Users.Controllers
             //}
             //TempData["Success"] = "Save successfully";
 
-            return View(vm);
+            //return View(vm);
+            return RedirectToAction(nameof(Index));
 
         }
 
@@ -376,8 +377,7 @@ namespace E_OneWeb.Areas.Users.Controllers
             var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
 
             var datalist = (from z in await _unitOfWork.VehicleReservationUser.GetAllAsync(includeProperties: "VehicleReservationAdmin")
-                            select new
-                            {
+                            select new                            {
                                 id = z.Id,
                                 name = z.VehicleReservationAdmin.ItemName,
                                 bookingdate = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("dd/MM/yyyy") : "",
@@ -385,7 +385,10 @@ namespace E_OneWeb.Areas.Users.Controllers
                                 status = z.Status,
                                 statusid = z.StatusId,
                                 entryby = z.EntryBy,
-                                notes = z.NotesReject
+                                notes = z.NotesReject,
+                                utility = z.Utilities,
+                                destination = z.Destination,
+                                driver = z.DriverName
                             }).Where(i => i.entryby == user.ToString()).ToList().OrderByDescending(o => o.id);
 
             return Json(new { data = datalist });
@@ -397,14 +400,14 @@ namespace E_OneWeb.Areas.Users.Controllers
             var objFromDb = await _unitOfWork.Category.GetAsync(id);
             if (objFromDb == null)
             {
-                TempData["Error"] = "Error deleting Category";
-                return Json(new { success = false, message = "Error while deleting" });
+                TempData["Error"] = "Gagal Hapus";
+                return Json(new { success = false, message = "Gagal Hapus" });
             }
             await _unitOfWork.Category.RemoveAsync(objFromDb);
             _unitOfWork.Save();
 
-            TempData["Success"] = "Category successfully deleted";
-            return Json(new { success = true, message = "Delete Successful" });
+            TempData["Success"] = "Berhasil Hapus";
+            return Json(new { success = true, message = "Berhasil Hapus" });
 
         }
 

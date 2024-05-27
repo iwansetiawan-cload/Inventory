@@ -27,6 +27,7 @@ namespace E_OneWeb.Models.ViewModels
         public int? statusid { get; set; }
         public int? bookingid { get; set; }
         public string? bookingby { get; set; }
-        public int? flag { get; set; }       
+        public int? flag { get; set; }
+        public string? driver { get; set; }
     }
 }

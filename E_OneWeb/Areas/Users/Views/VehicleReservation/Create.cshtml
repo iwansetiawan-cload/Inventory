@@ -9,7 +9,7 @@
 
 <form method="post" enctype="multipart/form-data">
     <input type="hidden" value="@ViewBag.Status" id="idstatus" />
-
+    <input type="hidden" value="@ViewBag.flagdrivers" id="flagdrivers" />
     @if (@ViewBag.Status != "" || ViewBag.Status != null)
     {
         if (@ViewBag.Status.Contains("Error"))
@@ -38,6 +38,7 @@
         <input type="hidden" asp-for="VehicleReservationUser.EntryDate" />
         <input type="hidden" asp-for="VehicleReservationUser.VehicleReservationAdmin.ItemName" id="ItemName_" />
         <input type="hidden" asp-for="VehicleReservationUser.VehicleReservationAdmin.Items.Description" id="Description_" />
+        <input type="hidden" asp-for="VehicleReservationUser.DriverName" />       
         <div class="col-12 border-bottom">
             <h3 class="text-primary">@title</h3>
         </div>
@@ -200,8 +201,10 @@
                                         </th>
                                         <th>
                                             Keperluan
-                                        </th>                                 
-
+                                        </th>
+                                        <th>
+                                            Supir
+                                        </th>
                                     </tr>
                                 </thead>
                             </table>
@@ -313,9 +316,21 @@
 
         });
         $(document).ready(function () {
-            $("#SearchDriver").hide();
-            $("#lblDriver").hide();
-            $("#clickNo").prop("checked", true);
+
+
+            var flagid = $("#flagdrivers").val();
+            if (flagid == "1")
+            {
+                $("#SearchDriver").show();
+                $("#lblDriver").show();
+                $("#clickYes").prop("checked", true);
+            }else
+            {
+                $("#SearchDriver").hide();
+                $("#lblDriver").hide();
+                $("#clickNo").prop("checked", true);
+            }
+                
             var id = $("#bookingId").val();
             if (id != "") {
                 loadDataBooking(id);
@@ -375,7 +390,8 @@
                     { "data": "booking_date", "autoWidth": true },
                     { "data": "booking_clock", "autoWidth": true },
                     { "data": "utility", "autoWidth": true },
-                    { "data": "destination", "autoWidth": true }
+                    { "data": "destination", "autoWidth": true },
+                    { "data": "driver", "autoWidth": true }
                 ]
             });
         }

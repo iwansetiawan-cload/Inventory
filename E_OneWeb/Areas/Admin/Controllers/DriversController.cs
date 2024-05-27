@@ -115,14 +115,14 @@ namespace E_OneWeb.Areas.Admin.Controllers
             var objFromDb = _unitOfWork.Driver.Get(id);
             if (objFromDb == null)
             {
-                TempData["Error"] = "Error deleting Driver";
-                return Json(new { success = false, message = "Error while deleting" });
+                TempData["Error"] = "Hapus data supir gagal";
+                return Json(new { success = false, message = "Hapus Gagal" });
             }
             _unitOfWork.Driver.Remove(objFromDb);
             _unitOfWork.Save();
 
-            TempData["Success"] = "Driver successfully deleted";
-            return Json(new { success = true, message = "Delete Successful" });
+            TempData["Success"] = "Hapus data supir berhasil";
+            return Json(new { success = true, message = "Hapus Berhasil" });
 
         }
 

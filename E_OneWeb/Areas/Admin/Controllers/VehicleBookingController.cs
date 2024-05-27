@@ -61,7 +61,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                         statusid = z.StatusId,
                                         bookingid = z.BookingId,
                                         bookingby = z.BookingBy, 
-                                        flag = z.Flag,                                        
+                                        flag = z.Flag,
+                                        driver = ""
                                     }).Where(x=>x.flag != null).ToList();
 
             var datalistuser = (from z in await _unitOfWork.VehicleReservationUser.GetAllAsync(includeProperties: "VehicleReservationAdmin")
@@ -81,7 +82,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 bookingid = z.Id,
                                 bookingby = z.EntryBy,
                                 flag = z.Flag,
-                               
+                                driver = z.DriverName
                             }).ToList();
 
             //Addlist.AddRange(datalistadmin);
@@ -149,30 +150,39 @@ namespace E_OneWeb.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Approve(int id)
         {
-            var Gen_5 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 5 && z.GENVALUE == 2).FirstOrDefault();
-            int? IdGen5 = Gen_5 != null ? Convert.ToInt32(Gen_5.IDGEN) : 0;
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-            var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
-            #region Update User
-            VehicleReservationUser vehicleReservationUser = await _unitOfWork.VehicleReservationUser.GetAsync(id);
+            try
+            {
+				var Gen_5 = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 5 && z.GENVALUE == 2).FirstOrDefault();
+				int? IdGen5 = Gen_5 != null ? Convert.ToInt32(Gen_5.IDGEN) : 0;
+				var claimsIdentity = (ClaimsIdentity)User.Identity;
+				var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+				var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+				#region Update User
+				VehicleReservationUser vehicleReservationUser = await _unitOfWork.VehicleReservationUser.GetAsync(id);
 
-            vehicleReservationUser.StatusId = IdGen5;
-            vehicleReservationUser.Status = Gen_5.GENNAME;
-            vehicleReservationUser.Flag = (int)Gen_5.GENVALUE;
-            vehicleReservationUser.ApproveBy = user.Name;
-            vehicleReservationUser.ApproveDate = DateTime.Now;
-            vehicleReservationUser.RejectedBy = null;
-            vehicleReservationUser.RejectedDate = null;
-            vehicleReservationUser.NotesReject = null;
-            _unitOfWork.VehicleReservationUser.Update(vehicleReservationUser);
-            #endregion       
+				vehicleReservationUser.StatusId = IdGen5;
+				vehicleReservationUser.Status = Gen_5.GENNAME;
+				vehicleReservationUser.Flag = (int)Gen_5.GENVALUE;
+				vehicleReservationUser.ApproveBy = user.Name;
+				vehicleReservationUser.ApproveDate = DateTime.Now;
+				vehicleReservationUser.RejectedBy = null;
+				vehicleReservationUser.RejectedDate = null;
+				vehicleReservationUser.NotesReject = null;
+				_unitOfWork.VehicleReservationUser.Update(vehicleReservationUser);
+				#endregion
 
 
-            _unitOfWork.Save();
+				_unitOfWork.Save();
 
-            TempData["Success"] = "Pinjam kendaraan berhasil disetujui";
-            return Json(new { success = true, message = "Approved Successful" });
+				TempData["Success"] = "Pinjam kendaraan berhasil disetujui";
+				return Json(new { success = true, message = "Berhasil Disetujui" });
+			}
+            catch (Exception)
+            {
+				TempData["Failed"] = "Error Approved";
+				return Json(new { success = false, message = "Gagal Disetujui" });
+			}
+            
 
         }
         [HttpPost]
@@ -202,12 +212,12 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 #endregion             
 
                 TempData["Success"] = "Successfully reject";
-                return Json(new { success = true, message = "Reject Successful" });
+                return Json(new { success = true, message = "Berhasil Ditolak" });
             }
             catch (Exception)
             {
                 TempData["Failed"] = "Error reject";
-                return Json(new { success = false, message = "Reject Error" });
+                return Json(new { success = false, message = "Gagal Ditolak" });
             }
 
 

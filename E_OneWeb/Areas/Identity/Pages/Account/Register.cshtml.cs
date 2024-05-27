@@ -85,22 +85,22 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
-            //[Required]
-            //[EmailAddress]
-            //[Display(Name = "Email")]
-            //public string Email { get; set; }
+			/// <summary>
+			///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+			///     directly from your code. This API may change or be removed in future releases.
+			/// </summary>
+			//[Required]
+			//[EmailAddress]
+			//[Display(Name = "Email")]
+			//public string Email { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
-            [DataType(DataType.Password)]
+			/// <summary>
+			///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+			///     directly from your code. This API may change or be removed in future releases.
+			/// </summary>
+			[Required(ErrorMessage = "Password harus diisi ")]
+			[StringLength(100, ErrorMessage = "{0} harus minimal {2} dan maksimal {1} karakter.", MinimumLength = 6)]
+            //[DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
 
@@ -108,7 +108,7 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [DataType(DataType.Password)]
+            //[DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "Kata sandi dan kata sandi konfirmasi tidak cocok.")]
             public string ConfirmPassword { get; set; }
@@ -228,9 +228,10 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+					//_logger.LogInformation("User created a new account with password.");
+					_logger.LogInformation("Pengguna membuat akun baru dengan kata sandi.");
 
-                    var userId = await _userManager.GetUserIdAsync(user);
+					var userId = await _userManager.GetUserIdAsync(user);
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     //var callbackUrl = Url.Page(
@@ -286,7 +287,19 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
                 }
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    if (error.Description == "Passwords must have at least one non alphanumeric character.")
+                    {
+                        error.Description = "Kata sandi harus memiliki setidaknya satu karakter non alfanumerik.";
+					}
+					if (error.Description == "Passwords must have at least one lowercase ('a'-'z').")
+					{
+						error.Description = "Kata sandi harus memiliki setidaknya satu huruf kecil ('a'-'z').";
+					}
+					if (error.Description == "Passwords must have at least one uppercase ('A'-'Z').")
+					{
+						error.Description = "Kata sandi harus memiliki setidaknya satu huruf besar ('A'-'Z').";
+					}
+					ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
 

@@ -83,6 +83,9 @@
                     <th>
                         Jam Pinjam
                     </th>
+                    <th>
+                        Supir
+                    </th>
                     <th style="min-width:100px"></th>
                     <th style="display:none"></th>
                     <th style="display:none"></th>
@@ -132,6 +135,7 @@
                     { "data": "bookingby", "autoWidth": true },
                     { "data": "bookingdate", "autoWidth": true },
                     { "data": "bookingclock", "autoWidth": true },
+                    { "data": "driver", "autoWidth": true },
                     { "data": "id", "autoWidth": true },
                     { "data": "flag", "autoWidth": true },
                     { "data": "bookingid", "autoWidth": true }
@@ -141,19 +145,19 @@
                     //$('td', row).eq(5).attr('style', 'display:none;');
                     var urls = "/Admin/VehicleBooking/Approve/" + data["id"];
                     var urlsview = "/Admin/VehicleBooking/ViewPersonal/" + data["bookingid"];
-                    $('td', row).eq(7).attr('style', 'display:none;');
                     $('td', row).eq(8).attr('style', 'display:none;');
+                    $('td', row).eq(9).attr('style', 'display:none;');
                     if (data["flag"] == '1' || data["flag"] == '3' || data["flag"] == '2') {
-                        $('td', row).eq(6).html("<a class='btn btn-info' title='view' href=" + urlsview + "><i class='fas fa-eye'></i></a>");
+                        $('td', row).eq(7).html("<a class='btn btn-info' title='view' href=" + urlsview + "><i class='fas fa-eye'></i></a>");
                     }
                     //else if (data["flag"] == '2') {
                     //    $('td', row).eq(6).html("<a class='btn btn-info' title='view' href=" + urlsview + "><i class='fas fa-eye'></i></a>&nbsp <a class='btn btn-primary text-white' title='approved'' onclick=Approved('" + urls + "')><i class='fas fa-check'></i></a> ");
                     //    //$('td', row).eq(6).html("<a class='btn btn-info' title='view' href=" + urlsview + "><i class='fas fa-eye'></i></a>&nbsp <a class='btn btn-primary text-white' title='approved'' onclick=Approved('" + urls + "')><i class='fas fa-check'></i></a> &nbsp <a class='btn btn-danger text-white' title='Rejected' data-bs-toggle='modal' data-bs-target='#modalrejectdetail' style='cursor: pointer'><i class='fas fa-times'></i></a> ");
                     //}
                     else {
-                        $('td', row).eq(6).html('');
+                        $('td', row).eq(7).html('');
                     }
-                    $('td', row).eq(6).attr('style', 'autoWidth: true; text-align: center;');
+                    $('td', row).eq(7).attr('style', 'autoWidth: true; text-align: center;');
                 }
             });
         }

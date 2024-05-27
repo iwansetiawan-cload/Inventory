@@ -61,7 +61,8 @@ namespace E_OneWeb.Areas.Users.Controllers
                                     booking_clock = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("HH:mm") + "-" + z.BookingEndDate.Value.ToString("HH:mm") : "",
                                     bookingenddate = z.BookingEndDate,
                                     utility = z.Utilities,
-                                    destination = z.Destination
+                                    destination = z.Destination,
+                                    driver = z.DriverName
                                 }).Where(o => o.bookingid == id && o.bookingenddate >= DateTime.Now).ToList();
 
 
@@ -104,7 +105,8 @@ namespace E_OneWeb.Areas.Users.Controllers
             vm.EndDate = DateTime.Now.ToString("HH:mm dd/MM/yyyy");
             vm.VehicleReservationUser.BookingStartDate = DateTime.Now;
             vm.VehicleReservationUser.BookingEndDate = DateTime.Now;
-            ViewBag.ClockStart = DateTime.Now.ToString("HH:mm");
+            vm.VehicleReservationUser.Phone = user.PhoneNumber;
+			ViewBag.ClockStart = DateTime.Now.ToString("HH:mm");
             ViewBag.ClockEnd = DateTime.Now.ToString("HH:mm");
 
             return View(vm);
@@ -165,14 +167,41 @@ namespace E_OneWeb.Areas.Users.Controllers
                     ViewBag.Reason = "Kendaraan sudah di pinjam dari tanggal: " + dataBooking.FirstOrDefault().bookingstartdate.Value.ToString("dd/MM/yyyy") + " jam: " + dataBooking.FirstOrDefault().bookingstartdate.Value.ToString("HH:mm") + "-" + dataBooking.FirstOrDefault().bookingenddate.Value.ToString("HH:mm");
                     return View(vm);
                 }
+                if (vm.FlagDriver == "1")
+                {
+                    ViewBag.flagdrivers = "1";
+                    vm.VehicleReservationUser.DriverName = listDrivers.Where(z => z.Value == vm.VehicleReservationUser.DriverId.ToString()).FirstOrDefault().Text;
+                    var valDriver = (from z in await _unitOfWork.VehicleReservationUser.GetAllAsync(includeProperties: "VehicleReservationAdmin")
+                                     select new
+                                     {
+                                         id = z.Id,
+                                         bookingid = z.BookingId,
+                                         bookingstartdate = z.BookingStartDate,
+                                         bookingenddate = z.BookingEndDate,
+                                         driverid = z.DriverId,
+                                     }).Where(o => o.driverid == vm.VehicleReservationUser.DriverId && o.bookingenddate >= DateTime.Now
+                                     && ((orderDateTimeStart >= o.bookingstartdate && orderDateTimeStart < o.bookingenddate) || (orderDateTimeEnd > o.bookingstartdate && orderDateTimeEnd <= o.bookingenddate) || (orderDateTimeStart <= o.bookingstartdate && orderDateTimeEnd >= o.bookingenddate))).ToList();
+                    if (valDriver.Count() > 0)
+                    {
+                        ViewBag.Status = "Error";
+                        ViewBag.Reason = "Supir sedang bertugas pada tanggal: " + valDriver.FirstOrDefault().bookingstartdate.Value.ToString("dd/MM/yyyy") + " jam: " + valDriver.FirstOrDefault().bookingstartdate.Value.ToString("HH:mm") + "-" + valDriver.FirstOrDefault().bookingenddate.Value.ToString("HH:mm");
+                        return View(vm);
+                    }
 
-                vm.VehicleReservationUser.StatusId = Gen_5.IDGEN;
+                }
+                else
+                {
+                    ViewBag.flagdrivers = "0";
+                    vm.VehicleReservationUser.DriverId = null;
+                }
+
+
+				vm.VehicleReservationUser.StatusId = Gen_5.IDGEN;
                 vm.VehicleReservationUser.Status = Gen_5.GENNAME;
                 vm.VehicleReservationUser.Flag = (int)Gen_5.GENVALUE;
                 vm.VehicleReservationUser.BookingStartDate = orderDateTimeStart;
-                vm.VehicleReservationUser.BookingEndDate = orderDateTimeEnd;
-                if (vm.FlagDriver == "1")
-                    vm.VehicleReservationUser.DriverName = listDrivers.Where(z=> z.Value == vm.VehicleReservationUser.DriverId.ToString()).FirstOrDefault().Text;
+                vm.VehicleReservationUser.BookingEndDate = orderDateTimeEnd;              
+				
                 await _unitOfWork.VehicleReservationUser.AddAsync(vm.VehicleReservationUser);
                 _unitOfWork.Save();
 
@@ -189,10 +218,10 @@ namespace E_OneWeb.Areas.Users.Controllers
                 ViewBag.Reason = "Berhasil peminjaman kendaraan";
 
             }
-          
-            //TempData["Success"] = "Save successfully";
 
-            return View(vm);
+            //TempData["Success"] = "Save successfully";
+            return RedirectToAction("Index", "RoomReservation", new { area = "Users" });
+            //return View(vm);
 
         }
         
