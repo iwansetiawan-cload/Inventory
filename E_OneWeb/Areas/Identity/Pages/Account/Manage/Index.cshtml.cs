@@ -66,15 +66,20 @@ namespace E_OneWeb.Areas.Identity.Pages.Account.Manage
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Phone]
+            //[Phone]
+            [Required(ErrorMessage = "No Telepon harus diisi ")]
+            [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "No Telepon harus numeric")]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
             public string CardNumber { get; set; }
-            public string City { get; set; }
-            public string PostalCode { get; set; }
+            public string Faculty { get; set; }
+            public string Prodi { get; set; }
             public string? FullName { get; set; }        
             [Display(Name = "Photo Profile")]
             public string? Photo { get; set; }
+            public string? CategoryEmployee { get; set; }
+            public string? WorkingUnit { get; set; }
+            public int? Flag { get; set; }
         }
 
         private async Task LoadAsync(IdentityUser user)
@@ -92,10 +97,13 @@ namespace E_OneWeb.Areas.Identity.Pages.Account.Manage
                 {
                     PhoneNumber = phoneNumber,
                     CardNumber = personal.NIM,
-                    PostalCode = personal.Prodi,
-                    City = personal.Fakultas,
+                    Prodi = personal.Prodi,
+                    Faculty = personal.Fakultas,
                     FullName = personal.FullName,
                     Photo = personal.Photo,
+                    Flag = personal.Flag,
+                    CategoryEmployee = personal.CategoryEmployee,
+                    WorkingUnit = personal.WorkingUnit
 
                 };
             }
@@ -147,11 +155,19 @@ namespace E_OneWeb.Areas.Identity.Pages.Account.Manage
             }
 
             Personal personal = _unitOfWork.Personal.GetAll().Where(z => z.UserId == userid).FirstOrDefault();
-            personal.FullName = Input.FullName;
-            personal.NIM = Input.CardNumber;
-            personal.Prodi = Input.PostalCode;
-            personal.Fakultas = Input.City;
-            personal.PhoneNumber = Input.PhoneNumber;           
+            personal.FullName = Input.FullName;           
+            personal.PhoneNumber = Input.PhoneNumber;
+            if (personal.Flag == 1)
+            {
+                personal.CategoryEmployee = Input.CategoryEmployee;
+                personal.WorkingUnit = Input.WorkingUnit;
+            }
+            else
+            {
+                personal.NIM = Input.CardNumber;
+                personal.Prodi = Input.Prodi;
+                personal.Fakultas = Input.Faculty;
+            }
 
             string webRootPath = _hostEnvironment.WebRootPath;
             var files = HttpContext.Request.Form.Files;

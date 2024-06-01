@@ -3,22 +3,47 @@
 @{
     ViewData["Title"] = "Profile";
     ViewData["ActivePage"] = ManageNavPages.Index;
+
+    //var status = Context.Request.Query["status"];
+    var waiting_approval = "text-primary";
+    var all = "text-primary";
+
+    //switch (status)
+    //{
+       
+    //    case "waiting_approval":
+    //        waiting_approval = "active text-white";
+    //        break;     
+    //    default:
+    //        all = "active text-white";
+    //        break;
+    //}
 }
 
 @*<h3>@ViewData["Title"]</h3>*@
 
 <partial name="_StatusMessage" for="StatusMessage" />
 
+
 <div class="row">
     <form id="profile-form" method="post" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
         <br />
         <div class="row p-3 border">
-            
+
+            <div class="d-flex justify-content-between justify-content-md-end mb-3">
+                <div class="p-2">
+                    <ul class="list-group list-group-horizontal-sm">
+                        <li class="list-group-item"><a class="text-decoration-none @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a></li>
+                        <li class="list-group-item"><a class="text-decoration-none @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a></li>                                               
+                    </ul>
+                </div>
+            </div>
+   
             <div class="col-12 border-bottom py-2">
                 <h2 class="text-primary">@ViewData["Title"]</h2>
             </div>       
-            <div class="col-md-8">
+            <div class="col-md-8 py-2">
                 <div class="form-floating py-2">
                     <input asp-for="Username" class="form-control" placeholder="User Name" disabled />
                     <label asp-for="Username" class="form-label"></label>
@@ -30,25 +55,45 @@
                     <span asp-validation-for="Input.FullName" class="text-danger"></span>
                 </div>
 
-                <div class="form-floating py-2">
-                    <input asp-for="Input.CardNumber" placeholder="NIM" class="form-control" />
-                    <label class="form-label">NIM</label>
-                    <span asp-validation-for="Input.CardNumber" class="text-danger"></span>
-                </div>
+                @if (Model.Input.Flag != 1)
+                {
+                    <div class="form-floating py-2">
+                        <input asp-for="Input.CardNumber" placeholder="NIM" class="form-control" />
+                        <label class="form-label">NIM</label>
+                        <span asp-validation-for="Input.CardNumber" class="text-danger"></span>
+                    </div>
 
-                <div class="form-floating py-2">
-                    <input asp-for="Input.PostalCode" class="form-control" placeholder="Prodi" />
-                    <label class="form-label">Prodi</label>
-                    <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+                    <div class="form-floating py-2">
+                        <input asp-for="Input.Prodi" class="form-control" placeholder="Prodi" />
+                        <label class="form-label">Prodi</label>
+                        <span asp-validation-for="Input.Prodi" class="text-danger"></span>
 
-                </div>
+                    </div>
 
-                <div class="form-floating py-2">
-                    <input asp-for="Input.City" class="form-control" placeholder="Fakultas" />
-                    <label class="form-label">Fakultas</label>
-                    <span asp-validation-for="Input.City" class="text-danger"></span>
+                    <div class="form-floating py-2">
+                        <input asp-for="Input.Faculty" class="form-control" placeholder="Fakultas" />
+                        <label class="form-label">Fakultas</label>
+                        <span asp-validation-for="Input.Faculty" class="text-danger"></span>
 
-                </div>
+                    </div>
+                }else
+                {               
+                    <div class="form-floating py-2">
+                        @Html.DropDownListFor(m => m.Input.CategoryEmployee, new List<SelectListItem>() {
+                        new SelectListItem(){ Text = "Dosen" , Value="Dosen" },
+                        new SelectListItem(){ Text = "Pegawai" , Value="Pegawai" }
+                    }, new { @class = "form-control", @id = "CategoryEmployee" })
+                    </div>
+
+                    <div class="form-floating py-2">
+                        <input asp-for="Input.WorkingUnit" class="form-control" placeholder="Unit Kerja" />
+                        <label class="form-label">Unit Kerja</label>
+                        <span asp-validation-for="Input.WorkingUnit" class="text-danger"></span>
+
+                    </div>
+                }
+
+                
 
                 <div class="form-floating py-2">
                     <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Phone Number" />
@@ -57,7 +102,7 @@
                 </div>
 
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 py-2">
                 <div class="card border-0 p-3 shadow  border-top border-5 rounded">
                  @*    <div class="card" style="width: 18rem;">
                         <img class="rounded float-end" src="@Model.Input.Photo" style="border-radius:5px; border:1px solid #bbb9b9">
@@ -88,101 +133,21 @@
             <div class="form-group margin-bottom-2 pt-2">
              
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button id="update-profile-button" type="submit" style="width:215px" class="btn btn-primary form-control">Save</button>
+                  @*  <button id="update-profile-button" type="submit" style="width:215px" class="btn btn-primary form-control">Save</button>*@
+                  @*  <button type="submit" class="w-100 btn btn-lg btn-primary form-control">Update Profile</button>*@
+                    <button class="w-100 btn btn-primary" type="submit" style="width:145px">Update Profile</button>
                 </div>
             </div>
-           
+         @*   <div class="row">
+                <div class="col-md-12">           
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button id="update-profile-button" type="submit" class="btn btn-primary form-control">Save</button>
+                    </div>
+                </div>
+            </div>*@
             
         </div>
-        
-        
-        
-        @*
-        <div class="col-12 pt-4">
-            <div class="form-group ">
-                <div class="col-6">
-                    <div class="form-group row pt-2">
-                        <div class="col-md-6">
-                            <div class="form-floating py-2">
-                                <input asp-for="Username" class="form-control" placeholder="User Name" disabled />
-                                <label asp-for="Username" class="form-label"></label>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="form-group row pt-2">
-                        <div class="col-md-6">
-                            <div class="form-floating py-2">
-                                <input asp-for="Input.FullName" placeholder="Name Lengkap" class="form-control" />
-                                <label class="form-label">Name Lengkap</label>
-                                <span asp-validation-for="Input.FullName" class="text-danger"></span>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="form-group row pt-2">
-                        <div class="col-md-6">
-                            <div class="form-floating py-2">
-                                <input asp-for="Input.CardNumber" placeholder="NIM" class="form-control" />
-                                <label class="form-label">NIM</label>
-                                <span asp-validation-for="Input.CardNumber" class="text-danger"></span>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="form-group row pt-2">
-                        <div class="col-md-6">
-                            <div class="form-floating py-2">
-                                <input asp-for="Input.PostalCode" class="form-control" placeholder="Prodi" />
-                                <label class="form-label">Prodi</label>
-                                <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="form-group row pt-2">
-                        <div class="col-md-6">
-                            <div class="form-floating py-2">
-                                <input asp-for="Input.City" class="form-control" placeholder="Fakultas" />
-                                <label class="form-label">Fakultas</label>
-                                <span asp-validation-for="Input.City" class="text-danger"></span>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="form-group row pt-2">
-                        <div class="col-md-6">
-                            <div class="form-floating py-2">
-                                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Phone Number" />
-                                <label asp-for="Input.PhoneNumber" class="form-label"></label>
-                                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="col-md-12">
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <div class="card" style="width: 18rem;">
-                           
-                                <img class="rounded float-end" src="@Model.Input.Photo" style="border-radius:5px; border:1px solid #bbb9b9">
-                            </div>
-                        </div>
-                        <div class="form-floating py-2">
-                            <input asp-for="Input.Photo" type="file" name="files" id="uploadBox" multiple class="form-control" placeholder="Photo Profile" />                          
-                            <span asp-validation-for="Input.Photo" class="text-danger"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>                 
-           
-            <button id="update-profile-button" type="submit" style="width:245px" class="btn btn-primary form-control">Save</button>
-        </div>
-       *@
+               
     </form>
   
     

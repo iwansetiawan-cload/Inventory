@@ -22,6 +22,9 @@ namespace E_OneWeb.Models
         public string? Fakultas { get; set; }
         public string? Photo { get; set;}
         public DateTime? EntryDate { get; set; }
+        public string? CategoryEmployee { get; set; }
+        public string? WorkingUnit { get; set; }
+        public int? Flag { get; set; }
 
     }
 }

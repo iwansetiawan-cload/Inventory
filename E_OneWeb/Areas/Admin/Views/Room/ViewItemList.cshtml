@@ -66,6 +66,9 @@
                         <thead class="thead-dark">
                             <tr class="table-info">
                                 <th>
+                                    Kode
+                                </th>
+                                <th>
                                     Nama Aset
                                 </th>
                                 <th>
@@ -114,6 +117,7 @@
                     }
                 },
                 "columns": [
+                    { "data": "code", "autoWidth": true },
                     { "data": "name", "autoWidth": true },
                     { "data": "room", "autoWidth": true },
                     { "data": "category", "autoWidth": true },
@@ -136,8 +140,8 @@
                     }
                 ],
                 "createdRow": function (row, data, index) {                
-                    $('td', row).eq(3).attr('style', 'text-align:right;');
                     $('td', row).eq(4).attr('style', 'text-align:right;');
+                    $('td', row).eq(5).attr('style', 'text-align:right;');
                 }
             });
         }

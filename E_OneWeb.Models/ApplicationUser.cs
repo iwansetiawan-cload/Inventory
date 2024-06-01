@@ -21,6 +21,9 @@ namespace E_OneWeb.Models
         public string? RolesName { get; set; }
         [NotMapped]
         public string Role { get; set; }
+        public string? CategoryEmployee { get; set; }
+        public string? WorkingUnit { get; set; }
+        public int? Flag { get; set; }
 
     }
 }
