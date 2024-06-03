@@ -62,7 +62,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                         bookingid = z.BookingId,
                                         bookingby = z.BookingBy, 
                                         flag = z.Flag,
-                                        driver = ""
+                                        driver = "",
+                                        flagEdit = 0
                                     }).Where(x=>x.flag != null).ToList();
 
             var datalistuser = (from z in await _unitOfWork.VehicleReservationUser.GetAllAsync(includeProperties: "VehicleReservationAdmin")
@@ -82,7 +83,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 bookingid = z.Id,
                                 bookingby = z.EntryBy,
                                 flag = z.Flag,
-                                driver = z.DriverName
+                                driver = z.DriverName,
+                                flagEdit = 0
                             }).ToList();
 
             //Addlist.AddRange(datalistadmin);
@@ -96,7 +98,27 @@ namespace E_OneWeb.Areas.Admin.Controllers
                     Addlist = Addlist.Where(o => o.flag == 1).ToList();
                     break;
                 case "room_in_use":
-                    Addlist = Addlist.Where(o => o.flag == 2 && o.startdate <= DateTime.Now && o.enddate >= DateTime.Now).ToList();
+                    Addlist = (from z in await _unitOfWork.VehicleReservationUser.GetAllAsync(includeProperties: "VehicleReservationAdmin")
+                                        select new GridVehicleReservationAdmin
+                                        {
+                                            id = z.Id,
+                                            code = z.VehicleReservationAdmin.Items.Code,
+                                            name = z.VehicleReservationAdmin.ItemName,
+                                            idadmin = z.VehicleReservationAdmin.Id,
+                                            locationname = z.VehicleReservationAdmin.LocationName,
+                                            startdate = z.BookingStartDate,
+                                            enddate = z.BookingEndDate,
+                                            bookingdate = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("dd/MM/yyyy") : "",
+                                            bookingclock = z.BookingStartDate != null ? z.BookingStartDate.Value.ToString("HH:mm") + "-" + z.BookingEndDate.Value.ToString("HH:mm") : "",
+                                            status = z.Status,
+                                            statusid = z.StatusId,
+                                            bookingid = z.Id,
+                                            bookingby = z.EntryBy,
+                                            flag = z.Flag,
+                                            driver = z.DriverName,
+                                            flagEdit = 1
+                                        }).Where(o => o.flag == 2 && o.startdate <= DateTime.Now && o.enddate >= DateTime.Now).ToList();
+                    //Addlist = Addlist.Where(o => o.flag == 2 && o.startdate <= DateTime.Now && o.enddate >= DateTime.Now).ToList();
                     break;
                 default:
                     Addlist = Addlist.Where(o => o.flag == 2 || o.flag == 3).ToList();
@@ -218,6 +240,26 @@ namespace E_OneWeb.Areas.Admin.Controllers
             {
                 TempData["Failed"] = "Error reject";
                 return Json(new { success = false, message = "Gagal Ditolak" });
+            }
+
+
+        }
+        public async Task<IActionResult> EndBooking(int id)
+        {
+            try
+            {
+                VehicleReservationUser vehicleReservationUser = await _unitOfWork.VehicleReservationUser.GetAsync(id);
+
+                vehicleReservationUser.BookingEndDate = DateTime.Now;
+                _unitOfWork.VehicleReservationUser.Update(vehicleReservationUser);
+                _unitOfWork.Save();
+
+                return Json(new { success = true, message = "Berhasil Diselesaikan" });
+            }
+            catch (Exception)
+            {
+              
+                return Json(new { success = false, message = "Gagal Diselesaikan" });
             }
 
 

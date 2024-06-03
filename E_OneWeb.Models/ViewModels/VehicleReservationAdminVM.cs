@@ -29,5 +29,6 @@ namespace E_OneWeb.Models.ViewModels
         public string? bookingby { get; set; }
         public int? flag { get; set; }
         public string? driver { get; set; }
+        public int? flagEdit { get; set; }
     }
 }
