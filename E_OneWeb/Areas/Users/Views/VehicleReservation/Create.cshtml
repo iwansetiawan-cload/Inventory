@@ -73,6 +73,7 @@
                 @Html.Label("", "Tujuan", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <input asp-for="VehicleReservationUser.Destination" class="form-control" style="row-gap" />
+                    <span asp-validation-for="VehicleReservationUser.Destination" class="text-danger"></span>
                 </div>
             </div>
 
@@ -82,6 +83,7 @@
                 @Html.Label("", "Keperluan", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-10">
                     <textarea asp-for="VehicleReservationUser.Utilities" class="form-control"></textarea>
+                    <span asp-validation-for="VehicleReservationUser.Utilities" class="text-danger"></span>
                 </div>
             </div>
 

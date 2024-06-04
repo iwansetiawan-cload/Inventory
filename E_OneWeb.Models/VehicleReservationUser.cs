@@ -18,8 +18,10 @@ namespace E_OneWeb.Models
         public VehicleReservationAdmin VehicleReservationAdmin { get; set; }
         public DateTime? BookingStartDate { get; set; }
         public DateTime? BookingEndDate { get; set; }
-        public string? Destination { get; set; }
-		public string? Utilities { get; set; }
+        [Required(ErrorMessage = "Tujuan harus diisi")]
+        public string Destination { get; set; }
+        [Required(ErrorMessage ="Keperluan harus diisi")]
+		public string Utilities { get; set; }
         [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "No Telepon harus numeric")]
         public string? Phone { get; set; }
 		public int? DriverId { get; set; }
