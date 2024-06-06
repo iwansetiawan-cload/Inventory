@@ -287,19 +287,12 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
                 }
                 foreach (var error in result.Errors)
                 {
-                    if (error.Description == "Passwords must have at least one non alphanumeric character.")
-                    {
-                        error.Description = "Kata sandi harus memiliki setidaknya satu karakter non alfanumerik.";
-					}
-					if (error.Description == "Passwords must have at least one lowercase ('a'-'z').")
-					{
-						error.Description = "Kata sandi harus memiliki setidaknya satu huruf kecil ('a'-'z').";
-					}
-					if (error.Description == "Passwords must have at least one uppercase ('A'-'Z').")
-					{
-						error.Description = "Kata sandi harus memiliki setidaknya satu huruf besar ('A'-'Z').";
-					}
-					ModelState.AddModelError(string.Empty, error.Description);
+                    error.Description = error.Description.Replace("Passwords must have at least one non alphanumeric character.", "Kata sandi harus memiliki setidaknya satu karakter non alfanumerik (!@#$%^&*())");
+                    error.Description = error.Description.Replace("Passwords must have at least one digit ('0'-'9').", "Kata sandi harus memiliki setidaknya satu digit ('0'-'9').");
+                    error.Description = error.Description.Replace("Passwords must have at least one lowercase ('a'-'z').", "Kata sandi harus memiliki setidaknya satu huruf kecil ('a'-'z').");
+                    error.Description = error.Description.Replace("Passwords must have at least one uppercase ('A'-'Z').", "Kata sandi harus memiliki setidaknya satu huruf besar ('A'-'Z').");
+                    error.Description = error.Description.Replace("is invalid, can only contain letters or digits.", "tidak sah, hanya boleh berisi huruf atau angka.").Replace("Username", "User Login");
+                    ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
 

@@ -288,7 +288,8 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
                 foreach (var error in result.Errors)
                 {
                    
-                    error.Description = error.Description.Replace("Passwords must have at least one non alphanumeric character.", "Kata sandi harus memiliki setidaknya satu karakter non alfanumerik.");
+                    error.Description = error.Description.Replace("Passwords must have at least one non alphanumeric character.", "Kata sandi harus memiliki setidaknya satu karakter non alfanumerik (!@#$%^&*())");
+                    error.Description = error.Description.Replace("Passwords must have at least one digit ('0'-'9').", "Kata sandi harus memiliki setidaknya satu digit ('0'-'9').");
                     error.Description = error.Description.Replace("Passwords must have at least one lowercase ('a'-'z').", "Kata sandi harus memiliki setidaknya satu huruf kecil ('a'-'z').");
                     error.Description = error.Description.Replace("Passwords must have at least one uppercase ('A'-'Z').", "Kata sandi harus memiliki setidaknya satu huruf besar ('A'-'Z').");
                     error.Description = error.Description.Replace("is invalid, can only contain letters or digits.", "tidak sah, hanya boleh berisi huruf atau angka.").Replace("Username", "User Login");
