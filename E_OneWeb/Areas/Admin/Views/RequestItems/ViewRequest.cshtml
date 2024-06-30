@@ -1,0 +1,222 @@
+﻿@model E_OneWeb.Models.ViewModels.RequestItemHeaderVM
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var title = "Data Request Aset";
+}
+
+<br />
+<form method="post" enctype="multipart/form-data">
+    <div class="row p-1 border">
+        <input type="hidden" asp-for="RequestItemHeader.Id" id="IdHeader" />
+       
+        <div class="col-12 border-bottom">
+            <h2 class="text-primary">@title</h2>
+        </div>
+
+        <div class="col-12 pt-4">
+            <div class="form-group row pt-2">
+
+                <div class="col-6">
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.RequestItemHeader.ReqNumber, "No.Referensi", htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-9">
+                            <input asp-for="RequestItemHeader.ReqNumber" class="form-control" style="row-gap" disabled />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.RequestItemHeader.RequestDate, "Tanggal Permintaan", htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-9">
+                            <input asp-for="RequestItemHeader.RequestDate" class="form-control" type="date" disabled />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group row pt-2">
+                <div class="col-6">
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.RequestItemHeader.Requester, "Permintaan dari", htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-9">
+                            <input asp-for="RequestItemHeader.Requester" class="form-control" style="row-gap" disabled />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-6">
+                    <div class="form-group row">
+                        <div class="col-3">
+                            File
+                        </div>
+                        <div class="col-9">
+                            <input type="file" name="files" id="uploadBox" multiple class="form-control" disabled />
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-group row py-4">
+                <div class="col-5 offset-5">
+                    <div class="row">
+                        <div class="col">
+                            <a asp-action="Index" style="width:245px" class="btn btn-success form-control">Kembali ke List</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-12 border-bottom">
+            <h1 class="text-primary"></h1>
+        </div>
+
+        <div class="row py-2">
+            <div class="col-md-12">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-primary" type="button" title="Download file" onclick="Export()" id="exportfile"><i class="fas fa-file-download"></i>&nbsp; Download</button>
+                </div>
+
+            </div>
+        </div>
+      
+
+        <div class="p-2 border rounded" style="min-width:100px;overflow:scroll;">
+            <table id="tblDataItems" class="table table-striped table-bordered " style="width:100%">
+                <thead class="thead-dark">
+                    <tr class="table-info">
+                        <th>
+                            Nama Aset
+                        </th>
+                        <th>
+                            Katagori
+                        </th>
+                        <th>
+                            Spesifikasi
+                        </th>
+                        <th>
+                            Nilai
+                        </th>
+                        <th>
+                            Jumlah
+                        </th>
+                        <th>
+                            Total Nilai
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                    </tr>
+                </thead>
+                
+            </table>
+        </div>
+
+
+    </div>
+
+    <br />
+    <div class="row py-2">
+        <div class="col-md-12">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label>Grand Total</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="hidden" asp-for="RequestItemHeader.TotalAmount" id="grandtotal" />
+                        <input asp-for="GrandTotalString" class="form-control text-end" style="row-gap" id="GrandTotalString" disabled />
+                        <span asp-validation-for="RequestItemHeader.TotalAmount" class="text-danger"></span>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    @* <script src="~/js/Items.js"></script>*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // var table = $("#tblDataAddItems").dataTable({
+            //     "bSort": true
+            // });
+            loadDataTable();
+            var a = $("#grandtotal").val();
+            $("#GrandTotalString").val(numberWithCommas(a));
+
+            // if ($("#filedownload").val() == "true") {
+            //     $("#exportfile").removeAttr("disabled");
+            // } else {
+            //     $("#exportfile").attr("disabled", "disabled");
+            // }
+        });
+        $("#SearchCategory").change(function () {
+            var cat = $("#SearchCategory").val();
+            $('#category').val(cat);
+        });
+        function changesqty() {
+            $("#price").val($("#PriceString").val().replace(/[,a-zA-Z]/g, ''));
+            var a = $('#qty').val();
+            var b = $('#price').val();
+            var c = a * b;
+            $('#totalamount').val(c);
+            $('#TotalAmountString').val(numberWithCommas(c));
+            $('#PriceString').val(numberWithCommas(b));
+        }
+     
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        }
+        
+        function Export() {
+            var id = $('#IdHeader').val();
+            var urlx = "/Admin/RequestItems/Export/" + id;
+            window.location = urlx;
+
+        }
+
+
+        function loadDataTable() {
+            var id = $('#IdHeader').val();
+            dataTable = $('#tblDataItems').DataTable({
+                "ajax": {
+                    "url": "/Admin/RequestItems/GetDetailViewRequestItem",
+                    "data": {
+                        "id": id
+                    }
+                },
+                "columns": [
+                    { "data": "name", "autoWidth": true },
+                    { "data": "category", "autoWidth": true },
+                    { "data": "specification", "autoWidth": true },
+                    { "data": "price", "autoWidth": true },
+                    { "data": "qty", "autoWidth": true },
+                    { "data": "total", "autoWidth": true },
+                    { "data": "status", "autoWidth": true }
+                ]
+            });
+        }
+    </script>
+
+
+}
+
+
+

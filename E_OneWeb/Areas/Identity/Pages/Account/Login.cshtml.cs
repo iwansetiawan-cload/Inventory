@@ -21,11 +21,13 @@ namespace E_OneWeb.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly IHttpContextAccessor _contextAccessor;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger, IHttpContextAccessor contextAccessor)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _contextAccessor = contextAccessor; 
         }
 
         /// <summary>

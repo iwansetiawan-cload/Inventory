@@ -18,6 +18,8 @@ using System.IO.Pipes;
 using Microsoft.AspNetCore.StaticFiles;
 using System.Security.Claims;
 using static com.sun.tools.@internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+using javax.xml.soap;
+using sun.misc;
 
 namespace E_OneWeb.Areas.Admin.Controllers
 {
@@ -27,7 +29,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
     {
         public static List<RequestItemDetail> additemlist = new List<RequestItemDetail>();
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IWebHostEnvironment _hostEnvironment;    
+        private readonly IWebHostEnvironment _hostEnvironment;
         //public static string FlagDeleteItem { get; set; }
         public RequestItemsController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
         {
@@ -69,7 +71,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
         }
         [Authorize(Roles = SD.Role_Employee + "," + SD.Role_Unit)]
         public async Task<IActionResult> Upsert(int? id)
-        {           
+        {
 
             additemlist = new List<RequestItemDetail>();
             ViewBag.Status = "";
@@ -101,7 +103,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 ViewBag.fileDownload = "";
             }
 
-            
+
             var DetailList = await _unitOfWork.RequestItemDetail.GetAllAsync();
             var datalist_ = (from z in DetailList.Where(z => z.IdHeader == id)
                              select new
@@ -173,7 +175,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                     //this is an edit and we need to remove old image
                     var imagePath = Path.Combine(webRootPath, vm.RequestItemHeader.RefFile.TrimStart('\\'));
                     if (System.IO.File.Exists(imagePath))
-                     {
+                    {
                         System.IO.File.Delete(imagePath);
                     }
                 }
@@ -181,113 +183,113 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 {
                     files[0].CopyTo(filesStreams);
                 }
-                vm.RequestItemHeader.RefFile = fileName  + extenstion;
+                vm.RequestItemHeader.RefFile = fileName + extenstion;
             }
-          
+
             if (vm.RequestItemHeader.Id == 0)
             {
-                
+
                 await _unitOfWork.RequestItemHeader.AddAsync(vm.RequestItemHeader);
                 ViewBag.Status = "Save Success";
-                _unitOfWork.Save();
-                var AddItemsList = (from z in additemlist
-                                   select new RequestItemDetail
-                                   {
-                                       Id = z.Id,
-                                       IdHeader = vm.RequestItemHeader.Id,
-                                       Name = z.Name,
-                                       Category = z.Category,
-                                       Reason = z.Reason,
-                                       Price = z.Price,
-                                       Qty = z.Qty,
-                                       Total = z.Total,
-                                       RoomId = z.RoomId,
-                                       RoomName = z.RoomName
-                                   }).ToList();
-                vm.AddItemsList = AddItemsList;
-                foreach (var item in AddItemsList)
-                {
 
-                    RequestItemDetail itemDetail = new RequestItemDetail()
-                    {
-                        IdHeader = item.IdHeader,
-                        Name = item.Name,
-                        Category = item.Category,
-                        Reason = item.Reason,
-                        Specification = item.Specification,
-                        Price = item.Price,
-                        Qty = item.Qty,
-                        Total = item.Total,
-                        RoomId = item.RoomId,
-                        RoomName = item.RoomName
+                //var AddItemsList = (from z in additemlist
+                //                   select new RequestItemDetail
+                //                   {
+                //                       Id = z.Id,
+                //                       IdHeader = vm.RequestItemHeader.Id,
+                //                       Name = z.Name,
+                //                       Category = z.Category,
+                //                       Reason = z.Reason,
+                //                       Price = z.Price,
+                //                       Qty = z.Qty,
+                //                       Total = z.Total,
+                //                       RoomId = z.RoomId,
+                //                       RoomName = z.RoomName
+                //                   }).ToList();
+                //vm.AddItemsList = AddItemsList;
+                //foreach (var item in AddItemsList)
+                //{
 
-                    };
-                    vm.RequestItemDetail = itemDetail;
-                    await _unitOfWork.RequestItemDetail.AddAsync(vm.RequestItemDetail);
-                    _unitOfWork.Save();
+                //    RequestItemDetail itemDetail = new RequestItemDetail()
+                //    {
+                //        IdHeader = item.IdHeader,
+                //        Name = item.Name,
+                //        Category = item.Category,
+                //        Reason = item.Reason,
+                //        Specification = item.Specification,
+                //        Price = item.Price,
+                //        Qty = item.Qty,
+                //        Total = item.Total,
+                //        RoomId = item.RoomId,
+                //        RoomName = item.RoomName
 
-                }
+                //    };
+                //    vm.RequestItemDetail = itemDetail;
+                //    await _unitOfWork.RequestItemDetail.AddAsync(vm.RequestItemDetail);
+                //    _unitOfWork.Save();
+
+                //}
                 //TempData["Success"] = "Save Request items successfully";
             }
             else
-            {               
+            {
                 _unitOfWork.RequestItemHeader.Update(vm.RequestItemHeader);
-               
 
-                var objFromDetail = await _unitOfWork.RequestItemDetail.GetAllAsync();
-                objFromDetail = objFromDetail.Where(z => z.IdHeader == vm.RequestItemHeader.Id).ToList();
-                await _unitOfWork.RequestItemDetail.RemoveRangeAsync(objFromDetail);
-                _unitOfWork.Save();
+                //var objFromDetail = await _unitOfWork.RequestItemDetail.GetAllAsync();
+                //objFromDetail = objFromDetail.Where(z => z.IdHeader == vm.RequestItemHeader.Id).ToList();
+                //await _unitOfWork.RequestItemDetail.RemoveRangeAsync(objFromDetail);
+                //_unitOfWork.Save();
 
-                var AddItemsList = (from z in additemlist
-                                    select new RequestItemDetail
-                                    {
-                                        IdHeader = vm.RequestItemHeader.Id,
-                                        Name = z.Name,
-                                        Category = z.Category,
-                                        Reason = z.Reason,
-                                        Specification = z.Specification,
-                                        Price = z.Price,
-                                        Qty = z.Qty,
-                                        Total = z.Total,
-                                        RoomId = z.RoomId,
-                                        RoomName = z.RoomName
-                                    }).ToList();
-                vm.AddItemsList = AddItemsList;
-                foreach (var item in AddItemsList)
-                {
+                //var AddItemsList = (from z in additemlist
+                //                    select new RequestItemDetail
+                //                    {
+                //                        IdHeader = vm.RequestItemHeader.Id,
+                //                        Name = z.Name,
+                //                        Category = z.Category,
+                //                        Reason = z.Reason,
+                //                        Specification = z.Specification,
+                //                        Price = z.Price,
+                //                        Qty = z.Qty,
+                //                        Total = z.Total,
+                //                        RoomId = z.RoomId,
+                //                        RoomName = z.RoomName
+                //                    }).ToList();
+                //vm.AddItemsList = AddItemsList;
+                //foreach (var item in AddItemsList)
+                //{
 
-                    RequestItemDetail itemDetail = new RequestItemDetail()
-                    {
-                        IdHeader = item.IdHeader,
-                        Name = item.Name,
-                        Category = item.Category,
-                        Reason = item.Reason,
-                        Specification = item.Specification,
-                        Price = item.Price,
-                        Qty = item.Qty,
-                        Total = item.Total,
-                        RoomId = item.RoomId,
-                        RoomName = item.RoomName
-                    };
-                    vm.RequestItemDetail = itemDetail;
-                    await _unitOfWork.RequestItemDetail.AddAsync(vm.RequestItemDetail);
-                    _unitOfWork.Save();
+                //    RequestItemDetail itemDetail = new RequestItemDetail()
+                //    {
+                //        IdHeader = item.IdHeader,
+                //        Name = item.Name,
+                //        Category = item.Category,
+                //        Reason = item.Reason,
+                //        Specification = item.Specification,
+                //        Price = item.Price,
+                //        Qty = item.Qty,
+                //        Total = item.Total,
+                //        RoomId = item.RoomId,
+                //        RoomName = item.RoomName
+                //    };
+                //    vm.RequestItemDetail = itemDetail;
+                //    await _unitOfWork.RequestItemDetail.AddAsync(vm.RequestItemDetail);
+                //    _unitOfWork.Save();
 
-                }
+                //}
                 //TempData["Success"] = "Update Request items successfully";
                 ViewBag.Status = "Update Success";
-               
+
             }
-            return RedirectToAction(nameof(Index));         
+            _unitOfWork.Save();
+            return RedirectToAction(nameof(Upsert), new { id = vm.RequestItemHeader.Id });
         }
         [Authorize(Roles = SD.Role_Employee + "," + SD.Role_Unit)]
-        [HttpPost]        
-        public JsonResult AddItem(string name,string category, string reason, string price, string qty, string total, string spesifik, int? idroom, string room)
+        [HttpPost]
+        public async Task<IActionResult> AddItem(string name, string category, string reason, string price, string qty, string total, string spesifik, int? idroom, string room, int id)
         {
 
             RequestItemDetail Items = new RequestItemDetail();
-            Items.IdHeader = 0;
+            Items.IdHeader = id;
             Items.Name = name;
             Items.Category = category;
             Items.Reason = reason;
@@ -297,22 +299,53 @@ namespace E_OneWeb.Areas.Admin.Controllers
             Items.Total = Convert.ToDouble(total);
             Items.RoomId = idroom;
             Items.RoomName = room;
+            _unitOfWork.RequestItemDetail.AddAsync(Items);
+            _unitOfWork.Save();
 
-            additemlist.Add(Items);
-            double? totalamount = additemlist.Sum(z=>z.Total);
+            RequestItemHeader objHeader = await _unitOfWork.RequestItemHeader.GetAsync(id);
+            var DetailList = await _unitOfWork.RequestItemDetail.GetAllAsync(z => z.IdHeader == id);
+            double? totalamount = DetailList.Select(x => x.Total).Sum();// additemlist.Sum(z => z.Total);
+            objHeader.TotalAmount = totalamount;
+            _unitOfWork.RequestItemHeader.Update(objHeader);
             var res = new
             {
                 result = "true",
-                messageerrors = "",
+                message = "Tambah Berhasil",
                 grandtotal = totalamount
             };
             return Json(res);
         }
+        //public JsonResult AddItem(string name,string category, string reason, string price, string qty, string total, string spesifik, int? idroom, string room)
+        //{
+
+        //    RequestItemDetail Items = new RequestItemDetail();
+        //    Items.IdHeader = 0;
+        //    Items.Name = name;
+        //    Items.Category = category;
+        //    Items.Reason = reason;
+        //    Items.Specification = spesifik;
+        //    Items.Price = Convert.ToDouble(price);
+        //    Items.Qty = Convert.ToInt32(qty);
+        //    Items.Total = Convert.ToDouble(total);
+        //    Items.RoomId = idroom;
+        //    Items.RoomName = room;
+
+        //    additemlist.Add(Items);
+        //    double? totalamount = additemlist.Sum(z=>z.Total);
+        //    var res = new
+        //    {
+        //        result = "true",
+        //        messageerrors = "",
+        //        grandtotal = totalamount
+        //    };
+        //    return Json(res);
+        //}
 
         [HttpGet]
         public async Task<IActionResult> GetAllItems(int id)
-        {          
-            var datalist = (from z in additemlist
+        {
+            var DetailList = await _unitOfWork.RequestItemDetail.GetAllAsync(z => z.IdHeader == id);
+            var datalist = (from z in DetailList
                             select new
                             {
                                 id = z.Id,
@@ -334,20 +367,20 @@ namespace E_OneWeb.Areas.Admin.Controllers
         {
             var DetailList = await _unitOfWork.RequestItemDetail.GetAllAsync();
             var datalist = (from z in DetailList.Where(z => z.IdHeader == id)
-                             select new
-                             {
-                                 id = z.Id,
-                                 idheader = z.IdHeader,
-                                 itemname = z.Name,
-                                 category = z.Category,
-                                 reason = z.Reason,
-                                 spesifik = z.Specification,
-                                 price = z.Price.HasValue ? z.Price.Value.ToString("#,##0") : "",
-                                 qty = z.Qty,
-                                 total = z.Total.HasValue ? z.Total.Value.ToString("#,##0") : "",
-                                 status = z.Status,
-                             }).ToList();
-        
+                            select new
+                            {
+                                id = z.Id,
+                                idheader = z.IdHeader,
+                                itemname = z.Name,
+                                category = z.Category,
+                                reason = z.Reason,
+                                spesifik = z.Specification,
+                                price = z.Price.HasValue ? z.Price.Value.ToString("#,##0") : "",
+                                qty = z.Qty,
+                                total = z.Total.HasValue ? z.Total.Value.ToString("#,##0") : "",
+                                status = z.Status,
+                            }).ToList();
+
             return Json(new { data = datalist });
 
         }
@@ -373,6 +406,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteItem(int id)
         {
+            double? totalamount = 0;
             if (id > 0)
             {
                 var objFromDb = await _unitOfWork.RequestItemDetail.GetAsync(id);
@@ -382,27 +416,31 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 }
                 await _unitOfWork.RequestItemDetail.RemoveAsync(objFromDb);
                 _unitOfWork.Save();
+                RequestItemHeader objHeader = await _unitOfWork.RequestItemHeader.GetAsync(objFromDb.IdHeader);
+                var DetailList = await _unitOfWork.RequestItemDetail.GetAllAsync(z => z.IdHeader == objFromDb.IdHeader);
+                totalamount = DetailList.Select(x => x.Total).Sum();
+                objHeader.TotalAmount = totalamount;
+                _unitOfWork.RequestItemHeader.Update(objHeader);
+                _unitOfWork.Save();
             }
-           
-            additemlist = additemlist.Where(z => z.Id != id).ToList();
-            double? totalamount = additemlist.Sum(z => z.Total);
-            return Json(new { success = true, message = "Delete Successful", grandtotal = totalamount });
 
-        }        
-               
+            return Json(new { success = true, message = "Hapus Berhasil", grandtotal = totalamount });
+
+        }
+
         public async Task<byte[]?> GetUrlContent(string url)
         {
             using (var client = new HttpClient())
             using (var result = await client.GetAsync(url))
                 return result.IsSuccessStatusCode ? await result.Content.ReadAsByteArrayAsync() : null;
         }
-      
+
         private MemoryStream DownloadSinghFile(string filename, string uploadPath)
-        { 
-            var path = Path.Combine(Directory.GetCurrentDirectory(),uploadPath, filename);
+        {
+            var path = Path.Combine(Directory.GetCurrentDirectory(), uploadPath, filename);
             var memory = new MemoryStream();
             if (System.IO.File.Exists(path))
-            { 
+            {
                 var net = new System.Net.WebClient();
                 var data = net.DownloadData(path);
                 var content = new System.IO.MemoryStream(data);
@@ -431,9 +469,9 @@ namespace E_OneWeb.Areas.Admin.Controllers
         #region Approve by Admin
         [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         public IActionResult Approve()
-		{
-			return View();
-		}
+        {
+            return View();
+        }
         [HttpGet]
         public async Task<IActionResult> GetAllApprove()
         {
@@ -469,76 +507,76 @@ namespace E_OneWeb.Areas.Admin.Controllers
         }
         [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         public async Task<IActionResult> ViewApprove(int? id)
-		{
+        {
 
-			additemlist = new List<RequestItemDetail>();
-			ViewBag.Status = "";
-			IEnumerable<Category> CatList = await _unitOfWork.Category.GetAllAsync();
-			var listcategory = CatList.Select(x => new SelectListItem { Value = x.Name, Text = x.Name });
-			ViewBag.CategoryList = new SelectList(listcategory, "Value", "Text");
+            additemlist = new List<RequestItemDetail>();
+            ViewBag.Status = "";
+            IEnumerable<Category> CatList = await _unitOfWork.Category.GetAllAsync();
+            var listcategory = CatList.Select(x => new SelectListItem { Value = x.Name, Text = x.Name });
+            ViewBag.CategoryList = new SelectList(listcategory, "Value", "Text");
 
-			RequestItemHeaderVM requestitemvm = new RequestItemHeaderVM()
-			{
-				RequestItemHeader = new RequestItemHeader()
+            RequestItemHeaderVM requestitemvm = new RequestItemHeaderVM()
+            {
+                RequestItemHeader = new RequestItemHeader()
 
-			};
-			if (id == null)
-			{
-				//this is for create
-				requestitemvm.RequestItemHeader.RequestDate = DateTime.Now;
-				requestitemvm.ListCategory = listcategory;
+            };
+            if (id == null)
+            {
+                //this is for create
+                requestitemvm.RequestItemHeader.RequestDate = DateTime.Now;
+                requestitemvm.ListCategory = listcategory;
 
-				return View(requestitemvm);
-			}
+                return View(requestitemvm);
+            }
 
-			requestitemvm.RequestItemHeader = await _unitOfWork.RequestItemHeader.GetAsync(id.GetValueOrDefault());
-			if (requestitemvm.RequestItemHeader.RefFile != null)
-			{
-				ViewBag.fileDownload = "true";
-			}
-			else
-			{
-				ViewBag.fileDownload = "";
-			}
+            requestitemvm.RequestItemHeader = await _unitOfWork.RequestItemHeader.GetAsync(id.GetValueOrDefault());
+            if (requestitemvm.RequestItemHeader.RefFile != null)
+            {
+                ViewBag.fileDownload = "true";
+            }
+            else
+            {
+                ViewBag.fileDownload = "";
+            }
 
 
-			var DetailList = await _unitOfWork.RequestItemDetail.GetAllAsync();
-			var datalist_ = (from z in DetailList.Where(z => z.IdHeader == id)
-							 select new
-							 {
-								 id = z.Id,
-								 idheader = z.IdHeader,
-								 itemname = z.Name,
-								 category = z.Category,
-								 reason = z.Reason,
-								 spesifik = z.Specification,
-								 price = z.Price.HasValue ? z.Price.Value.ToString("#,##0") : "",
-								 qty = z.Qty,
-								 total = z.Total.HasValue ? z.Total.Value.ToString("#,##0") : "",
-							 }).ToList();
+            var DetailList = await _unitOfWork.RequestItemDetail.GetAllAsync();
+            var datalist_ = (from z in DetailList.Where(z => z.IdHeader == id)
+                             select new
+                             {
+                                 id = z.Id,
+                                 idheader = z.IdHeader,
+                                 itemname = z.Name,
+                                 category = z.Category,
+                                 reason = z.Reason,
+                                 spesifik = z.Specification,
+                                 price = z.Price.HasValue ? z.Price.Value.ToString("#,##0") : "",
+                                 qty = z.Qty,
+                                 total = z.Total.HasValue ? z.Total.Value.ToString("#,##0") : "",
+                             }).ToList();
 
-			foreach (var item in datalist_)
-			{
-				RequestItemDetail Items = new RequestItemDetail();
-				Items.Id = item.id;
-				Items.IdHeader = item.idheader;
-				Items.Name = item.itemname;
-				Items.Category = item.category;
-				Items.Reason = item.reason;
-				Items.Specification = item.spesifik;
-				Items.Price = Convert.ToDouble(item.price);
-				Items.Qty = Convert.ToInt32(item.qty);
-				Items.Total = Convert.ToDouble(item.total);
-				additemlist.Add(Items);
-			}
+            foreach (var item in datalist_)
+            {
+                RequestItemDetail Items = new RequestItemDetail();
+                Items.Id = item.id;
+                Items.IdHeader = item.idheader;
+                Items.Name = item.itemname;
+                Items.Category = item.category;
+                Items.Reason = item.reason;
+                Items.Specification = item.spesifik;
+                Items.Price = Convert.ToDouble(item.price);
+                Items.Qty = Convert.ToInt32(item.qty);
+                Items.Total = Convert.ToDouble(item.total);
+                additemlist.Add(Items);
+            }
 
-			if (requestitemvm.RequestItemHeader == null)
-			{
-				return NotFound();
-			}
-			return View(requestitemvm);
+            if (requestitemvm.RequestItemHeader == null)
+            {
+                return NotFound();
+            }
+            return View(requestitemvm);
 
-		}
+        }
 
         [HttpPost]
         public async Task<IActionResult> ApproveHeader(int id)
@@ -568,7 +606,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 TempData["Failed"] = "Error approved";
                 return Json(new { success = false, message = "Approved Error" });
             }
-           
+
 
         }
         [HttpPost]
@@ -601,7 +639,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
             }
 
 
-        }        
+        }
 
         [HttpPost]
         public async Task<IActionResult> ApproveDetail(int id)
@@ -621,7 +659,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                 requestItemDetail.RejectedBy = null;
                 requestItemDetail.RejectedDate = null;
                 _unitOfWork.RequestItemDetail.Update(requestItemDetail);
-             
+
                 TempData["Success"] = "Successfully approved";
                 return Json(new { success = true, message = "Approved Successful" });
             }
@@ -681,5 +719,43 @@ namespace E_OneWeb.Areas.Admin.Controllers
                             }).ToList().OrderByDescending(o => o.id);
             return Json(new { data = datalist });
         }
+        [Authorize(Roles = SD.Role_Employee + "," + SD.Role_Unit)]
+        public async Task<IActionResult> ViewRequest(int id)
+        {
+            RequestItemHeader requestItemHeader = await _unitOfWork.RequestItemHeader.GetAsync(id);
+            var ListrequestItemDetail = await _unitOfWork.RequestItemDetail.GetAllAsync(z => z.IdHeader == id);
+            RequestItemHeaderVM requestitemvm = new RequestItemHeaderVM()
+            {
+                RequestItemHeader = new RequestItemHeader(),
+                AddItemsList = new List<RequestItemDetail>()
+
+            };
+            requestitemvm.RequestItemHeader = requestItemHeader;
+            requestitemvm.AddItemsList = ListrequestItemDetail.ToList();
+            return View(requestitemvm);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetDetailViewRequestItem(int id)
+        {
+            var ListrequestItemDetail = await _unitOfWork.RequestItemDetail.GetAllAsync(z => z.IdHeader == id);
+
+            var datalist = (from z in ListrequestItemDetail.ToList()
+                            select new
+                            {
+                                id = z.Id,
+                                name = z.Name,
+                                category = z.Category,
+                                specification = z.Specification,
+                                price = z.Price.HasValue ? z.Price.Value.ToString("#,##0") : "",
+                                qty = z.Qty.HasValue ? z.Qty.Value.ToString("#,##0") : "",
+                                total = z.Total.HasValue ? z.Total.Value.ToString("#,##0") : "",
+                                status = z.Status,
+
+                            }).ToList();
+
+            return Json(new { data = datalist });
+        }
+
     }
 }
