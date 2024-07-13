@@ -107,6 +107,15 @@ namespace E_OneWeb.Areas.Admin.Controllers
             }
             itemsVM.Percent_String = itemsVM.Items.Percent.Value.ToString("#,##0.00");
             itemsVM.Code_Before = itemsVM.Items.Code;
+            #region Hitung Nilai Buku
+            int PeriodExpence = itemsVM.Items.Period != null ? itemsVM.Items.Period.Value : 0;
+            decimal? Percent = itemsVM.Percent_String != null ? Convert.ToDecimal(itemsVM.Percent_String) : 0;
+
+            decimal Nilai_Buku = GetNilaiPenyusutan(itemsVM.Items.StartDate, itemsVM.Items.TotalAmount, PeriodExpence, Percent);
+            itemsVM.Items.DepreciationExpense = Math.Round((double)Nilai_Buku);
+           
+            #endregion
+
             ViewBag.Status = "";
             return View(itemsVM);
 
