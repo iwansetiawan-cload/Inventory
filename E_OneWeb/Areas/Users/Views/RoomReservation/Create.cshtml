@@ -289,6 +289,9 @@
                                 <th>
                                     Lokasi Gedung
                                 </th>
+                                <th>
+                                    Keterangan
+                                </th>
                                 <th style="display:none"></th>
                                 <th style="display:none"></th>
                             </tr>
@@ -372,17 +375,18 @@
                     "url": "/Users/RoomReservation/GetAllRoomAndLocation"
                 },
                 "columns": [
-                    { "data": "name_of_room", "width": "30%" },
-                    { "data": "name_of_location", "width": "30%" },
-                    { "data": "id", "width": "10%" },
-                    { "data": "roomId", "width": "10%" },
+                    { "data": "name_of_room", "autoWidth": true },
+                    { "data": "name_of_location", "autoWidth": true },
+                    { "data": "desc", "autoWidth": true },
+                    { "data": "id", "autoWidth": true },
+                    { "data": "roomId", "autoWidth": true },
 
                 ],
                 "createdRow": function (row, data, index) {
                     $(row).attr('onclick', 'select_row(this)');
                     $(row).attr('data-bs-dismiss', 'modal');
-                    $('td', row).eq(2).attr('style', 'display:none;');
                     $('td', row).eq(3).attr('style', 'display:none;');
+                    $('td', row).eq(4).attr('style', 'display:none;');
                 },
             });
         }
@@ -390,8 +394,8 @@
         function select_row(obj) {
             var name_of_room = $('td', obj).eq(0).html().trim();
             var name_of_location = $('td', obj).eq(1).html().trim();
-            var adminid_room = $('td', obj).eq(2).html().trim();
-            var roomid = $('td', obj).eq(3).html().trim();
+            var adminid_room = $('td', obj).eq(3).html().trim();
+            var roomid = $('td', obj).eq(4).html().trim();
 
             $('#RoomName').val(name_of_room);
             $('#RoomName_').val(name_of_room);

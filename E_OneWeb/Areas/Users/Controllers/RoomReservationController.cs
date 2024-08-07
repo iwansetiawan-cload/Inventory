@@ -10,6 +10,7 @@ using NPOI.SS.Formula.Functions;
 using NuGet.Packaging;
 using System.Globalization;
 using static com.sun.tools.@internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+using com.sun.xml.@internal.bind.v2.model.core;
 
 namespace E_OneWeb.Areas.Users.Controllers
 {
@@ -317,6 +318,7 @@ namespace E_OneWeb.Areas.Users.Controllers
                                 name_of_room = z.RoomName,
                                 name_of_location = z.LocationName,
                                 roomId = z.RoomId,
+                                desc = _unitOfWork.Room.Get(z.RoomId).Description,
                             }).Where(u => u.flag == 1).ToList();
             return Json(new { data = datalist });
         }
