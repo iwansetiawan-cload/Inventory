@@ -55,7 +55,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 totalamount = z.TotalAmount != null ? z.TotalAmount : 0,
                                 room = z.Room.Name,
                                 category = z.Category.Name,
-                                ownership = _unitOfWork.Genmaster.GetAll().Where(o=>o.IDGEN ==Convert.ToInt32( z.OriginOfGoods)).Select(i=>i.GENNAME).FirstOrDefault()
+                                ownership = _unitOfWork.Genmaster.GetAll().Where(o=>o.IDGEN ==Convert.ToInt32( z.OriginOfGoods)).Select(i=>i.GENNAME).FirstOrDefault(),
+                                startdate = z.StartDate.Value != null ? z.StartDate.Value.ToString("dd/MM/yyyy") : ""
                             }).ToList().OrderByDescending(o=>o.id);
 
             return Json(new { data = datalist });

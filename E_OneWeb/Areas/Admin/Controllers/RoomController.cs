@@ -207,7 +207,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                 totalamount = z.TotalAmount != null ? z.TotalAmount : 0,
                                 room = z.Room.Name,
                                 roomid = z.RoomId,
-                                category = z.Category.Name
+                                category = z.Category.Name,
+                                startdate = z.StartDate.Value != null ? z.StartDate.Value.ToString("dd/MM/yyyy") : ""
                             }).Where(i=>i.roomid == id).ToList().OrderByDescending(o => o.id);
 
             return Json(new { data = datalist });

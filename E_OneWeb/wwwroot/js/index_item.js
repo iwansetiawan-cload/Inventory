@@ -15,7 +15,8 @@ function loadDataTable() {
         "columns": [
             { "data": "id", "autoWidth": true },
             { "data": "code", "autoWidth": true },
-            { "data": "name", "autoWidth": true },            
+            { "data": "name", "autoWidth": true },       
+            { "data": "startdate", "autoWidth": true }, 
             { "data": "room", "autoWidth": true },
             { "data": "category", "autoWidth": true },
             { "data": "ownership", "autoWidth": true },

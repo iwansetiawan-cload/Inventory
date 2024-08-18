@@ -72,6 +72,9 @@
                                     Nama Aset
                                 </th>
                                 <th>
+                                    Tanggal Perolehan
+                                </th>
+                                <th>
                                     Ruangan
                                 </th>
                                 <th>
@@ -119,6 +122,7 @@
                 "columns": [
                     { "data": "code", "autoWidth": true },
                     { "data": "name", "autoWidth": true },
+                    { "data": "startdate", "autoWidth": true },
                     { "data": "room", "autoWidth": true },
                     { "data": "category", "autoWidth": true },
                     { "data": "price", "autoWidth": true },
@@ -140,8 +144,8 @@
                     }
                 ],
                 "createdRow": function (row, data, index) {                
-                    $('td', row).eq(4).attr('style', 'text-align:right;');
                     $('td', row).eq(5).attr('style', 'text-align:right;');
+                    $('td', row).eq(6).attr('style', 'text-align:right;');
                 }
             });
         }
