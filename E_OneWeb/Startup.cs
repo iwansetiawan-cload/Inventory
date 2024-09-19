@@ -36,6 +36,14 @@ namespace E_OneWeb
                 options.LoginPath = $"/Identity/Account/Login";
                 options.LogoutPath = $"/Identity/Account/Logout";
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+
+                #region Timeout
+                options.Cookie.Name = ".AspNetCore.Identity.Application";
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                options.Cookie.MaxAge = TimeSpan.FromMinutes(5);
+                options.SlidingExpiration = true;
+                #endregion
+
             });
 
   

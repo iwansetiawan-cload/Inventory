@@ -66,7 +66,7 @@
             var code = $('#searchCode').val();
             dataTable = $('#tblData').DataTable({
                 "order": [[0, "asc"]],
-                "filter": false,
+                "filter": true,
                 "ajax": {
                     "url": "/Admin/FixedSchedulerRoom/GetAll"
                 },

@@ -128,36 +128,71 @@ namespace E_OneWeb.Areas.Admin.Controllers
                     }
                     DataTableCollection tables = ReadFromExcel(filePath, ref sheetNames);
 
-                    foreach (DataTable dt in tables)
+                    string valMonth = DateTime.Now.Month.ToString();
+					string valyear = DateTime.Now.Year.ToString();
+					string dtNow = DateTime.Now.ToString("yyyy-MM-dd ");					
+
+					foreach (DataTable dt in tables)
                     {
                         int RowNumber = dt.Rows.Count;
 
                         for (int i = 0; i < RowNumber; i++)
                         {
-                            ImportFixedSchedulerRoom newImport = new ImportFixedSchedulerRoom();
+							var GetSchedulerRoom = await _unitOfWork.FixedSchedulerRoom.GetAllAsync();
+							List<ImportFixedSchedulerRoom> GetImport = _unitOfWork.ImportFixedSchedulerRoom.GetAll().Where(z => z.EntryBy == user.Name).ToList();
+							ImportFixedSchedulerRoom newImport = new ImportFixedSchedulerRoom();
                             newImport.LocationName = dt.Rows[i][1].ToString();
                             newImport.RoomName = dt.Rows[i][2].ToString();
-                            newImport.Days = dt.Rows[i][3].ToString().ToLower().Replace(" ","");
-                            //if (dt.Rows[i][4].ToString() != null)
-                            //{
-                            //    newImport.Start_Clock = dt.Rows[i][4].ToString();    
-                            //}
-                            //if (dt.Rows[i][5].ToString() != null)
-                            //{
-                            //    newImport.End_Clock = dt.Rows[i][5].ToString();
-                            //}
+                            newImport.Days = dt.Rows[i][3].ToString().ToLower().Replace(" ","");      
                             newImport.Start_Clock = dt.Rows[i][4].ToString();
+                            if (newImport.Start_Clock != null)
+                            {
+                                string valdays = dtNow + newImport.Start_Clock;
+                                newImport.ValStart_Clock = DateTime.Parse(valdays);
+                            }
                             newImport.End_Clock = dt.Rows[i][5].ToString();
-                            newImport.Prodi = dt.Rows[i][6].ToString();
+							if (newImport.End_Clock != null)
+							{
+								string valdays = dtNow + newImport.End_Clock;
+								newImport.ValEnd_Clock = DateTime.Parse(valdays);
+							}
+							newImport.Prodi = dt.Rows[i][6].ToString();
                             newImport.Study = dt.Rows[i][7].ToString();
                             newImport.Semester = dt.Rows[i][8].ToString();
                             newImport.Dosen = dt.Rows[i][9].ToString();
                             newImport.EntryBy = user.Name;
-                            newImport.EntryDate = DateTime.Now;
-                            newImport.ImportStatus = "Valid";
+                            newImport.EntryDate = DateTime.Now;                            
                             newImport.Number = i + 1;
 
-                            _unitOfWork.ImportFixedSchedulerRoom.Add(newImport);
+							GetSchedulerRoom = GetSchedulerRoom.Where(z => ((newImport.ValStart_Clock >= z.ValStart_Clock && newImport.ValStart_Clock < z.ValEnd_Clock)
+							|| (newImport.ValEnd_Clock > z.ValStart_Clock && newImport.ValEnd_Clock <= z.ValEnd_Clock)
+							|| (newImport.ValStart_Clock <= z.ValStart_Clock && newImport.ValEnd_Clock >= z.ValEnd_Clock))
+							&& z.LocationName == newImport.LocationName && z.RoomName == newImport.RoomName && z.Days == newImport.Days).ToList();
+
+                            if (GetSchedulerRoom.Count() > 0)
+                            {
+								newImport.ImportStatus = "Invalid";
+								newImport.ImportRemark = "Jam sudah digunakan";
+							}
+                            else 
+                            {
+								GetImport = GetImport.Where(z => ((newImport.ValStart_Clock >= z.ValStart_Clock && newImport.ValStart_Clock < z.ValEnd_Clock)
+							    || (newImport.ValEnd_Clock > z.ValStart_Clock && newImport.ValEnd_Clock <= z.ValEnd_Clock)
+							    || (newImport.ValStart_Clock <= z.ValStart_Clock && newImport.ValEnd_Clock >= z.ValEnd_Clock))
+							    && z.LocationName == newImport.LocationName && z.RoomName == newImport.RoomName && z.Days == newImport.Days).ToList();
+
+								if (GetImport.Count > 0)
+								{
+									newImport.ImportStatus = "Invalid";
+									newImport.ImportRemark = "Jam sudah digunakan";
+								}
+								else
+								{
+									newImport.ImportStatus = "Valid";
+								}
+							}				
+
+							_unitOfWork.ImportFixedSchedulerRoom.Add(newImport);
                             _unitOfWork.Save();
                         }
 
