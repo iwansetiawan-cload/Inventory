@@ -493,5 +493,36 @@ namespace E_OneWeb.Areas.Users.Controllers
 
            
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllRuangTetap()
+        {
+            try
+            {
+                int Number = 1;
+                var datalist = (from z in await _unitOfWork.FixedSchedulerRoom.GetAllAsync(includeProperties: "Room")
+                                select new
+                                {
+                                    no = Number++,
+                                    id = z.Id,
+                                    roomname = z.RoomName,
+                                    locationname = z.LocationName,
+                                    days = z.Days,
+                                    clock = z.Start_Clock + "-" + z.End_Clock,
+                                    prodi = z.Prodi,
+                                    study = z.Study,
+                                    semester = z.Semester,
+                                    dosen = z.Dosen
+                                }).ToList();
+
+                return Json(new { data = datalist });
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message.ToString();
+                return Json(new { data = "" });
+            }
+
+        }
     }
 }

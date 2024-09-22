@@ -39,8 +39,8 @@ namespace E_OneWeb
 
                 #region Timeout
                 options.Cookie.Name = ".AspNetCore.Identity.Application";
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-                options.Cookie.MaxAge = TimeSpan.FromMinutes(5);
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+                options.Cookie.MaxAge = TimeSpan.FromMinutes(20);
                 options.SlidingExpiration = true;
                 #endregion
 

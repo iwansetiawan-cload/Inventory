@@ -103,6 +103,9 @@ namespace E_OneWeb.Areas.Admin.Controllers
 			}
 			else
 			{
+				RoomReservationAdmin.Room = RoomList.Where(z => z.Id == idRoom).FirstOrDefault();
+				RoomReservationAdmin.RoomName = RoomReservationAdmin.Room.Name;
+				RoomReservationAdmin.LocationName = RoomReservationAdmin.Room.Location.Name;
 				RoomReservationAdmin.StatusId = Gen_4.IDGEN;
 				RoomReservationAdmin.Status = Gen_4.GENNAME;
 				RoomReservationAdmin.Flag = 1;
