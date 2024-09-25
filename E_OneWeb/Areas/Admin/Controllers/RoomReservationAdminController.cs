@@ -95,6 +95,7 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                                   statusid = z.StatusId,
                                                   bookingby = z.EntryBy,
                                                   flag = z.RoomReservationAdmin.Flag,
+                                                  entrydate = z.EntryDate
                                               }).Where(o=> (o.startdate <= dtnow && o.enddate >= dtnow && o.statusid == 11) || (o.flag == 2 && o.statusid == 11)).ToList();
 
             List<int> listIdAdmin = Getavailablelist.Select(o => o.idadmin).ToList();
@@ -115,7 +116,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                                     enddate = z.Flag == 2 ? Convert.ToDateTime(z.BookingEndDate).ToString("dd-MM-yyyy HH:mm") : "",
                                                     flag = 0,
                                                     flagval = z.Flag,
-                                                    userid = ""
+                                                    userid = "",
+                                                    entrydate = ""
                                                 }).Where(o => !listIdAdmin.Contains(o.id) && (o.flagval == 1 || o.flagval == 2)).ToList();
                 return Json(new { data = RoomReservationAdminlist });
             }
@@ -136,7 +138,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                                     enddate_ = Getavailablelist.Where(o => o.idadmin == z.Id).Select(i => i.enddate).FirstOrDefault(),
                                                     flag = 1,
                                                     flagval = z.Flag,
-                                                    userid = Getavailablelist.Where(o => o.idadmin == z.Id).Select(i => i.id).FirstOrDefault()
+                                                    userid = Getavailablelist.Where(o => o.idadmin == z.Id).Select(i => i.id).FirstOrDefault(),
+                                                    entrydate = Getavailablelist.Where(o => o.idadmin == z.Id).Select(i => i.entrydate).FirstOrDefault(),
                                                 }).Where(o => listIdAdmin.Contains(o.id) && o.enddate_ >= DateTime.Now).ToList();
                 return Json(new { data = RoomReservationAdminlist });
               
@@ -158,7 +161,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                                    bookingby = z.EntryBy,
                                                    flag = 2,//_unitOfWork.Genmaster.GetAll().Where(i=>i.IDGEN == z.StatusId).Select(o=>o.GENVALUE).FirstOrDefault(),
                                                    flagval = z.RoomReservationAdmin.Flag,
-                                                   userid = z.UserId
+                                                   userid = z.UserId,
+                                                   entrydate = Convert.ToDateTime(z.EntryDate).ToString("dd-MM-yyyy HH:mm")
                                                }).Where(v=>v.statusid == 10 && v.enddate_ >= DateTime.Now ).ToList();
                 return Json(new { data = RoomReservationUserlist });
             }
@@ -178,7 +182,8 @@ namespace E_OneWeb.Areas.Admin.Controllers
                                                    bookingby = z.EntryBy,
                                                    flag = 3,
                                                    flagval = z.RoomReservationAdmin.Flag,
-                                                   userid = z.UserId
+                                                   userid = z.UserId,
+                                                   entrydate = Convert.ToDateTime(z.EntryDate).ToString("dd-MM-yyyy HH:mm")
                                                }).Where(v => v.statusid == 11 || v.statusid == 18).ToList();
                 return Json(new { data = RoomReservationUserlist });
             }
