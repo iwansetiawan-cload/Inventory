@@ -9,5 +9,6 @@ namespace E_OneWeb.DataAccess.Repository.IRepository
 {
     public interface IFixedSchedulerRoomRepositoryAsync : IRepositoryAsync<FixedSchedulerRoom>
     {
+        void Update(FixedSchedulerRoom entity);
     }
 }

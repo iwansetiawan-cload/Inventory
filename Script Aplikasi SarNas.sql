@@ -141,3 +141,16 @@ BEGIN
 	WHERE EntryBy = @UserName AND ImportStatus='Valid'
 	
 END
+
+
+IF NOT EXISTS (SELECT * FROM GENMASTER where GENFLAG = 7)
+BEGIN
+PRINT 'INSERT GENMASTER 7'
+	Insert Into GENMASTER VALUES ('senin','Senin',1,7,'SYSTEM',GETDATE())
+	Insert Into GENMASTER VALUES ('selasa','Selasa',2,7,'SYSTEM',GETDATE())
+	Insert Into GENMASTER VALUES ('rabu','Rabu',3,7,'SYSTEM',GETDATE())
+	Insert Into GENMASTER VALUES ('kamis','Kamis',4,7,'SYSTEM',GETDATE())
+	Insert Into GENMASTER VALUES ('jumat','Jumat',5,7,'SYSTEM',GETDATE())
+	Insert Into GENMASTER VALUES ('sabtu','Sabtu',6,7,'SYSTEM',GETDATE())
+	Insert Into GENMASTER VALUES ('minggu','Minggu',7,7,'SYSTEM',GETDATE())
+END

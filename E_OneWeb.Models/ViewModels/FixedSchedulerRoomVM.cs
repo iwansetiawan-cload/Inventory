@@ -12,5 +12,7 @@ namespace E_OneWeb.Models.ViewModels
         public string? File { get; set; }
         public string? Valid { get; set; }
         public string? Invalid { get; set; }
+        public TimeSpan ClockStart { get; set; }
+        public TimeSpan ClockEnd { get; set; }
     }
 }

@@ -11,6 +11,8 @@ using System.Security.Claims;
 using NPOI.SS.Formula.Functions;
 using sun.misc;
 using E_OneWeb.Models.ViewModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq;
 
 namespace E_OneWeb.Areas.Admin.Controllers
 {
@@ -407,6 +409,158 @@ namespace E_OneWeb.Areas.Admin.Controllers
             _unitOfWork.Save();
 
             TempData["Success"] = "Daftar Ruang Kelas Tetap berhasil hapus";
+            return Json(new { success = true, message = "Delete Successful" });
+
+        }
+
+        [HttpGet]
+        public IActionResult GetAllRoomAndLocation()
+        {
+            var datalist = (from z in _unitOfWork.Room.GetAll(includeProperties: "Location")
+                            select new
+                            {
+                                id = z.Id,
+                                name_of_room = z.Name,
+                                description = z.Description,
+                                name_of_location = z.Location.Name
+                            }).ToList().OrderByDescending(o => o.id);
+            return Json(new { data = datalist });
+        }
+        public async Task<IActionResult> Upsert(int? id)
+        {
+            var ListHari = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 7).Select(x => new SelectListItem { Value = x.GENVALUE.ToString(), Text = x.GENNAME });
+            ViewBag.ListHari = new SelectList(ListHari, "Value", "Text");
+            
+            ViewBag.Status = "";
+            FixedSchedulerRoomVM vm = new FixedSchedulerRoomVM();
+            vm.FixedSchedulerRoom = await _unitOfWork.FixedSchedulerRoom.GetAsync(id.GetValueOrDefault());
+            if (vm.FixedSchedulerRoom != null)
+            {
+                ViewBag.ClockStart = vm.FixedSchedulerRoom.ValStart_Clock.Value.ToString("HH:mm");
+                ViewBag.ClockEnd = vm.FixedSchedulerRoom.ValEnd_Clock.Value.ToString("HH:mm");
+                ViewBag.FlagSave = "1";
+            }
+            else
+            {
+                ViewBag.ClockStart = DateTime.Now.ToString("HH:mm");
+                ViewBag.ClockEnd = DateTime.Now.ToString("HH:mm");
+                ViewBag.FlagSave = "0";
+            }
+            return View(vm);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Upsert(FixedSchedulerRoomVM vm)
+        {
+
+            var ListHari = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 7).Select(x => new SelectListItem { Value = x.GENVALUE.ToString(), Text = x.GENNAME });
+            ViewBag.ListHari = new SelectList(ListHari, "Value", "Text", vm.FixedSchedulerRoom.Flag.ToString());
+            ViewBag.ClockStart = vm.ClockStart.ToString();
+            ViewBag.ClockEnd = vm.ClockEnd.ToString();
+            ModelState.Clear();
+
+            string dtNow = DateTime.Now.ToString("yyyy-MM-dd ");
+            if (vm.ClockStart.ToString() != null)
+            {
+                string valdays = dtNow + vm.ClockStart;
+                vm.FixedSchedulerRoom.ValStart_Clock = DateTime.Parse(valdays);
+                vm.FixedSchedulerRoom.Start_Clock = vm.FixedSchedulerRoom.ValStart_Clock.Value.ToString("HH:mm");
+            }
+
+            if (vm.ClockEnd.ToString() != null)
+            {
+                string valdays = dtNow + vm.ClockEnd;
+                vm.FixedSchedulerRoom.ValEnd_Clock = DateTime.Parse(valdays);
+                vm.FixedSchedulerRoom.End_Clock = vm.FixedSchedulerRoom.ValEnd_Clock.Value.ToString("HH:mm");
+            }
+            if (vm.FixedSchedulerRoom.ValEnd_Clock < vm.FixedSchedulerRoom.ValStart_Clock)
+            {
+                ModelState.AddModelError("ClockStart", "Jam mulai harus lebih besar dari jam selesai");           
+            }
+
+            if (vm.FixedSchedulerRoom.RoomId == 0)
+            {
+                ModelState.AddModelError("RoomId", "Ruangan harus diisi");
+            }
+            if (vm.FixedSchedulerRoom.Id == 0)
+            {
+                bool valClock = false;
+                var BookingFixed = await _unitOfWork.FixedSchedulerRoom.GetAllAsync(z => z.RoomId == vm.FixedSchedulerRoom.RoomId && z.Flag == vm.FixedSchedulerRoom.Flag);
+                foreach (var bookingFixed in BookingFixed)
+                {
+                    string Startvaldays = dtNow + bookingFixed.Start_Clock;
+                    string Endtvaldays = dtNow + bookingFixed.End_Clock;
+                    if (vm.FixedSchedulerRoom.ValStart_Clock >= DateTime.Parse(Startvaldays) && vm.FixedSchedulerRoom.ValEnd_Clock <= DateTime.Parse(Endtvaldays))
+                    {
+                        valClock = true;
+                    }
+                    if (vm.FixedSchedulerRoom.ValStart_Clock >= DateTime.Parse(Startvaldays) && vm.FixedSchedulerRoom.ValStart_Clock <= DateTime.Parse(Endtvaldays) && vm.FixedSchedulerRoom.ValEnd_Clock <= DateTime.Parse(Endtvaldays))
+                    {
+                        valClock = true;
+                    }
+                    if (vm.FixedSchedulerRoom.ValStart_Clock <= DateTime.Parse(Startvaldays) && vm.FixedSchedulerRoom.ValEnd_Clock > DateTime.Parse(Startvaldays))
+                    {
+                        valClock = true;
+                    }
+                    if (vm.FixedSchedulerRoom.ValStart_Clock < DateTime.Parse(Endtvaldays) && vm.FixedSchedulerRoom.ValEnd_Clock >= DateTime.Parse(Endtvaldays))
+                    {
+                        valClock = true;
+                    }
+                }
+                if (valClock)
+                {
+                    ModelState.AddModelError("RoomId", "Ruangan sudah dijadwalkan, cek hari dan jam input");
+                }
+            }
+
+            var errorList = ModelState.Values.SelectMany(x => x.Errors).ToList();        
+
+            if (errorList.Count() == 0)
+            {       
+               
+                vm.FixedSchedulerRoom.Days = _unitOfWork.Genmaster.GetAll().Where(z => z.GENFLAG == 7 && z.GENVALUE == vm.FixedSchedulerRoom.Flag).Select(x => x.GENCODE).FirstOrDefault();
+                if (vm.FixedSchedulerRoom.Id == 0)
+                {                   
+                    var claimsIdentity = (ClaimsIdentity)User.Identity;
+                    var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                    var user = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+                    
+                    vm.FixedSchedulerRoom.EntryBy = user.Name;
+                    vm.FixedSchedulerRoom.EntryDate = DateTime.Now;
+                    await _unitOfWork.FixedSchedulerRoom.AddAsync(vm.FixedSchedulerRoom);
+                    ViewBag.Status = "Save Success";
+                    ViewBag.FlagSave = "0";
+                    _unitOfWork.Save();
+                }
+                else
+                {
+                    vm.FixedSchedulerRoom.Room = _unitOfWork.Room.Get(vm.FixedSchedulerRoom.RoomId);
+                    _unitOfWork.FixedSchedulerRoom.Update(vm.FixedSchedulerRoom);
+                    ViewBag.Status = "Update Success";
+                    ViewBag.FlagSave = "1";
+                }
+                _unitOfWork.Save();
+            }
+            else
+                ViewBag.Status = "Error";
+
+            return View(vm);
+        }
+
+       
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var objFromDb = await _unitOfWork.FixedSchedulerRoom.GetAsync(id);
+            if (objFromDb == null)
+            {
+                return Json(new { success = false, message = "Error while deleting" });
+            }
+
+            await _unitOfWork.FixedSchedulerRoom.RemoveAsync(objFromDb);
+            _unitOfWork.Save();
             return Json(new { success = true, message = "Delete Successful" });
 
         }

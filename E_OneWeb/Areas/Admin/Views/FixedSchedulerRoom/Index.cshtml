@@ -12,6 +12,7 @@
             <h3 class="text-primary">@title</h3>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a class="btn btn-primary" asp-action="Upsert"><i class="fas fa-plus" aria-hidden="true"></i> &nbsp;Tambah</a>
             <a class="btn btn-danger" onclick="DeleteAll();"><i class="fa fa-trash"></i> &nbsp; Delete All</a>
             <a class="btn btn-primary" asp-action="ImportData"><i class="fa fa-upload" aria-hidden="true"></i> &nbsp; Import Data</a>
         </div>
@@ -50,7 +51,7 @@
                 <th>
                    Dosen UTS/UAS
                 </th>
-            
+                <th style="min-width:100px"></th>
             </tr>
         </thead>
     </table>
@@ -79,7 +80,23 @@
                     { "data": "prodi", "autoWidth": true },
                     { "data": "study", "autoWidth": true },
                     { "data": "semester", "autoWidth": true },
-                    { "data": "dosen", "autoWidth": true }
+                    { "data": "dosen", "autoWidth": true },
+                    {
+                        "data": "id",
+                        "render": function (data) {
+                            return `
+                                    <div class="text-center">
+                                        <a href="/Admin/FixedSchedulerRoom/Upsert/${data}" class="btn btn-success text-white" style="cursor:pointer">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                                <a onclick=Delete("/Admin/FixedSchedulerRoom/Delete/${data}") class="btn btn-danger text-white" style="cursor:pointer">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                                                      
+                                     </div>
+                                   `;
+                        }, "autoWidth": true
+                    }
                 ],
                 "createdRow": function (row, data, index) {
                     //$('td', row).eq(4).attr('style', 'text-align:right;');
@@ -101,6 +118,32 @@
                     $.ajax({
                         type: "DELETE",
                         url: "/Admin/FixedSchedulerRoom/DeleteAll",
+                        success: function (data) {
+                            if (data.success) {
+                                toastr.success(data.message);
+                                dataTable.ajax.reload();
+                            }
+                            else {
+                                toastr.error(data.message);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function Delete(url) {
+            swal({
+                title: "Apakah Anda yakin ingin Menghapus?",
+                text: "Anda tidak akan dapat memulihkan data!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            }).then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        type: "DELETE",
+                        url: url,
                         success: function (data) {
                             if (data.success) {
                                 toastr.success(data.message);

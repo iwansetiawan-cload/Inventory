@@ -17,5 +17,27 @@ namespace E_OneWeb.DataAccess.Repository
         {
             _db = db;
         }
+        public void Update(FixedSchedulerRoom entity)
+        {
+            var objFromDb = _db.FixedSchedulerRoom.FirstOrDefault(s => s.Id == entity.Id);
+            if (objFromDb != null)
+            {
+                objFromDb.RoomId = entity.RoomId;
+                objFromDb.RoomName = entity.RoomName;
+                objFromDb.LocationName = entity.LocationName;
+                objFromDb.Room = entity.Room;
+                objFromDb.Days = entity.Days;
+                objFromDb.Start_Clock = entity.Start_Clock;
+                objFromDb.End_Clock = entity.End_Clock;
+                objFromDb.ValStart_Clock = entity.ValStart_Clock;
+                objFromDb.ValEnd_Clock = entity.ValEnd_Clock;
+                objFromDb.Prodi = entity.Prodi;
+                objFromDb.Study = entity.Study;
+                objFromDb.Semester = entity.Semester;
+                objFromDb.Dosen = entity.Dosen;
+                objFromDb.Flag = entity.Flag;
+                _db.SaveChanges();
+            }
+        }
     }
 }
