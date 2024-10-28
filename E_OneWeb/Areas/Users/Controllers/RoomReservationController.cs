@@ -86,7 +86,7 @@ namespace E_OneWeb.Areas.Users.Controllers
                 return View(vm);
             }
 
-            var ValBookingRoom = _unitOfWork.GetRommReservationAdmin.GetAll().Where(z => z.Id == vm.RoomReservationUser.RoomReservationAdmin.Id && 
+            var ValBookingRoom = _unitOfWork.GetRommReservationAdmin.GetAll().Where(z => z.Id == vm.RoomReservationUser.RoomReservationAdmin.Id && z.Status == "Approved" &&
             ((orderDateTimeStart >= z.BookingStartDate && orderDateTimeStart < z.BookingEndDate) || (orderDateTimeEnd > z.BookingStartDate && orderDateTimeEnd <= z.BookingEndDate) || (orderDateTimeStart <= z.BookingStartDate && orderDateTimeEnd >= z.BookingEndDate)));
 
             if (ValBookingRoom.Count() > 0)
@@ -437,8 +437,9 @@ namespace E_OneWeb.Areas.Users.Controllers
                                     dosen = z.Dosen,
                                     prodi = z.Description,
                                     semester = z.ApproveBy,
-                                    bookingenddate = z.EndDate
-                                }).Where(o => o.id == id && o.bookingenddate >= DateTime.Now).ToList();
+                                    bookingenddate = z.EndDate,
+                                    status = z.Status,
+                                }).Where(o => o.id == id && o.bookingenddate >= DateTime.Now && o.status == "Approved").ToList();
 
                 var datalist2 = (from z in await _unitOfWork.FixedSchedulerRoom.GetAllAsync(includeProperties: "Room")
                                  select new GridBookingRoom
